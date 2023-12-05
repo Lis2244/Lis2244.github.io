@@ -14,40 +14,57 @@ const map = L.map('map')
     },
   ).addTo(map);
 
+  const mainPinIcon = L.icon({
+    iconUrl: 'images/red_icon.png',
+    iconSize: [40, 52],
+    iconAnchor: [20, 52],
+  });
 
   const marker1 = L.marker(
     {
-        title: 'Остап зарыл хабар',
+        title: 'Женя зарыл хабар',
         lat: 45.07627,
         lng: 38.90765,
+    },
+    {
+      icon: mainPinIcon,
     },
   );
   const marker2 = L.marker(
     {
-        title: 'Здесь Остап учил Пашу грамоте',
+        title: 'Здесь Влад учил Женю грамоте',
         lat: 45.03726,
         lng: 38.95262,
+    },
+    {
+      icon: mainPinIcon,
     },
   );
   const marker3 = L.marker(
     {
-        title: 'Пойман огромный Сом',
+        title: 'Влад поймал сома маленького',
         lat: 45.02832,
         lng: 38.99170,
+    },
+    {
+      icon: mainPinIcon,
     },
   );
   const marker4 = L.marker(
     {
-        title: 'Здесь любит рыбачить Флат-флат',
+        title: 'Здесь любит рыбачить Саня',
         lat: 45.00699,
         lng: 38.99674,
     },
+    {
+      icon: mainPinIcon,
+    },
   );
   
-  marker1.bindPopup("<h3>Остап зарыл хабар</h3><img src='/images/photo_5192669423289354643_y.jpg' alt='Картинка' width='100' height='120'/>").addTo(map);
-  marker2.bindPopup("<h3>Здесь Остап учил Пашу грамоте</h3><img src='/images/draka.jpg' alt='Картинка' width='160' height='120'/>").addTo(map);
-  marker3.bindPopup("<h3>Пойман огромный Сом</h3><img src='/images/som.jpeg' alt='Картинка' width='100' height='120'/>").addTo(map);
-  marker4.bindPopup("<h3>Здесь любит рыбачить Флат-флат</h3><img src='/images/fishing.jpg' alt='Картинка' width='170' height='120'/>").addTo(map);
+  marker1.bindPopup("<h3>Женя зарыл хабар</h3><img src='/images/photo_5192669423289354643_y.jpg' alt='Картинка' width='100' height='120'/>").addTo(map);
+  marker2.bindPopup("<h3>Здесь Влад учил Женю грамоте</h3><img src='/images/draka.jpg' alt='Картинка' width='160' height='120'/>").addTo(map);
+  marker3.bindPopup("<h3>Влад поймал сома маленького</h3><img src='/images/som.jpeg' alt='Картинка' width='100' height='120'/>").addTo(map);
+  marker4.bindPopup("<h3>Здесь любит рыбачить Саня</h3><img src='/images/fishing.jpg' alt='Картинка' width='170' height='120'/>").addTo(map);
 
 
 
