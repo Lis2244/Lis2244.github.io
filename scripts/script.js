@@ -14,7 +14,7 @@ const map = L.map('map')
     },
   ).addTo(map);
 
-  const mainPinIcon = L.icon({
+  const redPinIcon = L.icon({
     iconUrl: 'images/red_icon.png',
     iconSize: [40, 52],
     iconAnchor: [20, 52],
@@ -27,7 +27,7 @@ const map = L.map('map')
         lng: 38.90765,
     },
     {
-      icon: mainPinIcon,
+      icon: redPinIcon,
     },
   );
   const marker2 = L.marker(
@@ -37,7 +37,7 @@ const map = L.map('map')
         lng: 38.95262,
     },
     {
-      icon: mainPinIcon,
+      icon: redPinIcon,
     },
   );
   const marker3 = L.marker(
@@ -47,7 +47,7 @@ const map = L.map('map')
         lng: 38.99170,
     },
     {
-      icon: mainPinIcon,
+      icon: redPinIcon,
     },
   );
   const marker4 = L.marker(
@@ -57,7 +57,7 @@ const map = L.map('map')
         lng: 38.99674,
     },
     {
-      icon: mainPinIcon,
+      icon: redPinIcon,
     },
   );
   

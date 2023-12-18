@@ -8,14 +8,48 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
     </head>
     <body>
-        <div id="map" style="width: 1000px; height: 680px;"></div>
-        <template id="balloon">
-            <section class="balloon">
-              <h3 class="balloon__title">Остров сокровищ</h3>
-              <img class="image_popap" src="images/photo_5192669423289354643_y.jpg" alt="Картинка">
-              <p class="balloon__lat-lng">Координаты: 12.34567, 98.76543</p>
-            </section>
-        </template>
+        <div class="page_in">
+
+            <header class="up_conteiner">
+                <nav class="navigation">
+                    <h1 class="heding_text">Рыболовная разведка в Подмосковье</h1>
+                    <div class="navigation_box">
+                        <a class="navigation_link" href="https://t.me/+mQ50iiahxjs3OTQy" target="_blank">
+                            <span class="navigation_link_text">Запланировать со мной рыбалку</span>
+                            <svg width="40" height="38" viewBox="0 0 49 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M46.9999 2L3 18.7639L38.6179 39.7079L46.9999 2Z" stroke="white" stroke-width="1.9" stroke-miterlimit="10"/>
+                                <path d="M26.562 32.6019L17.6741 39.7079L16.2881 26.5739L44.91 4.08997" stroke="white" stroke-width="1.9" stroke-miterlimit="10"/>
+                            </svg>
+                        </a>
+                    </div>
+                </nav>
+                <div class="heading_logo">
+                    <img class="logo_img_style" src="images/logo.png" alt="Логотип">
+                    <div class="logo_text_box">
+                        <p class="logo_text">Самый невезучий рыбак отпраздновал четырнадцатилетие своего червя. Для того чтоб избежать такой же участи, смотри мою карту и выбирай места для рыбалки по душе.</p>
+                    </div>
+                </div>
+            </header>
+            <main class="info_map_box">
+                <div class="info_map_item">
+                    <div id="map" class="map_stile"></div>
+                    <div class="info_box_geometki">
+                        <ul class="list_box_metki">
+                            <li class="item_box">
+                                <img src="images/blue_metka.svg" alt="Синяя метка">
+                                <p class="text_metki">Бесплатные</p>
+                            </li>
+                            <li class="item_box">
+                                <img src="images/red_metka.svg" alt="Красная метка">
+                                <p class="text_metki">Платные</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </main>
+
+        </div>
+        
         <script
            src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
