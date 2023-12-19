@@ -62,6 +62,50 @@ body {
 .navigation_link_text {
     font-size: 18px;
     margin-right: 30px;
+    transition: 1.2s;
+}
+.navigation_link {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    color:#eeeded;
+    text-decoration: none;
+    overflow: hidden;
+}
+.telegram_svg {
+    transform: translateX(500px);
+    animation: app_interactive 2.2s ease-in-out 2s 1;
+}
+.telegram_svg_position {
+    transform: translateX(0);
+    transition: 1.2s;
+}
+@keyframes app_interactive {
+    0% {
+        transform: rotate(0);
+    }
+    45% {
+        transform: rotate(0);
+    }
+    50% {
+        transform: rotate(-45deg);
+    }
+    65% {
+        transform: rotate(45deg);
+    }
+    75% {
+        transform: rotate(-15deg);
+    }
+    85% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(0);
+    }
+}
+.color_text_js {
+    color: #fefe22;
 }
 .heading_logo {
     display: flex;
@@ -162,8 +206,6 @@ body {
         align-items: center;
         color:#eeeded;
         text-decoration: none;
-        position: sticky;
-        top: 0;
     }
     .heading_logo {
         display: flex;
