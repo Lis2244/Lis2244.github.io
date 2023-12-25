@@ -37,7 +37,7 @@ body {
     background-color: #1c1c1c;
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: auto, auto;
+    grid-template-rows: auto, auto, auto;
 }
 .up_conteiner {
     grid-column: 1/2;
@@ -128,6 +128,7 @@ body {
     line-height: 48px;
     width: 75%;
     margin: 15px auto;
+    text-wrap: balance;
 }
 .info_map_box {
     grid-column: 1/2;
@@ -175,6 +176,52 @@ body {
     font-family: "Inter_Medium", sans-serif;
     font-size: 18px;
     color:#1c1c1c;
+}
+.reservoice {
+    background-color: #ffffff;
+    margin-top: 70px;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    max-width: 1200px;
+    min-width: auto;
+}
+.reservoice_main_heading {
+    color: #1c1c1c;
+    font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+.reservoice_list {
+    margin: 40px auto;
+    padding: 0;
+}
+.reservoice_item {
+    background-color: #F7F7F7;
+    border-radius: 18px;
+    width: 80%;
+    height: 90%;
+    margin-bottom: 40px;
+    box-shadow: 1px 12px 21px rgba(0, 0, 0, 0.45);
+
+}
+.reservoice_item_img {
+    border-radius: 18px;
+}
+.reservoice_item_text {
+    font-family: "Inter_SemiBold", sans-serif;
+    color: #1c1c1c;
+    padding-top: 20px;
+    font-size: 20px;
+}
+.bottom_text {
+    font-family: "Inter_Regular", sans-serif;
+    font-weight: 400;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 85%;
+    margin: 0 auto;
+    font-size: 16px;
 }
 @media (max-width: 600px) {
     .page_in {
@@ -240,6 +287,13 @@ body {
         width: 100%;
         margin: 15px auto;
         text-align: center;
+        text-wrap: balance;
+    }
+    .info_map_box {
+        grid-column: 1/2;
+        grid-row: 2/3;
+        margin-bottom: 50px;
+        min-width: 100%;
     }
     .info_map_item {
         margin: 20px auto 0 auto;
@@ -280,5 +334,33 @@ body {
         align-items: center;
         margin: 20px;
         width: 50%;
+    }
+    .reservoice {
+        background-color: #ffffff;
+        margin: 50px auto;
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 30px;
+        width: 100%;
+    }
+    .slide_reservoice {
+        padding-bottom: 30px;
+    }
+    .reservoice_main_heading {
+        font-size: 20px;
+    }
+    .reservoice_item {
+        background-color: #F7F7F7;
+        border-radius: 18px;
+        width: auto;
+        height: 90%;
+        margin-bottom: 40px;
+        box-shadow: 1px 12px 21px rgba(0, 0, 0, 0.45);
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .reservoice_item_img {
+        border-radius: 18px;
+        width: 85%;
     }
 }

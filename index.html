@@ -6,7 +6,54 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="styles/style.css">
         <link rel="stylesheet" href="styles/animate.min.css">
+        <link rel="stylesheet" href="styles/splide.min.css">
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+        <script src="scripts/splide.min.js"></script>
+        <script src="scripts/splide-extension-auto-scroll.min.js.js"></script>
+        <script>
+            /*document.addEventListener('DOMContentLoaded', function () {
+                new Splide( '#image_carousel', {
+          type    : 'loop',
+          perPage : 1,
+          speed: 900,
+          classes: {
+            pagination: 'splide__pagination pagination_carousel', // container
+        },
+          autoplay: true,
+        } ).on( 'autoplay:playing', function ( rate ) {
+          console.log( rate ); // 0-1
+        } ).mount();
+            });*/
+    
+            document.addEventListener('DOMContentLoaded', function () {
+                new Splide( '#reservoice_carousel', {
+            type   : 'loop',
+            drag   : 'free',
+            focus  : 'center',
+            gap    : '2rem',
+            perPage: 2,
+            classes: {
+        // Add classes for arrows.
+            arrow : 'splide__arrow arrow_hiden',
+            prev  : 'splide__arrow--prev your-class-prev',
+            next  : 'splide__arrow--next your-class-next',
+
+        // Add classes for pagination.
+            pagination: 'splide__pagination pagination_hiden', // container
+            page      : 'splide__pagination__page your-class-page', // each button
+        },
+            autoScroll: {
+              speed: 1,
+            },
+            breakpoints: {
+        640: {
+            perPage: 1,
+            gap    : '1rem',
+        },
+        }
+          } ).mount( window.splide.Extensions );
+            });
+          </script>
     </head>
     <body>
         <div class="page_in">
@@ -63,7 +110,89 @@
                         </ul>
                     </div>
                 </div>
+                <div id="reservoice_anchor" class="reservoice">
+                    <h2 class="reservoice_main_heading">Популярные водоёмы</h2>
+                    <div class="reservoice_box">
+                        <div id="reservoice_carousel" class="splide" aria-label="Beautiful Images">
+                            <div class="splide__track reservoice_splide_track">
+                                  <ul class="splide__list reservoice_list">
+                                      <li class="splide__slide slide_reservoice">
+                                          <div class="reservoice_item">
+                                            <p class="reservoice_item_text">р. Москва</p>
+                                            <img class="reservoice_item_img" src="images/reservoice/moscow.png" alt="река Москва">
+                                            <p class="reservoice_item_text bottom_text"><b>Обитатели:</b> плотва, лещ, окунь, уклейка, судак и щука.</p>
+                                          </div>
+                                      </li>
+                                      <li class="splide__slide slide_reservoice">
+                                        <div class="reservoice_item">
+                                          <p class="reservoice_item_text">р. Ока</p>
+                                          <img class="reservoice_item_img" src="images/reservoice/oka.png" alt="река Ока">
+                                          <p class="reservoice_item_text bottom_text"><b>Обитатели:</b> плотва, лещ, окунь, густера, судак, щука.</p>
+                                        </div>
+                                    </li>
+                                    <li class="splide__slide slide_reservoice">
+                                        <div class="reservoice_item">
+                                          <p class="reservoice_item_text">Можайское водохранилище</p>
+                                          <img class="reservoice_item_img" src="images/reservoice/mozhaisk.png" alt="Можайское водохранилище">
+                                          <p class="reservoice_item_text bottom_text"><b>Обитатели:</b> судак, плотва, жерех, лещ, густера и пелядь, карп и налим, щука и линь, окунь и угорь, уклейка, ёрш.</p>
+                                        </div>
+                                    </li>
+                                    <li class="splide__slide slide_reservoice">
+                                        <div class="reservoice_item">
+                                          <p class="reservoice_item_text">Истринское водохранилище</p>
+                                          <img class="reservoice_item_img" src="images/reservoice/istra.png" alt="Истринское водохранилище">
+                                          <p class="reservoice_item_text bottom_text"><b>Обитатели:</b> судак, лещ, налим, густера, язь, плотва, окунь, щука, уклейка, линь, ёрш, краснопёрка, карась.</p>
+                                        </div>
+                                    </li>
+                                    <li class="splide__slide slide_reservoice">
+                                        <div class="reservoice_item">
+                                          <p class="reservoice_item_text">р. Вьюнка</p>
+                                          <img class="reservoice_item_img" src="images/reservoice/viunka.png" alt="река Вьюнка">
+                                          <p class="reservoice_item_text bottom_text"><b>Обитатели:</b> линь, карась, плотва, окунь, щука, ротан.</p>
+                                        </div>
+                                    </li>
+                                    <li class="splide__slide slide_reservoice">
+                                        <div class="reservoice_item">
+                                          <p class="reservoice_item_text">р. Пахра</p>
+                                          <img class="reservoice_item_img" src="images/reservoice/pahra.png" alt="река Пахра">
+                                          <p class="reservoice_item_text bottom_text"><b>Обитатели:</b> плотва, уклейка, елец, жерех, голавль, прекрасный карась, лещ, густера, линь, сазан, окунь, ерш, щука, пескарь.</p>
+                                        </div>
+                                    </li>
+                                    <li class="splide__slide slide_reservoice">
+                                        <div class="reservoice_item">
+                                          <p class="reservoice_item_text">р. Северка</p>
+                                          <img class="reservoice_item_img" src="images/reservoice/severka.png" alt="река Северка">
+                                          <p class="reservoice_item_text bottom_text"><b>Обитатели:</b> плотва, окунь, ерш, пескарь, голавль, щука.</p>
+                                        </div>
+                                    </li>
+                                    <li class="splide__slide slide_reservoice">
+                                        <div class="reservoice_item">
+                                          <p class="reservoice_item_text">р. Лопасня</p>
+                                          <img class="reservoice_item_img" src="images/reservoice/lopasnya.png" alt="река Лопасня">
+                                          <p class="reservoice_item_text bottom_text"><b>Обитатели:</b> плотва, уклейка, елец, голавль, окунь и щука.</p>
+                                        </div>
+                                    </li>
+                                    <li class="splide__slide slide_reservoice">
+                                        <div class="reservoice_item">
+                                          <p class="reservoice_item_text">Медвежьи озёра</p>
+                                          <img class="reservoice_item_img" src="images/reservoice/medved.png" alt="Медвежьи озёра">
+                                          <p class="reservoice_item_text bottom_text"><b>Обитатели:</b> плотва, сом, щука, белый амур, карп, форель, окунь, карась, угорь.</p>
+                                        </div>
+                                    </li>
+                                    <li class="splide__slide slide_reservoice">
+                                        <div class="reservoice_item">
+                                          <p class="reservoice_item_text">озеро Бисерово</p>
+                                          <img class="reservoice_item_img" src="images/reservoice/biserovo.png" alt="озеро Бисерово">
+                                          <p class="reservoice_item_text bottom_text"><b>Обитатели:</b> окунь, карась, плотва, щука, сом.</p>
+                                        </div>
+                                    </li>
+                                  </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </main>
+            
 
         </div>
 
