@@ -68,7 +68,7 @@ const map = L.map('map')
   );
   
   marker1.bindPopup("<h3>Рыбхоз Гжелка</h3><img src='/images/gzhelka/gzhelka.jpg' alt='Садок с карпом' width='230' height='300'/><p>Вес рыбы в среднем 1,2кг. <a href='https://gzhelka.club/' target='_blank'>Подробнее</a></p>").addTo(map);
-  marker2.bindPopup("<h3>Платная Рыбалка</h3><iframe width='300' height='169' src='https://www.youtube.com/embed/e1KcDwHWS0E?si=7d6CplMIXUVhWV2X' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen></iframe><p>Вес рыбы в среднем 1кг. <a href='https://yandex.ru/maps/org/platnaya_rybalka/65955710105/?ll=35.924734%2C55.970904&z=17' target='_blank'>Подробнее</a></p>").addTo(map);
+  marker2.bindPopup("<h3>Платная Рыбалка</h3><iframe width='300' height='169' src='https://www.youtube.com/embed/e1KcDwHWS0E?si=WYpQEP7DXTts28e0' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen></iframe><p>Вес рыбы в среднем 1кг. <a href='https://yandex.ru/maps/org/platnaya_rybalka/65955710105/?ll=35.924734%2C55.970904&z=17' target='_blank'>Подробнее</a></p>").addTo(map);
   marker3.bindPopup("<h3>Рыбхоз Гжелка</h3><img src='/images/gzhelka/schuka_min.jpg' alt='Щука' width='230' height='300'/><p>Вес рыбы в среднем 0,7кг. <a href='https://gzhelka.club/' target='_blank'>Подробнее</a></p>").addTo(map);
   marker4.bindPopup("<h3>Коняшинский карьер</h3><img src='/images/konyashino/meloch.jpeg' alt='Маленькие рыбки' width='230' height='300'/><p>Вес рыбы в среднем 0,2кг.</p>").addTo(map);
 
