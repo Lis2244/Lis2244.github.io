@@ -4,7 +4,7 @@ const context = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const nums = '0123456789/*+%#}{';
+const nums = '01';
 const alphabet = nums;
 
 const fontSize = 18;
