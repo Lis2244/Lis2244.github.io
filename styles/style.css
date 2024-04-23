@@ -162,7 +162,7 @@ img {
     background-color: #D7D6D3;
     overflow: hidden;
     max-height: 0;
-    transition: all 0.7s ease-out;
+    transition: all 0.25s ease-out;
     opacity: 0;
 }
 .display_visability {
@@ -191,7 +191,7 @@ img {
     font-family: "Inter regular", sans-serif;
     font-weight: 400;
     font-size: 30px;
-    transition: all .3s ease-out;
+    transition: all .25s ease-out;
 }
 
 /* Вспомогательный класс для 1 проекта*/
@@ -202,13 +202,14 @@ img {
     font-size: 64px;
     font-style: italic;
     text-transform: lowercase;
+    letter-spacing: -5px;
 
 }
 .projects_item_name {
     font-family: "Inter regular", sans-serif;
     font-weight: 400;
     font-size: 30px;
-    transition: all .3s ease-out;
+    transition: all .25s ease-out;
 }
 .projects_item_name_visability {
     color: #000000;
@@ -224,7 +225,7 @@ img {
     font-style: italic;
     font-size: 20px;
     margin-left: 10px;
-    transition: all .3s ease-out;
+    transition: all .25s ease-out;
 }
 /* Вспомогательный класс для 1 проекта*/
 .item_namber_hiden {
@@ -246,7 +247,7 @@ img {
 }
 /* Вспомогательный класс для 1 проекта*/
 .plus {
-    transition: all .7s ease-out;
+    transition: all .25s ease-out;
     color:#C7A581;
 }
 /* Вспомогательный класс для 1 проекта*/
