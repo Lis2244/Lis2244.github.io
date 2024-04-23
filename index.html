@@ -2,12 +2,250 @@
 <html lang="ru">
     <head>
         <meta charset="utf-8">
-        <title>Высокие технологии</title>
+        <title>Mia Karlsson</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/splide.min.css">
+        <script>
+            document.addEventListener( 'DOMContentLoaded', function () {
+            var main = new Splide( '#main-carousel', {
+              type      : 'fade',
+              start  : 5,
+              rewind    : true,
+              pagination: false,
+              arrows    : false,
+            } );
+
+            var thumbnails = new Splide( '#thumbnail-carousel', {
+              width: "100%",
+              start  : 5,
+              classes: {
+		              arrow : 'splide__arrow arrow_item',
+                },
+              arrowPath: 'M0 20.3103H20H40M40 20.3103L22.3529 1M40 20.3103L22.3529 41',
+              fixedWidth  : 80,
+              fixedHeight : 108,
+              gap         : 10,
+              rewind      : true,
+              pagination  : false,
+              isNavigation: true,
+              breakpoints : {
+                600: {
+                  fixedWidth : 38,
+                  fixedHeight: 50,
+                },
+                1190: {
+                  fixedWidth : 63,
+                  fixedHeight: 81,
+                }
+              },
+            } );
+
+            main.sync( thumbnails );
+            main.mount();
+            thumbnails.mount();
+          } );
+        </script>
     </head>
     <body class="page">
-        <canvas id="Matrix"></canvas>
-        <script src="scripts/script.js"></script>
+        <div class="page_item">
+            <header class="header_item">
+                <nav class="navigation">
+                    <div class="navigation_box_logo">
+                        <img class="logo_svg" src="images/navigation_logo.svg" alt="Логотип в навигации">
+                    </div>
+                    <div class="navigation_box_list">
+                        <ul class="navigation_list">
+                            <li class="navigation_list_item">
+                                <a class="navigation_link" href="#">Contacts</a>
+                            </li>
+                            <li class="navigation_list_item">
+                                <a class="navigation_link" href="#">Services</a>
+                            </li>
+                            <li class="navigation_list_item">
+                                <a class="navigation_link" href="#">Projects</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="navigation_box_tel">
+                        <a class="navigation_link" href="tel:+4402072091615">+44 020 7209 1615</a>
+                    </div>
+                </nav>
+                <div class="box_logo_img">
+                    <img class="img_header" src="images/img_logo.png" alt="Картинка в заголовке">
+                    <h1 class="header_name">Mia Karlsson</h1>
+                </div>
+                <div class="box_logo_button">
+                    <p class="box_logo_text">We create beautiful, functional spaces<br> that our clients are profud to call home</p>
+                    <div class="box_button_link">
+                        <a class="button_link" href="#">Contact us</a>
+                    </div>
+                </div>
+            </header>
+            <main class="information information_grid">
+                <section class="information_projects">
+                    <div class="projects_header_box">
+                        <span class="namber_header">01</span>
+                        <h2 class="projects_header"><span class="projects_header_item">featured</span> projects</h2>
+                    </div>
+                    <div class="projects_item">
+                        <div class="projects_belsize_park">
+                            <span class="projects_item_namber">01</span>
+                            <h3 class="projects_item_header"><span class="london_text">London</span> <span class="projects_item_name">Belsize Park</span></h3>
+                            <button type="button" class="button_plus_one">
+                                <svg class="plus" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 0L9 18" stroke="currentColor" stroke-width="2"/>
+                                    <line y1="9" x2="18" y2="9" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="gallary_box_one gallary_grid display_interaktive">
+                            <div class="info_text_london">
+                                <p class="info_text_london_item">Merging two apartments into one practical and stylish home in a period building for this couple whose children had flown the nest and were ready to get creative with a space just for them. This couple was an absolute delight to work with as they were from an engineering and artistic background and were keen to include their influence.</p>
+                            </div>
+                            
+                                <div id="main-carousel" class="splide main-splide" aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel.">
+                                    <div class="splide__track">
+                                        <ul class="splide__list">
+                                          <li class="splide__slide">
+                                              <img src="images/progects01/progect_1_5.jpg" alt="слайд 1">
+                                          </li>
+                                          <li class="splide__slide">
+                                              <img src="images/progects01/progect_1_2.jpg" alt="слайд 2">
+                                          </li>
+                                          <li class="splide__slide">
+                                              <img src="images/progects01/progect_1_3.jpg" alt="слайд 3">
+                                          </li>
+                                          <li class="splide__slide">
+                                            <img src="images/progects01/progect_1_4.jpg" alt="слайд 4">
+                                          </li>
+                                          <li class="splide__slide">
+                                              <img src="/images/progects01/progect_1_1.jpg" alt="слайд 5">
+                                          </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            
+                            
+                            <div id="thumbnail-carousel" class="splide gallary_splide" aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel.">
+                                <div class="splide__track">
+                                    
+                                        <ul class="splide__list">
+                                          <li class="splide__slide">
+                                              <img src="images/progects01/progect_1_5.jpg" alt="слайд 1">
+                                          </li>
+                                          <li class="splide__slide">
+                                              <img src="images/progects01/progect_1_2.jpg" alt="слайд 2">
+                                          </li>
+                                          <li class="splide__slide" style="margin-left: 10%;">
+                                              <img src="images/progects01/progect_1_3.jpg" alt="слайд 3">
+                                          </li>
+                                          <li class="splide__slide">
+                                            <img src="images/progects01/progect_1_4.jpg" alt="слайд 4">
+                                          </li>
+                                          <li class="splide__slide">
+                                              <img src="images/progects01/progect_1_1.jpg" alt="слайд 5">
+                                          </li>
+                                        </ul>
+                                        <div class="splide__arrows">
+                                            <button class="splide__arrow splide__arrow--prev">
+                                                <svg class="arrow_img prev_arrow_img" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g id="fill_heart_prev">
+                                                        <rect x="0.5" y="0.500977" width="54" height="54" rx="27" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path id="arrow_prev" d="M19 27.001H27.5H36M36 27.001L28.5 20.001M36 27.001L28.5 34.501" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </g>
+                                                    <animate 
+                                                        href="#fill_heart_prev"
+                                                        attributeType="CSS"
+                                                        attributeName="fill"
+                                                        to="#000000"
+                                                        fill="freeze"
+                                                        dur="0.3s"
+                                                        begin="fill_heart_prev.mouseover"
+                                                      />
+                                                      <animate 
+                                                      href="#fill_heart_prev"
+                                                      attributeType="CSS"
+                                                      attributeName="fill"
+                                                      to="#D7D6D3"
+                                                      fill="freeze"
+                                                      dur="0.3s"
+                                                      begin="fill_heart_prev.mouseout"
+                                                    />
+                                                    <animate 
+                                                        href="#arrow_prev"
+                                                        attributeType="CSS"
+                                                        attributeName="stroke"
+                                                        to="#FFFFFF"
+                                                        fill="freeze"
+                                                        dur="0.3s"
+                                                        begin="fill_heart_prev.mouseover"
+                                                      />
+                                                    <animate 
+                                                    href="#arrow_prev"
+                                                    attributeType="CSS"
+                                                    attributeName="stroke"
+                                                    to="#000000"
+                                                    fill="freeze"
+                                                    dur="0.3s"
+                                                     begin="fill_heart_prev.mouseout"
+                                                    />
+                                                </svg>
+                                            </button>
+                                            <button class="splide__arrow splide__arrow--next">
+                                                <svg class="arrow_img" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g id="fill_heart">
+                                                        <rect class="arrow_img_item" x="0.5" y="0.500977" width="53" height="53" rx="27" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path id="arrow_next" class="arrow_img_item" d="M19 27.001H27.5H36M36 27.001L28.5 20.001M36 27.001L28.5 34.501" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </g>
+                                                    <animate 
+                                                        href="#fill_heart"
+                                                        attributeType="CSS"
+                                                        attributeName="fill"
+                                                        to="#000000"
+                                                        fill="freeze"
+                                                        dur="0.3s"
+                                                        begin="fill_heart.mouseover"
+                                                      />
+                                                      <animate 
+                                                      href="#fill_heart"
+                                                      attributeType="CSS"
+                                                      attributeName="fill"
+                                                      to="#D7D6D3"
+                                                      fill="freeze"
+                                                      dur="0.3s"
+                                                      begin="fill_heart.mouseout"
+                                                    />
+                                                    <animate 
+                                                        href="#arrow_next"
+                                                        attributeType="CSS"
+                                                        attributeName="stroke"
+                                                        to="#FFFFFF"
+                                                        fill="freeze"
+                                                        dur="0.3s"
+                                                        begin="fill_heart.mouseover"
+                                                      />
+                                                    <animate 
+                                                    href="#arrow_next"
+                                                    attributeType="CSS"
+                                                    attributeName="stroke"
+                                                    to="#000000"
+                                                    fill="freeze"
+                                                    dur="0.3s"
+                                                     begin="fill_heart.mouseout"
+                                                    />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <script src="scripts/splide.min.js"></script>
+        <script src="scripts/slider_block.js"></script>
     </body>
 </html>
