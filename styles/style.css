@@ -77,6 +77,10 @@ html {
 .navigation_link {
     color: #FFFFFF;
     text-decoration: none;
+    transition: all 0.25s ease-out;
+}
+.navigation_link:hover {
+    color: #C7A581;
 }
 .box_logo_img {
     margin-top: 10px;
@@ -118,6 +122,10 @@ img {
     width: 450px;
     height: 60px;
     background-color: #FFFFFF;
+    transition: all 0.25s ease-out;
+}
+.box_button_link:hover {
+    background-color: #C7A581;
 }
 .button_link {
     text-decoration: none;
@@ -133,6 +141,10 @@ img {
     height: 100%;
     text-transform: uppercase;
     letter-spacing: -1px;
+    transition: all 0.25s ease-out;
+}
+.button_link:hover {
+    color: #FFFFFF;
 }
 .information {
     grid-column: 1/2;
@@ -213,6 +225,36 @@ img {
     transition: all 0.25s ease-out;
     opacity: 0; 
 }
+.gallary_box_three {
+    width: 100%;
+    grid-column: 1/3;
+    grid-row: 1/3;
+    background-color: #D7D6D3;
+    overflow: hidden;
+    max-height: 0;
+    transition: all 0.25s ease-out;
+    opacity: 0; 
+}
+.gallary_box_for {
+    width: 100%;
+    grid-column: 1/3;
+    grid-row: 1/3;
+    background-color: #D7D6D3;
+    overflow: hidden;
+    max-height: 0;
+    transition: all 0.25s ease-out;
+    opacity: 0; 
+}
+.gallary_box_fife {
+    width: 100%;
+    grid-column: 1/3;
+    grid-row: 1/3;
+    background-color: #D7D6D3;
+    overflow: hidden;
+    max-height: 0;
+    transition: all 0.25s ease-out;
+    opacity: 0; 
+}
 
 .display_visability {
     max-height: 461px;
@@ -284,6 +326,8 @@ img {
     opacity: 0;
 }
 .projects_item_header {
+    position: absolute;
+    left: 37%;
     margin-top: 20px;
     margin-bottom: 20px;
     padding: 0;
@@ -336,6 +380,9 @@ img {
     min-width: auto;
     max-height: 461px;
     min-height: auto;
+}
+.pointer_hover {
+    pointer-events: none;
 }
 
 .gallary_splide {
