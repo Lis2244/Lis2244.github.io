@@ -2,1028 +2,561 @@
 <html lang="ru">
     <head>
         <meta charset="utf-8">
-        <title>Mia Karlsson</title>
+        <title>По Зелёной</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styles/style.css">
         <link rel="stylesheet" href="styles/splide.min.css">
+        <script src="scripts/splide.min.js"></script>
+        <script src="scripts/splide-extension-auto-scroll.min.js.js"></script>
         <script>
-            document.addEventListener( 'DOMContentLoaded', function () {
-            var main = new Splide( '#main-carousel', {
-              type      : 'fade',
-              start  : 5,
-              rewind    : true,
-              pagination: false,
-              arrows    : false,
-            } );
+            document.addEventListener('DOMContentLoaded', function () {
+                new Splide( '#top_carousel', {
+            type   : 'loop',
+            autoWidth: true,
+            focus    : 0,
+            omitEnd  : true,
+            drag   : 'free',
+            focus  : 'center',
+            gap    : '3rem',
+            perPage: 3,
+            classes: {
+        // Add classes for arrows.
+            arrow : 'splide__arrow arrow_hiden',
+            prev  : 'splide__arrow--prev your-class-prev',
+            next  : 'splide__arrow--next your-class-next',
 
-            var thumbnails = new Splide( '#thumbnail-carousel', {
-              width: "100%",
-              start  : 5,
-              classes: {
-		              arrow : 'splide__arrow arrow_item',
-                },
-              arrowPath: 'M0 20.3103H20H40M40 20.3103L22.3529 1M40 20.3103L22.3529 41',
-              fixedWidth  : 80,
-              fixedHeight : 108,
-              gap         : 10,
-              rewind      : true,
-              pagination  : false,
-              isNavigation: true,
-              breakpoints : {
-                600: {
-                  fixedWidth : 38,
-                  fixedHeight: 50,
-                },
-                1190: {
-                  fixedWidth : 63,
-                  fixedHeight: 81,
-                }
-              },
-            } );
+        // Add classes for pagination.
+            pagination: 'splide__pagination pagination_hiden', // container
+            page      : 'splide__pagination__page your-class-page', // each button
+        },
+            autoScroll: {
+              speed: 1,
+            },
+            breakpoints: {
+        640: {
+            perPage: 1,
+            gap    : '1rem',
+        },
+        }
+          } ).mount( window.splide.Extensions );
+            });
 
-            main.sync( thumbnails );
-            main.mount();
-            thumbnails.mount();
-          } );
+            document.addEventListener('DOMContentLoaded', function () {
+                new Splide( '#bottom_carousel', {
+            type   : 'loop',
+            autoWidth: true,
+            focus    : 0,
+            omitEnd  : true,
+            drag   : 'free',
+            focus  : 'center',
+            gap    : '3rem',
+            perPage: 3,
+            classes: {
+        // Add classes for arrows.
+            arrow : 'splide__arrow arrow_hiden',
+            prev  : 'splide__arrow--prev your-class-prev',
+            next  : 'splide__arrow--next your-class-next',
 
-          //Второй проект
-          document.addEventListener( 'DOMContentLoaded', function () {
-            var mainTwo = new Splide( '#main-carousel-two', {
-              type      : 'fade',
-              start  : 5,
-              rewind    : true,
-              pagination: false,
-              arrows    : false,
-            } );
+        // Add classes for pagination.
+            pagination: 'splide__pagination pagination_hiden', // container
+            page      : 'splide__pagination__page your-class-page', // each button
+        },
+            autoScroll: {
+              speed: -1,
+            },
+            breakpoints: {
+        640: {
+            perPage: 1,
+            gap    : '1rem',
+        },
+        }
+          } ).mount( window.splide.Extensions );
+            });
 
-            var thumbnailsTwo = new Splide( '#thumbnail-carousel-two', {
-              width: "100%",
-              start  : 5,
-              classes: {
-		              arrow : 'splide__arrow arrow_item',
-                },
-              arrowPath: 'M0 20.3103H20H40M40 20.3103L22.3529 1M40 20.3103L22.3529 41',
-              fixedWidth  : 80,
-              fixedHeight : 108,
-              gap         : 10,
-              rewind      : true,
-              pagination  : false,
-              isNavigation: true,
-              breakpoints : {
-                600: {
-                  fixedWidth : 38,
-                  fixedHeight: 50,
-                },
-                1190: {
-                  fixedWidth : 63,
-                  fixedHeight: 81,
-                }
-              },
-            } );
+            document.addEventListener('DOMContentLoaded', function () {
+                new Splide( '#otzovik_carousel', {
+            type   : 'loop',
+            speed: 900,
+            autoplay: true,
+            gap    : '3rem',
+            perPage: 1,
+            classes: {
+        // Add classes for arrows.
+            arrow : 'splide__arrow arrow_hiden',
+            prev  : 'splide__arrow--prev your-class-prev',
+            next  : 'splide__arrow--next your-class-next',
 
-            mainTwo.sync( thumbnailsTwo );
-            mainTwo.mount();
-            thumbnailsTwo.mount();
-          } );
-
-          //Третий проект
-          document.addEventListener( 'DOMContentLoaded', function () {
-            var mainThree = new Splide( '#main-carousel-three', {
-              type      : 'fade',
-              start  : 5,
-              rewind    : true,
-              pagination: false,
-              arrows    : false,
-            } );
-
-            var thumbnailsThree = new Splide( '#thumbnail-carousel-three', {
-              width: "100%",
-              start  : 5,
-              classes: {
-		              arrow : 'splide__arrow arrow_item',
-                },
-              arrowPath: 'M0 20.3103H20H40M40 20.3103L22.3529 1M40 20.3103L22.3529 41',
-              fixedWidth  : 80,
-              fixedHeight : 108,
-              gap         : 10,
-              rewind      : true,
-              pagination  : false,
-              isNavigation: true,
-              breakpoints : {
-                600: {
-                  fixedWidth : 38,
-                  fixedHeight: 50,
-                },
-                1190: {
-                  fixedWidth : 63,
-                  fixedHeight: 81,
-                }
-              },
-            } );
-
-            mainThree.sync( thumbnailsThree );
-            mainThree.mount();
-            thumbnailsThree.mount();
-          } );
-
-          //Четвёртый проект
-          document.addEventListener( 'DOMContentLoaded', function () {
-            var mainFor = new Splide( '#main-carousel-for', {
-              type      : 'fade',
-              start  : 5,
-              rewind    : true,
-              pagination: false,
-              arrows    : false,
-            } );
-
-            var thumbnailsFor = new Splide( '#thumbnail-carousel-for', {
-              width: "100%",
-              start  : 5,
-              classes: {
-		              arrow : 'splide__arrow arrow_item',
-                },
-              arrowPath: 'M0 20.3103H20H40M40 20.3103L22.3529 1M40 20.3103L22.3529 41',
-              fixedWidth  : 80,
-              fixedHeight : 108,
-              gap         : 10,
-              rewind      : true,
-              pagination  : false,
-              isNavigation: true,
-              breakpoints : {
-                600: {
-                  fixedWidth : 38,
-                  fixedHeight: 50,
-                },
-                1190: {
-                  fixedWidth : 63,
-                  fixedHeight: 81,
-                }
-              },
-            } );
-
-            mainFor.sync( thumbnailsFor );
-            mainFor.mount();
-            thumbnailsFor.mount();
-          } );
-
-          //Пятый проект
-          document.addEventListener( 'DOMContentLoaded', function () {
-            var mainFife = new Splide( '#main-carousel-fife', {
-              type      : 'fade',
-              start  : 5,
-              rewind    : true,
-              pagination: false,
-              arrows    : false,
-            } );
-
-            var thumbnailsFife = new Splide( '#thumbnail-carousel-fife', {
-              width: "100%",
-              start  : 5,
-              classes: {
-		              arrow : 'splide__arrow arrow_item',
-                },
-              arrowPath: 'M0 20.3103H20H40M40 20.3103L22.3529 1M40 20.3103L22.3529 41',
-              fixedWidth  : 80,
-              fixedHeight : 108,
-              gap         : 10,
-              rewind      : true,
-              pagination  : false,
-              isNavigation: true,
-              breakpoints : {
-                600: {
-                  fixedWidth : 38,
-                  fixedHeight: 50,
-                },
-                1190: {
-                  fixedWidth : 63,
-                  fixedHeight: 81,
-                }
-              },
-            } );
-
-            mainFife.sync( thumbnailsFife );
-            mainFife.mount();
-            thumbnailsFife.mount();
-          } );
-        </script>
+        // Add classes for pagination.
+            pagination: 'splide__pagination pagination_hiden', // container
+            page      : 'splide__pagination__page your-class-page', // each button
+        },
+            breakpoints: {
+        640: {
+            perPage: 1,
+            gap    : '1rem',
+        },
+        }
         
+        /*} ).on( 'autoplay:playing', function ( rate ) {
+          console.log( rate ); // 0-1*/
+        } ).mount();
+            });
+        
+          </script>
     </head>
     <body class="page">
-        <div class="page_item">
-            <header class="header_item">
-                <nav class="navigation">
-                    <div class="navigation_box_logo">
-                        <img class="logo_svg" src="images/navigation_logo.svg" alt="Логотип в навигации">
+        
+            <header class="header_box">
+                <nav class="navigation_box">
+                    <div class="logo_box">
+                        <img class="logo_image" src="images/header/logotip.svg" alt="Логотип компании">
                     </div>
-                    <div class="navigation_box_list">
-                        <ul class="navigation_list">
-                            <li class="navigation_list_item">
-                                <a class="navigation_link" href="#">Contacts</a>
+                    <div class="services_box">
+
+                        <ul class="services_list list_one">
+                            <li class="services_item">
+                                <a class="services_link" href="#">Автополив</a>
                             </li>
-                            <li class="navigation_list_item">
-                                <a class="navigation_link" href="#">Services</a>
+                            <li class="services_item item_two">
+                                <a class="services_link" href="#">Озеленение</a>
                             </li>
-                            <li class="navigation_list_item">
-                                <a class="navigation_link" href="#project_anhor">Projects</a>
+                            <li class="services_item">
+                                <a class="services_link" href="#">Газон</a>
                             </li>
                         </ul>
+
+                        <ul class="services_list list_two">
+                            <li class="services_item">
+                                <a class="services_link" href="#">Декоративные отсыпки</a>
+                            </li>
+                            <li class="services_item item_two">
+                                <a class="services_link" href="#">Садовое освещение</a>
+                            </li>
+                            <li class="services_item">
+                                <a class="services_link" href="#">Архитектура</a>
+                            </li>
+                        </ul>
+
+                        <ul class="services_list list_three">
+                            <li class="services_item">
+                                <a class="services_link" href="#">Контакты</a>
+                            </li>
+                            <li class="services_item item_two">
+                                <a class="services_link" href="#">Партфолио</a>
+                            </li>
+                            <li class="services_item">
+                                <a class="services_link" href="#">Уходовые работы</a>
+                            </li>
+                        </ul>
+
                     </div>
-                    <div class="navigation_box_tel">
-                        <a class="navigation_link" href="tel:+4402072091615">+44 020 7209 1615</a>
+                    <div class="phone_box">
+                        <a class="link_phone" href="#">+7(928)222-80-33<svg class="arrow_phone" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.0862 1H0V0H16V16H15L15 1.49319L1 16L0.280436 15.3056L14.0862 1Z" fill="#7ED21A"/>
+                        </svg></a>
                     </div>
                 </nav>
-                <div class="box_logo_img">
-                    <img class="img_header" src="images/img_logo.png" alt="Картинка в заголовке">
-                    <h1 class="header_name">Mia Karlsson</h1>
+                <h1 class="header_text">БЛАГОУСТРОЙСТВО <br>И <span class="header_text_green">ОЗЕЛЕhЕhИЕ</span></h1>
+                <div class="cover_box">
+                    <img class="cover_img" src="images/header/cover_image.jpg" alt="Обложка сайта">
                 </div>
-                <div class="box_logo_button">
-                    <p class="box_logo_text">We create beautiful, functional spaces<br> that our clients are profud to call home</p>
-                    <div class="box_button_link">
-                        <a class="button_link" href="#">Contact us</a>
-                    </div>
+                <h2 class="header_text_item">В Краснодаре и Краснодарском крае</h2>
+                <div class="button_phone">
+                    <a class="button_phone_link" href="#">Связаться</a>
                 </div>
             </header>
-            <main class="information information_grid">
-                <section id="project_anhor" class="information_projects">
-                    <div class="projects_header_box">
-                        <span class="namber_header">01</span>
-                        <h2 class="projects_header"><span class="projects_header_item">featured</span> projects</h2>
-                    </div>
-                    <!--Первый проект-->
-                    <div class="projects_item">
-                        <div class="projects_belsize_park">
-                            <span class="projects_item_namber namber_one">01</span>
-                            <h3 class="projects_item_header projects_item_header_one"><span class="london_text london_text_one">London</span> <span class="projects_item_name one_name">Belsize Park</span></h3>
-                            <button type="button" class="button_plus button_plus_one">
-                                <svg class="plus plus_one" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M9 0L9 18" stroke="currentColor" stroke-width="2"/>
-                                    <line y1="9" x2="18" y2="9" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                            </button>
+            <main class="information_box">
+                <section class="about_as_box">
+                    <div class="as_box">
+                        <div class="about_as_header">
+                            <h3 class="about_as_header_text">О нас</h3>
                         </div>
-                        <div class="gallary_box_one gallary_grid display_interaktive">
-                            <div class="info_text_london">
-                                <p class="info_text_london_item">Merging two apartments into one practical and stylish home in a period building for this couple whose children had flown the nest and were ready to get creative with a space just for them. This couple was an absolute delight to work with as they were from an engineering and artistic background and were keen to include their influence.</p>
-                            </div>
-                            
-                                <div id="main-carousel" class="splide main-splide" aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel.">
-                                    <div class="splide__track">
-                                        <ul class="splide__list">
-                                          <li class="splide__slide">
-                                              <img src="images/progects01/progect_1_5.jpg" alt="слайд 1">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="images/progects01/progect_1_2.jpg" alt="слайд 2">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="images/progects01/progect_1_3.jpg" alt="слайд 3">
-                                          </li>
-                                          <li class="splide__slide">
-                                            <img src="images/progects01/progect_1_4.jpg" alt="слайд 4">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="/images/progects01/progect_1_1.jpg" alt="слайд 5">
-                                          </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            
-                            
-                            <div id="thumbnail-carousel" class="splide gallary_splide" aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel.">
-                                <div class="splide__track">
-                                    
-                                        <ul class="splide__list">
-                                          <li class="splide__slide">
-                                              <img src="images/progects01/progect_1_5.jpg" alt="слайд 1">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="images/progects01/progect_1_2.jpg" alt="слайд 2">
-                                          </li>
-                                          <li class="splide__slide" style="margin-left: 10%;">
-                                              <img src="images/progects01/progect_1_3.jpg" alt="слайд 3">
-                                          </li>
-                                          <li class="splide__slide">
-                                            <img src="images/progects01/progect_1_4.jpg" alt="слайд 4">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="images/progects01/progect_1_1.jpg" alt="слайд 5">
-                                          </li>
-                                        </ul>
-                                        <div class="splide__arrows">
-                                            <button class="splide__arrow splide__arrow--prev">
-                                                <svg class="arrow_img prev_arrow_img" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <g id="fill_heart_prev">
-                                                        <rect x="0.5" y="0.500977" width="52.5" height="52.5" rx="27" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                                        <path id="arrow_prev" class="pointer_hover" d="M19 27.001H27.5H36M36 27.001L28.5 20.001M36 27.001L28.5 34.501" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    </g>
-                                                    <animate 
-                                                        href="#fill_heart_prev"
-                                                        attributeType="CSS"
-                                                        attributeName="fill"
-                                                        to="#000000"
-                                                        fill="freeze"
-                                                        dur="0.3s"
-                                                        begin="fill_heart_prev.mouseover"
-                                                      />
-                                                      <animate 
-                                                      href="#fill_heart_prev"
-                                                      attributeType="CSS"
-                                                      attributeName="fill"
-                                                      to="#D7D6D3"
-                                                      fill="freeze"
-                                                      dur="0.3s"
-                                                      begin="fill_heart_prev.mouseout"
-                                                    />
-                                                    <animate 
-                                                        href="#arrow_prev"
-                                                        attributeType="CSS"
-                                                        attributeName="stroke"
-                                                        to="#FFFFFF"
-                                                        fill="freeze"
-                                                        dur="0.3s"
-                                                        begin="fill_heart_prev.mouseover"
-                                                      />
-                                                    <animate 
-                                                    href="#arrow_prev"
-                                                    attributeType="CSS"
-                                                    attributeName="stroke"
-                                                    to="#000000"
-                                                    fill="freeze"
-                                                    dur="0.3s"
-                                                     begin="fill_heart_prev.mouseout"
-                                                    />
-                                                </svg>
-                                            </button>
-                                            <button class="splide__arrow splide__arrow--next">
-                                                <svg class="arrow_img" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <g id="fill_heart">
-                                                        <rect class="arrow_img_item" x="0.5" y="0.500977" width="52.5" height="52.5" rx="27" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                                        <path id="arrow_next" class="arrow_img_item pointer_hover" d="M19 27.001H27.5H36M36 27.001L28.5 20.001M36 27.001L28.5 34.501" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    </g>
-                                                    <animate 
-                                                        href="#fill_heart"
-                                                        attributeType="CSS"
-                                                        attributeName="fill"
-                                                        to="#000000"
-                                                        fill="freeze"
-                                                        dur="0.3s"
-                                                        begin="fill_heart.mouseover"
-                                                      />
-                                                      <animate 
-                                                      href="#fill_heart"
-                                                      attributeType="CSS"
-                                                      attributeName="fill"
-                                                      to="#D7D6D3"
-                                                      fill="freeze"
-                                                      dur="0.3s"
-                                                      begin="fill_heart.mouseout"
-                                                    />
-                                                    <animate 
-                                                        href="#arrow_next"
-                                                        attributeType="CSS"
-                                                        attributeName="stroke"
-                                                        to="#FFFFFF"
-                                                        fill="freeze"
-                                                        dur="0.3s"
-                                                        begin="fill_heart.mouseover"
-                                                      />
-                                                    <animate 
-                                                    href="#arrow_next"
-                                                    attributeType="CSS"
-                                                    attributeName="stroke"
-                                                    to="#000000"
-                                                    fill="freeze"
-                                                    dur="0.3s"
-                                                     begin="fill_heart.mouseout"
-                                                    />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                </div>
-                            </div>
+                        <div class="about_as_information">
+                            <p class="about_as_information_header">Качество, доступность, <span class="information_header_span">индивидуальный</span> подход к каждому проекту</p>
+                            <p class="information_text">За более чем десятилетие работы мы помогли сотням клиентов превратить их участки в настоящие зелёные оазисы. Мы предлагаем полный спектр услуг: от разработки уникальных ландшафтных проектов до их быстрого и качественного воплощения. Наша команда опытных специалистов заботится о каждой детали, чтобы ваш сад или участок выглядел идеально.</p>
+                            <p class="information_text information_text_two">Мы гордимся тем, что наши клиенты остаются довольны результатами нашей работы. Для вашего спокойствия мы предоставляем после гарантийное обслуживание, чтобы вы могли наслаждаться красотой и функциональностью вашего участка долгие годы. Выбирая нас, вы выбираете надежность, профессионализм и долгосрочное сотрудничество.</p>
                         </div>
                     </div>
-                    <!--Второй проект-->
-                    <div class="projects_item">
-                        <div class="projects_belsize_park">
-                            <span class="projects_item_namber namber_two">02</span>
-                            <h3 class="projects_item_header projects_item_header_two"><span class="london_text london_text_two">London</span> <span class="projects_item_name two_name">Ealing</span></h3>
-                            <button type="button" class="button_plus button_plus_two">
-                                <svg class="plus plus_two" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M9 0L9 18" stroke="currentColor" stroke-width="2"/>
-                                    <line y1="9" x2="18" y2="9" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                            </button>
+                    <img class="as_img" src="/images/main/about_as.jpg" alt="Подстриженные кусты">  
+                </section>
+                <section class="portfolio">
+                    <div class="as_box box_portfolio">
+                        <div class="about_as_header">
+                            <h3 class="about_as_header_text">Портфолио</h3>
                         </div>
-                        <div class="gallary_box_two gallary_grid display_interaktive">
-                            <div class="info_text_london">
-                                <p class="info_text_london_item">It is always a pleasure to work on interesting buildings with a history like this one. Once a school, this home was transformed in to a super fresh and fun home with break out spaces for every member of the family including an indoor conservatory with a sliding roof, an epic play room bringing a forest feel to the loft and an open plan kitchen dining area with exposed beams and brickwork.</p>
-                            </div>
-                            
-                                <div id="main-carousel-two" class="splide main-splide" aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel.">
-                                    <div class="splide__track">
-                                        <ul class="splide__list">
-                                          <li class="splide__slide">
-                                              <img src="images/progects02/project_2_1.jpg" alt="слайд 1">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="images/progects02/project_2_2.jpg" alt="слайд 2">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="images/progects02/project_2_3.jpg" alt="слайд 3">
-                                          </li>
-                                          <li class="splide__slide">
-                                            <img src="images/progects02/project_2_4.jpg" alt="слайд 4">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="images/progects02/project_2_5.jpg" alt="слайд 5">
-                                          </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            
-                            
-                            <div id="thumbnail-carousel-two" class="splide gallary_splide" aria-label="The carousel with thumbnails.">
-                                <div class="splide__track">
-                                    
-                                        <ul class="splide__list">
-                                          <li class="splide__slide">
-                                              <img src="images/progects02/project_2_1.jpg" alt="слайд 1">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="images/progects02/project_2_2.jpg" alt="слайд 2">
-                                          </li>
-                                          <li class="splide__slide" style="margin-left: 10%;">
-                                              <img src="images/progects02/project_2_3.jpg" alt="слайд 3">
-                                          </li>
-                                          <li class="splide__slide">
-                                            <img src="images/progects02/project_2_4.jpg" alt="слайд 4">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="images/progects02/project_2_5.jpg" alt="слайд 5">
-                                          </li>
-                                        </ul>
-                                        <div class="splide__arrows">
-                                            <button class="splide__arrow splide__arrow--prev">
-                                                <svg class="arrow_img prev_arrow_img" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <g id="fill_heart_prev_two">
-                                                        <rect x="0.5" y="0.500977" width="52.5" height="52.5" rx="27" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                                        <path id="arrow_prev_two" class="pointer_hover" d="M19 27.001H27.5H36M36 27.001L28.5 20.001M36 27.001L28.5 34.501" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    </g>
-                                                    <animate 
-                                                        href="#fill_heart_prev_two"
-                                                        attributeType="CSS"
-                                                        attributeName="fill"
-                                                        to="#000000"
-                                                        fill="freeze"
-                                                        dur="0.3s"
-                                                        begin="fill_heart_prev_two.mouseover"
-                                                      />
-                                                      <animate 
-                                                      href="#fill_heart_prev_two"
-                                                      attributeType="CSS"
-                                                      attributeName="fill"
-                                                      to="#D7D6D3"
-                                                      fill="freeze"
-                                                      dur="0.3s"
-                                                      begin="fill_heart_prev_two.mouseout"
-                                                    />
-                                                    <animate 
-                                                        href="#arrow_prev_two"
-                                                        attributeType="CSS"
-                                                        attributeName="stroke"
-                                                        to="#FFFFFF"
-                                                        fill="freeze"
-                                                        dur="0.3s"
-                                                        begin="fill_heart_prev_two.mouseover"
-                                                      />
-                                                    <animate 
-                                                    href="#arrow_prev_two"
-                                                    attributeType="CSS"
-                                                    attributeName="stroke"
-                                                    to="#000000"
-                                                    fill="freeze"
-                                                    dur="0.3s"
-                                                     begin="fill_heart_prev_two.mouseout"
-                                                    />
-                                                </svg>
-                                            </button>
-                                            <button class="splide__arrow splide__arrow--next">
-                                                <svg class="arrow_img" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <g id="fill_heart_next_two">
-                                                        <rect class="arrow_img_item" x="0.5" y="0.500977" width="52.5" height="52.5" rx="27" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                                        <path id="arrow_next_two" class="arrow_img_item pointer_hover" d="M19 27.001H27.5H36M36 27.001L28.5 20.001M36 27.001L28.5 34.501" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    </g>
-                                                    <animate 
-                                                        href="#fill_heart_next_two"
-                                                        attributeType="CSS"
-                                                        attributeName="fill"
-                                                        to="#000000"
-                                                        fill="freeze"
-                                                        dur="0.3s"
-                                                        begin="fill_heart_next_two.mouseover"
-                                                      />
-                                                      <animate 
-                                                      href="#fill_heart_next_two"
-                                                      attributeType="CSS"
-                                                      attributeName="fill"
-                                                      to="#D7D6D3"
-                                                      fill="freeze"
-                                                      dur="0.3s"
-                                                      begin="fill_heart_next_two.mouseout"
-                                                    />
-                                                    <animate 
-                                                        href="#arrow_next_two"
-                                                        attributeType="CSS"
-                                                        attributeName="stroke"
-                                                        to="#FFFFFF"
-                                                        fill="freeze"
-                                                        dur="0.3s"
-                                                        begin="fill_heart_next_two.mouseover"
-                                                      />
-                                                    <animate 
-                                                    href="#arrow_next_two"
-                                                    attributeType="CSS"
-                                                    attributeName="stroke"
-                                                    to="#000000"
-                                                    fill="freeze"
-                                                    dur="0.3s"
-                                                     begin="fill_heart_next_two.mouseout"
-                                                    />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                </div>
-                            </div>
+                        <div class="about_as_information">
+                            <p class="about_as_information_header portfolio_information_header">Уникальные проекты для <span class="information_header_span">вашего</span> идеального зелёного <span class="information_header_span">участка</span></p>
+                            <p class="information_text text_portfolio">Наши уникальные проекты по озеленению участков станут вашим зелёным райским уголком, обеспечивая качество и надёжность с 2010 года.</p>
                         </div>
                     </div>
-                    <!--Третий проект-->
-                    <div class="projects_item">
-                        <div class="projects_belsize_park">
-                            <span class="projects_item_namber namber_three">03</span>
-                            <h3 class="projects_item_header projects_item_header_three"><span class="london_text london_text_three">London</span> <span class="projects_item_name three_name">Crouch End</span></h3>
-                            <button type="button" class="button_plus button_plus_three">
-                                <svg class="plus plus_three" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M9 0L9 18" stroke="currentColor" stroke-width="2"/>
-                                    <line y1="9" x2="18" y2="9" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="gallary_box_three gallary_grid display_interaktive">
-                            <div class="info_text_london">
-                                <p class="info_text_london_item">This design led client had an existing love of unique, one of a kind pieces which had worked perfectly in their last home, but felt a little out of place in such a modern new build. The challenge? helping them to completely reimagine the space, creating warmth, comfort and interest in what was essentially a white box.</p>
-                            </div>
-                            
-                                <div id="main-carousel-three" class="splide main-splide" aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel.">
-                                    <div class="splide__track">
-                                        <ul class="splide__list">
-                                          <li class="splide__slide">
-                                              <img src="images/progects03/project_3_1.jpg" alt="слайд 1">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="images/progects03/project_3_2.jpg" alt="слайд 2">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="images/progects03/project_3_3.jpg" alt="слайд 3">
-                                          </li>
-                                          <li class="splide__slide">
-                                            <img src="images/progects03/project_3_4.jpg" alt="слайд 4">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="images/progects03/project_3_5.jpg" alt="слайд 5">
-                                          </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            
-                            
-                            <div id="thumbnail-carousel-three" class="splide gallary_splide" aria-label="The carousel with thumbnails.">
-                                <div class="splide__track">
-                                    
-                                        <ul class="splide__list">
-                                          <li class="splide__slide">
-                                              <img src="images/progects03/project_3_1.jpg" alt="слайд 1">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="images/progects03/project_3_2.jpg" alt="слайд 2">
-                                          </li>
-                                          <li class="splide__slide" style="margin-left: 10%;">
-                                              <img src="images/progects03/project_3_3.jpg" alt="слайд 3">
-                                          </li>
-                                          <li class="splide__slide">
-                                            <img src="images/progects03/project_3_4.jpg" alt="слайд 4">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="images/progects03/project_3_5.jpg" alt="слайд 5">
-                                          </li>
-                                        </ul>
-                                        <div class="splide__arrows">
-                                            <button class="splide__arrow splide__arrow--prev">
-                                                <svg class="arrow_img prev_arrow_img" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <g id="fill_heart_prev_three">
-                                                        <rect x="0.5" y="0.500977" width="52.5" height="52.5" rx="27" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                                        <path id="arrow_prev_three" class="pointer_hover" d="M19 27.001H27.5H36M36 27.001L28.5 20.001M36 27.001L28.5 34.501" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    </g>
-                                                    <animate 
-                                                        href="#fill_heart_prev_three"
-                                                        attributeType="CSS"
-                                                        attributeName="fill"
-                                                        to="#000000"
-                                                        fill="freeze"
-                                                        dur="0.3s"
-                                                        begin="fill_heart_prev_three.mouseover"
-                                                      />
-                                                      <animate 
-                                                      href="#fill_heart_prev_three"
-                                                      attributeType="CSS"
-                                                      attributeName="fill"
-                                                      to="#D7D6D3"
-                                                      fill="freeze"
-                                                      dur="0.3s"
-                                                      begin="fill_heart_prev_three.mouseout"
-                                                    />
-                                                    <animate 
-                                                        href="#arrow_prev_three"
-                                                        attributeType="CSS"
-                                                        attributeName="stroke"
-                                                        to="#FFFFFF"
-                                                        fill="freeze"
-                                                        dur="0.3s"
-                                                        begin="fill_heart_prev_three.mouseover"
-                                                      />
-                                                    <animate 
-                                                    href="#arrow_prev_three"
-                                                    attributeType="CSS"
-                                                    attributeName="stroke"
-                                                    to="#000000"
-                                                    fill="freeze"
-                                                    dur="0.3s"
-                                                     begin="fill_heart_prev_three.mouseout"
-                                                    />
-                                                </svg>
-                                            </button>
-                                            <button class="splide__arrow splide__arrow--next">
-                                                <svg class="arrow_img" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <g id="fill_heart_next_three">
-                                                        <rect class="arrow_img_item" x="0.5" y="0.500977" width="52.5" height="52.5" rx="27" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                                        <path id="arrow_next_three" class="arrow_img_item pointer_hover" d="M19 27.001H27.5H36M36 27.001L28.5 20.001M36 27.001L28.5 34.501" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    </g>
-                                                    <animate 
-                                                        href="#fill_heart_next_three"
-                                                        attributeType="CSS"
-                                                        attributeName="fill"
-                                                        to="#000000"
-                                                        fill="freeze"
-                                                        dur="0.3s"
-                                                        begin="fill_heart_next_three.mouseover"
-                                                      />
-                                                      <animate 
-                                                      href="#fill_heart_next_three"
-                                                      attributeType="CSS"
-                                                      attributeName="fill"
-                                                      to="#D7D6D3"
-                                                      fill="freeze"
-                                                      dur="0.3s"
-                                                      begin="fill_heart_next_three.mouseout"
-                                                    />
-                                                    <animate 
-                                                        href="#arrow_next_three"
-                                                        attributeType="CSS"
-                                                        attributeName="stroke"
-                                                        to="#FFFFFF"
-                                                        fill="freeze"
-                                                        dur="0.3s"
-                                                        begin="fill_heart_next_three.mouseover"
-                                                      />
-                                                    <animate 
-                                                    href="#arrow_next_three"
-                                                    attributeType="CSS"
-                                                    attributeName="stroke"
-                                                    to="#000000"
-                                                    fill="freeze"
-                                                    dur="0.3s"
-                                                     begin="fill_heart_next_three.mouseout"
-                                                    />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                </div>
-                            </div>
+                    <div id="top_carousel" class="splide top_splide" aria-label="Beautiful Images">
+                        <div class="splide__track fair_splide_track">
+                              <ul class="splide__list fair_list">
+                                  <li class="splide__slide slide_faire">
+                                    <img class="portfolio_top_img" src="images/main/up_1.jpg" alt="Верхняя картинка">
+                                  </li>
+                                  <li class="splide__slide slide_faire">
+                                    <img class="portfolio_top_img" src="images/main/up_2.jpg" alt="Верхняя картинка">
+                                  </li>
+                                  <li class="splide__slide slide_faire">
+                                    <img class="portfolio_top_img" src="images/main/up_3.jpg" alt="Верхняя картинка">
+                                  </li>
+                                  <li class="splide__slide slide_faire">
+                                    <img class="portfolio_top_img" src="images/main/up_4.jpg" alt="Верхняя картинка">
+                                  </li>
+                              </ul>
                         </div>
                     </div>
-                    <!--Четвёртый проект-->
-                    <div class="projects_item">
-                        <div class="projects_belsize_park">
-                            <span class="projects_item_namber namber_for">04</span>
-                            <h3 class="projects_item_header projects_item_header_for"><span class="london_text london_text_for">London</span> <span class="projects_item_name for_name">Notting Hill</span></h3>
-                            <button type="button" class="button_plus button_plus_for">
-                                <svg class="plus plus_for" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M9 0L9 18" stroke="currentColor" stroke-width="2"/>
-                                    <line y1="9" x2="18" y2="9" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="gallary_box_for gallary_grid display_interaktive">
-                            <div class="info_text_london">
-                                <p class="info_text_london_item">We loved the challenge of combining the buildings beautiful regency architecture, with the more contemporary Scandinavian style preferences of the Swedish client. The end result was a functional and stylish family home that maximised natural light and worked perfectly with the more quirky and fun furniture specified.</p>
-                            </div>
-                            
-                                <div id="main-carousel-for" class="splide main-splide" aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel.">
-                                    <div class="splide__track">
-                                        <ul class="splide__list">
-                                          <li class="splide__slide">
-                                              <img src="images/progects04/progect_4_1.jpg" alt="слайд 1">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="images/progects04/progect_4_2.jpg" alt="слайд 2">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="images/progects04/progect_4_3.jpg" alt="слайд 3">
-                                          </li>
-                                          <li class="splide__slide">
-                                            <img src="images/progects04/progect_4_4.jpg" alt="слайд 4">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="images/progects04/progect_4_5.jpg" alt="слайд 5">
-                                          </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            
-                            
-                            <div id="thumbnail-carousel-for" class="splide gallary_splide" aria-label="The carousel with thumbnails.">
-                                <div class="splide__track">
-                                    
-                                        <ul class="splide__list">
-                                          <li class="splide__slide">
-                                              <img src="images/progects04/progect_4_1.jpg" alt="слайд 1">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="images/progects04/progect_4_2.jpg" alt="слайд 2">
-                                          </li>
-                                          <li class="splide__slide" style="margin-left: 10%;">
-                                              <img src="images/progects04/progect_4_3.jpg" alt="слайд 3">
-                                          </li>
-                                          <li class="splide__slide">
-                                            <img src="images/progects04/progect_4_4.jpg" alt="слайд 4">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="images/progects04/progect_4_5.jpg" alt="слайд 5">
-                                          </li>
-                                        </ul>
-                                        <div class="splide__arrows">
-                                            <button class="splide__arrow splide__arrow--prev">
-                                                <svg class="arrow_img prev_arrow_img" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <g id="fill_heart_prev_for">
-                                                        <rect x="0.5" y="0.500977" width="52.5" height="52.5" rx="27" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                                        <path id="arrow_prev_for" class="pointer_hover" d="M19 27.001H27.5H36M36 27.001L28.5 20.001M36 27.001L28.5 34.501" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    </g>
-                                                    <animate 
-                                                        href="#fill_heart_prev_for"
-                                                        attributeType="CSS"
-                                                        attributeName="fill"
-                                                        to="#000000"
-                                                        fill="freeze"
-                                                        dur="0.3s"
-                                                        begin="fill_heart_prev_for.mouseover"
-                                                      />
-                                                      <animate 
-                                                      href="#fill_heart_prev_for"
-                                                      attributeType="CSS"
-                                                      attributeName="fill"
-                                                      to="#D7D6D3"
-                                                      fill="freeze"
-                                                      dur="0.3s"
-                                                      begin="fill_heart_prev_for.mouseout"
-                                                    />
-                                                    <animate 
-                                                        href="#arrow_prev_for"
-                                                        attributeType="CSS"
-                                                        attributeName="stroke"
-                                                        to="#FFFFFF"
-                                                        fill="freeze"
-                                                        dur="0.3s"
-                                                        begin="fill_heart_prev_for.mouseover"
-                                                      />
-                                                    <animate 
-                                                    href="#arrow_prev_for"
-                                                    attributeType="CSS"
-                                                    attributeName="stroke"
-                                                    to="#000000"
-                                                    fill="freeze"
-                                                    dur="0.3s"
-                                                     begin="fill_heart_prev_for.mouseout"
-                                                    />
-                                                </svg>
-                                            </button>
-                                            <button class="splide__arrow splide__arrow--next">
-                                                <svg class="arrow_img" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <g id="fill_heart_next_for">
-                                                        <rect class="arrow_img_item" x="0.5" y="0.500977" width="52.5" height="52.5" rx="27" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                                        <path id="arrow_next_for" class="arrow_img_item pointer_hover" d="M19 27.001H27.5H36M36 27.001L28.5 20.001M36 27.001L28.5 34.501" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    </g>
-                                                    <animate 
-                                                        href="#fill_heart_next_for"
-                                                        attributeType="CSS"
-                                                        attributeName="fill"
-                                                        to="#000000"
-                                                        fill="freeze"
-                                                        dur="0.3s"
-                                                        begin="fill_heart_next_for.mouseover"
-                                                      />
-                                                      <animate 
-                                                      href="#fill_heart_next_for"
-                                                      attributeType="CSS"
-                                                      attributeName="fill"
-                                                      to="#D7D6D3"
-                                                      fill="freeze"
-                                                      dur="0.3s"
-                                                      begin="fill_heart_next_for.mouseout"
-                                                    />
-                                                    <animate 
-                                                        href="#arrow_next_for"
-                                                        attributeType="CSS"
-                                                        attributeName="stroke"
-                                                        to="#FFFFFF"
-                                                        fill="freeze"
-                                                        dur="0.3s"
-                                                        begin="fill_heart_next_for.mouseover"
-                                                      />
-                                                    <animate 
-                                                    href="#arrow_next_for"
-                                                    attributeType="CSS"
-                                                    attributeName="stroke"
-                                                    to="#000000"
-                                                    fill="freeze"
-                                                    dur="0.3s"
-                                                     begin="fill_heart_next_for.mouseout"
-                                                    />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                </div>
-                            </div>
+                    <div id="bottom_carousel" class="splide bottom_splide" aria-label="Beautiful Images">
+                        <div class="splide__track fair_splide_track">
+                              <ul class="splide__list fair_list">
+                                  <li class="splide__slide slide_faire">
+                                    <img class="portfolio_bottom_img" src="images/main/bottom_1.jpg" alt="Нижняя картинка">
+                                  </li>
+                                  <li class="splide__slide slide_faire">
+                                    <img class="portfolio_bottom_img" src="images/main/bottom_2.jpg" alt="Нижняя картинка">
+                                  </li>
+                                  <li class="splide__slide slide_faire">
+                                    <img class="portfolio_bottom_img" src="images/main/bottom_3.jpg" alt="Нижняя картинка">
+                                  </li>
+                                  <li class="splide__slide slide_faire">
+                                    <img class="portfolio_bottom_img" src="images/main/bottom_4.jpg" alt="Нижняя картинка">
+                                  </li>
+                              </ul>
                         </div>
                     </div>
-                    <!--Пятый проект-->
-                    <div class="projects_item">
-                        <div class="projects_belsize_park">
-                            <span class="projects_item_namber namber_fife">05</span>
-                            <h3 class="projects_item_header projects_item_header_fife"><span class="london_text london_text_fife">London</span> <span class="projects_item_name fife_name">Hampstead</span></h3>
-                            <button type="button" class="button_plus button_plus_fife">
-                                <svg class="plus plus_fife" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M9 0L9 18" stroke="currentColor" stroke-width="2"/>
-                                    <line y1="9" x2="18" y2="9" stroke="currentColor" stroke-width="2"/>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="gallary_box_fife gallary_grid display_interaktive">
-                            <div class="info_text_london">
-                                <p class="info_text_london_item">We are so delighted with our complete home transformation. Every room has its own distinct personality with bold colours and schemes working well with each other as you move through the house.  We are particularly pleased with the bathrooms and children's bedrooms which really do make it a special family home.</p>
-                            </div>
-                            
-                                <div id="main-carousel-fife" class="splide main-splide" aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel.">
-                                    <div class="splide__track">
-                                        <ul class="splide__list">
-                                          <li class="splide__slide">
-                                              <img src="images/progects05/progect_5_1.jpg" alt="слайд 1">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="images/progects05/progect_5_2.jpg" alt="слайд 2">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="images/progects05/progect_5_3.jpg" alt="слайд 3">
-                                          </li>
-                                          <li class="splide__slide">
-                                            <img src="images/progects05/progect_5_4.jpg" alt="слайд 4">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="images/progects05/progect_5_5.jpg" alt="слайд 5">
-                                          </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            
-                            
-                            <div id="thumbnail-carousel-fife" class="splide gallary_splide" aria-label="The carousel with thumbnails.">
-                                <div class="splide__track">
-                                    
-                                        <ul class="splide__list">
-                                          <li class="splide__slide">
-                                              <img src="images/progects05/progect_5_1.jpg" alt="слайд 1">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="images/progects05/progect_5_2.jpg" alt="слайд 2">
-                                          </li>
-                                          <li class="splide__slide" style="margin-left: 10%;">
-                                              <img src="images/progects05/progect_5_3.jpg" alt="слайд 3">
-                                          </li>
-                                          <li class="splide__slide">
-                                            <img src="images/progects05/progect_5_4.jpg" alt="слайд 4">
-                                          </li>
-                                          <li class="splide__slide">
-                                              <img src="images/progects05/progect_5_5.jpg" alt="слайд 5">
-                                          </li>
-                                        </ul>
-                                        <div class="splide__arrows">
-                                            <button class="splide__arrow splide__arrow--prev">
-                                                <svg class="arrow_img prev_arrow_img" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <g id="fill_heart_prev_fife">
-                                                        <rect x="0.5" y="0.500977" width="52.5" height="52.5" rx="27" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                                        <path id="arrow_prev_fife" class="pointer_hover" d="M19 27.001H27.5H36M36 27.001L28.5 20.001M36 27.001L28.5 34.501" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    </g>
-                                                    <animate 
-                                                        href="#fill_heart_prev_fife"
-                                                        attributeType="CSS"
-                                                        attributeName="fill"
-                                                        to="#000000"
-                                                        fill="freeze"
-                                                        dur="0.3s"
-                                                        begin="fill_heart_prev_fife.mouseover"
-                                                      />
-                                                      <animate 
-                                                      href="#fill_heart_prev_fife"
-                                                      attributeType="CSS"
-                                                      attributeName="fill"
-                                                      to="#D7D6D3"
-                                                      fill="freeze"
-                                                      dur="0.3s"
-                                                      begin="fill_heart_prev_fife.mouseout"
-                                                    />
-                                                    <animate 
-                                                        href="#arrow_prev_fife"
-                                                        attributeType="CSS"
-                                                        attributeName="stroke"
-                                                        to="#FFFFFF"
-                                                        fill="freeze"
-                                                        dur="0.3s"
-                                                        begin="fill_heart_prev_fife.mouseover"
-                                                      />
-                                                    <animate 
-                                                    href="#arrow_prev_fife"
-                                                    attributeType="CSS"
-                                                    attributeName="stroke"
-                                                    to="#000000"
-                                                    fill="freeze"
-                                                    dur="0.3s"
-                                                     begin="fill_heart_prev_fife.mouseout"
-                                                    />
-                                                </svg>
-                                            </button>
-                                            <button class="splide__arrow splide__arrow--next">
-                                                <svg class="arrow_img" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <g id="fill_heart_next_fife">
-                                                        <rect class="arrow_img_item" x="0.5" y="0.500977" width="52.5" height="52.5" rx="27" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                                        <path id="arrow_next_fife" class="arrow_img_item pointer_hover" d="M19 27.001H27.5H36M36 27.001L28.5 20.001M36 27.001L28.5 34.501" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    </g>
-                                                    <animate 
-                                                        href="#fill_heart_next_fife"
-                                                        attributeType="CSS"
-                                                        attributeName="fill"
-                                                        to="#000000"
-                                                        fill="freeze"
-                                                        dur="0.3s"
-                                                        begin="fill_heart_next_fife.mouseover"
-                                                      />
-                                                      <animate 
-                                                      href="#fill_heart_next_fife"
-                                                      attributeType="CSS"
-                                                      attributeName="fill"
-                                                      to="#D7D6D3"
-                                                      fill="freeze"
-                                                      dur="0.3s"
-                                                      begin="fill_heart_next_fife.mouseout"
-                                                    />
-                                                    <animate 
-                                                        href="#arrow_next_fife"
-                                                        attributeType="CSS"
-                                                        attributeName="stroke"
-                                                        to="#FFFFFF"
-                                                        fill="freeze"
-                                                        dur="0.3s"
-                                                        begin="fill_heart_next_fife.mouseover"
-                                                      />
-                                                    <animate 
-                                                    href="#arrow_next_fife"
-                                                    attributeType="CSS"
-                                                    attributeName="stroke"
-                                                    to="#000000"
-                                                    fill="freeze"
-                                                    dur="0.3s"
-                                                     begin="fill_heart_next_fife.mouseout"
-                                                    />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="button_phone button_portfolio">
+                        <a class="button_phone_link" href="#">Рассчитать свой проект</a>
                     </div>
                 </section>
-            </main>
-        </div>
+                <section class="our_services_box">
+                    <div class="as_box box_services">
+                        <div class="about_as_header">
+                            <h3 class="about_as_header_text">Наши услуги</h3>
+                        </div>
+                        <div class="about_as_information">
+                            <p class="about_as_information_header">Индивидуальный подход к <span class="information_header_span">решению</span> ваших <span class="information_header_span">задач</span></p>
+                            <p class="information_text text_service">Мы предлагаем полный спектр услуг по благоустройству и озеленению: ландшафтный дизайн, монтаж систем автополива, укладка газонов, посадка деревьев и кустарников.</p>
+                        </div>
+                    </div>
+                    <div class="main_box_service">
+                        <div class="landscaping_box">
+                            <button type="button" class="landscaping_box_heading button_plus_one">
+                                <div class="landscaping_heding">
+                                    <h3 class="landscaping_heding_text text_one">Озеленение</h3>
+                                    <p class="landscaping_heading_item">Красота и уют вашего участка</p>
+                                </div>
+                                <div class="button_plus">
+                                    <svg class="plus plus_one" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14.0862 1H0V0H16V16H15L15 1.49319L1 16L0.280436 15.3056L14.0862 1Z" fill="#231F20"/>
+                                    </svg>
+                                </div>
+                            </button>
+                            <div class="box_interactive gallary_box_one">
+                                <div class="interactive_information">
+                                    <p class="interactive_information_text">Мы создаём оригинальные ландшафтные дизайны любой сложности, учитывая все ваши пожелания.</p>
+                                    <div class="interactive_information_link">
+                                        <a class="information_link_text" href="#">Получить прайс лист<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M14.0862 1H0V0H16V16H15L15 1.49319L1 16L0.280436 15.3056L14.0862 1Z" fill="#231F20"/>
+                                        </svg></a>
+                                    </div>
+                                </div>
+                                <img class="img_service" src="images/main/services/landcpacing.jpg" alt="картинка озеленения">
+                            </div>
+                        </div>
 
-        <script src="scripts/splide.min.js"></script>
-        <script src="scripts/slider_block.js"></script>
+
+                        <div class="landscaping_box">
+                            <button type="button" class="landscaping_box_heading button_plus_two">
+                                <div class="landscaping_heding">
+                                    <h3 class="landscaping_heding_text text_two">Системы автополива</h3>
+                                    <p class="landscaping_heading_item">Умный уход за вашим садом</p>
+                                </div>
+                                <div class="button_plus">
+                                    <svg class="plus plus_two" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14.0862 1H0V0H16V16H15L15 1.49319L1 16L0.280436 15.3056L14.0862 1Z" fill="#231F20"/>
+                                    </svg>
+                                <div>
+                            </button>
+                            <div class="box_interactive gallary_box_two">
+                                <div class="interactive_information">
+                                    <p class="interactive_information_text">Наши системы автополива обеспечивают равномерный и своевременный полив вашего сада, гарантируя здоровье и красоту растений</p>
+                                    <div class="interactive_information_link">
+                                        <a class="information_link_text" href="#">Получить прайс лист<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M14.0862 1H0V0H16V16H15L15 1.49319L1 16L0.280436 15.3056L14.0862 1Z" fill="#231F20"/>
+                                        </svg></a>
+                                    </div>
+                                </div>
+                                <img class="img_service" src="images/main/services/autopolive.jpg" alt="Автополив">
+                            </div>
+                        </div>
+
+
+                        <div class="landscaping_box">
+                            <button type="button" class="landscaping_box_heading button_plus_three">
+                                <div class="landscaping_heding">
+                                    <h3 class="landscaping_heding_text text_three">Газон</h3>
+                                    <p class="landscaping_heading_item">Идеально ровный и зелёный газон</p>
+                                </div>
+                                <div class="button_plus">
+                                    <svg class="plus plus_three" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14.0862 1H0V0H16V16H15L15 1.49319L1 16L0.280436 15.3056L14.0862 1Z" fill="#231F20"/>
+                                    </svg>
+                                </div>
+                            </button>
+                            <div class="box_interactive gallary_box_three">
+                                <div class="interactive_information">
+                                    <p class="interactive_information_text">Наши специалисты проведут все необходимые работы, начиная от подготовки почвы до посева качественных семян.</p>
+                                    <div class="interactive_information_link">
+                                        <a class="information_link_text" href="#">Получить прайс лист<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M14.0862 1H0V0H16V16H15L15 1.49319L1 16L0.280436 15.3056L14.0862 1Z" fill="#231F20"/>
+                                        </svg></a>
+                                    </div>
+                                </div>
+                                <img class="img_service" src="images/main/services/gazon.jpg" alt="Газон">
+                            </div>
+                        </div>
+
+
+                        <div class="landscaping_box">
+                            <button type="button" class="landscaping_box_heading button_plus_for">
+                                <div class="landscaping_heding">
+                                    <h3 class="landscaping_heding_text text_for">Освещение</h3>
+                                    <p class="landscaping_heading_item">Элегантное освещение для вашего участка</p>
+                                </div>
+                                <div class="button_plus">
+                                    <svg class="plus plus_for" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14.0862 1H0V0H16V16H15L15 1.49319L1 16L0.280436 15.3056L14.0862 1Z" fill="#231F20"/>
+                                    </svg>
+                                </div>
+                            </button>
+                            <div class="box_interactive gallary_box_for">
+                                <div class="interactive_information">
+                                    <p class="interactive_information_text">Мы предлагаем проектирование, установку и настройку систем освещения, подчёркивающие красоту вашего сада</p>
+                                    <div class="interactive_information_link">
+                                        <a class="information_link_text" href="#">Получить прайс лист<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M14.0862 1H0V0H16V16H15L15 1.49319L1 16L0.280436 15.3056L14.0862 1Z" fill="#231F20"/>
+                                        </svg></a>
+                                    </div>
+                                </div>
+                                <img class="img_service" src="images/main/services/svet.jpg" alt="Освещение">
+                            </div>
+                        </div>
+
+
+                        <div class="landscaping_box">
+                            <button type="button" class="landscaping_box_heading button_plus_fife">
+                                <div class="landscaping_heding">
+                                    <h3 class="landscaping_heding_text text_fife">Декоративные отсыпки</h3>
+                                    <p class="landscaping_heading_item">Эстетика и функциональность вашего сада</p>
+                                </div>
+                                <div class="button_plus">
+                                    <svg class="plus plus_fife" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14.0862 1H0V0H16V16H15L15 1.49319L1 16L0.280436 15.3056L14.0862 1Z" fill="#231F20"/>
+                                    </svg>
+                                </div>
+                            </button>
+                            <div class="box_interactive gallary_box_fife">
+                                <div class="interactive_information">
+                                    <p class="interactive_information_text">Мы вам поможем выбрать оптимальный вариант для вашего участка, учитывая его особенности и ваши предпочтения.</p>
+                                    <div class="interactive_information_link">
+                                        <a class="information_link_text" href="#">Получить прайс лист<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M14.0862 1H0V0H16V16H15L15 1.49319L1 16L0.280436 15.3056L14.0862 1Z" fill="#231F20"/>
+                                        </svg></a>
+                                    </div>
+                                </div>
+                                <img class="img_service" src="images/main/services/dekorate_kamen.jpg" alt="Декоративная отсыпка">
+                            </div>
+                        </div>
+
+
+                        <div class="landscaping_box">
+                            <button type="button" class="landscaping_box_heading button_plus_six">
+                                <div class="landscaping_heding">
+                                    <h3 class="landscaping_heding_text text_six">Архитектура</h3>
+                                    <p class="landscaping_heading_item">Элегантные беседки, фонтаны и скамейки для вашего участка</p>
+                                </div>
+                                <div class="button_plus">
+                                    <svg class="plus plus_six" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14.0862 1H0V0H16V16H15L15 1.49319L1 16L0.280436 15.3056L14.0862 1Z" fill="#231F20"/>
+                                    </svg>
+                                </div>
+                            </button>
+                            <div class="box_interactive gallary_box_six">
+                                <div class="interactive_information">
+                                    <p class="interactive_information_text">Создадим гармоничные и функциональные пространства, учитывая потребности и желания клиента, а также экологические аспекты.</p>
+                                    <div class="interactive_information_link">
+                                        <a class="information_link_text" href="#">Получить прайс лист<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M14.0862 1H0V0H16V16H15L15 1.49319L1 16L0.280436 15.3056L14.0862 1Z" fill="#231F20"/>
+                                        </svg></a>
+                                    </div>
+                                </div>
+                                <img class="img_service" src="images/main/services/architectura.jpg" alt="Архитектура">
+                            </div>
+                        </div>
+
+
+                        <div class="landscaping_box">
+                            <button type="button" class="landscaping_box_heading button_plus_sevan">
+                                <div class="landscaping_heding">
+                                    <h3 class="landscaping_heding_text text_sevan">Уходовые работы</h3>
+                                    <p class="landscaping_heading_item">Уход за садом: обрезка, удобрение, полив</p>
+                                </div>
+                                <div class="button_plus">
+                                    <svg class="plus plus_sevan" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14.0862 1H0V0H16V16H15L15 1.49319L1 16L0.280436 15.3056L14.0862 1Z" fill="#231F20"/>
+                                    </svg>
+                                </div>
+                            </button>
+                            <div class="box_interactive gallary_box_sevan">
+                                <div class="interactive_information">
+                                    <p class="interactive_information_text">Мероприятия, направленные на поддержание здоровья и красоту растений, а также сохранение эстетического вида участка.</p>
+                                    <div class="interactive_information_link">
+                                        <a class="information_link_text" href="#">Получить прайс лист<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M14.0862 1H0V0H16V16H15L15 1.49319L1 16L0.280436 15.3056L14.0862 1Z" fill="#231F20"/>
+                                        </svg></a>
+                                    </div>
+                                </div>
+                                <img class="img_service" src="images/main/services/uhod.jpg" alt="Уходовые работы">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="button_phone button_services">
+                        <a class="button_phone_link" href="#">Рассчитать свой проект</a>
+                    </div>
+
+                </section>
+                <section class="reviews_box">
+                    <h4 class="reviews_box_header">Что о нас <span class="information_header_span">говорят</span> <br>наши <span class="information_header_span">клиенты</span></h4>
+                    <div id="otzovik_carousel" class="splide splide_otzovik" role="group" aria-label="Splide Basic HTML Example">
+                        <div class="splide__track">
+                              <ul class="splide__list">
+                                  <li class="splide__slide otzovik_splide_slide" data-splide-interval="3000">
+                                    <div class="reviews_box_carusel">
+                                        <img class="otziv_img" src="images/main/reviews/otziv_1.jpg" alt="Фото заказчика">
+                                        <div class="otziv_box">
+                                            <p class="otzovik_text">"Сотрудничество с компанией было превосходным опытом. Они профессионально подошли к каждой детали, обеспечивая качественное выполнение работ. Мы в восторге от созданного зелёного уголка, который стал нашим маленьким оазисом спокойствия. Большое спасибо за работу и труд!"</p>
+                                            <div class="name_otzovik_text">
+                                                <h5 class="name_otzovik_header">Сергей Петров</h5>
+                                                <p class="name_otzovik_item">Заказчик</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </li>
+                                  <li class="splide__slide otzovik_splide_slide" data-splide-interval="3000">
+                                    <div class="reviews_box_carusel">
+                                        <img class="otziv_img" src="images/main/reviews/otziv_1.jpg" alt="Фото заказчика">
+                                        <div class="otziv_box">
+                                            <p class="otzovik_text">"Сотрудничество с компанией было превосходным опытом. Они профессионально подошли к каждой детали, обеспечивая качественное выполнение работ. Мы в восторге от созданного зелёного уголка, который стал нашим маленьким оазисом спокойствия. Большое спасибо за работу и труд!"</p>
+                                            <div class="name_otzovik_text">
+                                                <h5 class="name_otzovik_header">Сергей Петров</h5>
+                                                <p class="name_otzovik_item">Заказчик</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  </li>
+                              </ul>
+                              <div class="splide__arrows">
+                                <button class="splide__arrow splide__arrow--prev">
+                                    <svg class="arrow_img prev_arrow_img" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g id="fill_heart_prev_fife">
+                                            <rect x="0.5" y="0.500977" width="52.5" height="52.5" rx="27" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path id="arrow_prev_fife" class="pointer_hover" d="M19 27.001H27.5H36M36 27.001L28.5 20.001M36 27.001L28.5 34.501" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </g>
+                                        <animate 
+                                            href="#fill_heart_prev_fife"
+                                            attributeType="CSS"
+                                            attributeName="fill"
+                                            to="#000000"
+                                            fill="freeze"
+                                            dur="0.3s"
+                                            begin="fill_heart_prev_fife.mouseover"
+                                          />
+                                          <animate 
+                                          href="#fill_heart_prev_fife"
+                                          attributeType="CSS"
+                                          attributeName="fill"
+                                          to="#FFFFFF"
+                                          fill="freeze"
+                                          dur="0.3s"
+                                          begin="fill_heart_prev_fife.mouseout"
+                                        />
+                                        <animate 
+                                            href="#arrow_prev_fife"
+                                            attributeType="CSS"
+                                            attributeName="stroke"
+                                            to="#FFFFFF"
+                                            fill="freeze"
+                                            dur="0.3s"
+                                            begin="fill_heart_prev_fife.mouseover"
+                                          />
+                                        <animate 
+                                        href="#arrow_prev_fife"
+                                        attributeType="CSS"
+                                        attributeName="stroke"
+                                        to="#000000"
+                                        fill="freeze"
+                                        dur="0.3s"
+                                         begin="fill_heart_prev_fife.mouseout"
+                                        />
+                                    </svg>
+                                </button>
+                                <button class="splide__arrow splide__arrow--next">
+                                    <svg class="arrow_img" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g id="fill_heart_next_fife">
+                                            <rect class="arrow_img_item" x="0.5" y="0.500977" width="52.5" height="52.5" rx="27" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path id="arrow_next_fife" class="arrow_img_item pointer_hover" d="M19 27.001H27.5H36M36 27.001L28.5 20.001M36 27.001L28.5 34.501" stroke="black" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </g>
+                                        <animate 
+                                            href="#fill_heart_next_fife"
+                                            attributeType="CSS"
+                                            attributeName="fill"
+                                            to="#000000"
+                                            fill="freeze"
+                                            dur="0.3s"
+                                            begin="fill_heart_next_fife.mouseover"
+                                          />
+                                          <animate 
+                                          href="#fill_heart_next_fife"
+                                          attributeType="CSS"
+                                          attributeName="fill"
+                                          to="#FFFFFF"
+                                          fill="freeze"
+                                          dur="0.3s"
+                                          begin="fill_heart_next_fife.mouseout"
+                                        />
+                                        <animate 
+                                            href="#arrow_next_fife"
+                                            attributeType="CSS"
+                                            attributeName="stroke"
+                                            to="#FFFFFF"
+                                            fill="freeze"
+                                            dur="0.3s"
+                                            begin="fill_heart_next_fife.mouseover"
+                                          />
+                                        <animate 
+                                        href="#arrow_next_fife"
+                                        attributeType="CSS"
+                                        attributeName="stroke"
+                                        to="#000000"
+                                        fill="freeze"
+                                        dur="0.3s"
+                                         begin="fill_heart_next_fife.mouseout"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                      </div>
+                </section>
+            </main>
+            <footer class="contacts_box">
+
+            </footer>
+
+            <script src="scripts/slider_block.js"></script>
+        
     </body>
 </html>
