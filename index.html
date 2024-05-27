@@ -151,7 +151,7 @@
 
                     </div>
                     <div class="phone_box">
-                        <a class="link_phone" href="#">+7(928)222-80-33<svg class="arrow_phone" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <a class="link_phone" href="tel:+79282228033">+7(928)222-80-33<svg class="arrow_phone" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M14.0862 1H0V0H16V16H15L15 1.49319L1 16L0.280436 15.3056L14.0862 1Z" fill="#7ED21A"/>
                         </svg></a>
                     </div>
@@ -162,7 +162,7 @@
                 </div>
                 <h2 class="header_text_item">В Краснодаре и Краснодарском крае</h2>
                 <div class="button_phone">
-                    <a class="button_phone_link" href="#">Связаться</a>
+                    <a class="button_phone_link" href="tel:+79282228033">Связаться</a>
                 </div>
             </header>
             <main class="information_box">
@@ -553,7 +553,82 @@
                 </section>
             </main>
             <footer class="contacts_box">
-
+                <div class="contacts_box_header">
+                    <div class="about_as_header">
+                        <h3 class="about_as_header_text">Контакты</h3>
+                    </div>
+                    <p class="contacts_information_header">Остались вопросы <span class="information_header_span">спрашивай</span></p>
+                </div>
+                <form class="form_box" action="send.php" method="post">
+                    <div class="form_box_text">
+                        <p class="contacts_form_text">По любым вопросам вы можете связаться с нами по почте указанной ниже</p>
+                        <a class="contacts_form_link" href="mailto:albertjooke23@gmail.com">albertjooke23@gmail.com</a>
+                    </div>
+                    <div class="form_input">
+                        <input class="form_item name_item" type="text" name="user_name" placeholder="Имя" required>
+                        <input class="form_item mail_item" type="email" name="email" placeholder="E-mail" required>
+                        <input class="form_item phone_item" type="tel" name="phone" placeholder="Номер телефона" required>
+                        <textarea class="form_item message_item" name="message" rows="1" placeholder="Ваше сообщение"></textarea>
+                        <div class="chekbox_conteiner">
+                            <input class="form_chekbox" type="checkbox" name="checkbox" required>
+                            <a class="link_document" href="files/Политика конфиденциальности.pdf" target="_blank">Даю согласие на обработку <b>Персональных данных</b></a>
+                        </div>
+                    </div>
+                        
+                    <input class="button_form" type="submit" value="Отправить">
+                        
+                </form>
+                <div class="navigation_footer">
+                    <nav class="navigation_box navigation_box_bottom">
+                        <div class="logo_box">
+                            <img class="logo_image" src="images/header/white_logotip.svg" alt="Логотип компании">
+                        </div>
+                        <div class="services_box">
+    
+                            <ul class="services_list list_one">
+                                <li class="services_item">
+                                    <a class="services_link color_white" href="#">Автополив</a>
+                                </li>
+                                <li class="services_item item_two">
+                                    <a class="services_link color_white" href="#">Озеленение</a>
+                                </li>
+                                <li class="services_item">
+                                    <a class="services_link color_white" href="#">Газон</a>
+                                </li>
+                            </ul>
+    
+                            <ul class="services_list list_two">
+                                <li class="services_item">
+                                    <a class="services_link color_white" href="#">Декоративные отсыпки</a>
+                                </li>
+                                <li class="services_item item_two">
+                                    <a class="services_link color_white" href="#">Садовое освещение</a>
+                                </li>
+                                <li class="services_item">
+                                    <a class="services_link color_white" href="#">Архитектура</a>
+                                </li>
+                            </ul>
+    
+                            <ul class="services_list list_three">
+                                <li class="services_item">
+                                    <a class="services_link color_white" href="#">Контакты</a>
+                                </li>
+                                <li class="services_item item_two">
+                                    <a class="services_link color_white" href="#">Партфолио</a>
+                                </li>
+                                <li class="services_item">
+                                    <a class="services_link color_white" href="#">Уходовые работы</a>
+                                </li>
+                            </ul>
+    
+                        </div>
+                        <div class="phone_box">
+                            <a class="link_phone color_white" href="tel:+79282228033">+7(928)222-80-33<svg class="arrow_phone" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14.0862 1H0V0H16V16H15L15 1.49319L1 16L0.280436 15.3056L14.0862 1Z" fill="#7ED21A"/>
+                            </svg></a>
+                        </div>
+                    </nav>
+                </div>
             </footer>
 
             <script src="scripts/slider_block.js"></script>

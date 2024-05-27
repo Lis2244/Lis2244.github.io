@@ -50,11 +50,10 @@ img {
   -ms-user-select: none;
   pointer-events: none;
 }
-::-webkit-scrollbar {
+/*::-webkit-scrollbar {
     width: 0;
-  }
+  }*/
   .page {
-    padding-bottom: 50px;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: repeat(3, auto);
@@ -223,7 +222,7 @@ img {
     margin-bottom: 0;
     margin-left: auto;
     margin-top: 140px;
-    width: 1200px;
+    max-width: 1200px;
   }
   .as_box {
     grid-column: 1/2;
@@ -236,7 +235,7 @@ img {
     
   }
   .about_as_header {
-    width: 420px;
+    max-width: 420px;
     
   }
   .about_as_header_text {
@@ -259,7 +258,7 @@ img {
     font-weight: 400;
     font-size: 58px;
     line-height: 70px;
-    width: 760px;
+    max-width: 760px;
   }
   .information_header_span {
     color:#7ED21A;
@@ -273,7 +272,7 @@ img {
     font-size: 16px;
     text-transform: none;
     line-height: 20px;
-    width: 527px;
+    max-width: 527px;
   }
   .information_text_two {
     margin-top: 20px;
@@ -348,7 +347,7 @@ img {
     padding-bottom: 69px;
   }
   .text_service {
-    width: 305px;
+    max-width: 305px;
   }
   .main_box_service {
     grid-column: 1/2;
@@ -575,4 +574,158 @@ img {
   }
   .pointer_hover {
     pointer-events: none;
+}
+.contacts_box {
+  grid-column: 1/2;
+  grid-row: 3/4;
+  margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.contacts_box_header {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.contacts_form_text {
+  font-family: "TaylorSans-Light", sans-serif;
+  font-weight: 300;
+  font-size: 21px;
+  width: 272px;
+  margin-bottom: 15px;
+}
+.contacts_form_link {
+  text-decoration: none;
+  font-family: "TaylorSans-Regular", sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  text-transform: uppercase;
+  color: #000000;
+}
+.contacts_information_header {
+  font-family: "Cakra-Normal", sans-serif;
+    font-weight: 400;
+    font-size: 58px;
+    line-height: 70px;
+    width: 760px;
+}
+.contacts_form_box {
+  width: 1200px;
+  margin-top: 80px;
+  margin-right: auto;
+  margin-bottom: 0;
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form_box {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, auto);
+  width: 1200px;
+  margin-top: 120px;
+  margin-right: auto;
+  margin-bottom: 0;
+  margin-left: auto;
+}
+.form_box_text {
+  width: 300px;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.form_input {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(3, auto);
+}
+.name_item {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  margin-right: 20px;
+}
+.mail_item {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+.phone_item {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  margin-top: 40px;
+}
+.message_item {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  margin-top: 40px;
+}
+.chekbox_conteiner {
+  grid-column: 1/3;
+  grid-row: 3/4;
+}
+.form_item {
+  width: 335px;
+  border-bottom: 1px solid black;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-family: "TaylorSans-Regular", sans-serif;
+  font-weight: 400;
+  font-size: 21px;
+  padding-bottom: 10px;
+}
+*:focus {
+  outline: none;
+}
+.chekbox_conteiner {
+  margin-top: 20px;
+}
+.link_document {
+  font-family: "TaylorSans-Light", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #000000;
+  margin-left: 10px;
+}
+.button_form {
+  grid-column: 1/3;
+  grid-row: 2/3;
+}
+.button_form {
+  margin-top: 80px;
+  width: 100%;
+  height: 100px;
+  border: none;
+  background-color: #7ED21A;
+  border-radius: 50px;
+  font-family: "TaylorSans-Regular", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+.navigation_footer {
+  padding-top: 80px;
+  background-color: #000000;
+  width: 100%;
+  margin-top: 140px;
+  padding-bottom: 80px;
+  border-radius: 100px 100px 0 0;
+}
+.color_white {
+  color: #FFFFFF;
 }
