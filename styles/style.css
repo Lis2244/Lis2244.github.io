@@ -100,15 +100,29 @@ img {
     margin-bottom: 10px;
   }
   .services_item {
-    transition: all 0.25s ease-out;
+    width: auto;
   }
-  .services_item:hover a {
+  .services_item_button {
+    width: 100%;
+    border: none;
+    background-color: #FFFFFF;
+    font-family: "TaylorSans-Regular", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin: 0;
+    transition: all 0.25s ease-out;
+    text-align: start;
+    cursor: pointer;
+  }
+  .services_item_button:hover a {
     color: #7ED21A;
   }
   .services_link {
     color: #000000;
     text-decoration: none;
     transition: all 0.25s ease-out;
+    width: 100%;
   }
   .phone_box {
     height: min-content;
@@ -137,7 +151,7 @@ img {
     width: 1200px;
     margin-top: 37px;
     margin-right: auto;
-    margin-bottom: 0;
+    margin-bottom: 10px;
     margin-left: auto;
     font-family: "Cakra-Normal", sans-serif;
     font-weight: 400;
@@ -169,15 +183,13 @@ img {
     font-size: 100px;
     line-height: 90px;
     width: 1200px;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-right: auto;
     margin-bottom: 0;
     margin-left: auto;
     text-align: right;
   }
   .button_phone {
-    grid-column: 1/2;
-    grid-row: 5/6;
     width: 1200px;
     margin-top: 80px;
     margin-right: auto;
@@ -310,7 +322,7 @@ img {
   }
   .splide__slide img {
     width: 100%;
-    border-radius: 90px;
+    border-radius: 60px;
   }
 
   .pagination_hiden {
@@ -729,3 +741,48 @@ img {
 .color_white {
   color: #FFFFFF;
 }
+
+
+/*Пробная кнопка 1*/
+.btn-liquid {
+  grid-column: 1/2;
+  grid-row: 5/6;
+	display: inline-block;
+	position: relative;
+	width: 1200px;
+	height: 100px;
+  font-family: "TaylorSans-Regular", sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+	border-radius: 50px;
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+  margin-top: 80px;
+  margin-right: auto;
+  margin-bottom: 20px;
+  margin-left: auto;
+}
+
+.btn-liquid .inner {
+	position: relative;
+	z-index: 2;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.btn-liquid canvas {
+	position: absolute;
+	top: -50px;
+	right: -100px;
+	bottom: -50px;
+	left: -100px;
+
+	z-index: 1;
+}
+/*Пробная кнопка 2*/

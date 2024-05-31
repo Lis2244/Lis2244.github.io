@@ -5,6 +5,14 @@ let namberFor = document.querySelector('.text_for');
 let namberFife = document.querySelector('.text_fife');
 let namberSix = document.querySelector('.text_six');
 let namberSevan = document.querySelector('.text_sevan');
+//Добавляю кнопки ссылки
+let buttonPolive = document.querySelector('.polive_button');
+let buttonLandcpacing = document.querySelector('.landcpacing_button');
+let buttonGazon = document.querySelector('.gazon_button');
+let buttonKamen = document.querySelector('.kamen_button');
+let buttonLight = document.querySelector('.light_button');
+let buttonArchitect = document.querySelector('.architectura_button');
+let buttonUhod = document.querySelector('.uhod_button');
 
 
 let progectOne = document.querySelector('.gallary_box_one');
@@ -71,6 +79,42 @@ buttonSix.onclick = function () {
 }
 
 buttonSevan.onclick = function () {
+    namberSevan.classList.toggle('item_heding_hiden');
+    progectSevan.classList.toggle('display_visability');
+    transformPlusSevan.classList.toggle('plus_transform');
+}
+//Включаю кнопки ссылки
+buttonPolive.onclick = function () {
+    namberTwo.classList.toggle('item_heding_hiden');
+    progectTwo.classList.toggle('display_visability');
+    transformPlusTwo.classList.toggle('plus_transform');
+}
+buttonLandcpacing.onclick = function () {
+    namberOne.classList.toggle('item_heding_hiden');
+    progectOne.classList.toggle('display_visability');
+    transformPlusOne.classList.toggle('plus_transform');
+}
+buttonGazon.onclick = function () {
+    namberThree.classList.toggle('item_heding_hiden');
+    progectThree.classList.toggle('display_visability');
+    transformPlusThree.classList.toggle('plus_transform');
+}
+buttonKamen.onclick = function () {
+    namberFife.classList.toggle('item_heding_hiden');
+    progectFife.classList.toggle('display_visability');
+    transformPlusFife.classList.toggle('plus_transform');
+}
+buttonLight.onclick = function () {
+    namberFor.classList.toggle('item_heding_hiden');
+    progectFor.classList.toggle('display_visability');
+    transformPlusFor.classList.toggle('plus_transform');
+}
+buttonArchitect.onclick = function () {
+    namberSix.classList.toggle('item_heding_hiden');
+    progectSix.classList.toggle('display_visability');
+    transformPlusSix.classList.toggle('plus_transform');
+}
+buttonUhod.onclick = function () {
     namberSevan.classList.toggle('item_heding_hiden');
     progectSevan.classList.toggle('display_visability');
     transformPlusSevan.classList.toggle('plus_transform');
