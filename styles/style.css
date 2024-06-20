@@ -171,6 +171,9 @@ img {
     grid-column: 1/2;
     grid-row: 3/4;
   }
+  .cover_box_mobile {
+    display: none;
+  }
   .cover_img {
     max-width: 100%;
   }
@@ -793,10 +796,15 @@ img {
     align-items: center;
     margin: 20px auto 0 auto;
   }
+
+  .hiden_logo_mobile {
+    display: none;
+  }
   .logo_image {
     transform: scale(2.3);
     margin-top: 15%;
   }
+  
 
   .services_box {
     display: flex;
@@ -808,14 +816,14 @@ img {
     font-size: 16px;
     text-transform: uppercase;
     margin-right: 0;
-    margin-top: 15%;
+    margin-top: 9%;
   }
   
   .list_two {
     margin-left: 0;
     margin-right: 0;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
   .item_two {
     margin-top: 20px;
@@ -861,6 +869,27 @@ img {
     width: 100%;
     grid-column: 1/2;
     grid-row: 2/3;
+  }
+  .cover_img {
+    display: none;
+  }
+  .cover_box_mobile {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+  .mobile_oblozhka {
+    width: 100%;
+    z-index: 1;
+  }
+  .mobile_svg {
+    width: 60%;
+    position: absolute;
+    z-index: 100;
+    left: 20%;
+    right: 20%;
+    top: 22%;
   }
 
   .header_text_green {
