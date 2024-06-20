@@ -3,9 +3,10 @@
     <head>
         <meta charset="utf-8">
         <title>По Зелёной</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
         <link rel="stylesheet" href="styles/style.css">
         <link rel="stylesheet" href="styles/splide.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
         <script src="scripts/splide.min.js"></script>
         <script src="scripts/splide-extension-auto-scroll.min.js.js"></script>
         <script>
@@ -179,9 +180,9 @@
                     <img class="cover_img" src="images/header/cover_image.jpg" alt="Обложка сайта">
                 </div>
                 <h2 class="header_text_item">В Краснодаре и Краснодарском крае</h2>
-                <a class="btn-liquid" href="tel:+79282228033">
-                    <span class="inner">Связаться</span>
-                </a>
+                <div class="button_phone">
+                    <a class="button_phone_link" href="tel:+79282228033">Связаться</a>
+                </div>
             </header>
             <main class="information_box">
                 <section class="about_as_box">
@@ -243,12 +244,48 @@
                               </ul>
                         </div>
                     </div>
-                    <!--<div class="button_phone button_portfolio">
-                        <a class="button_phone_link" href="#">Рассчитать свой проект</a>
-                    </div>-->
-                    <a class="btn-liquid button_portfolio" href="tel:+79282228033">
-                        <span class="inner">Рассчитать свой проект</span>
-                    </a>
+                    <div class="swiper mySwiper6">
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                            <img class="mobile_img" src="images/main/mobile_portfolio/mobile_jpg_1.jpg" alt="Фото в портфолио">
+                          </div>
+                          <div class="swiper-slide">
+                            <img class="mobile_img" src="images/main/mobile_portfolio/mobile_jpg_2.jpg" alt="Фото в портфолио">
+                          </div>
+                          <div class="swiper-slide">
+                            <img class="mobile_img" src="images/main/mobile_portfolio/mobile_jpg_3.jpg" alt="Фото в портфолио">
+                          </div>
+                          <div class="swiper-slide">
+                            <img class="mobile_img" src="images/main/mobile_portfolio/mobile_jpg_4.jpg" alt="Фото в портфолио">
+                          </div>
+                          <div class="swiper-slide">
+                            <img class="mobile_img" src="images/main/mobile_portfolio/mobile_jpg_5.jpg" alt="Фото в портфолио">
+                          </div>
+                          <div class="swiper-slide">
+                            <img class="mobile_img" src="images/main/mobile_portfolio/mobile_jpg_6.jpg" alt="Фото в портфолио">
+                          </div>
+                          <div class="swiper-slide">
+                            <img class="mobile_img" src="images/main/mobile_portfolio/mobile_jpg_7.jpg" alt="Фото в портфолио">
+                          </div>
+                          <div class="swiper-slide">
+                            <img class="mobile_img" src="images/main/mobile_portfolio/mobile_jpg_8.jpg" alt="Фото в портфолио">
+                          </div>
+                          <div class="swiper-slide">
+                            <img class="mobile_img" src="images/main/mobile_portfolio/mobile_jpg_9.jpg" alt="Фото в портфолио">
+                          </div>
+                          <div class="swiper-slide">
+                            <img class="mobile_img" src="images/main/mobile_portfolio/mobile_jpg_10.jpg" alt="Фото в портфолио">
+                          </div>
+                          <div class="swiper-slide">
+                            <img class="mobile_img" src="images/main/mobile_portfolio/mobile_jpg_11.jpg" alt="Фото в портфолио">
+                          </div>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                    <div class="button_phone button_portfolio">
+                        <a class="button_phone_link" href="tel:+79282228033">Рассчитать свой проект</a>
+                    </div>
                 </section>
                 <section class="our_services_box">
                     <div class="as_box box_services">
@@ -444,12 +481,9 @@
 
                     </div>
 
-                    <!--<div class="button_phone button_services">
-                        <a class="button_phone_link" href="#">Рассчитать свой проект</a>
-                    </div>-->
-                    <a class="btn-liquid button_services" href="tel:+79282228033">
-                        <span class="inner">Рассчитать свой проект</span>
-                    </a>
+                    <div class="button_phone button_services">
+                        <a class="button_phone_link" href="tel:+79282228033">Рассчитать свой проект</a>
+                    </div>
 
                 </section>
                 <section class="reviews_box">
@@ -598,10 +632,8 @@
                             <a class="link_document" href="files/Политика конфиденциальности.pdf" target="_blank">Даю согласие на обработку <b>Персональных данных</b></a>
                         </div>
                     </div>
-                    <div class="wrap">
-                        <button class="button">Отправить</button>
-                    </div>
-                    <!--<input class="button_form btn btn-white btn-animate" type="submit" value="Отправить">-->
+                        
+                    <input class="button_form" type="submit" value="Отправить">
                         
                 </form>
                 <div class="navigation_footer">
@@ -613,37 +645,55 @@
     
                             <ul class="services_list list_one">
                                 <li class="services_item">
-                                    <a class="services_link color_white" href="#">Автополив</a>
+                                    <button type="button" class="services_item_button polive_button_footer button_footer">
+                                        <a class="services_link" href="#anchor_polive">Автополив</a>
+                                    </button>
                                 </li>
                                 <li class="services_item item_two">
-                                    <a class="services_link color_white" href="#">Озеленение</a>
+                                    <button type="button" class="services_item_button landcpacing_button_footer button_footer">
+                                        <a class="services_link" href="#anchor_landscaping">Озеленение</a>
+                                    </button>
                                 </li>
                                 <li class="services_item">
-                                    <a class="services_link color_white" href="#">Газон</a>
+                                    <button type="button" class="services_item_button gazon_button_footer button_footer">
+                                        <a class="services_link" href="#anchor_gazon">Газон</a>
+                                    </button>
                                 </li>
                             </ul>
     
                             <ul class="services_list list_two">
                                 <li class="services_item">
-                                    <a class="services_link color_white" href="#">Декоративные отсыпки</a>
+                                    <button type="button" class="services_item_button kamen_button_footer button_footer">
+                                        <a class="services_link" href="#anchor_kamen">Декоративные отсыпки</a>
+                                    </button>
                                 </li>
                                 <li class="services_item item_two">
-                                    <a class="services_link color_white" href="#">Садовое освещение</a>
+                                    <button type="button" class="services_item_button light_button_footer button_footer">
+                                        <a class="services_link" href="#anchor_light">Садовое освещение</a>
+                                    </button>
                                 </li>
                                 <li class="services_item">
-                                    <a class="services_link color_white" href="#">Архитектура</a>
+                                    <button type="button" class="services_item_button architectura_button_footer button_footer">
+                                        <a class="services_link" href="#anchor_architectura">Архитектура</a>
+                                    </button>
                                 </li>
                             </ul>
     
                             <ul class="services_list list_three">
                                 <li class="services_item">
-                                    <a class="services_link color_white" href="#">Контакты</a>
+                                    <button type="button" class="services_item_button button_footer">
+                                        <a class="services_link" href="#anchor_contacts">Контакты</a>
+                                    </button>
                                 </li>
                                 <li class="services_item item_two">
-                                    <a class="services_link color_white" href="#">Партфолио</a>
+                                    <button type="button" class="services_item_button button_footer">
+                                        <a class="services_link" href="#anchor_potfolio">Партфолио</a>
+                                    </button>
                                 </li>
                                 <li class="services_item">
-                                    <a class="services_link color_white" href="#">Уходовые работы</a>
+                                    <button type="button" class="services_item_button uhod_button_footer button_footer">
+                                        <a class="services_link" href="#anchor_uhod">Уходовые работы</a>
+                                    </button>
                                 </li>
                             </ul>
     
@@ -659,8 +709,8 @@
 
             <script src="scripts/slider_block.js"></script>
             <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-            <!--<script src="scripts/button.js"></script>-->
-            <script src="scripts/probnic.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+            <script src="scripts/swiper.js"></script>
         
     </body>
 </html>

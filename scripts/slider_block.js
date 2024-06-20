@@ -5,7 +5,7 @@ let namberFor = document.querySelector('.text_for');
 let namberFife = document.querySelector('.text_fife');
 let namberSix = document.querySelector('.text_six');
 let namberSevan = document.querySelector('.text_sevan');
-//Добавляю кнопки ссылки
+//Добавляю кнопки ссылки навигации шапки
 let buttonPolive = document.querySelector('.polive_button');
 let buttonLandcpacing = document.querySelector('.landcpacing_button');
 let buttonGazon = document.querySelector('.gazon_button');
@@ -14,6 +14,14 @@ let buttonLight = document.querySelector('.light_button');
 let buttonArchitect = document.querySelector('.architectura_button');
 let buttonUhod = document.querySelector('.uhod_button');
 
+//Добавляю нижнюю навигацию футера
+let buttonPoliveFooter = document.querySelector('.polive_button_footer');
+let buttonLandcpacingFooter = document.querySelector('.landcpacing_button_footer');
+let buttonGazonFooter = document.querySelector('.gazon_button_footer');
+let buttonKamenFooter = document.querySelector('.kamen_button_footer');
+let buttonLightFooter = document.querySelector('.light_button_footer');
+let buttonArchitectFooter = document.querySelector('.architectura_button_footer');
+let buttonUhodFooter = document.querySelector('.uhod_button_footer');
 
 let progectOne = document.querySelector('.gallary_box_one');
 let progectTwo = document.querySelector('.gallary_box_two');
@@ -83,7 +91,7 @@ buttonSevan.onclick = function () {
     progectSevan.classList.toggle('display_visability');
     transformPlusSevan.classList.toggle('plus_transform');
 }
-//Включаю кнопки ссылки
+//Включаю кнопки ссылки верхней навигации
 buttonPolive.onclick = function () {
     namberTwo.classList.toggle('item_heding_hiden');
     progectTwo.classList.toggle('display_visability');
@@ -119,3 +127,41 @@ buttonUhod.onclick = function () {
     progectSevan.classList.toggle('display_visability');
     transformPlusSevan.classList.toggle('plus_transform');
 }
+
+//Включаю кнопки ссылки нижней навигации
+buttonPoliveFooter.onclick = function () {
+    namberTwo.classList.toggle('item_heding_hiden');
+    progectTwo.classList.toggle('display_visability');
+    transformPlusTwo.classList.toggle('plus_transform');
+}
+buttonLandcpacingFooter.onclick = function () {
+    namberOne.classList.toggle('item_heding_hiden');
+    progectOne.classList.toggle('display_visability');
+    transformPlusOne.classList.toggle('plus_transform');
+}
+buttonGazonFooter.onclick = function () {
+    namberThree.classList.toggle('item_heding_hiden');
+    progectThree.classList.toggle('display_visability');
+    transformPlusThree.classList.toggle('plus_transform');
+}
+buttonKamenFooter.onclick = function () {
+    namberFife.classList.toggle('item_heding_hiden');
+    progectFife.classList.toggle('display_visability');
+    transformPlusFife.classList.toggle('plus_transform');
+}
+buttonLightFooter.onclick = function () {
+    namberFor.classList.toggle('item_heding_hiden');
+    progectFor.classList.toggle('display_visability');
+    transformPlusFor.classList.toggle('plus_transform');
+}
+buttonArchitectFooter.onclick = function () {
+    namberSix.classList.toggle('item_heding_hiden');
+    progectSix.classList.toggle('display_visability');
+    transformPlusSix.classList.toggle('plus_transform');
+}
+buttonUhodFooter.onclick = function () {
+    namberSevan.classList.toggle('item_heding_hiden');
+    progectSevan.classList.toggle('display_visability');
+    transformPlusSevan.classList.toggle('plus_transform');
+}
+
