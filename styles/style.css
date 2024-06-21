@@ -863,6 +863,7 @@ img {
     font-weight: 400;
     font-size: 32px;
     line-height: 36px;
+    opacity: 0;
   }
 
   .cover_box {
@@ -890,6 +891,7 @@ img {
     left: 20%;
     right: 20%;
     top: 22%;
+    opacity: 0;
   }
 
   .header_text_green {
@@ -912,6 +914,7 @@ img {
     margin-bottom: 0;
     margin-left: auto;
     text-align: right;
+    opacity: 0;
   }
 
   .button_phone {
