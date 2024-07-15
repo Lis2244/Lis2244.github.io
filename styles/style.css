@@ -784,6 +784,7 @@ img {
     grid-template-rows: repeat(3, auto);
     max-width: 640px;
     margin: 0 auto;
+    overflow-x: hidden;
   }
 
   .navigation_box {
@@ -883,6 +884,7 @@ img {
   .mobile_oblozhka {
     width: 100%;
     z-index: 1;
+    opacity: 0;
   }
   .mobile_svg {
     width: 60%;

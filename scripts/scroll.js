@@ -76,11 +76,12 @@ gsap.fromTo(".header_text", {
  let tl = gsap.timeline({
     scrollTrigger: {
       trigger: ".button_phone_navigation_scroll",
-      start: "top 70%", 
+      start: "top 95%", 
      // markers: true,
       //endTrigger: ".information_box",
-      end: "+=200",
+      end: "+=500",
       scrub: 3
+
    }
   
 });
@@ -88,10 +89,11 @@ gsap.fromTo(".header_text", {
 let tl2 = gsap.timeline({
     scrollTrigger: {
       trigger: ".information_box",
-      start: "top 85%", 
+      start: "top 99%", 
       //endTrigger: ".information_box",
-      end: "+=1000",
+      end: "+=1500",
       scrub: 3
+
    }
   
 });
@@ -99,10 +101,11 @@ let tl2 = gsap.timeline({
 let tl3 = gsap.timeline({
     scrollTrigger: {
       trigger: ".portfolio",
-      start: "top 85%", 
+      start: "top 95%", 
       //endTrigger: ".information_box",
-      end: "+=900",
+      end: "+=1200",
       scrub: 3
+
    }
   
 });
@@ -110,10 +113,11 @@ let tl3 = gsap.timeline({
 let tl4 = gsap.timeline({
     scrollTrigger: {
       trigger: ".our_services_box",
-      start: "top 85%", 
+      start: "top 95%", 
       //endTrigger: ".information_box",
-      end: "+=500",
+      end: "+=800",
       scrub: 3
+
    }
   
 });
@@ -121,10 +125,11 @@ let tl4 = gsap.timeline({
 let tl5 = gsap.timeline({
     scrollTrigger: {
       trigger: ".button_services",
-      start: "top 85%", 
+      start: "top 95%", 
       //endTrigger: ".information_box",
-      end: "+=200",
+      end: "+=700",
       scrub: 3
+
    }
   
 });
@@ -132,10 +137,11 @@ let tl5 = gsap.timeline({
 let tl6 = gsap.timeline({
     scrollTrigger: {
       trigger: ".reviews_box",
-      start: "top 65%", 
+      start: "top 95%", 
       //endTrigger: ".information_box",
-      end: "+=200",
+      end: "+=800",
       scrub: 3
+
    }
   
 });
@@ -145,8 +151,9 @@ let tl7 = gsap.timeline({
       trigger: ".contacts_box",
       start: "top 95%", 
       //endTrigger: ".information_box",
-      end: "+=500",
+      end: "+=800",
       scrub: 3
+
    }
   
 });
@@ -156,8 +163,9 @@ let tl8 = gsap.timeline({
       trigger: ".button_form",
       start: "top 95%", 
       //endTrigger: ".information_box",
-      end: "+=200",
+      end: "+=600",
       scrub: 3
+
    }
   
 });
@@ -169,16 +177,16 @@ tl.fromTo(".button_phone_navigation_scroll", {
     scrollTrigger: {
         trigger: ".button_phone_navigation_scroll",
         start: "top top", 
-        end: "+=200",
+        end: "+=200"
         //markers: true, 
-        scrub: 3
+
      },
     x: -90,
     opacity: 0,
   }, {
     x: 0,
     opacity: 1,
-    duration: 0.7,
+    duration: 2,
     delay: 0.2,
     ease: "expo.out"
   });
@@ -187,16 +195,16 @@ tl2.fromTo(".header_text_one", {
     scrollTrigger: {
         trigger: ".about_as_header",
         start: "top top", 
-        end: "+=200", 
-        scrub: 3
+        end: "+=200" 
+
      },
     x: -90,
     opacity: 0,
   }, {
     x: 0,
     opacity: 1,
-    duration: 0.7,
-    delay: 0.9,
+    duration: 2,
+    delay: 0.2,
     ease: "expo.out"
   })
 
@@ -204,67 +212,67 @@ tl2.fromTo(".header_text_one", {
     scrollTrigger: {
         trigger: ".about_as_header",
         start: "top center", 
-        end: "+=200", 
-        scrub: 3
+        end: "+=200" 
+        //scrub: 2
      },
     x: 90,
     opacity: 0,
   }, {
     x: 0,
     opacity: 1,
-    duration: 0.9,
+    duration: 2,
     delay: 0.1,
     ease: "expo.out"
   })
   .fromTo(".information_text_nav", {
     scrollTrigger: {
         trigger: ".about_as_header",
-        start: "top center", 
-        end: "+=200",
+        start: "top top", 
+        end: "+=100"
        // markers: true, 
-        scrub: 3
+       // scrub: 2
      },
     x: 90,
     opacity: 0,
   }, {
     x: 0,
     opacity: 1,
-    duration: 0.9,
-    delay: 0.3,
+    duration: 2,
+    delay: 0.1,
     ease: "expo.out"
   })
   .fromTo(".information_text_two", {
     scrollTrigger: {
         trigger: ".about_as_header",
         start: "top top", 
-        end: "+=200",
+        end: "+=100"
        // markers: true, 
-        scrub: 3
+       // scrub: 2
      },
     x: 90,
     opacity: 0,
   }, {
     x: 0,
     opacity: 1,
-    duration: 0.9,
-    delay: 0.3,
+    duration: 2,
+    delay: 0.1,
     ease: "expo.out"
   })
   .fromTo(".as_img", {
     scrollTrigger: {
         trigger: ".about_as_header",
         start: "top top", 
-        end: "+=200",
+        end: "+=200"
        // markers: true, 
-        scrub: 3
+        //scrub: 2
      },
     scale: 0.2,
     opacity: 0,
   }, {
     scale: 1,
     opacity: 1,
-    duration: 0.9,
-    delay: 0.3,
+    duration: 2,
+    delay: 0.1,
     ease: "expo.out"
   })
 
@@ -272,65 +280,65 @@ tl2.fromTo(".header_text_one", {
     scrollTrigger: {
         trigger: ".about_as_header",
         start: "top top", 
-        end: "+=200", 
-        scrub: 3
+        end: "+=200" 
+       // scrub: 2
      },
     x: -90,
     opacity: 0,
   }, {
     x: 0,
     opacity: 1,
-    duration: 0.7,
+    duration: 2,
     delay: 1.3,
     ease: "expo.out"
   })
   .fromTo(".portfolio_information_header", {
     scrollTrigger: {
         trigger: ".about_as_header",
-        start: "top center", 
-        end: "+=200", 
-        scrub: 3
+        start: "top top", 
+        end: "+=200" 
+        //scrub: 2
      },
     x: 90,
     opacity: 0,
   }, {
     x: 0,
     opacity: 1,
-    duration: 0.9,
+    duration: 2,
     delay: 0.1,
     ease: "expo.out"
   })
   .fromTo(".text_portfolio", {
     scrollTrigger: {
         trigger: ".about_as_header",
-        start: "top center", 
-        end: "+=200",
+        start: "top top", 
+        end: "+=200"
        // markers: true, 
-        scrub: 3
+        //scrub: 2
      },
     x: 90,
     opacity: 0,
   }, {
     x: 0,
     opacity: 1,
-    duration: 0.9,
+    duration: 2,
     delay: 0.3,
     ease: "expo.out"
   })
   .fromTo(".button_portfolio", {
     scrollTrigger: {
         trigger: ".about_as_header",
-        start: "top center", 
-        end: "+=100",
+        start: "top top", 
+        end: "+=100"
        // markers: true, 
-        scrub: 3
+        //scrub: 2
      },
     x: -90,
     opacity: 0,
   }, {
     x: 0,
     opacity: 1,
-    duration: 0.9,
+    duration: 2,
     delay: 0.7,
     ease: "expo.out"
   })
@@ -338,80 +346,80 @@ tl2.fromTo(".header_text_one", {
     scrollTrigger: {
         trigger: ".about_as_header",
         start: "top top", 
-        end: "+=200", 
-        scrub: 3
+        end: "+=200" 
+        //scrub: 2
      },
     x: -90,
     opacity: 0,
   }, {
     x: 0,
     opacity: 1,
-    duration: 0.7,
+    duration: 2,
     delay: 1.3,
     ease: "expo.out"
   })
   .fromTo(".information_text_services", {
     scrollTrigger: {
         trigger: ".about_as_header",
-        start: "top center", 
-        end: "+=200", 
-        scrub: 3
+        start: "top top", 
+        end: "+=200" 
+        //scrub: 2
      },
     x: 90,
     opacity: 0,
   }, {
     x: 0,
     opacity: 1,
-    duration: 0.9,
+    duration: 2,
     delay: 0.1,
     ease: "expo.out"
   })
   .fromTo(".text_service", {
     scrollTrigger: {
         trigger: ".about_as_header",
-        start: "top center", 
-        end: "+=200", 
-        scrub: 3
+        start: "top top", 
+        end: "+=200" 
+        //scrub: 2
      },
     x: 90,
     opacity: 0,
   }, {
     x: 0,
     opacity: 1,
-    duration: 0.9,
+    duration: 2,
     delay: 0.1,
     ease: "expo.out"
   })
   tl5.fromTo(".button_services", {
     scrollTrigger: {
         trigger: ".about_as_header",
-        start: "top center", 
-        end: "+=100",
+        start: "top top", 
+        end: "+=100"
        // markers: true, 
-        scrub: 3
+        //scrub: 2
      },
     x: -90,
     opacity: 0,
   }, {
     x: 0,
     opacity: 1,
-    duration: 0.9,
+    duration: 2,
     delay: 0.7,
     ease: "expo.out"
   })
   tl6.fromTo(".reviews_box_header", {
     scrollTrigger: {
         trigger: ".reviews_box",
-        start: "top center", 
-        end: "+=200", 
-        scrub: 3
+        start: "top top", 
+        end: "+=200" 
+        //scrub: 2
      },
     x: 90,
     opacity: 0,
   }, {
     x: 0,
     opacity: 1,
-    duration: 0.9,
+    duration: 2,
     delay: 0.1,
     ease: "expo.out"
   })
@@ -419,47 +427,47 @@ tl2.fromTo(".header_text_one", {
     scrollTrigger: {
         trigger: ".about_as_header",
         start: "top top", 
-        end: "+=200", 
-        scrub: 3
+        end: "+=200" 
+        //scrub: 2
      },
     x: -90,
     opacity: 0,
   }, {
     x: 0,
     opacity: 1,
-    duration: 0.7,
+    duration: 2,
     delay: 0.3,
     ease: "expo.out"
   })
   .fromTo(".contacts_information_header", {
     scrollTrigger: {
         trigger: ".contacts_box_header",
-        start: "top center", 
-        end: "+=200", 
-        scrub: 3
+        start: "top top", 
+        end: "+=200"
+        //scrub: 2
      },
     x: 90,
     opacity: 0,
   }, {
     x: 0,
     opacity: 1,
-    duration: 0.9,
+    duration: 2,
     delay: 0.1,
     ease: "expo.out"
   })
   .fromTo(".contacts_form_text", {
     scrollTrigger: {
         trigger: ".contacts_box_header",
-        start: "top center", 
-        end: "+=200", 
-        scrub: 3
+        start: "top top", 
+        end: "+=200" 
+       // scrub: 2
      },
     x: 90,
     opacity: 0,
   }, {
     x: 0,
     opacity: 1,
-    duration: 0.9,
+    duration: 2,
     delay: 0.1,
     ease: "expo.out"
   })
@@ -467,16 +475,16 @@ tl2.fromTo(".header_text_one", {
     scrollTrigger: {
         trigger: ".button_form",
         start: "top top", 
-        end: "+=200",
+        end: "+=200"
        // markers: true, 
-        scrub: 3
+       // scrub: 2
      },
     x: -90,
     opacity: 0,
   }, {
     x: 0,
     opacity: 1,
-    duration: 0.9,
+    duration: 2,
     delay: 0.7,
     ease: "expo.out"
   })
