@@ -292,6 +292,7 @@ img {
   }
   .information_text_two {
     margin-top: 20px;
+    opacity: 0;
   }
   .as_img {
     grid-column: 1/2;
