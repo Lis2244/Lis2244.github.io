@@ -57,6 +57,12 @@ img {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: repeat(3, auto);
+    background-color: #FFFFFF;
+    opacity: 0;
+    transition: 1.5s opacity ease-in-out;
+  }
+  .page_visible {
+    opacity: 1;
   }
 
   .header_box {
@@ -864,7 +870,6 @@ img {
     font-weight: 400;
     font-size: 32px;
     line-height: 36px;
-    opacity: 0;
   }
 
   .cover_box {
@@ -884,7 +889,6 @@ img {
   .mobile_oblozhka {
     width: 100%;
     z-index: 1;
-    opacity: 0;
   }
   .mobile_svg {
     width: 60%;
@@ -893,7 +897,6 @@ img {
     left: 20%;
     right: 20%;
     top: 22%;
-    opacity: 0;
   }
 
   .header_text_green {
@@ -916,7 +919,6 @@ img {
     margin-bottom: 0;
     margin-left: auto;
     text-align: right;
-    opacity: 0;
   }
 
   .button_phone {
@@ -1194,7 +1196,7 @@ img {
   }
 
   .otziv_box {
-    margin-left: 10%;
+    margin-left: 0;
     font-family: "TaylorSans-Regular", sans-serif;
     font-weight: 400;
     font-size: 21px;
@@ -1202,11 +1204,21 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
   }
 
   .otzovik_text {
     width: 90%;
+    font-size: 16px;
+    
+  }
+  .name_otzovik_text {
+    margin: 0 auto;
+    align-items: center;
+  }
+  .name_otzovik_item {
+    text-align: center;
   }
 
   .name_otzovik_header {
