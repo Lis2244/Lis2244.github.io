@@ -50,6 +50,10 @@ img {
   -ms-user-select: none;
   pointer-events: none;
 }
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
 /*::-webkit-scrollbar {
     width: 0;
   }*/
@@ -64,6 +68,7 @@ img {
   .page_visible {
     opacity: 1;
   }
+  
 
   .header_box {
     grid-column: 1/2;
@@ -81,6 +86,9 @@ img {
     justify-content: space-between;
     align-items: center;
     margin: 20px auto 0 auto;
+  }
+  .mobile_section_header {
+    display: none;
   }
   .services_box {
     display: flex;
@@ -779,6 +787,10 @@ img {
 .button_footer a {
   color:#ffffff;
 }
+.logo_image {
+  transform: scale(1.5);
+  margin-left: 20%;
+}
 
 
 /* Мобильная адаптация */
@@ -796,20 +808,39 @@ img {
   .navigation_box {
     width: 100%;
     grid-column: 1/2;
-    grid-row: 4/5;
+    grid-row: 1/2;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     margin: 20px auto 0 auto;
   }
+  .mobile_section_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+  }
+  .mobile_section_img {
+    width: 150px;
+  }
+
+  .navigation_header_box {
+    overflow: hidden;
+  }
+
 
   .hiden_logo_mobile {
     display: none;
   }
+  .logo_box {
+    display: none;
+  }
   .logo_image {
-    transform: scale(2.3);
+    transform: scale(1);
     margin-top: 15%;
+    margin-left: 0;
   }
   
 
@@ -817,14 +848,28 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     font-family: "TaylorSans-Regular", sans-serif;
     font-weight: 400;
     font-size: 16px;
     text-transform: uppercase;
     margin-right: 0;
     margin-top: 9%;
+    
   }
+  .header_services_box {
+    max-height: 0;
+    overflow: hidden;
+    transition: 1s ease-in-out;
+    width: 70%;
+  }
+  .services_box_active {
+    max-height: 1000px;
+  }
+  .mibile_hidden {
+    display: none;
+  }
+  
   
   .list_two {
     margin-left: 0;
@@ -837,6 +882,11 @@ img {
     margin-bottom: 20px;
   }
 
+  .item_two_footer {
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+
   .services_item_button {
     width: 100%;
     border: none;
@@ -847,22 +897,99 @@ img {
     text-transform: uppercase;
     margin: 0;
     transition: all 0.25s ease-out;
-    text-align: center;
+    text-align: start;
     cursor: pointer;
   }
+  .polive_button {
+    transform: translateX(300px);
+    opacity: 0;
+    transition-property: opacity, transform;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
+  }
+  .landcpacing_button {
+    transform: translateX(300px);
+    opacity: 0;
+    transition-property: opacity, transform;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
+    transition-delay: 0.1s;
+  }
+  .gazon_button {
+    transform: translateX(300px);
+    opacity: 0;
+    transition-property: opacity, transform;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
+    transition-delay: 0.2s;
+  }
+  .kamen_button {
+    transform: translateX(300px);
+    opacity: 0;
+    transition-property: opacity, transform;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
+    transition-delay: 0.3s;
+  }
+  .light_button {
+    transform: translateX(300px);
+    opacity: 0;
+    transition-property: opacity, transform;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
+    transition-delay: 0.4s;
+  }
+  .architectura_button {
+    transform: translateX(300px);
+    opacity: 0;
+    transition-property: opacity, transform;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
+    transition-delay: 0.5s;
+  }
+  .contacts_button {
+    transform: translateX(300px);
+    opacity: 0;
+    transition-property: opacity, transform;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
+    transition-delay: 0.6s;
+  }
+  .portfolio_button {
+    transform: translateX(300px);
+    opacity: 0;
+    transition-property: opacity, transform;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
+    transition-delay: 0.7s;
+  }
+  .uhod_button {
+    transform: translateX(300px);
+    opacity: 0;
+    transition-property: opacity, transform;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
+    transition-delay: 0.8s;
+  }
+  .startposition {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
 
   .phone_box {
     height: min-content;
     margin-top: 20px;
     transition: all 0.25s ease-out;
+    display: none;
   }
 
 
   .header_text {
     grid-column: 1/2;
-    grid-row: 1/2;
+    grid-row: 2/3;
     width: 95%;
-    margin-top: 37px;
+    margin-top: 20px;
     margin-right: auto;
     margin-bottom: 10px;
     margin-left: auto;
@@ -870,18 +997,22 @@ img {
     font-weight: 400;
     font-size: 32px;
     line-height: 36px;
+    text-align: center;
   }
 
   .cover_box {
-    width: 100%;
+    width: 95%;
     grid-column: 1/2;
-    grid-row: 2/3;
+    grid-row: 3/4;
+    margin: 0 auto;
   }
   .cover_img {
-    display: none;
+    width: 100%;
+    border-radius: 15px;
+    border: 1px solid #000000;
   }
   .cover_box_mobile {
-    display: block;
+    display: none;
     position: relative;
     overflow: hidden;
     width: 100%;
@@ -908,7 +1039,7 @@ img {
 
   .header_text_item {
     grid-column: 1/2;
-    grid-row: 3/4;
+    grid-row: 4/5;
     font-family: "Cakra-Normal", sans-serif;
     font-weight: 400;
     font-size: 32px;
@@ -918,7 +1049,7 @@ img {
     margin-right: auto;
     margin-bottom: 0;
     margin-left: auto;
-    text-align: right;
+    text-align: center;
   }
 
   .button_phone {
@@ -1241,9 +1372,18 @@ img {
   .contacts_form_text {
     font-family: "TaylorSans-Light", sans-serif;
     font-weight: 300;
-    font-size: 21px;
+    font-size: 10px;
     width: 90%;
-    margin-bottom: 15px;
+    margin-bottom: 40px;
+  }
+  .contacts_form_link {
+    color: #FFFFFF;
+    font-size: 12px;
+  }
+  .link_phone_contacts {
+    color: #FFFFFF;
+    font-size: 14px;
+    text-decoration: none;
   }
 
   .contacts_information_header {
@@ -1283,11 +1423,15 @@ img {
     width: 100%;
     grid-column: 1/2;
     grid-row: 1/2;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     text-align: center;
+  }
+
+  .form_box_text_footer {
+    color: #FFFFFF;
   }
   .form_input {
     grid-column: 1/2;
@@ -1363,6 +1507,7 @@ img {
   }
   .button_footer {
     background-color: #000000;
+    font-size: 14px;
   }
   .button_footer a {
     color:#ffffff;
@@ -1374,6 +1519,32 @@ img {
     margin-top: 80px;
     padding-bottom: 50px;
     border-radius: 55px 55px 0 0;
+  }
+
+  .navigation_box_bottom {
+    width: 100%;
+    grid-column: none;
+    grid-row: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px auto 0 auto;
+  }
+  .mibile_visible {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 0;
+  }
+  .contacts_item_mail {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
   }
 }
 

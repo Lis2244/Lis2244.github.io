@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
         <link rel="stylesheet" href="styles/animate.min.css">
         <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/hamburgers.css">
         <link rel="stylesheet" href="styles/splide.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
         <script src="scripts/splide.min.js"></script>
@@ -110,11 +111,19 @@
     <body class="page">
         
             <header class="header_box box_one">
-                <nav class="navigation_box">
+                <nav class="navigation_box navigation_header_box">
+                    <div class="mobile_section_header">
+                        <img class="mobile_section_img" src="images/header/mobile_svg_logo.svg" alt="Логит фирмы">
+                        <button class="hamburger hamburger--collapse" type="button">
+                            <span class="hamburger-box">
+                              <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
                     <div class="logo_box hiden_logo_mobile">
                         <img class="logo_image" src="images/header/logotip.svg" alt="Логотип компании">
                     </div>
-                    <div class="services_box">
+                    <div class="services_box header_services_box">
 
                         <ul class="services_list list_one">
                             <li class="services_item item_nav_polive">
@@ -154,12 +163,12 @@
 
                         <ul class="services_list list_three">
                             <li class="services_item">
-                                <button type="button" class="services_item_button">
+                                <button type="button" class="services_item_button contacts_button">
                                     <a class="services_link" href="#anchor_contacts">Контакты</a>
                                 </button>
                             </li>
                             <li class="services_item item_two">
-                                <button type="button" class="services_item_button">
+                                <button type="button" class="services_item_button portfolio_button">
                                     <a class="services_link" href="#anchor_potfolio">Партфолио</a>
                                 </button>
                             </li>
@@ -293,7 +302,7 @@
                         <a class="button_phone_link" href="tel:+79282228033">Рассчитать свой проект</a>
                     </div>
                 </section>
-                <section class="our_services_box box_for">
+                <section class="our_services_box box_for" id="anchor_our_services">
                     <div class="as_box box_services">
                         <div class="about_as_header wow animate__fadeIn">
                             <h3 class="about_as_header_text header_text_three">Наши услуги</h3>
@@ -647,7 +656,7 @@
                         <div class="logo_box">
                             <img class="logo_image" src="images/header/white_logotip.svg" alt="Логотип компании">
                         </div>
-                        <div class="services_box">
+                        <div class="services_box mibile_hidden">
     
                             <ul class="services_list list_one">
                                 <li class="services_item">
@@ -696,19 +705,58 @@
                                         <a class="services_link" href="#anchor_potfolio">Партфолио</a>
                                     </button>
                                 </li>
-                                <li class="services_item">
-                                    <button type="button" class="services_item_button uhod_button_footer button_footer">
+                                <li class="services_item item_two">
+                                    <button type="button" class="services_item_button button_footer uhod_button_footer">
                                         <a class="services_link" href="#anchor_uhod">Уходовые работы</a>
                                     </button>
                                 </li>
                             </ul>
     
                         </div>
+
+                        <div class="services_box mibile_visible">
+    
+                            <ul class="services_list list_three">
+                                <li class="services_item">
+                                    <button type="button" class="services_item_button button_footer">
+                                        <a class="services_link" href="#anchor_contacts">Контакты</a>
+                                    </button>
+                                </li>
+                                <li class="services_item item_two item_two_footer">
+                                    <button type="button" class="services_item_button button_footer">
+                                        <a class="services_link" href="#anchor_potfolio">Партфолио</a>
+                                    </button>
+                                </li>
+                                <li class="services_item">
+                                    <button type="button" class="services_item_button button_footer">
+                                        <a class="services_link" href="#anchor_our_services">Услуги</a>
+                                    </button>
+                                </li>
+                            </ul>
+
+                            <div class="logo_box_mobile">
+                                <img class="logo_image" src="images/header/white_logotip.svg" alt="Логотип компании">
+                            </div>
+    
+                        </div>
+
+                        <div class="contacts_item_mail">
+                            <div class="form_box_text_footer">
+                                <p class="contacts_form_text">По любым вопросам вы можете связаться с нами по почте указанной ниже</p>
+                                <div class="contacts_margin">
+                                    <a class="link_phone_contacts color_white" href="tel:+79282228033">+7(928)222-80-33</a>
+                                    <a class="contacts_form_link" href="mailto:albertjooke23@gmail.com">albertjooke23@gmail.com</a>
+                                </div>
+                                
+                            </div>
+                        </div>
+
                         <div class="phone_box">
                             <a class="link_phone color_white" href="tel:+79282228033">+7(928)222-80-33<svg class="arrow_phone" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M14.0862 1H0V0H16V16H15L15 1.49319L1 16L0.280436 15.3056L14.0862 1Z" fill="#7ED21A"/>
                             </svg></a>
                         </div>
+                        
                     </nav>
                 </div>
             </footer>
@@ -719,6 +767,7 @@
             <script src="scripts/script.js"></script>
             <script src="scripts/wow.min.js"></script>
             <script src="scripts/main.js"></script>
+            <script src="scripts/button_script.js"></script>
             <script src="scripts/slider_block.js"></script>
             <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
