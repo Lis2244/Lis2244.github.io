@@ -113,6 +113,9 @@ button {
     margin-top: 10px;
     margin-bottom: 10px;
   }
+  .item_for {
+    margin-top: 10px;
+  }
   .services_item {
     width: auto;
   }
@@ -481,6 +484,7 @@ button {
     font-size: 22px;
     width: 295px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.6);
+    visibility: hidden;
   }
   .information_link_text {
     text-decoration: none;
@@ -540,6 +544,12 @@ button {
     transition: all 0.25s ease-out;
     opacity: 0; 
   }
+  .gallary_box_eight {
+    overflow: hidden;
+    max-height: 0;
+    transition: all 0.25s ease-out;
+    opacity: 0; 
+  }
   .item_heding_hiden {
     color: #7ED21A;
   }
@@ -560,6 +570,7 @@ button {
     grid-row: 3/4;
   }
   .reviews_box {
+    display: none;
     grid-column: 1/2;
     grid-row: 4/5;
     border-bottom: 1px solid rgba(0, 0, 0, 0.6);
@@ -881,6 +892,9 @@ button {
     margin-top: 20px;
     margin-bottom: 20px;
   }
+  .item_for {
+    margin-top: 20px;
+  }
 
   .item_two_footer {
     margin-top: 3px;
@@ -947,7 +961,7 @@ button {
     transition-duration: 0.3s;
     transition-delay: 0.5s;
   }
-  .contacts_button {
+  .gabions_button {
     transform: translateX(300px);
     opacity: 0;
     transition-property: opacity, transform;
@@ -955,7 +969,7 @@ button {
     transition-duration: 0.3s;
     transition-delay: 0.6s;
   }
-  .portfolio_button {
+  .contacts_button {
     transform: translateX(300px);
     opacity: 0;
     transition-property: opacity, transform;
@@ -963,13 +977,21 @@ button {
     transition-duration: 0.3s;
     transition-delay: 0.7s;
   }
-  .uhod_button {
+  .portfolio_button {
     transform: translateX(300px);
     opacity: 0;
     transition-property: opacity, transform;
     transition-timing-function: ease-in-out;
     transition-duration: 0.3s;
     transition-delay: 0.8s;
+  }
+  .uhod_button {
+    transform: translateX(300px);
+    opacity: 0;
+    transition-property: opacity, transform;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
+    transition-delay: 0.9s;
   }
   .startposition {
     transform: translateX(0);
@@ -1138,7 +1160,8 @@ button {
     width: 100%;
   }
   .as_img {
-    border-radius: 25px;
+    border-radius: 15px;
+    border: 1px solid black;
   }
 
   .box_portfolio {
@@ -1168,12 +1191,19 @@ button {
   .bottom_splide {
     display: none;
   }
+  .mobile_img {
+    width: 75%;
+    border: 1px solid black;
+    border-radius: 15px;
+  }
   div.swiper {
     display: block;
     grid-column: 1/2;
     grid-row: 4/5;
     margin: 30px auto;
     width: 100%;
+    height: auto;
+    text-align: center;
   }
 
   .box_services {
@@ -1287,7 +1317,8 @@ button {
   }
   .img_service {
     width: 100%;
-    border-radius: 25px;
+    border-radius: 15px;
+    border: 1px solid black;
   }
 
   .reviews_box {

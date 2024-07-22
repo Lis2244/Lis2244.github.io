@@ -12,6 +12,7 @@ var forEach=function(t,o,r){if("[object Object]"===Object.prototype.toString.cal
     var contactsButton = document.querySelector(".contacts_button");
     var portfolioButton = document.querySelector(".portfolio_button");
     var uhodButton = document.querySelector(".uhod_button");
+    var gabionsButton = document.querySelector(".gabions_button");
 
     if (hamburgers.length > 0) {
       forEach(hamburgers, function(hamburger) {
@@ -24,9 +25,11 @@ var forEach=function(t,o,r){if("[object Object]"===Object.prototype.toString.cal
           kamenButton.classList.toggle("startposition");
           lighButton.classList.toggle("startposition");
           architectButton.classList.toggle("startposition");
+          gabionsButton.classList.toggle("startposition");
           contactsButton.classList.toggle("startposition");
           portfolioButton.classList.toggle("startposition");
           uhodButton.classList.toggle("startposition");
+          
           //serviceButton.classList.toggle("");
         }, false);
       });

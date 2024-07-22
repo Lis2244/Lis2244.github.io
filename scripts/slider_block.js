@@ -5,6 +5,7 @@ let namberFor = document.querySelector('.text_for');
 let namberFife = document.querySelector('.text_fife');
 let namberSix = document.querySelector('.text_six');
 let namberSevan = document.querySelector('.text_sevan');
+let namberEight = document.querySelector('.text_eight');
 //Добавляю кнопки ссылки навигации шапки
 let buttonPolive = document.querySelector('.polive_button');
 let buttonLandcpacing = document.querySelector('.landcpacing_button');
@@ -13,6 +14,7 @@ let buttonKamen = document.querySelector('.kamen_button');
 let buttonLight = document.querySelector('.light_button');
 let buttonArchitect = document.querySelector('.architectura_button');
 let buttonUhod = document.querySelector('.uhod_button');
+let buttonGabions = document.querySelector('.gabions_button');
 
 //Добавляю нижнюю навигацию футера
 let buttonPoliveFooter = document.querySelector('.polive_button_footer');
@@ -30,6 +32,7 @@ let progectFor = document.querySelector('.gallary_box_for');
 let progectFife = document.querySelector('.gallary_box_fife');
 let progectSix = document.querySelector('.gallary_box_six');
 let progectSevan = document.querySelector('.gallary_box_sevan');
+let progectEight = document.querySelector('.gallary_box_eight');
 
 
 let buttonOne = document.querySelector('.button_plus_one');
@@ -39,6 +42,7 @@ let buttonFor = document.querySelector('.button_plus_for');
 let buttonFife = document.querySelector('.button_plus_fife');
 let buttonSix = document.querySelector('.button_plus_six');
 let buttonSevan = document.querySelector('.button_plus_sevan');
+let buttonEight = document.querySelector('.button_plus_eight');
 
 
 let transformPlusOne = document.querySelector('.plus_one');
@@ -48,6 +52,7 @@ let transformPlusFor = document.querySelector('.plus_for');
 let transformPlusFife = document.querySelector('.plus_fife');
 let transformPlusSix = document.querySelector('.plus_six');
 let transformPlusSevan = document.querySelector('.plus_sevan');
+let transformPlusEight = document.querySelector('.plus_eight');
 
 
 buttonOne.onclick = function () {
@@ -91,6 +96,11 @@ buttonSevan.onclick = function () {
     progectSevan.classList.toggle('display_visability');
     transformPlusSevan.classList.toggle('plus_transform');
 }
+buttonEight.onclick = function () {
+    namberEight.classList.toggle('item_heding_hiden');
+    progectEight.classList.toggle('display_visability');
+    transformPlusEight.classList.toggle('plus_transform');
+}
 //Включаю кнопки ссылки верхней навигации
 buttonPolive.onclick = function () {
     namberTwo.classList.toggle('item_heding_hiden');
@@ -126,6 +136,11 @@ buttonUhod.onclick = function () {
     namberSevan.classList.toggle('item_heding_hiden');
     progectSevan.classList.toggle('display_visability');
     transformPlusSevan.classList.toggle('plus_transform');
+}
+buttonGabions.onclick = function () {
+    namberEight.classList.toggle('item_heding_hiden');
+    progectEight.classList.toggle('display_visability');
+    transformPlusEight.classList.toggle('plus_transform');
 }
 
 //Включаю кнопки ссылки нижней навигации
