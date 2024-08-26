@@ -100,7 +100,13 @@ button {
     font-size: 16px;
     text-transform: uppercase;
     margin-right: -96px;
+  }
 
+  .mibile_visible {
+    display: none;
+  }
+  .contacts_item_mail {
+    display: none;
   }
   .services_list {
     list-style: none;
@@ -307,6 +313,58 @@ button {
     line-height: 20px;
     max-width: 527px;
   }
+  .container_call_back {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .container{
+    height: 67.5vmin;
+    width: 100vmin;
+    position: relative;
+    overflow: hidden;
+}
+.container_img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+#my-img{
+    clip-path: polygon(0 0 , 50% 0, 50% 100%, 0 100%);
+}
+#slider{
+  -webkit-appearance: none;
+    position: relative;
+    width: calc( 100% + 40px);
+    height: 100%;
+    margin-left: -20px;
+    background-color: transparent;
+    outline: none;
+}
+#slider::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    height: 30px;
+    width: 30px;
+    background: rgba(255,255,255,0.3);
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb{
+  height: 30px;
+  width: 30px;
+  background: rgba(255,255,255,0.3);
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  background-size: contain;
+  cursor: pointer;
+}
+
   .information_text_two {
     margin-top: 20px;
   }
@@ -343,7 +401,7 @@ button {
   }
   .splide__slide img {
     width: 100%;
-    border-radius: 90px;
+    border-radius: 45px;
   }
 
   .pagination_hiden {
@@ -500,7 +558,7 @@ button {
     align-items: center;
   }
   .img_service {
-    border-radius: 90px;
+    border-radius: 45px;
   }
   .gallary_box_one {
     overflow: hidden;
@@ -1176,6 +1234,24 @@ button {
   .portfolio_information_header {
     width: 90%;
   }
+  .container_call_back {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .call_back_text {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  .call_back_text_item {
+    color:#7ED21A;
+  }
 
   .text_portfolio {
     width: 90%;
@@ -1192,9 +1268,8 @@ button {
     display: none;
   }
   .mobile_img {
-    width: 75%;
-    border: 1px solid black;
-    border-radius: 15px;
+    width: 100%;
+    border-radius: 0;
   }
   div.swiper {
     display: block;
