@@ -1,18 +1,25 @@
-* {
+*
+{
     margin: 0;
     padding: 0;
 }
 
 html,
-body {
-    overflow: hidden;
+body
+{
+    height: 100vh;
+    font-family: 'Poppins';
 }
 
-.canvas {
+.webgl
+{
     position: fixed;
     top: 0;
     left: 0;
     outline: none;
+    width: 100vw!important;
+    height: 100vh!important;
 }
+
 
 /*# sourceMappingURL=main.css.map*/
