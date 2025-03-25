@@ -5,5 +5,10 @@
 	Overwriting Default Theme Styles for Better Hanlding Updates
 -----------------------------------------------------------------*/
 
-
+.text_logo {
+	text-transform: uppercase;
+	margin-bottom: 0;
+	font-weight: 500;
+	font-size: 2rem;
+}
 
