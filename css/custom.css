@@ -14,4 +14,14 @@
 .width_text {
 	width: 70%;
 }
+.fa-microphone {
+	animation: pulse 2s infinite;
+	margin-left: 20%;
+  }
+  
+  @keyframes pulse {
+	0% { transform: scale(1); }
+	50% { transform: scale(1.1); }
+	100% { transform: scale(1); }
+  }
 

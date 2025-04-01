@@ -591,7 +591,7 @@ hr {
 
 /*== Fullscreen Height when use default Header ==*/
 .fullscreen-with-header {
-  min-height: calc(100vh - 80px) !important;
+  min-height: calc(100vh - 250px) !important;
 }
 
 /*== Heading Separator Line ==*/
