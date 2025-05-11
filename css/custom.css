@@ -25,3 +25,7 @@
 	100% { transform: scale(1); }
   }
 
+.red_text {
+	color: red;
+}
+
