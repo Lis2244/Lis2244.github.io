@@ -28,4 +28,7 @@
 .red_text {
 	color: red;
 }
+.content-start {
+	justify-content: flex-start;
+}
 

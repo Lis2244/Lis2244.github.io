@@ -569,7 +569,7 @@
             
             <!-- Filter
 			============================================= -->
-            <div class="row align-items-center g-2 my-4">
+            <div class="row content-start align-items-center g-2 my-4">
               <div class="col-auto col-lg-2">
                 <select class="selectpicker form-control show-tick" data-style="form-select form-select-sm rounded-pill fw-500" title="Category" data-container="body">
                   <option data-icon="fas fa-border-all text-3 me-2" value="">All</option>
@@ -616,21 +616,9 @@
                   <option value="">Ending Soon</option>
                 </select>
               </div>
+
               <div class="col-auto col-lg-2">
-                <select class="selectpicker form-control show-tick" data-style="form-select form-select-sm rounded-pill fw-500" title="Role" data-container="body" data-allow-clear="true" multiple>
-                  <option value="">Created</option>
-                  <option value="">Applied</option>
-                  <option value="">Offered</option>
-                </select>
-              </div>
-              <div class="col-auto col-lg-2">
-                <select class="selectpicker form-control show-tick" data-style="form-select form-select-sm rounded-pill fw-500" title="Royalties" data-container="body" data-allow-clear="true" multiple>
-                  <option value="">With Royalties</option>
-                  <option value="">Without Royalties</option>
-                </select>
-              </div>
-              <div class="col-auto col-lg-2 ms-lg-auto">
-                <select class="selectpicker form-control show-tick" data-style="form-select form-select-sm rounded-pill fw-500" title="Sort by" data-container="body">
+                <select class="selectpicker form-control show-tick" data-style="form-select form-select-sm fw-500" title="Sort by" data-container="body">
                   <optgroup label="Sort by">
                   <option value="">Recently added</option>
                   <option value="">Budget: Low to High</option>
@@ -643,19 +631,33 @@
                   </optgroup>
                 </select>
               </div>
+
+              <div class="col-auto col-lg-2">
+                <select class="selectpicker form-control show-tick" data-style="form-select form-select-sm rounded-pill fw-500" title="Royalties" data-container="body" data-allow-clear="true" multiple>
+                  <option value="">With Royalties</option>
+                  <option value="">Without Royalties</option>
+                </select>
+              </div>
+              <div class="col-auto col-lg-2">
+                <select class="selectpicker form-control show-tick" data-style="form-select form-select-sm rounded-pill fw-500" title="Role" data-container="body" data-allow-clear="true" multiple>
+                  <option value="">Created</option>
+                  <option value="">Applied</option>
+                  <option value="">Offered</option>
+                </select>
+              </div>
             </div>
-            <!-- End Filter --> 
+            <!-- End Filter ms-lg-auto --> 
             <!-- Items
 			============================================= -->
             <div class="row g-4">
               <div class="load-item col-sm-6 col-md-4 col-lg-3">
                 <div class="nft-item card rounded-3 p-3">
-                  <div class="nft-item-wrap position-relative d-flex align-items-center justify-content-center"> <a href="item-details.html"><img class="nft-item-img img-fluid d-flex rounded-3" src="images/items/6.jpg" title="Dark Rider" alt=""></a> <a href="author.html" data-bs-toggle="tooltip" title="Creator: George Richard" class="position-absolute top-0 start-0 rounded-circle border border-white border-2 mt-n2 ms-n2"> <img class="img-thumb-sm rounded-circle d-flex" src="images/authors/author-9.jpg" alt=""> <span class="position-absolute bottom-0 end-0 me-n1 d-flex text-3 bg-white text-primary rounded-circle"><i class="fas fa-check-circle"></i></span> </a>
+                  <div class="nft-item-wrap position-relative d-flex align-items-center justify-content-center"> <a href="item-details.html"><img class="nft-item-img img-fluid d-flex rounded-3" src="images/items/Task2.1.png" title="Video 'The King'" alt=""></a> <a href="user.html" data-bs-toggle="tooltip" title="Creator: DAO Chain" class="position-absolute top-0 start-0 rounded-circle border border-white border-2 mt-n2 ms-n2"> <img class="img-thumb-sm rounded-circle d-flex" src="images/Creators/Creator.png" alt=""> <span class="position-absolute bottom-0 end-0 me-n1 d-flex text-3 bg-white text-primary rounded-circle"><i class="fas fa-check-circle"></i></span> </a>
                     <div class="countdown position-absolute bottom-0 start-50 translate-middle-x d-inline-block lh-base fw-500 text-dark bg-white border border-primary border-2 rounded-pill shadow-md px-3 py-1 mb-n2" data-countdown-end="2025/11/08 12:00:00"></div>
                   </div>
                   <div class="card-body px-0 pb-0">
                     <div class="d-flex align-items-center mb-3"> <a href="item-details.html" class="overflow-hidden me-2">
-                      <h4 class="text-3 link-dark text-truncate mb-0">Dark Rider</h4>
+                      <h4 class="text-3 link-dark text-truncate mb-0">Video "The King"</h4>
                       </a>
                       <div class="dropdown d-inline-block ms-auto"> <a href="#" class="nft-item-link text-muted me-n2" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
                         <ul class="dropdown-menu dropdown-menu-end">
@@ -677,7 +679,7 @@
                         </ul>
                       </div>
                     </div>
-                    <div class="text-dark fw-500">0.15 ETH <span class="text-muted ms-1">1/2</span></div>
+                    <div class="text-dark fw-500">0.15 ETH <span class="text-muted ms-1"></span></div>
                     <a class="btn-link fw-500" href="#">Buy now</a>
                     <button class="nft-item-like text-3 text-muted float-end mt-n2 me-n2" type="button" ><i class="far fa-heart"></i> 178</button>
                   </div>
@@ -685,12 +687,12 @@
               </div>
               <div class="load-item col-sm-6 col-md-4 col-lg-3">
                 <div class="nft-item card rounded-3 p-3">
-                  <div class="nft-item-wrap position-relative d-flex align-items-center justify-content-center"> <a href="item-details.html"><img class="nft-item-img img-fluid d-flex rounded-3" src="images/items/10.gif" title="Cat with Headphones" alt=""></a> <a href="author.html" data-bs-toggle="tooltip" title="Creator: William Damian Thomas" class="position-absolute top-0 start-0 rounded-circle border border-white border-2 mt-n2 ms-n2"> <img class="img-thumb-sm rounded-circle d-flex" src="images/authors/author-7.jpg" alt=""> <span class="position-absolute bottom-0 end-0 me-n1 d-flex text-3 bg-white text-primary rounded-circle"><i class="fas fa-check-circle"></i></span> </a>
+                  <div class="nft-item-wrap position-relative d-flex align-items-center justify-content-center"> <a href="item-details.html"><img class="nft-item-img img-fluid d-flex rounded-3" src="images/items/Task3.2.png" title="Ferris-wheel 3D model" alt=""></a> <a href="user.html" data-bs-toggle="tooltip" title="Creator: Scott Nicole" class="position-absolute top-0 start-0 rounded-circle border border-white border-2 mt-n2 ms-n2"> <img class="img-thumb-sm rounded-circle d-flex" src="images/Creators/Creator15.png" alt=""> <span class="position-absolute bottom-0 end-0 me-n1 d-flex text-3 bg-white text-primary rounded-circle"><i class="fas fa-check-circle"></i></span> </a>
                     <div class="countdown position-absolute bottom-0 start-50 translate-middle-x d-inline-block lh-base fw-500 text-dark bg-white border border-primary border-2 rounded-pill shadow-md px-3 py-1 mb-n2" data-countdown-end="2025/10/10 12:00:00"></div>
                   </div>
                   <div class="card-body px-0 pb-0">
                     <div class="d-flex align-items-center mb-3"> <a href="item-details.html" class="overflow-hidden me-2">
-                      <h4 class="text-3 link-dark text-truncate mb-0">Cat with Headphones</h4>
+                      <h4 class="text-3 link-dark text-truncate mb-0">Ferris-wheel 3D model</h4>
                       </a>
                       <div class="dropdown d-inline-block ms-auto"> <a href="#" class="nft-item-link text-muted me-n2" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
                         <ul class="dropdown-menu dropdown-menu-end">
@@ -712,7 +714,7 @@
                         </ul>
                       </div>
                     </div>
-                    <div class="text-dark fw-500">0.009 ETH <span class="text-muted ms-1">1/1</span></div>
+                    <div class="text-dark fw-500">0.009 ETH <span class="text-muted ms-1"></span></div>
                     <a class="btn-link fw-500" href="#">Buy now</a>
                     <button class="nft-item-like text-3 text-muted float-end mt-n2 me-n2" type="button" ><i class="far fa-heart"></i> 91</button>
                   </div>
@@ -720,10 +722,10 @@
               </div>
               <div class="load-item col-sm-6 col-md-4 col-lg-3">
                 <div class="nft-item card rounded-3 p-3">
-                  <div class="nft-item-wrap position-relative d-flex align-items-center justify-content-center"> <a href="item-details.html"><img class="nft-item-img img-fluid d-flex rounded-3" src="images/items/3.jpg" title="Happy Cute Avocado Exercising" alt=""></a> <a href="author.html" data-bs-toggle="tooltip" title="Creator: James Charlie" class="position-absolute top-0 start-0 rounded-circle border border-white border-2 mt-n2 ms-n2"> <img class="img-thumb-sm rounded-circle d-flex" src="images/authors/author-5.jpg" alt=""> <span class="position-absolute bottom-0 end-0 me-n1 d-flex text-3 bg-white text-primary rounded-circle"><i class="fas fa-check-circle"></i></span> </a> </div>
+                  <div class="nft-item-wrap position-relative d-flex align-items-center justify-content-center"> <a href="item-details.html"><img class="nft-item-img img-fluid d-flex rounded-3" src="images/items/Task2.3.png" title="Trailer 'Biker'" alt=""></a> <a href="user.html" data-bs-toggle="tooltip" title="Creator: Lily Anderson" class="position-absolute top-0 start-0 rounded-circle border border-white border-2 mt-n2 ms-n2"> <img class="img-thumb-sm rounded-circle d-flex" src="images/Creators/Creator2.png" alt=""> <span class="position-absolute bottom-0 end-0 me-n1 d-flex text-3 bg-white text-primary rounded-circle"><i class="fas fa-check-circle"></i></span> </a> </div>
                   <div class="card-body px-0 pb-0">
                     <div class="d-flex align-items-center mb-3"> <a href="item-details.html" class="overflow-hidden me-2">
-                      <h4 class="text-3 link-dark text-truncate mb-0">Happy Cute Avocado Exercising</h4>
+                      <h4 class="text-3 link-dark text-truncate mb-0">Trailer "Biker"</h4>
                       </a>
                       <div class="dropdown d-inline-block ms-auto"> <a href="#" class="nft-item-link text-muted me-n2" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
                         <ul class="dropdown-menu dropdown-menu-end">
@@ -744,7 +746,7 @@
                         </ul>
                       </div>
                     </div>
-                    <div class="text-dark fw-500">Not for sale <span class="text-muted ms-1">x1</span></div>
+                    <div class="text-dark fw-500">Not for sale <span class="text-muted ms-1"></span></div>
                     <span class="text-primary fw-500" data-bs-toggle="tooltip" title="Highest bid by James Charlie">Bid 1.7 wETH</span>
                     <button class="nft-item-like text-3 text-muted float-end mt-n2 me-n2" type="button" ><i class="far fa-heart"></i> 104</button>
                   </div>
@@ -752,10 +754,10 @@
               </div>
               <div class="load-item col-sm-6 col-md-4 col-lg-3">
                 <div class="nft-item card rounded-3 p-3">
-                  <div class="nft-item-wrap position-relative d-flex align-items-center justify-content-center"> <a href="item-details.html"><img class="nft-item-img img-fluid d-flex rounded-3" src="images/items/5.jpg" title="Pascal Bernardon" alt=""></a> <a href="author.html" data-bs-toggle="tooltip" title="Creator: Matthew Betty" class="position-absolute top-0 start-0 rounded-circle border border-white border-2 mt-n2 ms-n2"> <img class="img-thumb-sm rounded-circle d-flex" src="images/authors/author-6.jpg" alt=""> <span class="position-absolute bottom-0 end-0 me-n1 d-flex text-3 bg-white text-primary rounded-circle"><i class="fas fa-check-circle"></i></span> </a> </div>
+                  <div class="nft-item-wrap position-relative d-flex align-items-center justify-content-center"> <a href="item-details.html"><img class="nft-item-img img-fluid d-flex rounded-3" src="images/items/Task3.4.png" title="Website development for a pizzeria" alt=""></a> <a href="user.html" data-bs-toggle="tooltip" title="Creator: Matthew Betty" class="position-absolute top-0 start-0 rounded-circle border border-white border-2 mt-n2 ms-n2"> <img class="img-thumb-sm rounded-circle d-flex" src="images/Creators/Creator14.png" alt=""> <span class="position-absolute bottom-0 end-0 me-n1 d-flex text-3 bg-white text-primary rounded-circle"><i class="fas fa-check-circle"></i></span> </a> </div>
                   <div class="card-body px-0 pb-0">
                     <div class="d-flex align-items-center mb-3"> <a href="item-details.html" class="overflow-hidden me-2">
-                      <h4 class="text-3 link-dark text-truncate mb-0">Pascal Bernardon</h4>
+                      <h4 class="text-3 link-dark text-truncate mb-0">Website development for a pizzeria</h4>
                       </a>
                       <div class="dropdown d-inline-block ms-auto"> <a href="#" class="nft-item-link text-muted me-n2" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
                         <ul class="dropdown-menu dropdown-menu-end">
@@ -777,7 +779,7 @@
                         </ul>
                       </div>
                     </div>
-                    <div class="text-dark fw-500">0.035 ETH <span class="text-muted ms-1">1/5</span></div>
+                    <div class="text-dark fw-500">0.035 ETH <span class="text-muted ms-1"></span></div>
                     <a class="btn-link fw-500" href="#">Buy now</a>
                     <button class="nft-item-like text-3 text-muted float-end mt-n2 me-n2" type="button" ><i class="far fa-heart"></i> 68</button>
                   </div>
@@ -785,10 +787,10 @@
               </div>
               <div class="load-item col-sm-6 col-md-4 col-lg-3">
                 <div class="nft-item card rounded-3 p-3">
-                  <div class="nft-item-wrap position-relative d-flex align-items-center justify-content-center"> <a href="item-details.html"><img class="nft-item-img img-fluid d-flex rounded-3" src="images/items/1.jpg" title="Philipp Potocnik" alt=""></a> <a href="author.html" data-bs-toggle="tooltip" title="Creator: Olivia Samantha" class="position-absolute top-0 start-0 rounded-circle border border-white border-2 mt-n2 ms-n2"> <img class="img-thumb-sm rounded-circle d-flex" src="images/authors/author-2.jpg" alt=""> <span class="position-absolute bottom-0 end-0 me-n1 d-flex text-3 bg-white text-primary rounded-circle"><i class="fas fa-check-circle"></i></span> </a> </div>
+                  <div class="nft-item-wrap position-relative d-flex align-items-center justify-content-center"> <a href="item-details.html"><img class="nft-item-img img-fluid d-flex rounded-3" src="images/items/Task2.5.png" title="Book 'The Lighthouse'" alt=""></a> <a href="user.html" data-bs-toggle="tooltip" title="Creator: James Miller" class="position-absolute top-0 start-0 rounded-circle border border-white border-2 mt-n2 ms-n2"> <img class="img-thumb-sm rounded-circle d-flex" src="images/Creators/Creator3.png" alt=""> <span class="position-absolute bottom-0 end-0 me-n1 d-flex text-3 bg-white text-primary rounded-circle"><i class="fas fa-check-circle"></i></span> </a> </div>
                   <div class="card-body px-0 pb-0">
                     <div class="d-flex align-items-center mb-3"> <a href="item-details.html" class="overflow-hidden me-2">
-                      <h4 class="text-3 link-dark text-truncate mb-0">Philipp Potocnik</h4>
+                      <h4 class="text-3 link-dark text-truncate mb-0">Book "The Lighthouse"</h4>
                       </a>
                       <div class="dropdown d-inline-block ms-auto"> <a href="#" class="nft-item-link text-muted me-n2" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
                         <ul class="dropdown-menu dropdown-menu-end">
@@ -810,7 +812,7 @@
                         </ul>
                       </div>
                     </div>
-                    <div class="text-dark fw-500">2.84 ETH <span class="text-muted ms-1">1/2</span></div>
+                    <div class="text-dark fw-500">2.84 ETH <span class="text-muted ms-1"></span></div>
                     <a class="btn-link fw-500" href="#">Buy now</a>
                     <button class="nft-item-like text-3 text-muted float-end mt-n2 me-n2" type="button" ><i class="far fa-heart"></i> 251</button>
                   </div>
@@ -818,12 +820,12 @@
               </div>
               <div class="load-item col-sm-6 col-md-4 col-lg-3">
                 <div class="nft-item card rounded-3 p-3">
-                  <div class="nft-item-wrap position-relative d-flex align-items-center justify-content-center"> <a href="item-details.html"><img class="nft-item-img img-fluid d-flex rounded-3" src="images/items/2.jpg" title="Dan Farrell" alt=""></a> <a href="author.html" data-bs-toggle="tooltip" title="Creator: Smith Rhodes" class="position-absolute top-0 start-0 rounded-circle border border-white border-2 mt-n2 ms-n2"> <img class="img-thumb-sm rounded-circle d-flex" src="images/authors/author-11.jpg" alt=""> <span class="position-absolute bottom-0 end-0 me-n1 d-flex text-3 bg-white text-primary rounded-circle"><i class="fas fa-check-circle"></i></span> </a>
+                  <div class="nft-item-wrap position-relative d-flex align-items-center justify-content-center"> <a href="item-details.html"><img class="nft-item-img img-fluid d-flex rounded-3" src="images/items/Task3.6.png" title="Advertising video for a cosmetics brand" alt=""></a> <a href="user.html" data-bs-toggle="tooltip" title="Creator: William Damian Thomas" class="position-absolute top-0 start-0 rounded-circle border border-white border-2 mt-n2 ms-n2"> <img class="img-thumb-sm rounded-circle d-flex" src="images/Creators/Creator13.png" alt=""> <span class="position-absolute bottom-0 end-0 me-n1 d-flex text-3 bg-white text-primary rounded-circle"><i class="fas fa-check-circle"></i></span> </a>
                     <div class="countdown position-absolute bottom-0 start-50 translate-middle-x d-inline-block lh-base fw-500 text-dark bg-white border border-primary border-2 rounded-pill shadow-md px-3 py-1 mb-n2" data-countdown-end="2025/09/22 12:00:00"></div>
                   </div>
                   <div class="card-body px-0 pb-0">
                     <div class="d-flex align-items-center mb-3"> <a href="item-details.html" class="overflow-hidden me-2">
-                      <h4 class="text-3 link-dark text-truncate mb-0">Dan Farrell</h4>
+                      <h4 class="text-3 link-dark text-truncate mb-0">Advertising video for a cosmetics brand</h4>
                       </a>
                       <div class="dropdown d-inline-block ms-auto"> <a href="#" class="nft-item-link text-muted me-n2" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
                         <ul class="dropdown-menu dropdown-menu-end">
@@ -844,7 +846,7 @@
                         </ul>
                       </div>
                     </div>
-                    <div class="text-dark fw-500">Not for sale <span class="text-muted ms-1">x1</span></div>
+                    <div class="text-dark fw-500">Not for sale <span class="text-muted ms-1"></span></div>
                     <a class="btn-link fw-500" href="#">Place a bid</a>
                     <button class="nft-item-like text-3 text-muted float-end mt-n2 me-n2" type="button" ><i class="far fa-heart"></i> 83</button>
                   </div>
@@ -852,12 +854,12 @@
               </div>
               <div class="load-item col-sm-6 col-md-4 col-lg-3">
                 <div class="nft-item card rounded-3 p-3">
-                  <div class="nft-item-wrap position-relative d-flex align-items-center justify-content-center"> <a href="item-details.html"><img class="nft-item-img img-fluid d-flex rounded-3" src="images/items/9.gif" title="Lowbrow Art Crying Animation" alt=""></a> <a href="author.html" data-bs-toggle="tooltip" title="Creator: Poppy Joanne" class="position-absolute top-0 start-0 rounded-circle border border-white border-2 mt-n2 ms-n2"> <img class="img-thumb-sm rounded-circle d-flex" src="images/authors/author-4.jpg" alt=""> <span class="position-absolute bottom-0 end-0 me-n1 d-flex text-3 bg-white text-primary rounded-circle"><i class="fas fa-check-circle"></i></span> </a>
+                  <div class="nft-item-wrap position-relative d-flex align-items-center justify-content-center"> <a href="item-details.html"><img class="nft-item-img img-fluid d-flex rounded-3" src="images/items/Task2.7.png" title="Advertising video for a perfume brand" alt=""></a> <a href="user.html" data-bs-toggle="tooltip" title="Creator: Hannah Taylor" class="position-absolute top-0 start-0 rounded-circle border border-white border-2 mt-n2 ms-n2"> <img class="img-thumb-sm rounded-circle d-flex" src="images/Creators/Creator4.png" alt=""> <span class="position-absolute bottom-0 end-0 me-n1 d-flex text-3 bg-white text-primary rounded-circle"><i class="fas fa-check-circle"></i></span> </a>
                     <div class="countdown position-absolute bottom-0 start-50 translate-middle-x d-inline-block lh-base fw-500 text-dark bg-white border border-primary border-2 rounded-pill shadow-md px-3 py-1 mb-n2" data-countdown-end="2025/09/28 12:00:00"></div>
                   </div>
                   <div class="card-body px-0 pb-0">
                     <div class="d-flex align-items-center mb-3"> <a href="item-details.html" class="overflow-hidden me-2">
-                      <h4 class="text-3 link-dark text-truncate mb-0">Lowbrow Art Crying Animation</h4>
+                      <h4 class="text-3 link-dark text-truncate mb-0">Advertising video for a perfume brand</h4>
                       </a>
                       <div class="dropdown d-inline-block ms-auto"> <a href="#" class="nft-item-link text-muted me-n2" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
                         <ul class="dropdown-menu dropdown-menu-end">
@@ -879,7 +881,7 @@
                         </ul>
                       </div>
                     </div>
-                    <div class="text-dark fw-500">1.025 ETH <span class="text-muted ms-1">1/1</span></div>
+                    <div class="text-dark fw-500">1.025 ETH <span class="text-muted ms-1"></span></div>
                     <a class="btn-link fw-500" href="#">Buy now</a>
                     <button class="nft-item-like text-3 text-muted float-end mt-n2 me-n2" type="button" ><i class="far fa-heart"></i> 374</button>
                   </div>
@@ -887,10 +889,10 @@
               </div>
               <div class="load-item col-sm-6 col-md-4 col-lg-3">
                 <div class="nft-item card rounded-3 p-3">
-                  <div class="nft-item-wrap position-relative d-flex align-items-center justify-content-center"> <a href="item-details.html"><img class="nft-item-img img-fluid d-flex rounded-3" src="images/items/4.jpg" title="Boston Public Library" alt=""></a> <a href="author.html" data-bs-toggle="tooltip" title="Creator: Jessica Liao Wei" class="position-absolute top-0 start-0 rounded-circle border border-white border-2 mt-n2 ms-n2"> <img class="img-thumb-sm rounded-circle d-flex" src="images/authors/author-1.jpg" alt=""> <span class="position-absolute bottom-0 end-0 me-n1 d-flex text-3 bg-white text-primary rounded-circle"><i class="fas fa-check-circle"></i></span> </a> </div>
+                  <div class="nft-item-wrap position-relative d-flex align-items-center justify-content-center"> <a href="item-details.html"><img class="nft-item-img img-fluid d-flex rounded-3" src="images/items/Task3.8.png" title="Character for a cartoon" alt=""></a> <a href="user.html" data-bs-toggle="tooltip" title="Creator: Zoe Martin" class="position-absolute top-0 start-0 rounded-circle border border-white border-2 mt-n2 ms-n2"> <img class="img-thumb-sm rounded-circle d-flex" src="images/Creators/Creator5.png" alt=""> <span class="position-absolute bottom-0 end-0 me-n1 d-flex text-3 bg-white text-primary rounded-circle"><i class="fas fa-check-circle"></i></span> </a> </div>
                   <div class="card-body px-0 pb-0">
                     <div class="d-flex align-items-center mb-3"> <a href="item-details.html" class="overflow-hidden me-2">
-                      <h4 class="text-3 link-dark text-truncate mb-0">Boston Public Library</h4>
+                      <h4 class="text-3 link-dark text-truncate mb-0">Character for a cartoon</h4>
                       </a>
                       <div class="dropdown d-inline-block ms-auto"> <a href="#" class="nft-item-link text-muted me-n2" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
                         <ul class="dropdown-menu dropdown-menu-end">
