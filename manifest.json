@@ -1,0 +1,24 @@
+{
+    "name": "Футбольный менеджер",
+    "short_name": "Футбол менеджер",
+    "description": "Приложение для управления футбольной командой и турнирной таблицей",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#667eea",
+    "theme_color": "#764ba2",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iMjQiIGZpbGw9IiM2NjdlZWEiLz4KPHBhdGggZD0iTTk2IDQ4QzExMi44IDQ4IDEyOCA1My4yIDEyOCA1OS4yVjEzMi44QzEyOCAxMzguOCAxMTIuOCAxNDQgOTYgMTQ0Qzc5LjIgMTQ0IDY0IDEzOC44IDY0IDEzMi44VjU5LjJDNjQgNTMuMiA3OS4yIDQ4IDk2IDQ4WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTExMiA4MEMxMTIgODguODM2MSAxMDQuODM2MSA5NiA5NiA5NkM4Ny4xNjM5IDk2IDgwIDg4LjgzNjEgODAgODBDODAgNzEuMTYzOSA4Ny4xNjM5IDY0IDk2IDY0QzEwNC44MzYxIDY0IDExMiA3MS4xNjM5IDExMiA4MFoiIGZpbGw9IiM2NjdlZWEiLz4KPC9zdmc+",
+            "sizes": "192x192",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iNjQiIGZpbGw9IiM2NjdlZWEiLz4KPHBhdGggZD0iTTI1NiAxMjhDMzAwLjggMTI4IDM0NCAxNDEuNiAzNDQgMTU4VjM1NEMzNDQgMzcwLjQgMzAwLjggMzg0IDI1NiAzODRDMjExLjIgMzg0IDE2OCAzNzAuNCAxNjggMzU0VjE1OEMxNjggMTQxLjYgMjExLjIgMTI4IDI1NiAxMjhaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMzA0IDIxMkMzMDQgMjM1LjQ2NCAyODUuNDY0IDI1NCAyNjIgMjU0QzIzOC41MzYgMjU0IDIyMCAyMzUuNDY0IDIyMCAyMTJDMjIwIDE4OC41MzYgMjM4LjUzNiAxNzAgMjYyIDE3MEMyODUuNDY0IDE3MCAzMDQgMTg4LjUzNiAzMDQgMjEyWiIgZmlsbD0iIzY2N2VlYSIvPgo8L3N2Zz4=",
+            "sizes": "512x512",
+            "type": "image/svg+xml"
+        }
+    ],
+    "categories": ["sports", "productivity"],
+    "lang": "ru"
+}
