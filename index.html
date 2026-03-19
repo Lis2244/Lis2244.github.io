@@ -718,31 +718,38 @@ body {
 <h2>Юридическая информация</h2>
 <p class="subtitle">Документы и отчетность фонда</p>
 <div class="documents-grid">
-<div class="document-card" onclick="downloadDocument('docs/ustav.pdf', 'Устав фонда')">
+<div class="document-card" onclick="downloadDocument('docs/Ust.pdf', 'Устав фонда')">
 <span class="document-icon">📄</span>
 <div class="document-info">
 <div class="document-name">Устав фонда</div>
 <div class="document-size">PDF, 245 КБ</div>
 </div>
 </div>
-<div class="document-card" onclick="downloadDocument('docs/ogrn.pdf', 'Свидетельство ОГРН')">
+<div class="document-card" onclick="downloadDocument('docs/Svo_reg.pdf', 'Свидетельство о регистрации')">
 <span class="document-icon">📄</span>
 <div class="document-info">
-<div class="document-name">Свидетельство ОГРН</div>
+<div class="document-name">Свидетельство о регистрации</div>
 <div class="document-size">PDF, 180 КБ</div>
 </div>
 </div>
-<div class="document-card" onclick="downloadDocument('docs/inn.pdf', 'Свидетельство ИНН')">
+<div class="document-card" onclick="downloadDocument('docs/Bp_active.pdf', 'БП активная молодёжь')">
 <span class="document-icon">📄</span>
 <div class="document-info">
-<div class="document-name">Свидетельство ИНН</div>
+<div class="document-name">БП Активная молодёжь</div>
 <div class="document-size">PDF, 175 КБ</div>
 </div>
 </div>
-<div class="document-card" onclick="downloadDocument('docs/bank.pdf', 'Банковские реквизиты')">
+<div class="document-card" onclick="downloadDocument('docs/Bukra.pdf', 'Вместе ради завтрашнего будущего')">
 <span class="document-icon">📄</span>
 <div class="document-info">
-<div class="document-name">Банковские реквизиты</div>
+<div class="document-name">БП Вместе ради завтрашнего будущего</div>
+<div class="document-size">PDF, 120 КБ</div>
+</div>
+</div>
+<div class="document-card" onclick="downloadDocument('docs/BP.pdf', 'БП Помощь Войну')">
+<span class="document-icon">📄</span>
+<div class="document-info">
+<div class="document-name">БП Помощь Войну</div>
 <div class="document-size">PDF, 120 КБ</div>
 </div>
 </div>
@@ -1038,10 +1045,11 @@ showToast(`Скачивание: ${name}`);
 
 window.downloadAllDocuments = function() {
 const docs = [
-{ path: 'docs/ustav.pdf', name: 'Устав' },
-{ path: 'docs/ogrn.pdf', name: 'ОГРН' },
-{ path: 'docs/inn.pdf', name: 'ИНН' },
-{ path: 'docs/bank.pdf', name: 'Реквизиты' }
+{ path: 'docs/Ust.pdf', name: 'Устав фонда' }, 
+{ path: 'docs/Svo_reg.pdf', name: 'Свидетельство о регистрации' }, 
+{ path: 'docs/Bp_active.pdf', name: 'БП активная молодёжь' }, 
+{ path: 'docs/Bukra.pdf', name: 'Вместе ради завтрашнего будущего' }, 
+{ path: 'docs/BP.pdf', name: 'БП Помощь Войну' } 
 ];
 showToast('Загрузка...');
 docs.forEach((doc, i) => setTimeout(() => downloadDocument(doc.path, doc.name), i * 300));
