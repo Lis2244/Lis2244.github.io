@@ -1,165 +1,962 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>Благотворительный фонд «Салгир»</title>
-  <!-- Предзагрузка критических ресурсов -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  <!-- Добавляем мета-тег для корректной работы в Яндекс Браузере -->
-  <meta name="renderer" content="webkit">
-  <!-- Предзагрузка основного модуля -->
-  <link rel="modulepreload" href="/assets/main-BUtS4VFv.js">
-  <script async type="module" crossorigin src="/assets/index-B12ZTyYv.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/three--CWhnhHU.js">
-  <link rel="stylesheet" crossorigin href="/assets/index-D_l951Tr.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <meta name="description" content="Каталог технических средств реабилитации - инвалидные коляски с удобной фильтрацией">
+    <meta name="theme-color" content="#f8fafc">
+    <title>Каталог ТСР | Инвалидные коляски</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f8fafc;
+            min-height: 100vh;
+            padding: 16px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* Header - адаптивный */
+        .header {
+            margin-bottom: 24px;
+        }
+
+        .header h1 {
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            font-weight: 600;
+            background: linear-gradient(135deg, #1e293b 0%, #2d3a4f 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+        }
+
+        .header p {
+            color: #64748b;
+            font-size: clamp(0.875rem, 3.5vw, 1rem);
+        }
+
+        /* Filters section - адаптивный, мобильная оптимизация */
+        .filters-section {
+            background: white;
+            border-radius: 24px;
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid #eef2f6;
+        }
+
+        .search-wrapper {
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 18px;
+            font-size: 16px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 20px;
+            outline: none;
+            transition: all 0.2s ease;
+            background: #ffffff;
+            font-family: inherit;
+            -webkit-appearance: none;
+        }
+
+        .search-input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+        }
+
+        .filters-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        /* На планшетах - две колонки */
+        @media (min-width: 640px) {
+            .filters-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        /* На десктопе - четыре колонки */
+        @media (min-width: 1024px) {
+            .filters-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .filter-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .filter-label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #334155;
+            letter-spacing: -0.01em;
+        }
+
+        /* Исправленный селект для мобильных устройств */
+        .filter-select, .filter-input-modern {
+            padding: 12px 14px;
+            font-size: 15px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 16px;
+            background: white;
+            font-family: inherit;
+            transition: all 0.2s;
+            color: #1e293b;
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .filter-select {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+            background-position: right 12px center;
+            background-repeat: no-repeat;
+            background-size: 20px;
+            padding-right: 40px;
+            cursor: pointer;
+        }
+
+        /* Стили для опций в селекте - делаем текст более компактным на мобильных */
+        .filter-select option {
+            font-size: 14px;
+            padding: 8px;
+            white-space: normal;
+            word-break: break-word;
+        }
+
+        /* Специальные стили для мобильных устройств для селекта */
+        @media (max-width: 640px) {
+            .filter-select {
+                font-size: 14px;
+                padding: 12px 32px 12px 12px;
+                min-height: 48px;
+            }
+            
+            .filter-select option {
+                font-size: 13px;
+                padding: 10px;
+                line-height: 1.4;
+            }
+        }
+
+        /* Для очень маленьких экранов - делаем текст еще компактнее */
+        @media (max-width: 480px) {
+            .filter-select {
+                font-size: 13px;
+                padding: 11px 32px 11px 11px;
+            }
+            
+            .filter-select option {
+                font-size: 12px;
+                padding: 8px;
+            }
+        }
+
+        .filter-select:focus, .filter-input-modern:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+        }
+
+        /* Cards grid - адаптивная сетка */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        @media (min-width: 480px) {
+            .cards-grid {
+                gap: 20px;
+            }
+        }
+
+        @media (min-width: 640px) {
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .cards-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 24px;
+            }
+        }
+
+        /* Карточка - оптимизирована для тач-взаимодействия */
+        .chair-card {
+            background: white;
+            border-radius: 24px;
+            padding: 20px;
+            transition: all 0.2s ease;
+            border: 1px solid #eef2f6;
+            cursor: pointer;
+            position: relative;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .chair-card:active {
+            transform: scale(0.98);
+            background: #fefefe;
+        }
+
+        @media (hover: hover) {
+            .chair-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 20px 25px -12px rgba(0,0,0,0.08);
+                border-color: #cbd5e1;
+            }
+        }
+
+        .chair-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: #f1f5f9;
+            color: #475569;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-bottom: 14px;
+            letter-spacing: -0.01em;
+        }
+
+        .chair-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #0f172a;
+            line-height: 1.4;
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .chair-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .meta-tag {
+            background: #f8fafc;
+            padding: 6px 12px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            color: #334155;
+            font-weight: 500;
+            border: 1px solid #eef2f6;
+            word-break: break-word;
+        }
+
+        .meta-tag strong {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .chair-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 14px;
+            border-top: 1px solid #f0f2f5;
+            font-size: 0.8125rem;
+            color: #5b6e8c;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .stats-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Empty state - адаптивный */
+        .empty-state {
+            text-align: center;
+            padding: 60px 24px;
+            background: white;
+            border-radius: 32px;
+            border: 1px solid #eef2f6;
+        }
+
+        .empty-state-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .empty-state-text {
+            color: #64748b;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* Loading - адаптивный */
+        .loading-state {
+            text-align: center;
+            padding: 60px 24px;
+            background: white;
+            border-radius: 32px;
+            border: 1px solid #eef2f6;
+        }
+
+        .spinner {
+            width: 44px;
+            height: 44px;
+            border: 3px solid #e2e8f0;
+            border-top-color: #3b82f6;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Modal - оптимизирован для мобильных */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            padding: 16px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-container {
+            background: white;
+            border-radius: 28px;
+            max-width: 720px;
+            width: 100%;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes modalSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            padding: 20px 24px 16px 24px;
+            border-bottom: 1px solid #eef2f6;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .modal-header h2 {
+            font-size: clamp(1.125rem, 4vw, 1.35rem);
+            font-weight: 600;
+            color: #0f172a;
+            padding-right: 40px;
+            line-height: 1.3;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #f1f5f9;
+            font-size: 22px;
+            cursor: pointer;
+            color: #475569;
+            transition: all 0.2s;
+            line-height: 1;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .modal-close:active {
+            background: #e2e8f0;
+            transform: scale(0.95);
+        }
+
+        .modal-body {
+            padding: 20px 24px 24px 24px;
+            overflow-y: auto;
+            flex: 1;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Информационная сетка в модалке - адаптивная */
+        .info-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 24px;
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: 20px;
+        }
+
+        .info-pill {
+            background: white;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+            word-break: break-word;
+        }
+
+        .info-pill strong {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        .char-group {
+            margin-bottom: 24px;
+        }
+
+        .char-group-title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1e293b;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+            letter-spacing: -0.2px;
+        }
+
+        .char-card {
+            background: #fafcff;
+            border-radius: 18px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            border: 1px solid #eff3f8;
+            transition: background 0.1s;
+        }
+
+        .char-name {
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: #334155;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .char-value {
+            font-size: 0.95rem;
+            color: #0f172a;
+            word-break: break-word;
+            line-height: 1.4;
+        }
+
+        .missing-value {
+            color: #f97316;
+            font-weight: 450;
+        }
+
+        /* Специальные мобильные улучшения */
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+            }
+            
+            .filters-section {
+                padding: 16px;
+            }
+            
+            .chair-card {
+                padding: 16px;
+            }
+            
+            .modal-header {
+                padding: 16px 20px 12px 20px;
+            }
+            
+            .modal-body {
+                padding: 16px 20px 20px 20px;
+            }
+            
+            .info-grid {
+                padding: 12px;
+                gap: 8px;
+            }
+            
+            .info-pill {
+                font-size: 0.75rem;
+                padding: 5px 12px;
+            }
+            
+            .char-card {
+                padding: 12px 14px;
+            }
+            
+            .chair-meta {
+                gap: 6px;
+            }
+            
+            .meta-tag {
+                font-size: 0.7rem;
+                padding: 5px 10px;
+            }
+        }
+
+        /* Увеличенные тач-цели для мобильных */
+        @media (max-width: 640px) {
+            .filter-select, 
+            .filter-input-modern,
+            .search-input {
+                min-height: 48px;
+            }
+            
+            .modal-close {
+                width: 40px;
+                height: 40px;
+                top: 16px;
+                right: 16px;
+            }
+        }
+
+        /* Стили для безопасной зоны на iPhone с вырезом */
+        @supports (padding: max(0px)) {
+            body {
+                padding-left: max(12px, env(safe-area-inset-left));
+                padding-right: max(12px, env(safe-area-inset-right));
+                padding-top: max(12px, env(safe-area-inset-top));
+                padding-bottom: max(12px, env(safe-area-inset-bottom));
+            }
+        }
+
+        /* Анимация загрузки карточек */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cards-grid .chair-card {
+            animation: fadeInUp 0.3s ease-out;
+        }
+
+        /* Стили для корректного отображения длинных опций на iOS */
+        @supports (-webkit-touch-callout: none) {
+            .filter-select {
+                font-size: 16px; /* Предотвращаем масштабирование на iOS */
+            }
+            
+            @media (max-width: 640px) {
+                .filter-select {
+                    font-size: 14px;
+                }
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="progress-bar" id="progressBar"></div>
-  <!-- Three.js Canvas -->
-  <div id="canvas-container"></div>
-
-  <!-- Hero -->
-  <section class="hero" id="home">
-    <div class="container">
-      <div class="hero-content">
-        <h1>Благотворительный фонд<br> «Салгир»</h1>
-        <p class="hero-description">Помогаем тем, кто в этом нуждается. Работаем прозрачно и эффективно для защиты и развития Российской Федерации вцелом и Крыма в частности.</p>
-        <div class="button-group">
-          <a href="#about" class="button button-primary">О фонде</a>
-          <a href="#docs" class="button">Документы</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- О фонде -->
-  <section id="about">
-    <div class="container">
-      <h2>О фонде</h2>
-      <p class="subtitle">Наша миссия — помощь и поддержка</p>
-      <div class="about-text">
-        <p>
-          Благотворительный фонд «Салгир» создан для оказания помощи и поддержки участникам
-          <span class="svo-highlight">
-            <span class="svo-s">С</span><span class="svo-v">В</span><span class="svo-o">О</span>
-          </span>,
-          их семьям и социально незащищенным слоям населения, развития культуры, образования.
-        </p>
-        <p>
-          Мы работаем открыто и прозрачно, регулярно публикуем отчеты о своей деятельности и всегда рады партнерству и сотрудничеству.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Реквизиты -->
-  <section id="details">
-    <div class="container">
-      <h2>Контакты</h2>
-      <p class="subtitle">Вся информация для связи</p>
-      <div class="details-grid">
-        <div class="detail-card">
-          <div class="detail-label">Юридический адрес</div>
-          <div class="detail-value copyable" data-copy="295034, Россия, Республика Крым, г. Симферополь, ул. Тренева, д. 21, офис 3, 4">
-            295034, Россия, Республика Крым,<br>г. Симферополь, ул. Тренева, д. 21, офис 3, 4
-          </div>
-        </div>
-        <div class="detail-card">
-          <div class="detail-label">Директор</div>
-          <div class="detail-value">Сиваченко Родион Анатольевич</div>
-        </div>
-      </div>
-      <div class="contact-info">
-        <div class="contact-item">
-          <span class="contact-icon">📞</span>
-          <a href="tel:+79787469622" class="contact-text">+7 978 746 96 22</a>
-        </div>
-        <div class="contact-item">
-          <span class="contact-icon">✉️</span>
-          <a href="mailto:BFSALGIR@YANDEX.RU" class="contact-text">BFSALGIR@YANDEX.RU</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Документы -->
-<section id="docs">
 <div class="container">
-<h2>Юридическая информация</h2>
-<p class="subtitle">Документы и отчетность фонда</p>
-<div class="documents-grid">
-<div class="document-card" onclick="downloadDocument('docs/Ust.pdf', 'Устав фонда')">
-<span class="document-icon">📄</span>
-<div class="document-info">
-<div class="document-name">Устав фонда</div>
-<div class="document-size">PDF, 245 КБ</div>
-</div>
-</div>
-<div class="document-card" onclick="downloadDocument('docs/Svo_reg.pdf', 'Свидетельство о регистрации')">
-<span class="document-icon">📄</span>
-<div class="document-info">
-<div class="document-name">Свидетельство о регистрации</div>
-<div class="document-size">PDF, 180 КБ</div>
-</div>
-</div>
-<div class="document-card" onclick="downloadDocument('docs/Bp_active.pdf', 'БП активная молодёжь')">
-<span class="document-icon">📄</span>
-<div class="document-info">
-<div class="document-name">БП Активная молодёжь</div>
-<div class="document-size">PDF, 175 КБ</div>
-</div>
-</div>
-<div class="document-card" onclick="downloadDocument('docs/Bukra.pdf', 'Вместе ради завтрашнего будущего')">
-<span class="document-icon">📄</span>
-<div class="document-info">
-<div class="document-name">БП Вместе ради завтрашнего будущего</div>
-<div class="document-size">PDF, 120 КБ</div>
-</div>
-</div>
-<div class="document-card" onclick="downloadDocument('docs/BP.pdf', 'БП Помощь Войну')">
-<span class="document-icon">📄</span>
-<div class="document-info">
-<div class="document-name">БП Помощь Войну</div>
-<div class="document-size">PDF, 120 КБ</div>
-</div>
-</div>
-</div>
-<div class="download-all">
-<div class="download-all-button" onclick="downloadAllDocuments()">
-⬇️ Скачать все документы
-</div>
-</div>
-</div>
-</section>
-
-  <!-- Футер -->
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">© Благотворительный фонд «Салгир»</div>
-        <div class="footer-links">
-          <a href="#home">Главная</a>
-          <a href="#about">О фонде</a>
-          <a href="#details">Контакты</a>
-          <a href="#docs">Документы</a>
-        </div>
-      </div>
-      <div class="copyright">
-        2026 • Симферополь
-      </div>
+    <div class="header">
+        <h1>Каталог ТСР</h1>
+        <p>Инвалидные коляски — подбор по типу и характеристикам</p>
     </div>
-  </footer>
 
-  <div class="toast" id="toast">Скопировано</div>
+    <div class="filters-section">
+        <div class="search-wrapper">
+            <input type="text" class="search-input" id="searchInput" placeholder="Поиск по названию или ID">
+        </div>
+        <div class="filters-grid">
+            <div class="filter-field">
+                <label class="filter-label">Тип коляски</label>
+                <select class="filter-select" id="typeFilter">
+                    <option value="all">Все типы</option>
+                </select>
+            </div>
+            <div class="filter-field">
+                <label class="filter-label">Номер ТСР</label>
+                <input type="text" class="filter-input-modern" id="tsrFilter" placeholder="7-01-07">
+            </div>
+            <div class="filter-field">
+                <label class="filter-label">КТРУ код</label>
+                <input type="text" class="filter-input-modern" id="ktruFilter" placeholder="30.92.20.000">
+            </div>
+            <div class="filter-field">
+                <label class="filter-label">ОКПД-2 код</label>
+                <input type="text" class="filter-input-modern" id="okpdFilter" placeholder="30.92.20.000">
+            </div>
+        </div>
+    </div>
 
-  <!-- Используем async для загрузки модуля -->
-  
-  <!-- Добавляем fallback для старых браузеров -->
-  <script nomodule>
-    console.log('Ваш браузер не поддерживает ES модули');
-  </script>
+    <div id="chairsContainer"></div>
+</div>
+
+<div id="modal" class="modal">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h2 id="modalTitle"></h2>
+            <div class="modal-close" id="closeModalBtn">✕</div>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+    </div>
+</div>
+
+<script>
+    let chairsData = [];
+    let currentFilterType = 'all';
+    let currentSearchQuery = '';
+    let currentKtruQuery = '';
+    let currentOkpdQuery = '';
+    let currentTsrQuery = '';
+
+    // Определение типа коляски согласно строгим правилам
+    function getChairType(chair) {
+        const spgzName = (chair.spgz_name || '').toLowerCase();
+        const kpgzName = (chair.kpgz_name || '').toLowerCase();
+        const fullText = `${spgzName} ${kpgzName}`;
+        
+        if (fullText.includes('электропривод') || fullText.includes('электродвигател') || fullText.includes('электронным управлением')) {
+            return 'С электроприводом';
+        }
+        if (fullText.includes('рычажный привод') || fullText.includes('двуручным рычажным')) {
+            return 'Механическая (рычажный привод)';
+        }
+        if (fullText.includes('односторонним приводом')) {
+            return 'Механическая (односторонний привод)';
+        }
+        if (fullText.includes('активного типа') || fullText.includes('спортивная')) {
+            return 'Активного типа';
+        }
+        if (fullText.includes('прогулочная')) {
+            return 'Прогулочная';
+        }
+        if (fullText.includes('комнатная')) {
+            return 'Комнатная';
+        }
+        if (fullText.includes('малогабаритная')) {
+            return 'Малогабаритная';
+        }
+        
+        const explicitType = chair.characteristics?.['Вид кресла-коляски']?.value;
+        if (explicitType && explicitType !== 'Не указан') {
+            const lowExplicit = explicitType.toLowerCase();
+            if (lowExplicit.includes('электропривод')) return 'С электроприводом';
+            if (lowExplicit.includes('рычажный')) return 'Механическая (рычажный привод)';
+            if (lowExplicit.includes('односторонний')) return 'Механическая (односторонний привод)';
+            if (lowExplicit.includes('активного')) return 'Активного типа';
+            if (lowExplicit.includes('прогулочная')) return 'Прогулочная';
+            if (lowExplicit.includes('комнатная')) return 'Комнатная';
+            if (lowExplicit.includes('малогабаритная')) return 'Малогабаритная';
+        }
+        
+        return 'Не указан';
+    }
+
+    function getTsrNumber(chair) {
+        return chair.characteristics?.['Номер технического средства реабилитации']?.value || null;
+    }
+
+    async function loadData() {
+        const container = document.getElementById('chairsContainer');
+        container.innerHTML = `
+            <div class="loading-state">
+                <div class="spinner"></div>
+                <div class="empty-state-text">Загрузка каталога...</div>
+            </div>
+        `;
+        try {
+            const response = await fetch('spgz_data_converted.json');
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            chairsData = await response.json();
+            populateTypeFilter();
+            renderChairs();
+        } catch (error) {
+            console.error('Ошибка загрузки:', error);
+            container.innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-state-icon">⚠️</div>
+                    <div class="empty-state-text">Не удалось загрузить данные.<br>Файл spgz_data_converted.json не найден.</div>
+                </div>
+            `;
+        }
+    }
+
+    function populateTypeFilter() {
+        const typesSet = new Set();
+        chairsData.forEach(chair => typesSet.add(getChairType(chair)));
+        
+        const order = [
+            'С электроприводом',
+            'Механическая (рычажный привод)',
+            'Механическая (односторонний привод)',
+            'Активного типа',
+            'Прогулочная',
+            'Комнатная',
+            'Малогабаритная',
+            'Не указан'
+        ];
+        
+        const sortedTypes = [];
+        order.forEach(type => {
+            if (typesSet.has(type)) sortedTypes.push(type);
+        });
+        typesSet.forEach(type => {
+            if (!sortedTypes.includes(type)) sortedTypes.push(type);
+        });
+        
+        const select = document.getElementById('typeFilter');
+        while (select.options.length > 1) select.remove(1);
+        
+        sortedTypes.forEach(type => {
+            const option = document.createElement('option');
+            option.value = type;
+            option.textContent = type;
+            select.appendChild(option);
+        });
+    }
+
+    function filterChairsList() {
+        return chairsData.filter(chair => {
+            const searchLower = currentSearchQuery.trim().toLowerCase();
+            const searchMatch = !searchLower ||
+                (chair.spgz_name && chair.spgz_name.toLowerCase().includes(searchLower)) ||
+                (chair.spgz_id && chair.spgz_id.toString().includes(searchLower));
+            
+            let typeMatch = true;
+            if (currentFilterType !== 'all') {
+                typeMatch = getChairType(chair) === currentFilterType;
+            }
+            
+            let ktruMatch = true;
+            if (currentKtruQuery) {
+                ktruMatch = chair.ktru_code && chair.ktru_code.toLowerCase().includes(currentKtruQuery.toLowerCase());
+            }
+            
+            let okpdMatch = true;
+            if (currentOkpdQuery) {
+                okpdMatch = chair.okpd2_code && chair.okpd2_code.toLowerCase().includes(currentOkpdQuery.toLowerCase());
+            }
+            
+            let tsrMatch = true;
+            if (currentTsrQuery) {
+                const tsrVal = getTsrNumber(chair);
+                tsrMatch = tsrVal && tsrVal.toLowerCase().includes(currentTsrQuery.toLowerCase());
+            }
+            
+            return searchMatch && typeMatch && ktruMatch && okpdMatch && tsrMatch;
+        });
+    }
+
+    function renderChairs() {
+        const filtered = filterChairsList();
+        const container = document.getElementById('chairsContainer');
+        
+        if (filtered.length === 0) {
+            container.innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-state-icon">🔍</div>
+                    <div class="empty-state-text">По вашему запросу ничего не найдено</div>
+                </div>
+            `;
+            return;
+        }
+        
+        container.innerHTML = `
+            <div class="cards-grid">
+                ${filtered.map(chair => {
+                    const chairType = getChairType(chair);
+                    const tsrNumber = getTsrNumber(chair);
+                    const charsCount = Object.keys(chair.characteristics || {}).length;
+                    return `
+                        <div class="chair-card" data-id="${chair.spgz_id}">
+                            <div class="chair-badge">Версия: ${chair.spgz_id || '—'}</div>
+                            <div class="chair-title">${escapeHtml(chair.spgz_name || 'Без названия')}</div>
+                            <div class="chair-meta">
+                                <div class="meta-tag"><strong>Тип</strong> ${escapeHtml(chairType)}</div>
+                                <div class="meta-tag"><strong>ОКПД-2</strong> ${chair.okpd2_code || '—'}</div>
+                                ${tsrNumber ? `<div class="meta-tag"><strong>ТСР</strong> ${escapeHtml(tsrNumber)}</div>` : ''}
+                            </div>
+                            <div class="chair-footer">
+                                <span class="stats-badge">📋 ${charsCount} хар-к</span>
+                                <span class="stats-badge">🔧 ${chair.ktru_code ? chair.ktru_code.substring(0, 12) : '—'}</span>
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+            </div>
+        `;
+        
+        document.querySelectorAll('.chair-card').forEach(card => {
+            const id = card.getAttribute('data-id');
+            card.addEventListener('click', () => openModal(id));
+        });
+    }
+
+    function openModal(chairId) {
+        const chair = chairsData.find(c => c.spgz_id == chairId);
+        if (!chair) return;
+        
+        const modal = document.getElementById('modal');
+        document.getElementById('modalTitle').textContent = chair.spgz_name || 'Информация о средстве';
+        
+        const chars = chair.characteristics || {};
+        const grouped = groupCharacteristics(chars);
+        const chairType = getChairType(chair);
+        const tsrNumber = getTsrNumber(chair);
+        
+        let modalHtml = `
+            <div class="info-grid">
+                <span class="info-pill"><strong>ID</strong> ${chair.spgz_id || '—'}</span>
+                <span class="info-pill"><strong>Тип</strong> ${escapeHtml(chairType)}</span>
+                <span class="info-pill"><strong>ОКПД-2</strong> ${chair.okpd2_code || '—'}</span>
+                <span class="info-pill"><strong>КТРУ</strong> ${chair.ktru_code || '—'}</span>
+                ${tsrNumber ? `<span class="info-pill"><strong>ТСР</strong> ${escapeHtml(tsrNumber)}</span>` : ''}
+            </div>
+        `;
+        
+        for (const [groupKey, groupItems] of Object.entries(grouped)) {
+            if (Object.keys(groupItems).length === 0) continue;
+            modalHtml += `<div class="char-group"><div class="char-group-title">${getGroupTitle(groupKey)}</div>`;
+            for (const [name, data] of Object.entries(groupItems)) {
+                let value = data.value;
+                const unit = data.unit_of_measurement ? ` ${data.unit_of_measurement}` : '';
+                const condition = data.condition_operation ? ` (${data.condition_operation})` : '';
+                const hasValue = value !== null && value !== undefined && value !== '';
+                const displayValue = hasValue ? `${value}${unit}${condition}` : 'не указано';
+                modalHtml += `
+                    <div class="char-card">
+                        <div class="char-name">${escapeHtml(name)}</div>
+                        <div class="char-value ${!hasValue ? 'missing-value' : ''}">${escapeHtml(displayValue)}</div>
+                    </div>
+                `;
+            }
+            modalHtml += `</div>`;
+        }
+        
+        if (Object.keys(chars).length === 0) {
+            modalHtml += `<div class="empty-state" style="padding: 32px;"><div class="empty-state-text">Нет данных о характеристиках</div></div>`;
+        }
+        
+        document.getElementById('modalBody').innerHTML = modalHtml;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function groupCharacteristics(chars) {
+        const groups = { basic: {}, dimensions: {}, construction: {}, other: {} };
+        const dimKeywords = ['высот', 'ширин', 'глубин', 'длин', 'диаметр', 'габарит', 'вес', 'масса', 'глубина'];
+        const constrKeywords = ['материал', 'складн', 'конструкц', 'модуль', 'тип шин', 'привод', 'управл', 'подлокотн', 'подножк', 'спинк', 'рама'];
+        
+        for (const [name, data] of Object.entries(chars)) {
+            const lower = name.toLowerCase();
+            if (dimKeywords.some(k => lower.includes(k))) groups.dimensions[name] = data;
+            else if (constrKeywords.some(k => lower.includes(k))) groups.construction[name] = data;
+            else if (lower.includes('вид') || lower.includes('тип') || lower.includes('номер') || lower.includes('назначени')) groups.basic[name] = data;
+            else groups.other[name] = data;
+        }
+        return groups;
+    }
+    
+    function getGroupTitle(key) {
+        const map = {
+            basic: 'Основные характеристики',
+            dimensions: 'Размеры и масса',
+            construction: 'Конструктивные особенности',
+            other: 'Дополнительные параметры'
+        };
+        return map[key] || 'Характеристики';
+    }
+    
+    function escapeHtml(str) {
+        if (!str) return '';
+        return String(str).replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+    
+    function closeModal() {
+        const modal = document.getElementById('modal');
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    // Event listeners
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+        currentSearchQuery = e.target.value;
+        renderChairs();
+    });
+    document.getElementById('typeFilter').addEventListener('change', (e) => {
+        currentFilterType = e.target.value;
+        renderChairs();
+    });
+    document.getElementById('ktruFilter').addEventListener('input', (e) => {
+        currentKtruQuery = e.target.value;
+        renderChairs();
+    });
+    document.getElementById('okpdFilter').addEventListener('input', (e) => {
+        currentOkpdQuery = e.target.value;
+        renderChairs();
+    });
+    document.getElementById('tsrFilter').addEventListener('input', (e) => {
+        currentTsrQuery = e.target.value;
+        renderChairs();
+    });
+    document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+    document.getElementById('modal').addEventListener('click', (e) => {
+        if (e.target === document.getElementById('modal')) closeModal();
+    });
+    
+    loadData();
+</script>
 </body>
 </html>
