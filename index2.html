@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Golden Aura | Премиум массаж и СПА</title>
+    <!-- Typed.js -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Poppins', 'Segoe UI', sans-serif;
+            overflow-x: hidden;
+            background: #050505;
+            color: #fff;
+        }
+
+        canvas {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            pointer-events: auto;
+            padding-bottom: 20vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* КОНЦЕПЦИЯ: ЗОЛОТАЯ ЛИНИЯ ГОРИЗОНТА */
+        section {
+            max-width: 800px;
+            width: 90%;
+            margin: 0 auto 60vh;
+            padding: 35px 30px;
+            
+            background: transparent;
+            backdrop-filter: none;
+            
+            border: none;
+            border-left: 2px solid rgba(212, 175, 55, 0);
+            border-bottom: 1px solid rgba(212, 175, 55, 0);
+            
+            text-align: left;
+            position: relative;
+            
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 1.5s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 1s ease;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #d4af37, #ffd700, transparent);
+            transition: width 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+            border-left-color: rgba(212, 175, 55, 0.6);
+            border-bottom-color: rgba(212, 175, 55, 0.3);
+        }
+
+        section.visible::before {
+            width: 100%;
+        }
+
+        section:hover {
+            border-left-color: #d4af37;
+            border-bottom-color: rgba(212, 175, 55, 0.5);
+        }
+
+        section:first-of-type {
+            margin-top: 20vh;
+            text-align: center;
+            border-left: none;
+            border: 1px solid rgba(212, 175, 55, 0);
+            border-radius: 0;
+            transform: translateY(50px);
+            transition: opacity 2s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 2s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 1s ease;
+        }
+
+        section:first-of-type.visible {
+            transform: translateY(0);
+            border-color: rgba(212, 175, 55, 0.3);
+            background: rgba(5, 5, 5, 0.1);
+            backdrop-filter: blur(8px);
+        }
+
+        section:first-of-type::before {
+            display: none;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #d4af37, #ffd700, #b8860b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+            text-shadow: 0 0 60px rgba(212, 175, 55, 0.3);
+            letter-spacing: 4px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: rgba(212, 175, 55, 0.9);
+            letter-spacing: 6px;
+            font-weight: 300;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            color: #d4af37;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d4af37;
+            transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* На десктопе - при наведении */
+        @media (min-width: 769px) {
+            section:hover h2::after {
+                width: 100%;
+            }
+        }
+
+        /* На мобильных - при появлении секции */
+        @media (max-width: 768px) {
+            section.visible h2::after {
+                width: 100%;
+                transition-delay: 0.5s;
+            }
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: rgba(212, 175, 55, 0.9);
+            margin: 25px 0 15px 0;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 0 20px 0;
+            color: rgba(255, 255, 255, 0.85);
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+            font-weight: 300;
+        }
+
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .price-item {
+            padding: 12px 15px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .visible .price-item {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .price-item:nth-child(1) { transition-delay: 0.1s; }
+        .price-item:nth-child(2) { transition-delay: 0.2s; }
+        .price-item:nth-child(3) { transition-delay: 0.3s; }
+        .price-item:nth-child(4) { transition-delay: 0.4s; }
+        .price-item:nth-child(5) { transition-delay: 0.5s; }
+
+        .price-item .service-name {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+        }
+
+        .price-item .service-price {
+            color: #d4af37;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Анимация зачёркивания цены с большой задержкой */
+        .old-price {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+            margin-left: 8px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .old-price::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: rgba(212, 175, 55, 0.7);
+            transform: translateY(-50%);
+            transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Зачёркивание происходит при появлении секции с большой задержкой */
+        .visible .old-price::after {
+            width: 100%;
+            transition-delay: 1.5s; /* Увеличенная задержка */
+        }
+
+        .package-item {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(4px);
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 3px solid rgba(212, 175, 55, 0.4);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .visible .package-item {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .visible .package-item:nth-child(1) { transition-delay: 0.1s; }
+        .visible .package-item:nth-child(2) { transition-delay: 0.2s; }
+        .visible .package-item:nth-child(3) { transition-delay: 0.3s; }
+        .visible .package-item:nth-child(4) { transition-delay: 0.4s; }
+        .visible .package-item:nth-child(5) { transition-delay: 0.5s; }
+
+        .package-item:hover {
+            border-left-color: #d4af37;
+            background: rgba(0, 0, 0, 0.3);
+            transform: translateX(5px);
+        }
+
+        .package-title {
+            color: #d4af37;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Премиальные иконки */
+        .icon-gold {
+            display: inline-block;
+            font-size: 1.4rem;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
+        }
+
+        .package-desc {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .package-price {
+            display: flex;
+            gap: 15px;
+            align-items: baseline;
+        }
+
+        .current-price {
+            color: #d4af37;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        /* Стильный блок подарка */
+        .gift-block {
+            margin-top: 15px;
+            padding: 12px 0;
+            border-top: 1px dashed rgba(212, 175, 55, 0.3);
+        }
+
+        .gift-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(212, 175, 55, 0.7);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .gift-label .icon-gold {
+            font-size: 1.1rem;
+        }
+
+        .gift-content {
+            color: #d4af37;
+            font-size: 1rem;
+            padding-left: 26px;
+            min-height: 24px;
+        }
+
+        .typed-cursor {
+            color: #d4af37;
+            opacity: 0.7;
+        }
+
+        .duration-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 5px 12px;
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: #d4af37;
+            letter-spacing: 1px;
+        }
+
+        .service-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .card {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(4px);
+            padding: 20px;
+            flex: 1 1 200px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-left: 3px solid rgba(212, 175, 55, 0.4);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .visible .card {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .visible .card:nth-child(1) { transition-delay: 0.1s; }
+        .visible .card:nth-child(2) { transition-delay: 0.2s; }
+        .visible .card:nth-child(3) { transition-delay: 0.3s; }
+        .visible .card:nth-child(4) { transition-delay: 0.4s; }
+
+        .card:hover {
+            transform: translateX(8px);
+            border-left-color: #d4af37;
+            border-left-width: 5px;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .card h4 {
+            color: #d4af37;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card .price {
+            color: #d4af37;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: transparent;
+            padding: 16px 45px;
+            border-radius: 0;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: #d4af37;
+            margin-top: 30px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            border: 2px solid #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #d4af37;
+            transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: -1;
+        }
+
+        .btn:hover {
+            color: #050505;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        footer {
+            max-width: 800px;
+            width: 90%;
+            text-align: center;
+            padding: 40px 30px;
+            background: transparent;
+            border: none;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            margin: 10vh auto 30px;
+            
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.5s ease 0.3s,
+                        transform 1.5s ease 0.3s;
+        }
+
+        footer.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            section {
+                padding: 25px 20px;
+                margin-bottom: 40vh;
+                transform: translateY(30px);
+            }
+            
+            section:first-of-type {
+                margin-top: 15vh;
+            }
+            
+            h1 { 
+                font-size: 2.8rem;
+                letter-spacing: 2px;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+                letter-spacing: 3px;
+            }
+            
+            h2 { 
+                font-size: 1.8rem;
+            }
+            
+            h3 {
+                font-size: 1.2rem;
+            }
+            
+            p { 
+                font-size: 1rem;
+            }
+            
+            .price-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .btn { 
+                width: 100%;
+                max-width: 300px;
+                padding: 14px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .package-price {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+
+        @media (min-width: 1440px) {
+            section {
+                max-width: 900px;
+            }
+            
+            h1 {
+                font-size: 5.5rem;
+            }
+            
+            h2 {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="content">
+        <!-- Главный экран -->
+        <section class="reveal">
+            <h1>GOLDEN AURA</h1>
+            <div class="subtitle">Премиум массаж и СПА</div>
+            <p>Погрузитесь в атмосферу абсолютного расслабления и восстановления</p>
+            <a href="#" class="btn">Записаться</a>
+        </section>
+
+        <!-- ПРАЙС-ЛИСТ: Массаж -->
+        <section class="reveal">
+            <h2>Массаж</h2>
+            <p style="margin-bottom: 10px;">Классический • Расслабляющий • Лимфодренажный • Антицеллюлитный</p>
+            
+            <h3>Сеанс 30 мин (по зонам)</h3>
+            <div class="price-item">
+                <span class="service-name">Разовый сеанс</span>
+                <span class="service-price">1 900 ₽</span>
+            </div>
+            <div class="price-item">
+                <span class="service-name">5 сеансов</span>
+                <span class="service-price">8 500 ₽ <span class="old-price">9 500 ₽</span></span>
+            </div>
+            <div class="price-item">
+                <span class="service-name">10 сеансов</span>
+                <span class="service-price">16 500 ₽ <span class="old-price">19 000 ₽</span></span>
+            </div>
+
+            <h3>Сеанс 60 мин</h3>
+            <div class="price-item">
+                <span class="service-name">Разовый сеанс</span>
+                <span class="service-price">3 300 ₽</span>
+            </div>
+            <div class="price-item">
+                <span class="service-name">5 сеансов</span>
+                <span class="service-price">14 750 ₽ <span class="old-price">16 500 ₽</span></span>
+            </div>
+            <div class="price-item">
+                <span class="service-name">10 сеансов</span>
+                <span class="service-price">28 500 ₽ <span class="old-price">33 000 ₽</span></span>
+            </div>
+
+            <h3>Сеанс 90 мин</h3>
+            <div class="price-item">
+                <span class="service-name">Разовый сеанс</span>
+                <span class="service-price">4 500 ₽</span>
+            </div>
+
+            <h3>Сеанс 120 мин</h3>
+            <div class="price-item">
+                <span class="service-name">Разовый сеанс</span>
+                <span class="service-price">6 500 ₽</span>
+            </div>
+
+            <h3>Дополнительные услуги</h3>
+            <div class="price-item">
+                <span class="service-name">Массаж лица классический</span>
+                <span class="service-price">1 300 ₽</span>
+            </div>
+            <div class="price-item">
+                <span class="service-name">Огненный массаж всего тела</span>
+                <span class="service-price">4 500 ₽</span>
+            </div>
+            <div class="price-item">
+                <span class="service-name">Массаж медовый всего тела</span>
+                <span class="service-price">1 900 ₽</span>
+            </div>
+            <div class="price-item">
+                <span class="service-name">Скрабирование всего тела</span>
+                <span class="service-price">1 900 ₽</span>
+            </div>
+            <div class="price-item">
+                <span class="service-name">Обёртывание всего тела</span>
+                <span class="service-price">1 900 ₽</span>
+            </div>
+        </section>
+
+        <!-- Аппаратная коррекция -->
+        <section class="reveal">
+            <h2>Аппаратная коррекция фигуры</h2>
+            <div class="price-item">
+                <span class="service-name">Сеанс 60-75 мин</span>
+                <span class="service-price">2 700 ₽</span>
+            </div>
+            <div class="price-item">
+                <span class="service-name">5 сеансов по 60 мин</span>
+                <span class="service-price">12 500 ₽ <span class="old-price">13 500 ₽</span></span>
+            </div>
+            <div class="price-item">
+                <span class="service-name">10 сеансов по 60 мин</span>
+                <span class="service-price">24 500 ₽ <span class="old-price">27 000 ₽</span></span>
+            </div>
+        </section>
+
+        <!-- СПА ПРОГРАММЫ -->
+        <section class="reveal">
+            <h2>СПА Программы</h2>
+            
+            <div class="package-item">
+                <div class="package-title">
+                    <span class="icon-gold">◈</span>
+                    Шоколадное блаженство
+                </div>
+                <div class="package-desc">Скрабирование Шоколад • Массаж релакс с кремом Шоколад • Обёртывание Шоколад</div>
+                <div class="package-price">
+                    <span class="current-price">6 500 ₽</span>
+                    <span class="old-price">7 100 ₽</span>
+                </div>
+                <div class="duration-badge">Длительность: 2 часа</div>
+                <div class="gift-block">
+                    <div class="gift-label">
+                        <span class="icon-gold">✦</span>
+                        <span>В подарок</span>
+                        <span class="icon-gold">✦</span>
+                    </div>
+                    <div class="gift-content" id="gift-1"></div>
+                </div>
+            </div>
+
+            <div class="package-item">
+                <div class="package-title">
+                    <span class="icon-gold">◈</span>
+                    Кокосовое наслаждение
+                </div>
+                <div class="package-desc">Скрабирование Кокос • Массаж релакс с кремом Кокос • Обёртывание увлажняющее</div>
+                <div class="package-price">
+                    <span class="current-price">6 500 ₽</span>
+                    <span class="old-price">7 100 ₽</span>
+                </div>
+                <div class="duration-badge">Длительность: 2 часа</div>
+                <div class="gift-block">
+                    <div class="gift-label">
+                        <span class="icon-gold">✦</span>
+                        <span>В подарок</span>
+                        <span class="icon-gold">✦</span>
+                    </div>
+                    <div class="gift-content" id="gift-2"></div>
+                </div>
+            </div>
+
+            <div class="package-item">
+                <div class="package-title">
+                    <span class="icon-gold">◈</span>
+                    Лавандовый Рай
+                </div>
+                <div class="package-desc">Скрабирование Лаванда • Массаж релакс с кремом Лаванда • Обёртывание увлажняющее</div>
+                <div class="package-price">
+                    <span class="current-price">6 500 ₽</span>
+                    <span class="old-price">7 100 ₽</span>
+                </div>
+                <div class="duration-badge">Длительность: 2 часа</div>
+                <div class="gift-block">
+                    <div class="gift-label">
+                        <span class="icon-gold">✦</span>
+                        <span>В подарок</span>
+                        <span class="icon-gold">✦</span>
+                    </div>
+                    <div class="gift-content" id="gift-3"></div>
+                </div>
+            </div>
+
+            <div class="package-item">
+                <div class="package-title">
+                    <span class="icon-gold">◈</span>
+                    Медовая Душа
+                </div>
+                <div class="package-desc">Массаж медовый • Массаж релакс с увлажняющим кремом • Обёртывание увлажняющее</div>
+                <div class="package-price">
+                    <span class="current-price">6 500 ₽</span>
+                    <span class="old-price">7 100 ₽</span>
+                </div>
+                <div class="duration-badge">Длительность: 2 часа</div>
+                <div class="gift-block">
+                    <div class="gift-label">
+                        <span class="icon-gold">✦</span>
+                        <span>В подарок</span>
+                        <span class="icon-gold">✦</span>
+                    </div>
+                    <div class="gift-content" id="gift-4"></div>
+                </div>
+            </div>
+
+            <div class="package-item">
+                <div class="package-title">
+                    <span class="icon-gold">◈</span>
+                    Огненный СПА
+                </div>
+                <div class="package-desc">Массаж огненный • Скрабирование • Массаж релакс с увлажняющим кремом • Обёртывание увлажняющее</div>
+                <div class="package-price">
+                    <span class="current-price">10 500 ₽</span>
+                    <span class="old-price">11 600 ₽</span>
+                </div>
+                <div class="duration-badge">Длительность: 2.5-3 часа</div>
+                <div class="gift-block">
+                    <div class="gift-label">
+                        <span class="icon-gold">✦</span>
+                        <span>В подарок</span>
+                        <span class="icon-gold">✦</span>
+                    </div>
+                    <div class="gift-content" id="gift-5"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Призыв к действию -->
+        <section class="reveal">
+            <h2>Подарите себе золотую ауру</h2>
+            <p>Запишитесь на сеанс и ощутите преображение уже сегодня</p>
+            <a href="#" class="btn">Выбрать программу</a>
+        </section>
+
+        <footer class="reveal">
+            <p>⚜️ GOLDEN AURA • ПРЕМИУМ МАССАЖ И СПА • 2026 ⚜️</p>
+        </footer>
+    </div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js"
+            }
+        }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+
+        // --- ШЕЙДЕРЫ НА ОСНОВЕ ТВОЕЙ МАТЕМАТИКИ ВОЛН (GPU-ускорение) ---
+        
+        const vertexShader = `
+            uniform float uTime;
+            uniform float uIntensity;
+            uniform float uFrequency;
+            
+            varying vec3 vNormal;
+            varying vec3 vViewPosition;
+            varying vec3 vWorldPosition;
+            
+            void main() {
+                // Исходная позиция (плоскость уже повёрнута)
+                vec3 pos = position;
+                float x = pos.x;
+                float z = pos.z;
+                
+                // Параметры волн (точно как в CPU-версии)
+                float amp = 0.04 + uIntensity * 0.38;
+                float freqMult = 0.6 + uFrequency * 0.6;
+                
+                float f1 = 2.0 * freqMult;
+                float f2 = 4.2 * freqMult;
+                float f3 = 3.5 * freqMult;
+                float f4 = 11.0 * freqMult;
+                
+                float wave1 = sin(x * f1 + uTime * 1.0 * freqMult) * cos(z * 1.8 * freqMult + uTime * 0.85 * freqMult);
+                float wave2 = sin(x * f2 - uTime * 1.4 * freqMult) * 0.55;
+                float wave3 = cos(z * f3 + uTime * 1.1 * freqMult) * 0.5;
+                float ripple = sin(x * f4 + uTime * 2.3 * freqMult) * cos(z * 10.5 * freqMult + uTime * 2.0 * freqMult) * 0.05;
+                float wave4 = sin((x * 1.4 + z * 1.2) * 1.8 * freqMult + uTime * 0.85 * freqMult) * 0.3;
+                
+                float elevation = (wave1 * 0.7 + wave2 + wave3 + wave4) * amp + ripple;
+                
+                vec3 newPosition = position + vec3(0.0, elevation, 0.0);
+                vWorldPosition = (modelMatrix * vec4(newPosition, 1.0)).xyz;
+                
+                // Вычисляем нормали аналитически (производные)
+                float eps = 0.03;
+                
+                float x1 = x + eps;
+                float wave1_x1 = sin(x1 * f1 + uTime * 1.0 * freqMult) * cos(z * 1.8 * freqMult + uTime * 0.85 * freqMult);
+                float wave2_x1 = sin(x1 * f2 - uTime * 1.4 * freqMult) * 0.55;
+                float wave3_x1 = cos(z * f3 + uTime * 1.1 * freqMult) * 0.5;
+                float ripple_x1 = sin(x1 * f4 + uTime * 2.3 * freqMult) * cos(z * 10.5 * freqMult + uTime * 2.0 * freqMult) * 0.05;
+                float wave4_x1 = sin((x1 * 1.4 + z * 1.2) * 1.8 * freqMult + uTime * 0.85 * freqMult) * 0.3;
+                float elev_x1 = (wave1_x1 * 0.7 + wave2_x1 + wave3_x1 + wave4_x1) * amp + ripple_x1;
+                
+                float z1 = z + eps;
+                float wave1_z1 = sin(x * f1 + uTime * 1.0 * freqMult) * cos(z1 * 1.8 * freqMult + uTime * 0.85 * freqMult);
+                float wave2_z1 = sin(x * f2 - uTime * 1.4 * freqMult) * 0.55;
+                float wave3_z1 = cos(z1 * f3 + uTime * 1.1 * freqMult) * 0.5;
+                float ripple_z1 = sin(x * f4 + uTime * 2.3 * freqMult) * cos(z1 * 10.5 * freqMult + uTime * 2.0 * freqMult) * 0.05;
+                float wave4_z1 = sin((x * 1.4 + z1 * 1.2) * 1.8 * freqMult + uTime * 0.85 * freqMult) * 0.3;
+                float elev_z1 = (wave1_z1 * 0.7 + wave2_z1 + wave3_z1 + wave4_z1) * amp + ripple_z1;
+                
+                vec3 tangent = normalize(vec3(eps, elev_x1 - elevation, 0.0));
+                vec3 bitangent = normalize(vec3(0.0, elev_z1 - elevation, eps));
+                vec3 normal = normalize(cross(bitangent, tangent));
+                
+                vNormal = normalize((modelMatrix * vec4(normal, 0.0)).xyz);
+                
+                vec4 mvPosition = viewMatrix * vec4(newPosition, 1.0);
+                vViewPosition = -mvPosition.xyz;
+                gl_Position = projectionMatrix * mvPosition;
+            }
+        `;
+
+        const fragmentShader = `
+            uniform vec3 uColorBase;
+            uniform vec3 uColorEmissive;
+            uniform float uEmissiveIntensity;
+            uniform float uRoughness;
+            uniform float uMetalness;
+            uniform vec3 uLightPos1;
+            uniform vec3 uLightPos2;
+            uniform vec3 uLightPos3;
+            uniform vec3 uLightColor1;
+            uniform vec3 uLightColor2;
+            uniform vec3 uLightColor3;
+            uniform float uLightIntensity1;
+            uniform float uLightIntensity2;
+            uniform float uLightIntensity3;
+            uniform vec3 uFogColor;
+            uniform float uFogNear;
+            uniform float uFogFar;
+            
+            varying vec3 vNormal;
+            varying vec3 vViewPosition;
+            varying vec3 vWorldPosition;
+            
+            void main() {
+                vec3 normal = normalize(vNormal);
+                vec3 viewDir = normalize(vViewPosition);
+                
+                // Освещение (PBR упрощённый)
+                vec3 lightDir1 = normalize(uLightPos1 - vWorldPosition);
+                vec3 lightDir2 = normalize(uLightPos2 - vWorldPosition);
+                vec3 lightDir3 = normalize(uLightPos3 - vWorldPosition);
+                
+                float diff1 = max(dot(normal, lightDir1), 0.0);
+                float diff2 = max(dot(normal, lightDir2), 0.0);
+                float diff3 = max(dot(normal, lightDir3), 0.0);
+                
+                vec3 diffuse = uColorBase * (
+                    diff1 * uLightColor1 * uLightIntensity1 +
+                    diff2 * uLightColor2 * uLightIntensity2 +
+                    diff3 * uLightColor3 * uLightIntensity3
+                );
+                
+                // Спекуляр
+                vec3 halfVec1 = normalize(lightDir1 + viewDir);
+                vec3 halfVec2 = normalize(lightDir2 + viewDir);
+                vec3 halfVec3 = normalize(lightDir3 + viewDir);
+                
+                float spec1 = pow(max(dot(normal, halfVec1), 0.0), 32.0);
+                float spec2 = pow(max(dot(normal, halfVec2), 0.0), 32.0);
+                float spec3 = pow(max(dot(normal, halfVec3), 0.0), 32.0);
+                
+                vec3 specular = (spec1 * uLightColor1 * uLightIntensity1 +
+                                 spec2 * uLightColor2 * uLightIntensity2 +
+                                 spec3 * uLightColor3 * uLightIntensity3) * uMetalness;
+                
+                vec3 ambient = uColorBase * 0.15;
+                vec3 emissive = uColorEmissive * uEmissiveIntensity;
+                
+                vec3 finalColor = ambient + diffuse + specular + emissive;
+                
+                // Линейный туман (как в CPU-версии)
+                float depth = length(vViewPosition);
+                float fogFactor = (uFogFar - depth) / (uFogFar - uFogNear);
+                fogFactor = clamp(fogFactor, 0.0, 1.0);
+                finalColor = mix(uFogColor, finalColor, fogFactor);
+                
+                gl_FragColor = vec4(finalColor, 1.0);
+            }
+        `;
+
+        // --- ИНИЦИАЛИЗАЦИЯ СЦЕНЫ ---
+        const canvas = document.getElementById('bg-canvas');
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: false, antialias: true });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+        
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x050505);
+        
+        const camera = new THREE.PerspectiveCamera(52, window.innerWidth / window.innerHeight, 0.1, 1000);
+        
+        // Плоскость (уже повёрнута)
+        const geometry = new THREE.PlaneGeometry(14.0, 14.0, 280, 280);
+        geometry.rotateX(-Math.PI / 2);
+        
+        const material = new THREE.ShaderMaterial({
+            vertexShader,
+            fragmentShader,
+            uniforms: {
+                uTime: { value: 0 },
+                uIntensity: { value: 0.2 },
+                uFrequency: { value: 0.8 },
+                uColorBase: { value: new THREE.Color(0x121212) },
+                uColorEmissive: { value: new THREE.Color(0x442a00) },
+                uEmissiveIntensity: { value: 0.35 },
+                uRoughness: { value: 0.45 },
+                uMetalness: { value: 0.9 },
+                uLightPos1: { value: new THREE.Vector3(1.5, 2.0, 1.0) },
+                uLightPos2: { value: new THREE.Vector3(-1.0, 1.0, 1.5) },
+                uLightPos3: { value: new THREE.Vector3(-0.5, 0.5, -2.0) },
+                uLightColor1: { value: new THREE.Color(0xd4af37) },
+                uLightColor2: { value: new THREE.Color(0xffaa66) },
+                uLightColor3: { value: new THREE.Color(0x335588) },
+                uLightIntensity1: { value: 1.0 },
+                uLightIntensity2: { value: 0.4 },
+                uLightIntensity3: { value: 0.2 },
+                uFogColor: { value: new THREE.Color(0x050505) },
+                uFogNear: { value: 2.5 },
+                uFogFar: { value: 8.5 }
+            },
+            side: THREE.DoubleSide
+        });
+        
+        const waterMesh = new THREE.Mesh(geometry, material);
+        scene.add(waterMesh);
+        
+        // --- ПЕРЕМЕННЫЕ ДЛЯ СКРОЛЛА ---
+        let currentIntensity = 0.2;
+        let currentFrequency = 0.8;
+        let scrollVelocity = 0;
+        let lastScrollY = window.scrollY;
+        let time = 0;
+        
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            const deltaY = Math.abs(currentScrollY - lastScrollY);
+            scrollVelocity += deltaY * 0.0015;
+            scrollVelocity = Math.min(scrollVelocity, 1.0);
+            lastScrollY = currentScrollY;
+        }, { passive: true });
+        
+        // --- АНИМАЦИЯ (ЛЁГКАЯ, ВСЁ НА GPU) ---
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            time += 0.016 * 0.85;
+            
+            // Плавное затухание скролла
+            scrollVelocity *= 0.95;
+            
+            const targetIntensity = 0.2 + (scrollVelocity * 0.8);
+            const targetFrequency = 0.8 + (scrollVelocity * 0.5);
+            
+            currentIntensity += (targetIntensity - currentIntensity) * 0.04;
+            currentFrequency += (targetFrequency - currentFrequency) * 0.04;
+            
+            // Обновляем uniform'ы
+            material.uniforms.uTime.value = time;
+            material.uniforms.uIntensity.value = currentIntensity;
+            material.uniforms.uFrequency.value = currentFrequency;
+            material.uniforms.uEmissiveIntensity.value = 0.3 + currentIntensity * 0.45;
+            material.uniforms.uLightIntensity1.value = 0.8 + currentIntensity * 0.9;
+            material.uniforms.uLightIntensity2.value = 0.3 + currentIntensity * 0.4;
+            
+            renderer.render(scene, camera);
+        }
+        
+        function handleResize() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            
+            if (width < 768) {
+                camera.position.set(1.8, 1.2, 4.0);
+            } else {
+                camera.position.set(2.5, 1.7, 3.5);
+            }
+            camera.lookAt(0, 0, 0);
+            
+            renderer.setSize(width, height);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        }
+        
+        window.addEventListener('resize', handleResize);
+        handleResize();
+        animate();
+        
+        // --- INTERSECTION OBSERVER с улучшенной плавностью ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Запускаем Typed.js для подарков только когда секция становится видимой
+                    if (entry.target.querySelector('h2')?.textContent.includes('СПА Программы')) {
+                        initTypedGifts();
+                    }
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -10px 0px' });
+        
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        
+        // --- TYPED.JS ДЛЯ ПОДАРКОВ ---
+        let typedInstances = [];
+        
+        function initTypedGifts() {
+            // Очищаем предыдущие экземпляры
+            typedInstances.forEach(t => t.destroy());
+            typedInstances = [];
+            
+            const giftTexts = [
+                'Травяной чай и увлажняющая тканевая маска для лица',
+                'Травяной чай и увлажняющая тканевая маска для лица',
+                'Травяной чай и увлажняющая тканевая маска для лица',
+                'Травяной чай и увлажняющая тканевая маска для лица',
+                'Травяной чай и увлажняющая тканевая маска для лица'
+            ];
+            
+            for (let i = 1; i <= 5; i++) {
+                const element = document.getElementById(`gift-${i}`);
+                if (element && !element.hasAttribute('data-typed')) {
+                    element.setAttribute('data-typed', 'true');
+                    const typed = new Typed(`#gift-${i}`, {
+                        strings: [giftTexts[i-1]],
+                        typeSpeed: 40,
+                        startDelay: 800 + (i * 200),
+                        showCursor: true,
+                        cursorChar: '|',
+                        onComplete: (self) => {
+                            self.cursor.style.opacity = '0';
+                        }
+                    });
+                    typedInstances.push(typed);
+                }
+            }
+        }
+        
+        // Запускаем для уже видимых секций
+        setTimeout(() => {
+            document.querySelectorAll('.reveal.visible').forEach(section => {
+                if (section.querySelector('h2')?.textContent.includes('СПА Программы')) {
+                    initTypedGifts();
+                }
+            });
+        }, 100);
+    </script>
+</body>
+</html>
