@@ -115,6 +115,13 @@
             display: none;
         }
 
+        /* Центрирование текста на главном экране */
+        section:first-of-type p {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         h1 {
             font-size: 4.5rem;
             font-weight: 800;
@@ -192,13 +199,6 @@
             font-weight: 300;
         }
 
-        .price-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-
         .price-item {
             padding: 12px 15px;
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
@@ -224,12 +224,15 @@
         .price-item .service-name {
             color: rgba(255, 255, 255, 0.8);
             font-size: 1rem;
+            text-align: left;
         }
 
         .price-item .service-price {
             color: #d4af37;
             font-weight: 600;
             font-size: 1.1rem;
+            text-align: right;
+            white-space: nowrap;
         }
 
         /* Анимация зачёркивания цены с большой задержкой */
@@ -256,7 +259,7 @@
         /* Зачёркивание происходит при появлении секции с большой задержкой */
         .visible .old-price::after {
             width: 100%;
-            transition-delay: 1.5s; /* Увеличенная задержка */
+            transition-delay: 1.5s;
         }
 
         .package-item {
@@ -323,40 +326,6 @@
             font-weight: 600;
         }
 
-        /* Стильный блок подарка */
-        .gift-block {
-            margin-top: 15px;
-            padding: 12px 0;
-            border-top: 1px dashed rgba(212, 175, 55, 0.3);
-        }
-
-        .gift-label {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: rgba(212, 175, 55, 0.7);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-        }
-
-        .gift-label .icon-gold {
-            font-size: 1.1rem;
-        }
-
-        .gift-content {
-            color: #d4af37;
-            font-size: 1rem;
-            padding-left: 26px;
-            min-height: 24px;
-        }
-
-        .typed-cursor {
-            color: #d4af37;
-            opacity: 0.7;
-        }
-
         .duration-badge {
             display: inline-block;
             background: rgba(212, 175, 55, 0.1);
@@ -368,57 +337,39 @@
             letter-spacing: 1px;
         }
 
-        .service-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin: 20px 0;
+        /* Стильный блок подарка - один внизу секции */
+        .gift-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px dashed rgba(212, 175, 55, 0.3);
         }
 
-        .card {
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(4px);
-            padding: 20px;
-            flex: 1 1 200px;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            border-left: 3px solid rgba(212, 175, 55, 0.4);
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .visible .card {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .visible .card:nth-child(1) { transition-delay: 0.1s; }
-        .visible .card:nth-child(2) { transition-delay: 0.2s; }
-        .visible .card:nth-child(3) { transition-delay: 0.3s; }
-        .visible .card:nth-child(4) { transition-delay: 0.4s; }
-
-        .card:hover {
-            transform: translateX(8px);
-            border-left-color: #d4af37;
-            border-left-width: 5px;
-            background: rgba(0, 0, 0, 0.4);
-        }
-
-        .card h4 {
-            color: #d4af37;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            font-weight: 500;
+        .gift-label {
             display: flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            gap: 15px;
+            color: rgba(212, 175, 55, 0.8);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
         }
 
-        .card .price {
+        .gift-label .icon-gold {
+            font-size: 1.2rem;
+        }
+
+        .gift-content {
             color: #d4af37;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-top: 10px;
+            font-size: 1.1rem;
+            text-align: center;
+            min-height: 30px;
+        }
+
+        .typed-cursor {
+            color: #d4af37;
+            opacity: 0.7;
         }
 
         .btn {
@@ -488,6 +439,7 @@
             margin-bottom: 0;
             text-transform: uppercase;
             letter-spacing: 2px;
+            text-align: center;
         }
 
         /* Адаптивность */
@@ -503,12 +455,12 @@
             }
             
             h1 { 
-                font-size: 2.8rem;
+                font-size: 2.5rem;
                 letter-spacing: 2px;
             }
             
             .subtitle {
-                font-size: 1rem;
+                font-size: 0.9rem;
                 letter-spacing: 3px;
             }
             
@@ -521,11 +473,28 @@
             }
             
             p { 
-                font-size: 1rem;
+                font-size: 0.95rem;
+                text-align: left;
             }
-            
-            .price-grid {
-                grid-template-columns: 1fr;
+
+            /* На мобильных убираем центрирование для главного текста */
+            section:first-of-type p {
+                text-align: center;
+            }
+
+            .price-item {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .price-item .service-name {
+                font-size: 0.9rem;
+                flex: 1;
+            }
+
+            .price-item .service-price {
+                font-size: 1rem;
             }
             
             .btn { 
@@ -538,6 +507,33 @@
             .package-price {
                 flex-direction: column;
                 gap: 5px;
+            }
+
+            .package-title {
+                font-size: 1.1rem;
+            }
+
+            .gift-label {
+                font-size: 0.85rem;
+                letter-spacing: 2px;
+            }
+
+            .gift-content {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 30px 25px;
             }
         }
 
@@ -552,6 +548,18 @@
             
             h2 {
                 font-size: 2.8rem;
+            }
+
+            p {
+                font-size: 1.2rem;
+            }
+
+            .price-item .service-name {
+                font-size: 1.1rem;
+            }
+
+            .price-item .service-price {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -571,7 +579,7 @@
         <!-- ПРАЙС-ЛИСТ: Массаж -->
         <section class="reveal">
             <h2>Массаж</h2>
-            <p style="margin-bottom: 10px;">Классический • Расслабляющий • Лимфодренажный • Антицеллюлитный</p>
+            <p>Классический • Расслабляющий • Лимфодренажный • Антицеллюлитный</p>
             
             <h3>Сеанс 30 мин (по зонам)</h3>
             <div class="price-item">
@@ -668,14 +676,6 @@
                     <span class="old-price">7 100 ₽</span>
                 </div>
                 <div class="duration-badge">Длительность: 2 часа</div>
-                <div class="gift-block">
-                    <div class="gift-label">
-                        <span class="icon-gold">✦</span>
-                        <span>В подарок</span>
-                        <span class="icon-gold">✦</span>
-                    </div>
-                    <div class="gift-content" id="gift-1"></div>
-                </div>
             </div>
 
             <div class="package-item">
@@ -689,14 +689,6 @@
                     <span class="old-price">7 100 ₽</span>
                 </div>
                 <div class="duration-badge">Длительность: 2 часа</div>
-                <div class="gift-block">
-                    <div class="gift-label">
-                        <span class="icon-gold">✦</span>
-                        <span>В подарок</span>
-                        <span class="icon-gold">✦</span>
-                    </div>
-                    <div class="gift-content" id="gift-2"></div>
-                </div>
             </div>
 
             <div class="package-item">
@@ -710,14 +702,6 @@
                     <span class="old-price">7 100 ₽</span>
                 </div>
                 <div class="duration-badge">Длительность: 2 часа</div>
-                <div class="gift-block">
-                    <div class="gift-label">
-                        <span class="icon-gold">✦</span>
-                        <span>В подарок</span>
-                        <span class="icon-gold">✦</span>
-                    </div>
-                    <div class="gift-content" id="gift-3"></div>
-                </div>
             </div>
 
             <div class="package-item">
@@ -731,14 +715,6 @@
                     <span class="old-price">7 100 ₽</span>
                 </div>
                 <div class="duration-badge">Длительность: 2 часа</div>
-                <div class="gift-block">
-                    <div class="gift-label">
-                        <span class="icon-gold">✦</span>
-                        <span>В подарок</span>
-                        <span class="icon-gold">✦</span>
-                    </div>
-                    <div class="gift-content" id="gift-4"></div>
-                </div>
             </div>
 
             <div class="package-item">
@@ -752,22 +728,17 @@
                     <span class="old-price">11 600 ₽</span>
                 </div>
                 <div class="duration-badge">Длительность: 2.5-3 часа</div>
-                <div class="gift-block">
-                    <div class="gift-label">
-                        <span class="icon-gold">✦</span>
-                        <span>В подарок</span>
-                        <span class="icon-gold">✦</span>
-                    </div>
-                    <div class="gift-content" id="gift-5"></div>
-                </div>
             </div>
-        </section>
 
-        <!-- Призыв к действию -->
-        <section class="reveal">
-            <h2>Подарите себе золотую ауру</h2>
-            <p>Запишитесь на сеанс и ощутите преображение уже сегодня</p>
-            <a href="#" class="btn">Выбрать программу</a>
+            <!-- Один блок подарка внизу -->
+            <div class="gift-section">
+                <div class="gift-label">
+                    <span class="icon-gold">✦</span>
+                    <span>Подарок к любой СПА-программе</span>
+                    <span class="icon-gold">✦</span>
+                </div>
+                <div class="gift-content" id="spa-gift"></div>
+            </div>
         </section>
 
         <footer class="reveal">
@@ -1031,15 +1002,67 @@
         handleResize();
         animate();
         
-        // --- INTERSECTION OBSERVER с улучшенной плавностью ---
+        // --- TYPED.JS ДЛЯ ПОДАРКА ---
+        let typedInstance = null;
+        let spaSectionWasVisible = false;
+        
+        function initTypedGift() {
+            const giftElement = document.getElementById('spa-gift');
+            if (!giftElement) return;
+            
+            // Проверяем, не запущена ли уже анимация
+            if (giftElement.hasAttribute('data-typed-started')) return;
+            
+            // Очищаем предыдущий экземпляр если есть
+            if (typedInstance) {
+                typedInstance.destroy();
+            }
+            
+            // Очищаем содержимое
+            giftElement.innerHTML = '';
+            giftElement.setAttribute('data-typed-started', 'true');
+            
+            typedInstance = new Typed('#spa-gift', {
+                strings: ['Травяной чай и увлажняющая тканевая маска для лица'],
+                typeSpeed: 40,
+                startDelay: 500,
+                showCursor: true,
+                cursorChar: '|',
+                onComplete: (self) => {
+                    self.cursor.style.opacity = '0';
+                }
+            });
+        }
+        
+        // --- INTERSECTION OBSERVER ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                     
-                    // Запускаем Typed.js для подарков только когда секция становится видимой
+                    // Проверяем, является ли это секцией СПА программ
                     if (entry.target.querySelector('h2')?.textContent.includes('СПА Программы')) {
-                        initTypedGifts();
+                        if (!spaSectionWasVisible) {
+                            spaSectionWasVisible = true;
+                            // Небольшая задержка для плавности
+                            setTimeout(() => {
+                                initTypedGift();
+                            }, 300);
+                        }
+                    }
+                } else {
+                    // Если секция СПА программ уходит из видимости, сбрасываем флаг
+                    if (entry.target.querySelector('h2')?.textContent.includes('СПА Программы')) {
+                        spaSectionWasVisible = false;
+                        const giftElement = document.getElementById('spa-gift');
+                        if (giftElement) {
+                            giftElement.removeAttribute('data-typed-started');
+                            if (typedInstance) {
+                                typedInstance.destroy();
+                                typedInstance = null;
+                            }
+                            giftElement.innerHTML = '';
+                        }
                     }
                 }
             });
@@ -1047,46 +1070,12 @@
         
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         
-        // --- TYPED.JS ДЛЯ ПОДАРКОВ ---
-        let typedInstances = [];
-        
-        function initTypedGifts() {
-            // Очищаем предыдущие экземпляры
-            typedInstances.forEach(t => t.destroy());
-            typedInstances = [];
-            
-            const giftTexts = [
-                'Травяной чай и увлажняющая тканевая маска для лица',
-                'Травяной чай и увлажняющая тканевая маска для лица',
-                'Травяной чай и увлажняющая тканевая маска для лица',
-                'Травяной чай и увлажняющая тканевая маска для лица',
-                'Травяной чай и увлажняющая тканевая маска для лица'
-            ];
-            
-            for (let i = 1; i <= 5; i++) {
-                const element = document.getElementById(`gift-${i}`);
-                if (element && !element.hasAttribute('data-typed')) {
-                    element.setAttribute('data-typed', 'true');
-                    const typed = new Typed(`#gift-${i}`, {
-                        strings: [giftTexts[i-1]],
-                        typeSpeed: 40,
-                        startDelay: 800 + (i * 200),
-                        showCursor: true,
-                        cursorChar: '|',
-                        onComplete: (self) => {
-                            self.cursor.style.opacity = '0';
-                        }
-                    });
-                    typedInstances.push(typed);
-                }
-            }
-        }
-        
-        // Запускаем для уже видимых секций
+        // Запускаем для уже видимых секций при загрузке
         setTimeout(() => {
             document.querySelectorAll('.reveal.visible').forEach(section => {
                 if (section.querySelector('h2')?.textContent.includes('СПА Программы')) {
-                    initTypedGifts();
+                    spaSectionWasVisible = true;
+                    initTypedGift();
                 }
             });
         }, 100);
