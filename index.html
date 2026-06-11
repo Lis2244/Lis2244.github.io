@@ -1617,8 +1617,11 @@
             }
         });
 
-        document.getElementById('prevBtn').onclick = () => goTo(current - 1);
-        document.getElementById('nextBtn').onclick = () => goTo(current + 1);
+        // Безопасное подключение кнопок (если они есть в DOM)
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        if (prevBtn) prevBtn.onclick = () => goTo(current - 1);
+        if (nextBtn) nextBtn.onclick = () => goTo(current + 1);
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') goTo(current - 1);
@@ -1627,6 +1630,19 @@
 
         createDots();
         animateSlide(0);
+
+        // Горячая клавиша: Ctrl + . скрывает/показывает скроллбар
+document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && e.key === '.') {
+        e.preventDefault();
+        const deckEl = document.getElementById('slideDeck');
+        if (deckEl.style.overflowX === 'hidden') {
+            deckEl.style.overflowX = 'auto';
+        } else {
+            deckEl.style.overflowX = 'hidden';
+        }
+    }
+});
     })();
 </script>
 <script>
