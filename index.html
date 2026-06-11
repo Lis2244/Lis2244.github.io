@@ -714,6 +714,66 @@
                 font-size: 0.7rem;
             }
         }
+        @media print {
+    /* Каждый слайд — отдельная страница */
+    .deck {
+        display: block;
+        overflow: visible;
+        height: auto;
+    }
+    
+    .slide {
+        flex: none;
+        display: block;
+        scroll-snap-align: none;
+        page-break-after: always;
+        page-break-inside: avoid;
+        height: 100vh;
+        overflow: hidden;
+        padding: 2rem 3rem;
+        border-right: none;
+    }
+    
+    .slide:last-child {
+        page-break-after: avoid;
+    }
+    
+    /* Скрыть навигацию */
+    button.nav-arrow,
+    .nav-dots {
+        display: none !important;
+    }
+    
+    /* Логотип всегда видим */
+    .corner-logo {
+        opacity: 1 !important;
+    }
+    
+    /* Убрать анимации */
+    .hero-title,
+    .hero-subtitle,
+    .hero-footer,
+    .animate-card,
+    .animate-title,
+    .animate-subhead,
+    .animate-node,
+    .animate-line,
+    .animate-highlight,
+    .animate-stat {
+        opacity: 1 !important;
+    }
+    
+    /* Белый фон */
+    body {
+        background: white;
+    }
+    
+    /* Формат A4 альбомный */
+    @page {
+        size: A4 landscape;
+        margin: 0;
+    }
+}
     </style>
 </head>
 <body>
@@ -977,7 +1037,7 @@
             <div class="grid-2col" style="margin-top:1rem;">
                 <div class="info-card animate-card" style="border-top:5px solid #b31b2c;">
                     <h4>Совокупное сокращение сроков: на 41 день</h4>
-                    <p style="font-size:0.85rem;">Внешние согласования: <strong>28 дней</strong><br>Подготовка документации: <strong>~9 дней</strong><br>Сокращение подачи заявок: <strong>7 дней</strong></p>
+                    <p style="font-size:0.85rem;">Внешние согласования: <strong>28 дней</strong><br>Подготовка документации: <strong>~9 дней</strong><br>Срок подачи заявок: <strong>7 дней</strong></p>
                 </div>
                 <div class="info-card animate-card" style="background:#fff5f5; border-color:#d98a93;">
                     <h4 style="color:#b31b2c;">Ключевые выводы</h4>
@@ -1240,14 +1300,14 @@
             <span class="logo-text">ЦЕНТР МАТЕРИАЛЬНО-<br>ТЕХНИЧЕСКОГО<br>ОБЕСПЕЧЕНИЯ</span>
         </div>
         <div class="content">
-            <h2 class="animate-title">Индивидуальные ТСР: реальные кейсы</h2>
+            <h2 class="animate-title">Индивидуальные ТСР</h2>
             <div class="subhead animate-subhead" style="margin-bottom:1.2rem;">Индивидуальные закупки кресел-колясок с электроприводом и аккумуляторных батарей</div>
 
             <!-- Три кейса-карточки -->
             <div class="grid-3col" style="margin:0 0 1rem 0;">
                 <!-- Кейс 1 -->
                 <div class="info-card solid-border animate-card case-card">
-                    <div class="case-number">КЕЙС 1</div>
+                    <!--<div class="case-number">КЕЙС 1</div>-->
                     <h4 style="margin-bottom:0.3rem;">ООО «ТД «ОРТОНИКА»</h4>
                     <div class="case-stats">
                         <div class="case-stat"><div class="stat-value">8</div><div class="stat-label">Позиций</div></div>
@@ -1269,7 +1329,7 @@
                 </div>
                 <!-- Кейс 2 -->
                 <div class="info-card solid-border animate-card case-card">
-                    <div class="case-number">КЕЙС 2</div>
+                    <!--<div class="case-number">КЕЙС 2</div>-->
                     <h4 style="margin-bottom:0.3rem;">ООО «ОТТО БОКК»</h4>
                     <div class="case-stats">
                         <div class="case-stat"><div class="stat-value">378</div><div class="stat-label">Позиций</div></div>
@@ -1291,7 +1351,7 @@
                 </div>
                 <!-- Кейс 3 -->
                 <div class="info-card solid-border animate-card case-card">
-                    <div class="case-number">КЕЙС 3</div>
+                    <!--<div class="case-number">КЕЙС 3</div>-->
                     <h4 style="margin-bottom:0.3rem;">ООО «ПРОТЕХМЕД»</h4>
                     <div class="case-stats">
                         <div class="case-stat"><div class="stat-value">510</div><div class="stat-label">Позиций</div></div>
@@ -1461,9 +1521,10 @@
 
 
 </div>
-
+<!--
 <button class="nav-arrow left-arrow" id="prevBtn" aria-label="Предыдущий слайд">←</button>
 <button class="nav-arrow right-arrow" id="nextBtn" aria-label="Следующий слайд">→</button>
+-->
 <div class="nav-dots" id="dotsContainer" aria-label="Навигация по слайдам"></div>
 
 <script>
