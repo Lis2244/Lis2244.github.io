@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=1.0">
     <title>ГАУ «ЦентрМТО» · Презентация для руководства</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
         * {
@@ -41,7 +40,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 3rem 5rem;
+            padding: 2.5rem 4rem;
             position: relative;
             overflow-y: auto;
             border-right: 1px solid #e8d0d0;
@@ -71,7 +70,7 @@
         .content {
             position: relative;
             z-index: 2;
-            max-width: 1300px;
+            max-width: 1400px;
             margin: 0 auto;
             width: 100%;
         }
@@ -88,19 +87,19 @@
         }
 
         .logo_litle {
-            width: 90px;
+            width: 100px;
             height: auto;
         }
 
         .corner-logo .logo-text {
             font-weight: 700;
-            font-size: 0.8rem;
+            font-size: 1.15rem;
             color: #b31b2c;
             line-height: 1.2;
         }
 
         h1 {
-            font-size: 3.2rem;
+            font-size: 4.5rem;
             font-weight: 800;
             color: #b31b2c;
             letter-spacing: -0.02em;
@@ -109,31 +108,31 @@
 
         h1 .accent-line {
             display: block;
-            width: 80px;
-            height: 5px;
+            width: 120px;
+            height: 7px;
             background: #b31b2c;
             margin-top: 0.6rem;
             border-radius: 4px;
         }
 
         .subhead {
-            font-size: 1.1rem;
+            font-size: 1.55rem;
             font-weight: 500;
             color: #5a5a5a;
-            margin-bottom: 2rem;
-            border-left: 5px solid #b31b2c;
+            margin-bottom: 1.8rem;
+            border-left: 6px solid #b31b2c;
             padding-left: 1.2rem;
         }
 
         h2 {
-            font-size: 2.2rem;
+            font-size: 3.2rem;
             font-weight: 700;
             color: #b31b2c;
             margin-bottom: 1rem;
         }
 
         h3 {
-            font-size: 1.3rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: #1a1a1a;
             margin-bottom: 0.6rem;
@@ -151,9 +150,9 @@
             background: white;
             border: 2px solid #b31b2c;
             border-radius: 1rem;
-            padding: 0.8rem 2rem;
+            padding: 0.9rem 2.2rem;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.45rem;
             text-align: center;
             box-shadow: 0 6px 18px rgba(183, 32, 46, 0.06);
             opacity: 0;
@@ -162,8 +161,8 @@
         .node.director {
             background: #b31b2c;
             color: white;
-            font-size: 1.5rem;
-            padding: 1rem 2.8rem;
+            font-size: 2rem;
+            padding: 1.1rem 3rem;
             border-radius: 3rem;
             box-shadow: 0 12px 28px rgba(183, 32, 46, 0.25);
             border: none;
@@ -181,8 +180,8 @@
             border-color: #d98a93;
             color: #3a3a3a;
             font-weight: 600;
-            font-size: 0.95rem;
-            padding: 0.6rem 1.4rem;
+            font-size: 1.2rem;
+            padding: 0.75rem 1.8rem;
         }
 
         .node.service {
@@ -196,7 +195,7 @@
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            gap: 1.5rem;
+            gap: 1.8rem;
             width: 100%;
             margin-top: 0.8rem;
             flex-wrap: wrap;
@@ -210,7 +209,7 @@
 
         .vertical-line {
             width: 3px;
-            height: 26px;
+            height: 34px;
             background: #b31b2c;
             border-radius: 4px;
             opacity: 0;
@@ -226,14 +225,14 @@
 
         .grid-3col {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1.5rem;
             margin: 1.5rem 0;
         }
 
         .grid-2col {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
             gap: 1.5rem;
             margin: 1.5rem 0;
         }
@@ -242,7 +241,7 @@
         .info-card {
             background: white;
             border-radius: 1.5rem;
-            padding: 1.5rem;
+            padding: 2rem;
             border: 1px solid #f0d0d0;
             box-shadow: 0 10px 24px rgba(0, 0, 0, 0.03);
             opacity: 0;
@@ -257,13 +256,13 @@
         }
 
         .principle-card .icon {
-            font-size: 2.2rem;
+            font-size: 3.2rem;
             margin-bottom: 0.8rem;
         }
 
         .principle-card h3,
         .info-card h4 {
-            font-size: 1.2rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: #b31b2c;
             margin-bottom: 0.6rem;
@@ -272,8 +271,8 @@
         .principle-card p,
         .info-card li {
             color: #444;
-            line-height: 1.5;
-            font-size: 0.9rem;
+            line-height: 1.6;
+            font-size: 1.25rem;
         }
 
         .info-card ul {
@@ -282,8 +281,8 @@
         }
 
         .info-card li {
-            margin-bottom: 0.4rem;
-            padding-left: 1.4rem;
+            margin-bottom: 0.55rem;
+            padding-left: 1.8rem;
             position: relative;
         }
 
@@ -293,10 +292,11 @@
             left: 0;
             color: #b31b2c;
             font-weight: 700;
+            font-size: 1.25rem;
         }
 
         .card-subtitle {
-            font-size: 0.85rem;
+            font-size: 1.15rem;
             color: #888;
             margin-bottom: 1rem;
             font-weight: 500;
@@ -308,17 +308,17 @@
             border-top: 1px solid #f0d0d0;
             font-weight: 600;
             color: #b31b2c;
-            font-size: 0.9rem;
+            font-size: 1.15rem;
         }
 
         .highlight-box {
             background: #fff5f5;
             border-radius: 1.2rem;
-            padding: 1rem 1.5rem;
+            padding: 1.3rem 2rem;
             border: 1px solid #f0d0d0;
             text-align: center;
             margin-top: 1.5rem;
-            font-size: 0.9rem;
+            font-size: 1.25rem;
             color: #4a4a4a;
             line-height: 1.5;
             opacity: 0;
@@ -349,23 +349,23 @@
         .stat-card {
             background: white;
             border-radius: 1.5rem;
-            padding: 2rem;
+            padding: 2.2rem;
             text-align: center;
-            min-width: 180px;
+            min-width: 220px;
             border-top: 5px solid #b31b2c;
             box-shadow: 0 10px 24px rgba(0, 0, 0, 0.03);
             opacity: 0;
         }
 
         .stat-card .number {
-            font-size: 3.2rem;
+            font-size: 4.8rem;
             font-weight: 800;
             color: #b31b2c;
         }
 
         .stat-card .label {
             color: #555;
-            font-size: 0.9rem;
+            font-size: 1.25rem;
             margin-top: 0.3rem;
         }
 
@@ -384,8 +384,8 @@
         }
 
         .dot {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             background: #d4a0a0;
             border-radius: 50%;
             cursor: pointer;
@@ -394,7 +394,7 @@
 
         .dot.active {
             background: #b31b2c;
-            width: 28px;
+            width: 32px;
             border-radius: 12px;
         }
 
@@ -402,8 +402,8 @@
             background: white;
             border: 2px solid #b31b2c;
             color: #b31b2c;
-            font-size: 2rem;
-            padding: 0.3rem 1.1rem;
+            font-size: 2.4rem;
+            padding: 0.4rem 1.3rem;
             border-radius: 3rem;
             cursor: pointer;
             position: fixed;
@@ -438,14 +438,14 @@
         .comparison-table table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.82rem;
-            line-height: 1.4;
+            font-size: 1.15rem;
+            line-height: 1.5;
         }
 
         .comparison-table th {
             background: #b31b2c;
             color: white;
-            padding: 0.7rem 0.8rem;
+            padding: 0.9rem 1.1rem;
             font-weight: 700;
             text-align: left;
         }
@@ -459,7 +459,7 @@
         }
 
         .comparison-table td {
-            padding: 0.6rem 0.8rem;
+            padding: 0.8rem 1.1rem;
             border-bottom: 1px solid #f0d0d0;
             vertical-align: top;
         }
@@ -486,11 +486,11 @@
             display: flex;
             align-items: center;
             gap: 0.8rem;
-            font-size: 0.8rem;
+            font-size: 1.15rem;
         }
 
         .bar-label {
-            width: 130px;
+            width: 160px;
             font-weight: 600;
             color: #333;
             text-align: right;
@@ -498,9 +498,9 @@
 
         .bar-track {
             flex: 1;
-            height: 24px;
+            height: 32px;
             background: #f0f0f0;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
             display: flex;
         }
@@ -508,14 +508,14 @@
         .bar-fill {
             height: 100%;
             background: #b31b2c;
-            border-radius: 12px;
+            border-radius: 16px;
             color: white;
             display: flex;
             align-items: center;
             justify-content: flex-end;
             padding-right: 0.6rem;
             font-weight: 700;
-            font-size: 0.75rem;
+            font-size: 1rem;
             white-space: nowrap;
             transition: width 0.6s ease;
         }
@@ -535,33 +535,33 @@
         /* Регионы */
         .region-card {
             flex: 1;
-            min-width: 250px;
+            min-width: 300px;
             background: white;
             border-radius: 1rem;
-            padding: 1rem;
+            padding: 1.4rem;
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
             opacity: 0;
         }
 
         .region-card h4 {
-            font-size: 1rem;
+            font-size: 1.4rem;
             margin-bottom: 0.4rem;
         }
 
         .region-card p {
-            font-size: 0.8rem;
+            font-size: 1.1rem;
             color: #555;
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
         /* Чипсы */
         .chip {
             display: inline-block;
             border-radius: 0.6rem;
-            padding: 0.3rem 0.7rem;
-            font-size: 0.78rem;
+            padding: 0.5rem 0.9rem;
+            font-size: 1rem;
             font-weight: 500;
-            margin: 0.15rem;
+            margin: 0.25rem;
         }
 
         .chip.red {
@@ -580,7 +580,7 @@
         }
 
         .case-card .case-number {
-            font-size: 0.8rem;
+            font-size: 1.15rem;
             font-weight: 700;
             color: #b31b2c;
             margin-bottom: 0.5rem;
@@ -589,24 +589,24 @@
         .case-stats {
             display: flex;
             justify-content: center;
-            gap: 0.8rem;
-            margin: 0.8rem 0;
+            gap: 1.2rem;
+            margin: 1.2rem 0;
         }
 
         .case-stat {
             background: #fff5f5;
             border-radius: 0.8rem;
-            padding: 0.5rem 0.8rem;
+            padding: 0.7rem 1.1rem;
         }
 
         .case-stat .stat-value {
             font-weight: 800;
-            font-size: 1.4rem;
+            font-size: 2rem;
             color: #b31b2c;
         }
 
         .case-stat .stat-label {
-            font-size: 0.7rem;
+            font-size: 0.95rem;
             color: #888;
         }
 
@@ -614,18 +614,18 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.4rem;
         }
 
         .compare-bar .law-label {
-            font-size: 0.8rem;
+            font-size: 1.15rem;
             font-weight: 600;
         }
 
         .compare-bar .bar-bg {
             flex: 1;
-            height: 8px;
-            border-radius: 4px;
+            height: 12px;
+            border-radius: 6px;
             margin: 0 0.5rem;
             overflow: hidden;
         }
@@ -640,7 +640,7 @@
 
         .compare-bar .bar-fill-mini {
             height: 100%;
-            border-radius: 4px;
+            border-radius: 6px;
         }
 
         .compare-bar .bar-fill-mini.red {
@@ -652,20 +652,20 @@
         }
 
         .compare-bar .days {
-            font-size: 0.8rem;
+            font-size: 1.15rem;
             font-weight: 700;
         }
 
         /* Адаптив */
         @media (max-width: 1024px) {
             .slide {
-                padding: 2.5rem 2rem;
+                padding: 2rem 1.5rem;
             }
             h1 {
-                font-size: 2.8rem;
+                font-size: 3.6rem;
             }
             h2 {
-                font-size: 2rem;
+                font-size: 2.6rem;
             }
             .grid-3col,
             .grid-2col {
@@ -673,21 +673,21 @@
                 gap: 1.5rem;
             }
             .node.director {
-                font-size: 1.3rem;
-                padding: 0.8rem 2rem;
+                font-size: 1.7rem;
+                padding: 0.9rem 2.2rem;
             }
             .corner-logo {
                 top: 1.5rem;
                 left: 1.5rem;
             }
             .logo_litle {
-                width: 70px;
+                width: 75px;
             }
         }
 
         @media (max-width: 768px) {
             .slide {
-                padding: 1.5rem;
+                padding: 1.2rem;
                 justify-content: flex-start;
                 padding-top: 7rem;
             }
@@ -696,10 +696,10 @@
                 padding-top: 2rem;
             }
             h1 {
-                font-size: 2rem;
+                font-size: 2.8rem;
             }
             h2 {
-                font-size: 1.5rem;
+                font-size: 2rem;
             }
             button.nav-arrow {
                 display: none;
@@ -710,70 +710,65 @@
                 transform: translateX(50%);
             }
             .bar-label {
-                width: 90px;
-                font-size: 0.7rem;
+                width: 100px;
+                font-size: 0.9rem;
             }
         }
+
         @media print {
-    /* Каждый слайд — отдельная страница */
-    .deck {
-        display: block;
-        overflow: visible;
-        height: auto;
-    }
-    
-    .slide {
-        flex: none;
-        display: block;
-        scroll-snap-align: none;
-        page-break-after: always;
-        page-break-inside: avoid;
-        height: 100vh;
-        overflow: hidden;
-        padding: 2rem 3rem;
-        border-right: none;
-    }
-    
-    .slide:last-child {
-        page-break-after: avoid;
-    }
-    
-    /* Скрыть навигацию */
-    button.nav-arrow,
-    .nav-dots {
-        display: none !important;
-    }
-    
-    /* Логотип всегда видим */
-    .corner-logo {
-        opacity: 1 !important;
-    }
-    
-    /* Убрать анимации */
-    .hero-title,
-    .hero-subtitle,
-    .hero-footer,
-    .animate-card,
-    .animate-title,
-    .animate-subhead,
-    .animate-node,
-    .animate-line,
-    .animate-highlight,
-    .animate-stat {
-        opacity: 1 !important;
-    }
-    
-    /* Белый фон */
-    body {
-        background: white;
-    }
-    
-    /* Формат A4 альбомный */
-    @page {
-        size: A4 landscape;
-        margin: 0;
-    }
-}
+            .deck {
+                display: block;
+                overflow: visible;
+                height: auto;
+            }
+            
+            .slide {
+                flex: none;
+                display: block;
+                scroll-snap-align: none;
+                page-break-after: always;
+                page-break-inside: avoid;
+                height: 100vh;
+                overflow: hidden;
+                padding: 2rem 3rem;
+                border-right: none;
+            }
+            
+            .slide:last-child {
+                page-break-after: avoid;
+            }
+            
+            button.nav-arrow,
+            .nav-dots {
+                display: none !important;
+            }
+            
+            .corner-logo {
+                opacity: 1 !important;
+            }
+            
+            .hero-title,
+            .hero-subtitle,
+            .hero-footer,
+            .animate-card,
+            .animate-title,
+            .animate-subhead,
+            .animate-node,
+            .animate-line,
+            .animate-highlight,
+            .animate-stat {
+                opacity: 1 !important;
+            }
+            
+            body {
+                background: white;
+            }
+            
+            @page {
+                size: A4 landscape;
+                margin: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -786,11 +781,11 @@
             <span class="logo-text">ЦЕНТР МАТЕРИАЛЬНО-<br>ТЕХНИЧЕСКОГО<br>ОБЕСПЕЧЕНИЯ</span>
         </div>
         <div class="content" style="text-align: center;">
-            <h1 class="hero-title" style="font-size: 3.6rem;">ГАУ «ЦентрМТО»<span class="accent-line" style="margin: 0.6rem auto 0;"></span></h1>
-            <div class="hero-subtitle" style="font-size: 1.3rem; color: #5a5a5a; margin-top: 2rem; max-width: 650px; margin-left: auto; margin-right: auto; line-height: 1.5;">
+            <h1 class="hero-title" style="font-size: 5.5rem;">ГАУ «ЦентрМТО»<span class="accent-line" style="margin: 0.6rem auto 0;"></span></h1>
+            <div class="hero-subtitle" style="font-size: 2rem; color: #5a5a5a; margin-top: 2.5rem; max-width: 850px; margin-left: auto; margin-right: auto; line-height: 1.5;">
                 Государственное автономное учреждение города Москвы<br>«Центр материально-технического обеспечения»
             </div>
-            <div class="hero-footer" style="margin-top: 3rem; font-size: 0.95rem; color: #999;">
+            <div class="hero-footer" style="margin-top: 4rem; font-size: 1.5rem; color: #999;">
                 Эффективность закупок по 223-ФЗ: структура, преимущества, результаты
             </div>
         </div>
@@ -804,13 +799,10 @@
         </div>
         <div class="content">
             <h1 class="animate-title">Структура управления<span class="accent-line"></span></h1>
-            <div class="subhead animate-subhead">В основе системы структура ГАУ ИНПЦ «Гормедтехника» с учетом специфики  деятельности</div>
+            <div class="subhead animate-subhead">В основе системы структура ГАУ ИНПЦ «Гормедтехника» с учетом специфики деятельности</div>
             <div class="org-tree">
-                <img class="structura" src="/2026-06-11_10-28-52.png" alt="Структура">
+                <img class="structura" src="/2026-06-11_10-28-52.png" alt="Структура" style="max-width: 100%; height: auto;">
             </div>
-            <!--<div class="highlight-box animate-highlight">
-                <strong>Принцип построения:</strong> два независимых контура под руководством профильных заместителей. Общий и финансово-экономический отделы — в прямом подчинении директору, что обеспечивает единство правовой и финансовой политики.
-            </div>-->
         </div>
     </div>
 
@@ -826,15 +818,15 @@
                 <div class="info-card solid-border animate-card">
                     <h4>Заместитель директора</h4>
                     <div class="card-subtitle">Направление: ТСР</div>
-                    <p style="font-weight:600; color:#b31b2c; margin-bottom:0.5rem;">В подчинении:</p>
-                    <p style="font-weight:600; margin-bottom:0.3rem;">Отдел планирования и организации снабжения (ПиОС):</p>
+                    <p style="font-weight:600; color:#b31b2c; margin-bottom:0.5rem; font-size:1.25rem;">В подчинении:</p>
+                    <p style="font-weight:600; margin-bottom:0.3rem; font-size:1.25rem;">Отдел планирования и организации снабжения (ПиОС):</p>
                     <ul>
                         <li>Ведение и актуализация справочников КТРУ, КПГЗ и СПГЗ</li>
                         <li>Поиск новых производителей/поставщиков, ведение переговоров</li>
                         <li>Прохождение проверки достоверности НМЦД при закупках</li>
                         <li>Подарочные наборы для новорождённых</li>
                     </ul>
-                    <p style="font-weight:600; margin:0.5rem 0 0.3rem;">Отдел закупок технических средств реабилитации (ТСР):</p>
+                    <p style="font-weight:600; margin:0.5rem 0 0.3rem; font-size:1.25rem;">Отдел закупок технических средств реабилитации (ТСР):</p>
                     <ul>
                         <li>Осуществление закупок технических средств реабилитации</li>
                     </ul>
@@ -842,8 +834,8 @@
                 <div class="info-card dashed-border animate-card">
                     <h4>Заместитель директора</h4>
                     <div class="card-subtitle">Направление: Материальные активы</div>
-                    <p style="font-weight:600; color:#b31b2c; margin-bottom:0.5rem;">В подчинении:</p>
-                    <p style="font-weight:600; margin-bottom:0.3rem;">Отдел материально-технического снабжения (МТС):</p>
+                    <p style="font-weight:600; color:#b31b2c; margin-bottom:0.5rem; font-size:1.25rem;">В подчинении:</p>
+                    <p style="font-weight:600; margin-bottom:0.3rem; font-size:1.25rem;">Отдел материально-технического снабжения (МТС):</p>
                     <ul>
                         <li>Поставка товаров и оборудования (одежда, обувь, продукты питания для организаций труда и соцзащиты)</li>
                         <li>Адресная помощь малоимущим семьям, пенсионерам и инвалидам</li>
@@ -931,8 +923,8 @@
             <span class="logo-text">ЦЕНТР МАТЕРИАЛЬНО-<br>ТЕХНИЧЕСКОГО<br>ОБЕСПЕЧЕНИЯ</span>
         </div>
         <div class="content">
-            <h2 class="animate-title" style="font-size:1.9rem;">Анализ эффективности: подготовка документации</h2>
-            <div class="subhead animate-subhead" style="font-size:1rem; margin-bottom:1rem;">Сравнение трудозатрат при формировании закупки</div>
+            <h2 class="animate-title" style="font-size:2.6rem;">Анализ эффективности: подготовка документации</h2>
+            <div class="subhead animate-subhead" style="font-size:1.4rem; margin-bottom:1rem;">Сравнение трудозатрат при формировании закупки</div>
             <div class="comparison-table animate-card">
                 <table>
                     <thead>
@@ -950,28 +942,28 @@
                             <td style="color:#2a7a2a;">Только нужные характеристики. Без КТРУ.</td>
                             <td style="color:#b31b2c;">КТРУ обязателен. Добавление позиции — 3–6 мес.</td>
                             <td class="win">до 3 дн.</td>
-                            <td style="font-size:0.7rem;">ПП № 145</td>
+                            <td style="font-size:1rem;">ПП № 145</td>
                         </tr>
                         <tr>
                             <td style="font-weight:600;">Обоснование доп. характеристик</td>
                             <td style="color:#2a7a2a;">Не требуется</td>
                             <td style="color:#b31b2c;">~10 мин/спецификация</td>
                             <td class="win">до 1 дн.</td>
-                            <td style="font-size:0.7rem;">ПП № 145</td>
+                            <td style="font-size:1rem;">ПП № 145</td>
                         </tr>
                         <tr>
                             <td style="font-weight:600;">Заполнение извещения (ЕАИСТ)</td>
                             <td style="color:#2a7a2a;">Копирование (~3–5 мин). Минимум ошибок.</td>
                             <td style="color:#b31b2c;">Ручной ввод (~25 мин). Высокий риск ошибок.</td>
                             <td class="win">до 2 дн.</td>
-                            <td style="font-size:0.7rem;">Функционал ЕИС</td>
+                            <td style="font-size:1rem;">Функционал ЕИС</td>
                         </tr>
                         <tr>
                             <td style="font-weight:600;">Декларирование в Реестре пром. продукции</td>
                             <td style="color:#2a7a2a;">Отсутствует</td>
                             <td style="color:#b31b2c;">Обязательно. Лимит: 5 спецификаций в день.</td>
                             <td class="win">до 3 дн.</td>
-                            <td style="font-size:0.7rem;">ПП № 719, 878, 616</td>
+                            <td style="font-size:1rem;">ПП № 719, 878, 616</td>
                         </tr>
                     </tbody>
                 </table>
@@ -989,8 +981,8 @@
             <span class="logo-text">ЦЕНТР МАТЕРИАЛЬНО-<br>ТЕХНИЧЕСКОГО<br>ОБЕСПЕЧЕНИЯ</span>
         </div>
         <div class="content">
-            <h2 class="animate-title" style="font-size:1.9rem;">Анализ эффективности: проведение процедуры</h2>
-            <div class="subhead animate-subhead" style="font-size:1rem; margin-bottom:1rem;">Сравнение сроков на этапах согласования и заключения договора</div>
+            <h2 class="animate-title" style="font-size:2.6rem;">Анализ эффективности: проведение процедуры</h2>
+            <div class="subhead animate-subhead" style="font-size:1.4rem; margin-bottom:1rem;">Сравнение сроков на этапах согласования и заключения договора</div>
             <div class="comparison-table animate-card">
                 <table>
                     <thead>
@@ -1008,28 +1000,28 @@
                             <td style="color:#2a7a2a; text-align:center;">Не требуется</td>
                             <td style="color:#b31b2c; text-align:center;">Обязательно (свыше 3 млн)</td>
                             <td class="win">14 дн.</td>
-                            <td style="font-size:0.7rem;">Распоряжения о РГ/МРГ</td>
+                            <td style="font-size:1rem;">Распоряжения о РГ/МРГ</td>
                         </tr>
                         <tr>
                             <td style="font-weight:600;">Проверка НМЦК (АЦ)</td>
                             <td style="color:#2a7a2a; text-align:center;">Не требуется</td>
                             <td style="color:#b31b2c; text-align:center;">Обязательно (свыше 30 млн)</td>
                             <td class="win">14 дн.</td>
-                            <td style="font-size:0.7rem;">Расп. ПМ № 242</td>
+                            <td style="font-size:1rem;">Расп. ПМ № 242</td>
                         </tr>
                         <tr>
                             <td style="font-weight:600;">Срок подачи заявок</td>
                             <td style="color:#2a7a2a; text-align:center;">7 календарных дней</td>
                             <td style="color:#b31b2c; text-align:center;">14 календарных дней</td>
                             <td class="win">7 дн.</td>
-                            <td style="font-size:0.7rem;">Ст. 3.2 223-ФЗ / 54.4 44-ФЗ</td>
+                            <td style="font-size:1rem;">Ст. 3.2 223-ФЗ / 54.4 44-ФЗ</td>
                         </tr>
                         <tr>
                             <td style="font-weight:600;">Изменение / расторжение</td>
                             <td style="color:#2a7a2a; text-align:center;">Гибкость (по Положению)</td>
                             <td style="color:#b31b2c; text-align:center;">Запрет / только суд</td>
                             <td class="win">Управляемость</td>
-                            <td style="font-size:0.7rem;">Ст. 95, 34 44-ФЗ</td>
+                            <td style="font-size:1rem;">Ст. 95, 34 44-ФЗ</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1037,7 +1029,7 @@
             <div class="grid-2col" style="margin-top:1rem;">
                 <div class="info-card animate-card" style="border-top:5px solid #b31b2c;">
                     <h4>Совокупное сокращение сроков: на 41 день</h4>
-                    <p style="font-size:0.85rem;">Внешние согласования: <strong>28 дней</strong><br>Подготовка документации: <strong>~9 дней</strong><br>Срок подачи заявок: <strong>7 дней</strong></p>
+                    <p style="font-size:1.2rem;">Внешние согласования: <strong>28 дней</strong><br>Подготовка документации: <strong>~9 дней</strong><br>Срок подачи заявок: <strong>7 дней</strong></p>
                 </div>
                 <div class="info-card animate-card" style="background:#fff5f5; border-color:#d98a93;">
                     <h4 style="color:#b31b2c;">Ключевые выводы</h4>
@@ -1056,242 +1048,198 @@
     </div>
 
     <!-- ═══════════════ СЛАЙД 8 · ПРОИЗВОДИТЕЛИ / ПОСТАВЩИКИ ═══════════════ -->
-   <div class="slide" data-slide="7">
-    <div class="corner-logo">
-        <img class="logo_litle" src="/Логотип без фона (Правильный красный).png" alt="Логотип">
-        <span class="logo-text">ЦЕНТР МАТЕРИАЛЬНО-<br>ТЕХНИЧЕСКОГО<br>ОБЕСПЕЧЕНИЯ</span>
-    </div>
-    <div class="content">
-        <h2 class="animate-title">Производители / поставщики</h2>
-        <div class="subhead animate-subhead" style="margin-bottom:1rem;">По каждой категории ТСР проведён анализ рынка. Указано количество производителей, с которыми работаем, и общее число найденных.</div>
-
-        <div class="grid-2col" style="margin:0; gap:0.8rem;">
-
-            <!-- Строка 1: Трости, костыли, опоры, поручни -->
-            <div class="info-card solid-border animate-card" style="padding:0.8rem 1rem;">
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
-                    <div style="flex:1;">
-                        <h4 style="font-size:0.9rem; margin-bottom:0.2rem;">Трости опорные и тактильные, костыли, опоры, поручни</h4>
-                    </div>
-                    <div style="display:flex; gap:0.8rem; flex-shrink:0;">
-                        <div style="text-align:center;">
-                            <div style="font-size:0.65rem; color:#888;">работаем</div>
-                            <div style="font-weight:800; font-size:1.3rem; color:#b31b2c;">1</div>
-                        </div>
-                        <div style="text-align:center;">
-                            <div style="font-size:0.65rem; color:#888;">найдено</div>
-                            <div style="font-weight:800; font-size:1.3rem; color:#2a7a2a;">27</div>
-                        </div>
-                    </div>
-                </div>
-                <div style="margin-top:0.4rem; font-size:0.75rem; color:#555; line-height:1.4;">
-                    Россия – 13, Китай – 4, Тайвань – 4, США – 1, Европа – 5
-                </div>
-            </div>
-
-            <!-- Строка 2: Ходунки -->
-            <div class="info-card solid-border animate-card" style="padding:0.8rem 1rem;">
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
-                    <div style="flex:1;">
-                        <h4 style="font-size:0.9rem; margin-bottom:0.2rem;">Ходунки</h4>
-                    </div>
-                    <div style="display:flex; gap:0.8rem; flex-shrink:0;">
-                        <div style="text-align:center;">
-                            <div style="font-size:0.65rem; color:#888;">работаем</div>
-                            <div style="font-weight:800; font-size:1.3rem; color:#b31b2c;">4</div>
-                        </div>
-                        <div style="text-align:center;">
-                            <div style="font-size:0.65rem; color:#888;">найдено</div>
-                            <div style="font-weight:800; font-size:1.3rem; color:#2a7a2a;">36</div>
-                        </div>
-                    </div>
-                </div>
-                <div style="margin-top:0.4rem; font-size:0.75rem; color:#555; line-height:1.4;">
-                    Россия – 16, Китай – 8, Тайвань – 2, США – 1, Европа – 9
-                </div>
-            </div>
-
-            <!-- Строка 3: Кресла-коляски -->
-            <div class="info-card solid-border animate-card" style="padding:0.8rem 1rem;">
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
-                    <div style="flex:1;">
-                        <h4 style="font-size:0.9rem; margin-bottom:0.2rem;">Кресла-коляски с ручным приводом, с электроприводом, малогабаритные</h4>
-                    </div>
-                    <div style="display:flex; gap:0.8rem; flex-shrink:0;">
-                        <div style="text-align:center;">
-                            <div style="font-size:0.65rem; color:#888;">работаем</div>
-                            <div style="font-weight:800; font-size:1.3rem; color:#b31b2c;">10</div>
-                        </div>
-                        <div style="text-align:center;">
-                            <div style="font-size:0.65rem; color:#888;">найдено</div>
-                            <div style="font-weight:800; font-size:1.3rem; color:#2a7a2a;">57</div>
-                        </div>
-                    </div>
-                </div>
-                <div style="margin-top:0.4rem; font-size:0.75rem; color:#555; line-height:1.4;">
-                    Россия – 21, Беларусь – 1, Китай – 9, Тайвань – 2, США – 2, Европа – 22
-                </div>
-            </div>
-
-            <!-- Строка 4: Противопролежневые матрасы -->
-            <div class="info-card solid-border animate-card" style="padding:0.8rem 1rem;">
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
-                    <div style="flex:1;">
-                        <h4 style="font-size:0.9rem; margin-bottom:0.2rem;">Противопролежневые матрасы и подушки</h4>
-                    </div>
-                    <div style="display:flex; gap:0.8rem; flex-shrink:0;">
-                        <div style="text-align:center;">
-                            <div style="font-size:0.65rem; color:#888;">работаем</div>
-                            <div style="font-weight:800; font-size:1.3rem; color:#b31b2c;">4</div>
-                        </div>
-                        <div style="text-align:center;">
-                            <div style="font-size:0.65rem; color:#888;">найдено</div>
-                            <div style="font-weight:800; font-size:1.3rem; color:#2a7a2a;">20</div>
-                        </div>
-                    </div>
-                </div>
-                <div style="margin-top:0.4rem; font-size:0.75rem; color:#555; line-height:1.4;">
-                    Россия – 9, Китай – 4, Тайвань – 1, США – 1, Европа – 5
-                </div>
-            </div>
-
-            <!-- Строка 5: Устройства для чтения -->
-            <div class="info-card solid-border animate-card" style="padding:0.8rem 1rem;">
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
-                    <div style="flex:1;">
-                        <h4 style="font-size:0.9rem; margin-bottom:0.2rem;">Устройства для чтения «говорящих книг», оптической коррекции</h4>
-                    </div>
-                    <div style="display:flex; gap:0.8rem; flex-shrink:0;">
-                        <div style="text-align:center;">
-                            <div style="font-size:0.65rem; color:#888;">работаем</div>
-                            <div style="font-weight:800; font-size:1.3rem; color:#b31b2c;">2</div>
-                        </div>
-                        <div style="text-align:center;">
-                            <div style="font-size:0.65rem; color:#888;">найдено</div>
-                            <div style="font-weight:800; font-size:1.3rem; color:#2a7a2a;">1</div>
-                        </div>
-                    </div>
-                </div>
-                <div style="margin-top:0.4rem; font-size:0.75rem; color:#555; line-height:1.4;">
-                    Россия – 1
-                </div>
-            </div>
-
-            <!-- Строка 6: Телевизоры -->
-            <div class="info-card solid-border animate-card" style="padding:0.8rem 1rem;">
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
-                    <div style="flex:1;">
-                        <h4 style="font-size:0.9rem; margin-bottom:0.2rem;">Телевизоры с телетекстом для приема программ со скрытыми субтитрами</h4>
-                    </div>
-                    <div style="display:flex; gap:0.8rem; flex-shrink:0;">
-                        <div style="text-align:center;">
-                            <div style="font-size:0.65rem; color:#888;">работаем</div>
-                            <div style="font-weight:800; font-size:1.3rem; color:#b31b2c;">1</div>
-                        </div>
-                        <div style="text-align:center;">
-                            <div style="font-size:0.65rem; color:#888;">найдено</div>
-                            <div style="font-weight:800; font-size:1.3rem; color:#2a7a2a;">4</div>
-                        </div>
-                    </div>
-                </div>
-                <div style="margin-top:0.4rem; font-size:0.75rem; color:#555; line-height:1.4;">
-                    Россия – 2, Беларусь – 1, Китай – 1
-                </div>
-            </div>
-
-            <!-- Строка 7: Телефонные устройства (видеосвязь) -->
-            <!--<div class="info-card solid-border animate-card" style="padding:0.8rem 1rem;">
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
-                    <div style="flex:1;">
-                        <h4 style="font-size:0.9rem; margin-bottom:0.2rem;">Телефонные устройства с функцией видеосвязи, навигации и с текстовым выходом</h4>
-                    </div>
-                    <div style="display:flex; gap:0.8rem; flex-shrink:0;">
-                        <div style="text-align:center;">
-                            <div style="font-size:0.65rem; color:#888;">работаем</div>
-                            <div style="font-weight:800; font-size:1.3rem; color:#b31b2c;">смартфоны</div>
-                        </div>
-                        <div style="text-align:center;">
-                            <div style="font-size:0.65rem; color:#888;">найдено</div>
-                            <div style="font-weight:800; font-size:1.3rem; color:#2a7a2a;">1</div>
-                        </div>
-                    </div>
-                </div>
-                <div style="margin-top:0.4rem; font-size:0.75rem; color:#555; line-height:1.4;">
-                    Россия – 1
-                </div>
-            </div>-->
-
-            <!-- Строка 8: Телефонное устройство (невизуальная навигация) -->
-            <!--<div class="info-card dashed-border animate-card" style="padding:0.8rem 1rem; background:#fffbfb;">
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
-                    <div style="flex:1;">
-                        <h4 style="font-size:0.9rem; margin-bottom:0.2rem;">Телефонное устройство с функцией невизуальной навигации</h4>
-                    </div>
-                    <div style="display:flex; gap:0.8rem; flex-shrink:0;">
-                        <div style="text-align:center;">
-                            <div style="font-size:0.65rem; color:#888;">работаем</div>
-                            <div style="font-weight:800; font-size:1.3rem; color:#b31b2c;">—</div>
-                        </div>
-                        <div style="text-align:center;">
-                            <div style="font-size:0.65rem; color:#888;">найдено</div>
-                            <div style="font-weight:800; font-size:1.3rem; color:#b31b2c;">0</div>
-                        </div>
-                    </div>
-                </div>
-                <div style="margin-top:0.4rem; font-size:0.75rem; color:#b31b2c; line-height:1.4;">
-                    ⚠️ Не найдено — требуется дополнительный поиск
-                </div>
-            </div>-->
-
-            <!-- Строка 9: Абсорбирующее бельё -->
-            <div class="info-card solid-border animate-card" style="padding:0.8rem 1rem;">
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
-                    <div style="flex:1;">
-                        <h4 style="font-size:0.9rem; margin-bottom:0.2rem;">Абсорбирующее бельё, подгузники</h4>
-                    </div>
-                    <div style="display:flex; gap:0.8rem; flex-shrink:0;">
-                        <div style="text-align:center;">
-                            <div style="font-size:0.65rem; color:#888;">работаем</div>
-                            <div style="font-weight:800; font-size:1.3rem; color:#b31b2c;">2</div>
-                        </div>
-                        <div style="text-align:center;">
-                            <div style="font-size:0.65rem; color:#888;">найдено</div>
-                            <div style="font-weight:800; font-size:1.3rem; color:#2a7a2a;">42</div>
-                        </div>
-                    </div>
-                </div>
-                <div style="margin-top:0.4rem; font-size:0.75rem; color:#555; line-height:1.4;">
-                    Россия – 12, Беларусь – 2, Китай – 8, Индия – 1, Европа – 11, Турция – 7, Япония – 1
-                </div>
-            </div>
-
-            <!-- Строка 10: Брайлевский дисплей -->
-            <div class="info-card solid-border animate-card" style="padding:0.8rem 1rem;">
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
-                    <div style="flex:1;">
-                        <h4 style="font-size:0.9rem; margin-bottom:0.2rem;">Брайлевский дисплей, программное обеспечение экранного доступа</h4>
-                    </div>
-                    <div style="display:flex; gap:0.8rem; flex-shrink:0;">
-                        <div style="text-align:center;">
-                            <div style="font-size:0.65rem; color:#888;">работаем</div>
-                            <div style="font-weight:800; font-size:1.3rem; color:#b31b2c;">2</div>
-                        </div>
-                        <div style="text-align:center;">
-                            <div style="font-size:0.65rem; color:#888;">найдено</div>
-                            <div style="font-weight:800; font-size:1.3rem; color:#2a7a2a;">2</div>
-                        </div>
-                    </div>
-                </div>
-                <div style="margin-top:0.4rem; font-size:0.75rem; color:#555; line-height:1.4;">
-                    Европа – 2
-                </div>
-            </div>
-
+    <div class="slide" data-slide="7">
+        <div class="corner-logo">
+            <img class="logo_litle" src="/Логотип без фона (Правильный красный).png" alt="Логотип">
+            <span class="logo-text">ЦЕНТР МАТЕРИАЛЬНО-<br>ТЕХНИЧЕСКОГО<br>ОБЕСПЕЧЕНИЯ</span>
         </div>
+        <div class="content">
+            <h2 class="animate-title">Производители / поставщики</h2>
+            <div class="subhead animate-subhead" style="margin-bottom:1.2rem; font-size:1.4rem;">По каждой категории ТСР проведён анализ рынка. Указано количество производителей, с которыми работаем, и общее число найденных.</div>
 
-        
+            <div class="grid-2col" style="margin:0; gap:1rem;">
+
+                <!-- Строка 1: Трости, костыли, опоры, поручни -->
+                <div class="info-card solid-border animate-card" style="padding:1.2rem 1.4rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
+                        <div style="flex:1;">
+                            <h4 style="font-size:1.2rem; margin-bottom:0.3rem;">Трости опорные и тактильные, костыли, опоры, поручни</h4>
+                        </div>
+                        <div style="display:flex; gap:1rem; flex-shrink:0;">
+                            <div style="text-align:center;">
+                                <div style="font-size:0.95rem; color:#888;">работаем</div>
+                                <div style="font-weight:800; font-size:1.8rem; color:#b31b2c;">1</div>
+                            </div>
+                            <div style="text-align:center;">
+                                <div style="font-size:0.95rem; color:#888;">найдено</div>
+                                <div style="font-weight:800; font-size:1.8rem; color:#2a7a2a;">27</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:0.5rem; font-size:1.05rem; color:#555; line-height:1.4;">
+                        Россия – 13, Китай – 4, Тайвань – 4, США – 1, Европа – 5
+                    </div>
+                </div>
+
+                <!-- Строка 2: Ходунки -->
+                <div class="info-card solid-border animate-card" style="padding:1.2rem 1.4rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
+                        <div style="flex:1;">
+                            <h4 style="font-size:1.2rem; margin-bottom:0.3rem;">Ходунки</h4>
+                        </div>
+                        <div style="display:flex; gap:1rem; flex-shrink:0;">
+                            <div style="text-align:center;">
+                                <div style="font-size:0.95rem; color:#888;">работаем</div>
+                                <div style="font-weight:800; font-size:1.8rem; color:#b31b2c;">4</div>
+                            </div>
+                            <div style="text-align:center;">
+                                <div style="font-size:0.95rem; color:#888;">найдено</div>
+                                <div style="font-weight:800; font-size:1.8rem; color:#2a7a2a;">36</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:0.5rem; font-size:1.05rem; color:#555; line-height:1.4;">
+                        Россия – 16, Китай – 8, Тайвань – 2, США – 1, Европа – 9
+                    </div>
+                </div>
+
+                <!-- Строка 3: Кресла-коляски -->
+                <div class="info-card solid-border animate-card" style="padding:1.2rem 1.4rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
+                        <div style="flex:1;">
+                            <h4 style="font-size:1.2rem; margin-bottom:0.3rem;">Кресла-коляски с ручным приводом, с электроприводом, малогабаритные</h4>
+                        </div>
+                        <div style="display:flex; gap:1rem; flex-shrink:0;">
+                            <div style="text-align:center;">
+                                <div style="font-size:0.95rem; color:#888;">работаем</div>
+                                <div style="font-weight:800; font-size:1.8rem; color:#b31b2c;">10</div>
+                            </div>
+                            <div style="text-align:center;">
+                                <div style="font-size:0.95rem; color:#888;">найдено</div>
+                                <div style="font-weight:800; font-size:1.8rem; color:#2a7a2a;">57</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:0.5rem; font-size:1.05rem; color:#555; line-height:1.4;">
+                        Россия – 21, Беларусь – 1, Китай – 9, Тайвань – 2, США – 2, Европа – 22
+                    </div>
+                </div>
+
+                <!-- Строка 4: Противопролежневые матрасы -->
+                <div class="info-card solid-border animate-card" style="padding:1.2rem 1.4rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
+                        <div style="flex:1;">
+                            <h4 style="font-size:1.2rem; margin-bottom:0.3rem;">Противопролежневые матрасы и подушки</h4>
+                        </div>
+                        <div style="display:flex; gap:1rem; flex-shrink:0;">
+                            <div style="text-align:center;">
+                                <div style="font-size:0.95rem; color:#888;">работаем</div>
+                                <div style="font-weight:800; font-size:1.8rem; color:#b31b2c;">4</div>
+                            </div>
+                            <div style="text-align:center;">
+                                <div style="font-size:0.95rem; color:#888;">найдено</div>
+                                <div style="font-weight:800; font-size:1.8rem; color:#2a7a2a;">20</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:0.5rem; font-size:1.05rem; color:#555; line-height:1.4;">
+                        Россия – 9, Китай – 4, Тайвань – 1, США – 1, Европа – 5
+                    </div>
+                </div>
+
+                <!-- Строка 5: Устройства для чтения -->
+                <div class="info-card solid-border animate-card" style="padding:1.2rem 1.4rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
+                        <div style="flex:1;">
+                            <h4 style="font-size:1.2rem; margin-bottom:0.3rem;">Устройства для чтения «говорящих книг», оптической коррекции</h4>
+                        </div>
+                        <div style="display:flex; gap:1rem; flex-shrink:0;">
+                            <div style="text-align:center;">
+                                <div style="font-size:0.95rem; color:#888;">работаем</div>
+                                <div style="font-weight:800; font-size:1.8rem; color:#b31b2c;">2</div>
+                            </div>
+                            <div style="text-align:center;">
+                                <div style="font-size:0.95rem; color:#888;">найдено</div>
+                                <div style="font-weight:800; font-size:1.8rem; color:#2a7a2a;">1</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:0.5rem; font-size:1.05rem; color:#555; line-height:1.4;">
+                        Россия – 1
+                    </div>
+                </div>
+
+                <!-- Строка 6: Телевизоры -->
+                <div class="info-card solid-border animate-card" style="padding:1.2rem 1.4rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
+                        <div style="flex:1;">
+                            <h4 style="font-size:1.2rem; margin-bottom:0.3rem;">Телевизоры с телетекстом для приема программ со скрытыми субтитрами</h4>
+                        </div>
+                        <div style="display:flex; gap:1rem; flex-shrink:0;">
+                            <div style="text-align:center;">
+                                <div style="font-size:0.95rem; color:#888;">работаем</div>
+                                <div style="font-weight:800; font-size:1.8rem; color:#b31b2c;">1</div>
+                            </div>
+                            <div style="text-align:center;">
+                                <div style="font-size:0.95rem; color:#888;">найдено</div>
+                                <div style="font-weight:800; font-size:1.8rem; color:#2a7a2a;">4</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:0.5rem; font-size:1.05rem; color:#555; line-height:1.4;">
+                        Россия – 2, Беларусь – 1, Китай – 1
+                    </div>
+                </div>
+
+                <!-- Строка 9: Абсорбирующее бельё -->
+                <div class="info-card solid-border animate-card" style="padding:1.2rem 1.4rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
+                        <div style="flex:1;">
+                            <h4 style="font-size:1.2rem; margin-bottom:0.3rem;">Абсорбирующее бельё, подгузники</h4>
+                        </div>
+                        <div style="display:flex; gap:1rem; flex-shrink:0;">
+                            <div style="text-align:center;">
+                                <div style="font-size:0.95rem; color:#888;">работаем</div>
+                                <div style="font-weight:800; font-size:1.8rem; color:#b31b2c;">2</div>
+                            </div>
+                            <div style="text-align:center;">
+                                <div style="font-size:0.95rem; color:#888;">найдено</div>
+                                <div style="font-weight:800; font-size:1.8rem; color:#2a7a2a;">42</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:0.5rem; font-size:1.05rem; color:#555; line-height:1.4;">
+                        Россия – 12, Беларусь – 2, Китай – 8, Индия – 1, Европа – 11, Турция – 7, Япония – 1
+                    </div>
+                </div>
+
+                <!-- Строка 10: Брайлевский дисплей -->
+                <div class="info-card solid-border animate-card" style="padding:1.2rem 1.4rem;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
+                        <div style="flex:1;">
+                            <h4 style="font-size:1.2rem; margin-bottom:0.3rem;">Брайлевский дисплей, программное обеспечение экранного доступа</h4>
+                        </div>
+                        <div style="display:flex; gap:1rem; flex-shrink:0;">
+                            <div style="text-align:center;">
+                                <div style="font-size:0.95rem; color:#888;">работаем</div>
+                                <div style="font-weight:800; font-size:1.8rem; color:#b31b2c;">2</div>
+                            </div>
+                            <div style="text-align:center;">
+                                <div style="font-size:0.95rem; color:#888;">найдено</div>
+                                <div style="font-weight:800; font-size:1.8rem; color:#2a7a2a;">2</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:0.5rem; font-size:1.05rem; color:#555; line-height:1.4;">
+                        Европа – 2
+                    </div>
+                </div>
+
+            </div>
+
+            
+        </div>
     </div>
-</div>
 
     <!-- ═══════════════ СЛАЙД 10 · ИНДИВИДУАЛЬНЫЕ ТСР ═══════════════ -->
     <div class="slide" data-slide="9">
@@ -1301,19 +1249,16 @@
         </div>
         <div class="content">
             <h2 class="animate-title">Индивидуальные ТСР</h2>
-            <div class="subhead animate-subhead" style="margin-bottom:1.2rem;">Индивидуальные закупки кресел-колясок с электроприводом и аккумуляторных батарей</div>
+            <div class="subhead animate-subhead" style="margin-bottom:1.2rem; font-size:1.4rem;">Индивидуальные закупки кресел-колясок с электроприводом и аккумуляторных батарей</div>
 
-            <!-- Три кейса-карточки -->
             <div class="grid-3col" style="margin:0 0 1rem 0;">
-                <!-- Кейс 1 -->
                 <div class="info-card solid-border animate-card case-card">
-                    <!--<div class="case-number">КЕЙС 1</div>-->
-                    <h4 style="margin-bottom:0.3rem;">ООО «ТД «ОРТОНИКА»</h4>
+                    <h4 style="margin-bottom:0.3rem; font-size:1.4rem;">ООО «ТД «ОРТОНИКА»</h4>
                     <div class="case-stats">
                         <div class="case-stat"><div class="stat-value">8</div><div class="stat-label">Позиций</div></div>
                         <div class="case-stat"><div class="stat-value">29,9 млн</div><div class="stat-label">Сумма</div></div>
                     </div>
-                    <div style="margin-top:0.8rem;">
+                    <div style="margin-top:1rem;">
                         <div class="compare-bar">
                             <span class="law-label">44-ФЗ</span>
                             <div class="bar-bg red"><div class="bar-fill-mini red" style="width:15%;"></div></div>
@@ -1325,17 +1270,15 @@
                             <span class="days" style="color:#2a7a2a;">1 день</span>
                         </div>
                     </div>
-                    <div class="result-line" style="font-size:0.85rem;">Экономия: <strong>в 2 раза</strong> быстрее</div>
+                    <div class="result-line" style="font-size:1.15rem;">Экономия: <strong>в 2 раза</strong> быстрее</div>
                 </div>
-                <!-- Кейс 2 -->
                 <div class="info-card solid-border animate-card case-card">
-                    <!--<div class="case-number">КЕЙС 2</div>-->
-                    <h4 style="margin-bottom:0.3rem;">ООО «ОТТО БОКК»</h4>
+                    <h4 style="margin-bottom:0.3rem; font-size:1.4rem;">ООО «ОТТО БОКК»</h4>
                     <div class="case-stats">
                         <div class="case-stat"><div class="stat-value">378</div><div class="stat-label">Позиций</div></div>
                         <div class="case-stat"><div class="stat-value">30,0 млн</div><div class="stat-label">Сумма</div></div>
                     </div>
-                    <div style="margin-top:0.8rem;">
+                    <div style="margin-top:1rem;">
                         <div class="compare-bar">
                             <span class="law-label">44-ФЗ</span>
                             <div class="bar-bg red"><div class="bar-fill-mini red" style="width:90%;"></div></div>
@@ -1347,17 +1290,15 @@
                             <span class="days" style="color:#2a7a2a;">5 дней</span>
                         </div>
                     </div>
-                    <div class="result-line" style="font-size:0.85rem;">Экономия: <strong>в 8 раз</strong> быстрее</div>
+                    <div class="result-line" style="font-size:1.15rem;">Экономия: <strong>в 8 раз</strong> быстрее</div>
                 </div>
-                <!-- Кейс 3 -->
                 <div class="info-card solid-border animate-card case-card">
-                    <!--<div class="case-number">КЕЙС 3</div>-->
-                    <h4 style="margin-bottom:0.3rem;">ООО «ПРОТЕХМЕД»</h4>
+                    <h4 style="margin-bottom:0.3rem; font-size:1.4rem;">ООО «ПРОТЕХМЕД»</h4>
                     <div class="case-stats">
                         <div class="case-stat"><div class="stat-value">510</div><div class="stat-label">Позиций</div></div>
                         <div class="case-stat"><div class="stat-value">44,7 млн</div><div class="stat-label">Сумма</div></div>
                     </div>
-                    <div style="margin-top:0.8rem;">
+                    <div style="margin-top:1rem;">
                         <div class="compare-bar">
                             <span class="law-label">44-ФЗ</span>
                             <div class="bar-bg red"><div class="bar-fill-mini red" style="width:100%;"></div></div>
@@ -1369,14 +1310,13 @@
                             <span class="days" style="color:#2a7a2a;">14 дней</span>
                         </div>
                     </div>
-                    <div class="result-line" style="font-size:0.85rem;">Экономия: <strong>в 4,3 раза</strong> быстрее</div>
+                    <div class="result-line" style="font-size:1.15rem;">Экономия: <strong>в 4,3 раза</strong> быстрее</div>
                 </div>
             </div>
 
-            <!-- Главный вывод -->
-            <div class="highlight-box animate-highlight" style="margin-top:0; padding:0.8rem 1.5rem;">
-                <div style="font-size:1.8rem; font-weight:800; color:#b31b2c; margin-bottom:0.2rem;">от 2 до 8 раз</div>
-                <div style="font-size:0.9rem;">Реальная скорость формирования закупок по 223-ФЗ на примере сложных индивидуальных ТСР</div>
+            <div class="highlight-box animate-highlight" style="margin-top:0; padding:1.2rem 1.5rem;">
+                <div style="font-size:2.6rem; font-weight:800; color:#b31b2c; margin-bottom:0.2rem;">от 2 до 8 раз</div>
+                <div style="font-size:1.3rem;">Реальная скорость формирования закупок по 223-ФЗ на примере сложных индивидуальных ТСР</div>
             </div>
         </div>
     </div>
@@ -1389,18 +1329,17 @@
         </div>
         <div class="content">
             <h2 class="animate-title">Перечень закупаемых товаров, работ, услуг</h2>
-            <div class="subhead animate-subhead" style="margin-bottom:1rem;">Чёткое разделение ответственности между ГКУ «Дирекция» и ГАУ «ЦентрМТО»</div>
+            <div class="subhead animate-subhead" style="margin-bottom:1.2rem; font-size:1.4rem;">Чёткое разделение ответственности между ГКУ «Дирекция» и ГАУ «ЦентрМТО»</div>
             <div class="grid-2col" style="margin:0;">
-                <!-- Дирекция -->
-                <div class="info-card solid-border animate-card" style="padding:1.2rem 1.5rem;">
+                <div class="info-card solid-border animate-card" style="padding:1.5rem;">
                     <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:1rem;">
-                        <div style="width:40px; height:40px; background:#b31b2c; border-radius:0.6rem; display:flex; align-items:center; justify-content:center; font-size:1.3rem;">🏛️</div>
+                        <div style="width:50px; height:50px; background:#b31b2c; border-radius:0.6rem; display:flex; align-items:center; justify-content:center; font-size:1.5rem;">🏛️</div>
                         <div>
-                            <h4 style="margin-bottom:0; font-size:1rem;">ГКУ «Дирекция»</h4>
-                            <div class="card-subtitle" style="margin-bottom:0;">Медицинские изделия и протезирование</div>
+                            <h4 style="margin-bottom:0; font-size:1.4rem;">ГКУ «Дирекция»</h4>
+                            <div class="card-subtitle" style="margin-bottom:0; font-size:1.1rem;">Медицинские изделия и протезирование</div>
                         </div>
                     </div>
-                    <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+                    <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
                         <span class="chip red">Медицинские изделия (ТПГГ)</span>
                         <span class="chip red">Протезы и ортезы</span>
                         <span class="chip red">Высокофункциональные протезы</span>
@@ -1410,16 +1349,15 @@
                         <span class="chip red">Ремонт ТСР и ПОИ</span>
                     </div>
                 </div>
-                <!-- ЦентрМТО -->
-                <div class="info-card dashed-border animate-card" style="padding:1.2rem 1.5rem;">
+                <div class="info-card dashed-border animate-card" style="padding:1.5rem;">
                     <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:1rem;">
-                        <div style="width:40px; height:40px; background:#fff5f5; border:2px dashed #b31b2c; border-radius:0.6rem; display:flex; align-items:center; justify-content:center; font-size:1.3rem;">📦</div>
+                        <div style="width:50px; height:50px; background:#fff5f5; border:2px dashed #b31b2c; border-radius:0.6rem; display:flex; align-items:center; justify-content:center; font-size:1.5rem;">📦</div>
                         <div>
-                            <h4 style="margin-bottom:0; font-size:1rem;">ГАУ «ЦентрМТО»</h4>
-                            <div class="card-subtitle" style="margin-bottom:0;">Технические средства реабилитации</div>
+                            <h4 style="margin-bottom:0; font-size:1.4rem;">ГАУ «ЦентрМТО»</h4>
+                            <div class="card-subtitle" style="margin-bottom:0; font-size:1.1rem;">Технические средства реабилитации</div>
                         </div>
                     </div>
-                    <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+                    <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
                         <span class="chip green">Трости, костыли, опоры, поручни</span>
                         <span class="chip green">Кресла-коляски всех типов</span>
                         <span class="chip green">Противопролежневые матрасы и подушки</span>
@@ -1436,7 +1374,7 @@
                     </div>
                 </div>
             </div>
-            <div class="highlight-box animate-highlight" style="margin-top:0.8rem; padding:0.6rem 1.5rem; font-size:0.8rem;">
+            <div class="highlight-box animate-highlight" style="margin-top:1rem; padding:0.8rem 1.5rem; font-size:1.15rem;">
                 <strong>Принцип разделения:</strong> ГКУ «Дирекция» — медицинские изделия и протезирование. ГАУ «ЦентрМТО» — технические средства реабилитации и бытовая адаптация.
             </div>
         </div>
@@ -1444,80 +1382,78 @@
 
     <!-- ═══════════════ СЛАЙД 12 · ЗАКУПКИ 2026: ПОИ ═══════════════ -->
     <div class="slide" data-slide="11">
-    <div class="corner-logo">
-        <img class="logo_litle" src="/Логотип без фона (Правильный красный).png" alt="Логотип">
-        <span class="logo-text">ЦЕНТР МАТЕРИАЛЬНО-<br>ТЕХНИЧЕСКОГО<br>ОБЕСПЕЧЕНИЯ</span>
-    </div>
-    <div class="content">
-        <h2 class="animate-title">Закупки на 2026 год</h2>
-        <div class="subhead animate-subhead" style="margin-bottom:0.5rem;">Предоставление инвалидам протезно-ортопедических изделий</div>
-        <p style="font-size:0.85rem; color:#5a5a5a; margin-bottom:0.3rem;">Потребность поступила: 04.09.2025, 18.09.2025, 27.10.2025, 09.02.2026</p>
-        <p style="font-size:0.9rem; font-weight:700; color:#b31b2c; margin-bottom:0.8rem;">Доведённый лимит: 1 738,48 млн ₽</p>
-        
-        <div class="animate-card" style="position: relative; height: 350px; max-width: 900px; margin: 0 auto;">
-            <canvas id="chartPOI"></canvas>
+        <div class="corner-logo">
+            <img class="logo_litle" src="/Логотип без фона (Правильный красный).png" alt="Логотип">
+            <span class="logo-text">ЦЕНТР МАТЕРИАЛЬНО-<br>ТЕХНИЧЕСКОГО<br>ОБЕСПЕЧЕНИЯ</span>
         </div>
+        <div class="content">
+            <h2 class="animate-title">Закупки на 2026 год</h2>
+            <div class="subhead animate-subhead" style="margin-bottom:0.5rem; font-size:1.4rem;">Предоставление инвалидам протезно-ортопедических изделий</div>
+            <p style="font-size:1.15rem; color:#5a5a5a; margin-bottom:0.3rem;">Потребность поступила: 04.09.2025, 18.09.2025, 27.10.2025, 09.02.2026</p>
+            <p style="font-size:1.25rem; font-weight:700; color:#b31b2c; margin-bottom:0.8rem;">Доведённый лимит: 1 738,48 млн ₽</p>
+            
+            <div class="animate-card" style="position: relative; height: 380px; max-width: 950px; margin: 0 auto;">
+                <canvas id="chartPOI"></canvas>
+            </div>
 
-        <p style="font-size:0.8rem; color:#888; margin-top:0.5rem; text-align:center;">Массовые закупки ПОИ проведены. В настоящее время осуществляются закупки индивидуальных ТСР и ПОИ.</p>
+            <p style="font-size:1.1rem; color:#888; margin-top:0.5rem; text-align:center;">Массовые закупки ПОИ проведены. В настоящее время осуществляются закупки индивидуальных ТСР и ПОИ.</p>
+        </div>
     </div>
-</div>
 
     <!-- ═══════════════ СЛАЙД 13 · ЗАКУПКИ 2026: Реабилитация детей ═══════════════ -->
     <div class="slide" data-slide="12">
-    <div class="corner-logo">
-        <img class="logo_litle" src="/Логотип без фона (Правильный красный).png" alt="Логотип">
-        <span class="logo-text">ЦЕНТР МАТЕРИАЛЬНО-<br>ТЕХНИЧЕСКОГО<br>ОБЕСПЕЧЕНИЯ</span>
-    </div>
-    <div class="content">
-        <h2 class="animate-title">Закупки на 2026 год</h2>
-        <div class="subhead animate-subhead" style="margin-bottom:0.5rem;">Оказание услуг по комплексной реабилитации детей-инвалидов</div>
-        <p style="font-size:0.85rem; color:#5a5a5a; margin-bottom:0.3rem;">Потребность поступила: 01.12.2025, 15.12.2025, 30.01.2026</p>
-        <p style="font-size:0.9rem; font-weight:700; color:#b31b2c; margin-bottom:0.8rem;">Доведённый лимит: 325,33 млн ₽ (1 424 путёвки)</p>
-        
-        <div class="animate-card" style="position: relative; height: 350px; max-width: 900px; margin: 0 auto;">
-            <canvas id="chartRehab"></canvas>
+        <div class="corner-logo">
+            <img class="logo_litle" src="/Логотип без фона (Правильный красный).png" alt="Логотип">
+            <span class="logo-text">ЦЕНТР МАТЕРИАЛЬНО-<br>ТЕХНИЧЕСКОГО<br>ОБЕСПЕЧЕНИЯ</span>
         </div>
+        <div class="content">
+            <h2 class="animate-title">Закупки на 2026 год</h2>
+            <div class="subhead animate-subhead" style="margin-bottom:0.5rem; font-size:1.4rem;">Оказание услуг по комплексной реабилитации детей-инвалидов</div>
+            <p style="font-size:1.15rem; color:#5a5a5a; margin-bottom:0.3rem;">Потребность поступила: 01.12.2025, 15.12.2025, 30.01.2026</p>
+            <p style="font-size:1.25rem; font-weight:700; color:#b31b2c; margin-bottom:0.8rem;">Доведённый лимит: 325,33 млн ₽ (1 424 путёвки)</p>
+            
+            <div class="animate-card" style="position: relative; height: 380px; max-width: 950px; margin: 0 auto;">
+                <canvas id="chartRehab"></canvas>
+            </div>
 
-        <div class="highlight-box animate-highlight" style="margin-top:0.5rem;">
-            <strong>Статус:</strong> все контракты заключены. Программа реализована в полном объёме.
+            <div class="highlight-box animate-highlight" style="margin-top:0.5rem;">
+                <strong>Статус:</strong> все контракты заключены. Программа реализована в полном объёме.
+            </div>
         </div>
     </div>
-</div>
 
     <!-- ═══════════════ СЛАЙД 14 · ЗАКУПКИ 2026: ТСР ═══════════════ -->
     <div class="slide" data-slide="13">
-    <div class="corner-logo">
-        <img class="logo_litle" src="/Логотип без фона (Правильный красный).png" alt="Логотип">
-        <span class="logo-text">ЦЕНТР МАТЕРИАЛЬНО-<br>ТЕХНИЧЕСКОГО<br>ОБЕСПЕЧЕНИЯ</span>
-    </div>
-    <div class="content">
-        <h2 class="animate-title" style="font-size:1.8rem;">Закупки на 2026 год: ТСР и ГАУ «ЦентрМТО»</h2>
-        
-        <div class="grid-2col" style="margin:0.5rem 0; gap:1.5rem;">
-            <!-- Левая колонка: Дирекция ТСР -->
-            <div>
-                <p style="font-weight:700; color:#b31b2c; margin-bottom:0.3rem; font-size:0.9rem;">Предоставление инвалидам ТСР (Дирекция)</p>
-                <p style="font-size:0.75rem; color:#5a5a5a; margin-bottom:0.3rem;">Лимит: 1 640,4 млн ₽ (2026) / 582,7 млн ₽ (2027)</p>
-                <div class="animate-card" style="position: relative; height: 280px;">
-                    <canvas id="chartTSR"></canvas>
-                </div>
-            </div>
-            
-            <!-- Правая колонка: ГАУ ЦентрМТО -->
-            <div>
-                <p style="font-weight:700; color:#b31b2c; margin-bottom:0.3rem; font-size:0.9rem;">ГАУ «ЦентрМТО»</p>
-                <p style="font-size:0.75rem; color:#5a5a5a; margin-bottom:0.3rem;">Лимит: 250,0 млн ₽ (2026) / 200,0 млн ₽ (2027)</p>
-                <div class="animate-card" style="position: relative; height: 280px;">
-                    <canvas id="chartMTO"></canvas>
-                </div>
-            </div>
+        <div class="corner-logo">
+            <img class="logo_litle" src="/Логотип без фона (Правильный красный).png" alt="Логотип">
+            <span class="logo-text">ЦЕНТР МАТЕРИАЛЬНО-<br>ТЕХНИЧЕСКОГО<br>ОБЕСПЕЧЕНИЯ</span>
         </div>
+        <div class="content">
+            <h2 class="animate-title" style="font-size:2.6rem;">Закупки на 2026 год: ТСР и ГАУ «ЦентрМТО»</h2>
+            
+            <div class="grid-2col" style="margin:0.5rem 0; gap:2rem;">
+                <div>
+                    <p style="font-weight:700; color:#b31b2c; margin-bottom:0.3rem; font-size:1.25rem;">Предоставление инвалидам ТСР (Дирекция)</p>
+                    <p style="font-size:1.05rem; color:#5a5a5a; margin-bottom:0.3rem;">Лимит: 1 640,4 млн ₽ (2026) / 582,7 млн ₽ (2027)</p>
+                    <div class="animate-card" style="position: relative; height: 300px;">
+                        <canvas id="chartTSR"></canvas>
+                    </div>
+                </div>
+                
+                <div>
+                    <p style="font-weight:700; color:#b31b2c; margin-bottom:0.3rem; font-size:1.25rem;">ГАУ «ЦентрМТО»</p>
+                    <p style="font-size:1.05rem; color:#5a5a5a; margin-bottom:0.3rem;">Лимит: 250,0 млн ₽ (2026) / 200,0 млн ₽ (2027)</p>
+                    <div class="animate-card" style="position: relative; height: 300px;">
+                        <canvas id="chartMTO"></canvas>
+                    </div>
+                </div>
+            </div>
 
-        <p style="font-size:0.75rem; color:#5a5a5a; margin-top:0.3rem; text-align:center;">
-            <strong>ГАУ «ЦентрМТО» (2027):</strong> в работе — 199,9 млн ₽ · <strong>Итого остаток (2026):</strong> 76,0 млн ₽
-        </p>
+            <p style="font-size:1.05rem; color:#5a5a5a; margin-top:0.3rem; text-align:center;">
+                <strong>ГАУ «ЦентрМТО» (2027):</strong> в работе — 199,9 млн ₽ · <strong>Итого остаток (2026):</strong> 76,0 млн ₽
+            </p>
+        </div>
     </div>
-</div>
 
 
 </div>
@@ -1632,17 +1568,17 @@
         animateSlide(0);
 
         // Горячая клавиша: Ctrl + . скрывает/показывает скроллбар
-document.addEventListener('keydown', function(e) {
-    if (e.ctrlKey && e.key === '.') {
-        e.preventDefault();
-        const deckEl = document.getElementById('slideDeck');
-        if (deckEl.style.overflowX === 'hidden') {
-            deckEl.style.overflowX = 'auto';
-        } else {
-            deckEl.style.overflowX = 'hidden';
-        }
-    }
-});
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === '.') {
+                e.preventDefault();
+                const deckEl = document.getElementById('slideDeck');
+                if (deckEl.style.overflowX === 'hidden') {
+                    deckEl.style.overflowX = 'auto';
+                } else {
+                    deckEl.style.overflowX = 'hidden';
+                }
+            }
+        });
     })();
 </script>
 <script>
@@ -1698,7 +1634,7 @@ document.addEventListener('keydown', function(e) {
                             usePointStyle: true,
                             pointStyleWidth: 12,
                             padding: 20,
-                            font: { size: 13, family: 'Inter', weight: '600' },
+                            font: { size: 15, family: 'Inter', weight: '600' },
                             generateLabels: (chart) => {
                                 const ds = chart.data.datasets;
                                 return ds.map((d, i) => ({
@@ -1716,8 +1652,8 @@ document.addEventListener('keydown', function(e) {
                     },
                     tooltip: {
                         backgroundColor: 'rgba(30,30,30,0.9)',
-                        titleFont: { size: 13, family: 'Inter', weight: '700' },
-                        bodyFont: { size: 12, family: 'Inter' },
+                        titleFont: { size: 15, family: 'Inter', weight: '700' },
+                        bodyFont: { size: 14, family: 'Inter' },
                         callbacks: {
                             label: (ctx) => ` ${ctx.dataset.label}: ${ctx.raw.toFixed(2)} млн ₽`
                         }
@@ -1726,7 +1662,7 @@ document.addEventListener('keydown', function(e) {
                 scales: {
                     x: {
                         grid: { display: false },
-                        ticks: { font: { size: 11, family: 'Inter', weight: '600' }, color: '#555' },
+                        ticks: { font: { size: 14, family: 'Inter', weight: '600' }, color: '#555' },
                         offset: true,
                     },
                     y: {
@@ -1734,7 +1670,7 @@ document.addEventListener('keydown', function(e) {
                         max: yMax,
                         grid: { color: '#e8e8e8', drawBorder: false },
                         ticks: {
-                            font: { size: 10, family: 'Inter' },
+                            font: { size: 13, family: 'Inter' },
                             color: '#888',
                             callback: (v) => v + '',
                             stepSize: Math.ceil(yMax / 5),
@@ -1742,7 +1678,7 @@ document.addEventListener('keydown', function(e) {
                         title: {
                             display: true,
                             text: 'млн ₽',
-                            font: { size: 11, family: 'Inter', weight: '600' },
+                            font: { size: 14, family: 'Inter', weight: '600' },
                             color: '#888',
                         }
                     }
@@ -1758,7 +1694,7 @@ document.addEventListener('keydown', function(e) {
                             const value = dataset.data[idx];
                             if (value === 0) return;
                             ctx.fillStyle = '#333';
-                            ctx.font = 'bold 11px Inter';
+                            ctx.font = 'bold 14px Inter';
                             ctx.textAlign = 'center';
                             ctx.fillText(value.toFixed(2), bar.x, bar.y - 8);
                         });
