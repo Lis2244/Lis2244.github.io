@@ -12,10 +12,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Observer.min.js">
   </script>
 
-  <!-- Скрытый SVG-фильтр для Liquid Glass -->
   <svg style="display: none" aria-hidden="true">
     <filter id="liquidGlassFilter" x="-20%" y="-20%" width="140%" height="140%">
-      <feImage href="data:image/png;base64,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" preserveAspectRatio="none" result="noise" />
+      <feImage href="data:image/png;base64,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" preserveAspectRatio="none" result="noise" />
       <feDisplacementMap in="SourceGraphic" in2="noise" scale="500" xChannelSelector="R" yChannelSelector="G" result="displaced" />
       <feGaussianBlur in="displaced" stdDeviation="1.5" result="blurred" />
       <feBlend in="SourceGraphic" in2="blurred" mode="overlay" result="blend" />
@@ -25,12 +24,10 @@
   <style>
     :root {
       --ios-bg: #F2F2F7;
-      --ios-surface: rgba(255, 255, 255, 0.72);
       --ios-text: #000000;
       --ios-text-secondary: #3C3C43;
       --ios-text-tertiary: #8E8E93;
       --ios-accent: #007AFF;
-      --ios-accent-pressed: #0056CC;
       --ios-green: #34C759;
       --ios-green-bg: rgba(52, 199, 89, 0.1);
       --ios-separator: rgba(60, 60, 67, 0.12);
@@ -58,7 +55,7 @@
 
     body {
       font-family: -apple-system, 'Inter', BlinkMacSystemFont, system-ui, sans-serif;
-      background: var(--ios-bg);
+      background: linear-gradient(135deg, #E8E9F0 0%, #F2F2F7 30%, #EAECF2 70%, #E0E2EB 100%);
       color: var(--ios-text);
       line-height: 1.47059;
       -webkit-font-smoothing: antialiased;
@@ -70,7 +67,6 @@
       -webkit-tap-highlight-color: transparent;
       user-select: none;
       -webkit-user-select: none;
-      background: linear-gradient(135deg, #E8E9F0 0%, #F2F2F7 30%, #EAECF2 70%, #E0E2EB 100%);
     }
 
     .app {
@@ -91,7 +87,6 @@
       -webkit-backdrop-filter: blur(40px) saturate(180%);
       padding: 12px 16px 8px;
       border-bottom: 0.5px solid var(--ios-separator);
-      /* Область для свайпов */
       touch-action: pan-x;
     }
 
@@ -120,7 +115,6 @@
       gap: 8px;
       overflow-x: auto;
       scrollbar-width: none;
-      -ms-overflow-style: none;
       padding-bottom: 4px;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
@@ -183,7 +177,6 @@
       padding: 16px 16px 120px;
       flex: 1;
       position: relative;
-      /* Блокируем горизонтальные свайпы в области контента */
       touch-action: pan-y;
     }
 
@@ -201,14 +194,13 @@
       will-change: transform, opacity;
     }
 
-    /* ЖИДКОЕ СТЕКЛО ДЛЯ КАРТОЧЕК ДНЯ */
     .day-card {
       background: rgba(255, 255, 255, 0.48);
       border-radius: var(--ios-radius-lg);
       margin-bottom: 14px;
       border: 0.5px solid var(--ios-glass-border);
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04), 0 0 0 0.5px rgba(0, 0, 0, 0.06);
-      transition: all var(--transition-ease);
+      transition: box-shadow var(--transition-ease), border-color var(--transition-ease), background var(--transition-ease);
       position: relative;
       overflow: hidden;
       backdrop-filter: url(#liquidGlassFilter) blur(6px);
@@ -265,7 +257,7 @@
       width: 16px;
       height: 16px;
       color: var(--ios-text-tertiary);
-      transition: transform var(--transition-spring);
+      transition: transform 0.35s cubic-bezier(0.22, 0.6, 0.36, 1);
       flex-shrink: 0;
     }
 
@@ -277,7 +269,8 @@
     .day-body {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.5s cubic-bezier(0.22, 0.6, 0.36, 1);
+      transition: max-height 0.45s cubic-bezier(0.22, 0.6, 0.36, 1);
+      will-change: max-height;
     }
 
     .day-body-inner {
@@ -296,14 +289,13 @@
       border-radius: var(--ios-radius-sm);
       padding: 16px;
       position: relative;
-      transition: all var(--transition-ease);
       border: 0.5px solid rgba(255, 255, 255, 0.5);
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      transition: transform 0.15s ease;
     }
 
     .meal:active {
       transform: scale(0.985);
-      background: rgba(255, 255, 255, 0.7);
     }
 
     .meal-type {
@@ -341,7 +333,6 @@
       font-size: var(--ios-font-caption);
       background: var(--ios-fill-tertiary);
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       padding: 4px 10px;
       border-radius: 16px;
       color: var(--ios-accent);
@@ -353,7 +344,6 @@
       color: #1C7A32;
       background: rgba(52, 199, 89, 0.08);
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       padding: 10px 14px;
       border-radius: 10px;
       margin-bottom: 10px;
@@ -375,21 +365,21 @@
       padding: 8px 0;
       letter-spacing: -0.01em;
       transition: color 0.2s;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .meal-detail-btn:active {
-      color: var(--ios-accent-pressed);
+      color: #0056CC;
     }
 
     .meal-detail-btn svg {
       width: 14px;
       height: 14px;
-      transition: transform var(--transition-spring);
+      transition: transform 0.3s cubic-bezier(0.22, 0.6, 0.36, 1);
     }
 
     .meal-detail-btn.expanded svg {
       transform: rotate(180deg);
-      color: var(--ios-accent);
     }
 
     .meal-detail-panel {
@@ -398,10 +388,10 @@
       transition: max-height 0.4s cubic-bezier(0.22, 0.6, 0.36, 1);
       background: rgba(255, 255, 255, 0.48);
       backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
       border-radius: 10px;
       margin-top: 8px;
       border: 0.5px solid rgba(255, 255, 255, 0.5);
+      will-change: max-height;
     }
 
     .meal-detail-content {
@@ -421,7 +411,6 @@
     .micro-item {
       background: rgba(0, 122, 255, 0.08);
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       border: 0.5px solid rgba(0, 122, 255, 0.15);
       padding: 4px 12px;
       border-radius: 16px;
@@ -433,7 +422,6 @@
     .note-banner {
       background: rgba(255, 255, 255, 0.56);
       backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
       border: 0.5px solid rgba(255, 255, 255, 0.6);
       border-radius: var(--ios-radius-sm);
       padding: 14px 16px;
@@ -441,7 +429,6 @@
       font-size: var(--ios-font-footnote);
       color: var(--ios-text-secondary);
       line-height: 1.4;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
     }
 
     .fab {
@@ -453,7 +440,6 @@
       border-radius: 50%;
       background: rgba(0, 122, 255, 0.88);
       backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
       color: #FFFFFF;
       border: 0.5px solid rgba(255, 255, 255, 0.3);
       cursor: pointer;
@@ -467,7 +453,6 @@
 
     .fab:active {
       transform: scale(0.92);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     }
 
     .modal-overlay {
@@ -475,14 +460,13 @@
       inset: 0;
       background: rgba(0, 0, 0, 0.25);
       backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
       z-index: 300;
       display: flex;
       align-items: flex-end;
       justify-content: center;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.35s cubic-bezier(0.25, 0.1, 0.25, 1);
+      transition: opacity 0.35s;
     }
 
     .modal-overlay.open {
@@ -493,7 +477,6 @@
     .modal-sheet {
       background: rgba(255, 255, 255, 0.82);
       backdrop-filter: blur(40px) saturate(180%);
-      -webkit-backdrop-filter: blur(40px) saturate(180%);
       border-radius: var(--ios-radius-xl) var(--ios-radius-xl) 0 0;
       width: 100%;
       max-width: 428px;
@@ -869,7 +852,7 @@
         const w = programData.weeks.find(x => x.id === wid);
         if (!w) return '';
         let html = w.days.map((d, i) =>
-          `<div class="day-card" data-day-index="${i}"><div class="day-header"><span class="day-name">${d.day}</span><svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="day-body"><div class="day-body-inner">${d.meals.map(buildMealHTML).join('')}</div></div></div>`
+          `<div class="day-card" data-day-index="${i}"><div class="day-header"><span class="day-name">${d.day}</span><svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="day-body" style="max-height:0"><div class="day-body-inner">${d.meals.map(buildMealHTML).join('')}</div></div></div>`
         ).join('');
         if (programData.notes[wid]) html += `<div class="note-banner">${programData.notes[wid]}</div>`;
         return html;
@@ -884,36 +867,46 @@
       }
 
       function bindEvents(container) {
-        container.querySelectorAll('.day-header').forEach(h => h.addEventListener('click', () => {
-          const idx = parseInt(h.closest('.day-card').dataset.dayIndex);
-          toggleDay(idx);
-        }));
+        container.querySelectorAll('.day-header').forEach(h => {
+          h.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const idx = parseInt(this.closest('.day-card').dataset.dayIndex);
+            toggleDay(idx);
+          });
+        });
+        
         container.querySelectorAll('.meal-detail-btn').forEach(btn => {
           btn.addEventListener('click', function(e) {
             e.stopPropagation();
             e.preventDefault();
             const panel = this.nextElementSibling;
             const isOpen = panel.style.maxHeight !== '0px' && panel.style.maxHeight !== '';
+            
             if (isOpen) {
               panel.style.maxHeight = '0';
               this.classList.remove('expanded');
             } else {
-              panel.style.display = 'block';
               panel.style.maxHeight = panel.scrollHeight + 'px';
               this.classList.add('expanded');
-              gsap.fromTo(panel.querySelectorAll('.micro-item'), { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.3, stagger: 0.04, ease: 'back.out(1.5)' });
+              gsap.fromTo(panel.querySelectorAll('.micro-item'), 
+                { opacity: 0, scale: 0.8 }, 
+                { opacity: 1, scale: 1, duration: 0.3, stagger: 0.04, ease: 'back.out(1.5)' }
+              );
             }
+            
             const card = this.closest('.day-card');
             if (card) {
-              setTimeout(() => recalcDayBody(card), 400);
-              if (!isOpen) {
-                setTimeout(() => {
-                  const rect = panel.getBoundingClientRect();
-                  if (rect.bottom > window.innerHeight - 100 || rect.top < 100) {
-                    panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                  }
-                }, 450);
-              }
+              requestAnimationFrame(() => {
+                recalcDayBody(card);
+                if (!isOpen) {
+                  setTimeout(() => {
+                    const rect = panel.getBoundingClientRect();
+                    if (rect.bottom > window.innerHeight - 100 || rect.top < 100) {
+                      panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                  }, 350);
+                }
+              });
             }
           });
         });
@@ -924,25 +917,54 @@
         if (!cont) return;
         const card = cont.querySelector(`.day-card[data-day-index="${idx}"]`);
         if (!card) return;
+        
+        const body = card.querySelector('.day-body');
+        
+        // Закрываем текущий открытый день если он есть
+        if (openDayIndex !== null && openDayIndex !== idx) {
+          const prev = cont.querySelector(`.day-card[data-day-index="${openDayIndex}"]`);
+          if (prev) {
+            prev.classList.remove('open');
+            prev.querySelector('.day-body').style.maxHeight = '0';
+          }
+        }
+        
         if (openDayIndex === idx) {
+          // Закрываем
           card.classList.remove('open');
-          card.querySelector('.day-body').style.maxHeight = '0';
+          body.style.maxHeight = '0';
           openDayIndex = null;
         } else {
-          if (openDayIndex !== null) {
-            const prev = cont.querySelector(`.day-card[data-day-index="${openDayIndex}"]`);
-            if (prev) { prev.classList.remove('open'); prev.querySelector('.day-body').style.maxHeight = '0'; }
-          }
-          openDayIndex = idx;
+          // Открываем
           card.classList.add('open');
-          const body = card.querySelector('.day-body');
           body.style.maxHeight = body.scrollHeight + 'px';
-          gsap.fromTo(card.querySelectorAll('.meal'), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.35, stagger: 0.05, ease: 'power2.out' });
+          openDayIndex = idx;
+          
+          // Анимируем появление приёмов пищи
+          const meals = card.querySelectorAll('.meal');
+          gsap.fromTo(meals, 
+            { opacity: 0, y: 8 }, 
+            { opacity: 1, y: 0, duration: 0.35, stagger: 0.05, ease: 'power2.out' }
+          );
         }
       }
 
       function switchWeek(newId, dir) {
-        if (isTransitioning || openDayIndex !== null) return;
+        if (isTransitioning) return;
+        
+        // Закрываем открытый день перед переключением
+        if (openDayIndex !== null) {
+          const cont = mainContent.querySelector('.week-container');
+          if (cont) {
+            const card = cont.querySelector(`.day-card[data-day-index="${openDayIndex}"]`);
+            if (card) {
+              card.classList.remove('open');
+              card.querySelector('.day-body').style.maxHeight = '0';
+            }
+          }
+          openDayIndex = null;
+        }
+        
         isTransitioning = true;
         const old = mainContent.querySelector('.week-container');
         const nc = document.createElement('div');
@@ -950,10 +972,10 @@
         nc.innerHTML = buildWeekHTML(newId);
         mainContent.appendChild(nc);
         bindEvents(nc);
-        const mx = dir * 60;
-        gsap.set(nc, { x: mx * 2, opacity: 0 });
+        
+        gsap.set(nc, { x: dir * 80, opacity: 0 });
         if (old) gsap.set(old, { x: 0, opacity: 1 });
-        openDayIndex = null;
+        
         gsap.timeline({
           onComplete: () => {
             if (old) old.remove();
@@ -961,22 +983,22 @@
             renderWeekSelector();
             isTransitioning = false;
           }
-        }).to(old || {}, { x: -mx, opacity: 0, duration: 0.35, ease: 'power2.inOut' }, 0)
-          .to(nc, { x: 0, opacity: 1, duration: 0.35, ease: 'power2.inOut' }, 0);
+        })
+        .to(old || {}, { x: -dir * 60, opacity: 0, duration: 0.35, ease: 'power2.inOut' }, 0)
+        .to(nc, { x: 0, opacity: 1, duration: 0.35, ease: 'power2.inOut' }, 0);
       }
 
       function initSwipe() {
-        // Свайп только в зоне заголовка
         Observer.create({
           target: swipeZone,
           type: 'touch',
           onRight: () => { 
-            if (!isTransitioning && currentWeek > 1 && openDayIndex === null) {
+            if (!isTransitioning && currentWeek > 1) {
               switchWeek(currentWeek - 1, -1);
             }
           },
           onLeft: () => { 
-            if (!isTransitioning && currentWeek < 4 && openDayIndex === null) {
+            if (!isTransitioning && currentWeek < 4) {
               switchWeek(currentWeek + 1, 1);
             }
           },
@@ -1004,11 +1026,15 @@
 
       function openModal() { modalOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
       function closeModal() { modalOverlay.classList.remove('open'); document.body.style.overflow = ''; }
+      
       fabBtn.addEventListener('click', openModal);
       modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
+      
       let tsY = 0;
       modalSheet.addEventListener('touchstart', e => { tsY = e.touches[0].clientY; }, { passive: true });
-      modalSheet.addEventListener('touchmove', e => { if (e.touches[0].clientY - tsY > 60 && modalSheet.scrollTop <= 0) closeModal(); }, { passive: true });
+      modalSheet.addEventListener('touchmove', e => { 
+        if (e.touches[0].clientY - tsY > 60 && modalSheet.scrollTop <= 0) closeModal(); 
+      }, { passive: true });
 
       function init() {
         const c = document.createElement('div');
@@ -1019,6 +1045,7 @@
         renderWeekSelector();
         renderShoppingList();
         initSwipe();
+        
         gsap.fromTo('.navbar', { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out', delay: 0.1 });
         gsap.fromTo('.week-btn', { y: 8, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, stagger: 0.04, ease: 'power2.out', delay: 0.2 });
         gsap.fromTo('.day-card', { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, stagger: 0.05, ease: 'power2.out', delay: 0.35 });
