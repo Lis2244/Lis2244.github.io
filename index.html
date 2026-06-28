@@ -83,7 +83,6 @@
             letter-spacing: 0.01em;
             border: 1px solid rgba(0, 212, 170, 0.15);
         }
-
         .week-selector {
             display: flex;
             gap: 8px;
@@ -129,7 +128,6 @@
         .week-btn:active {
             transform: scale(0.96);
         }
-
         .scroll-indicator {
             display: flex;
             justify-content: center;
@@ -149,7 +147,6 @@
             width: 18px;
             border-radius: 3px;
         }
-
         .swipe-hint {
             text-align: center;
             font-size: 0.68rem;
@@ -158,7 +155,6 @@
             letter-spacing: 0.05em;
             text-transform: uppercase;
         }
-
         .main-content {
             padding: 0 14px 110px;
             max-width: 600px;
@@ -286,11 +282,12 @@
             background: none;
             border: none;
             cursor: pointer;
-            padding: 4px 0;
+            padding: 8px 0;
             letter-spacing: 0.03em;
             text-transform: uppercase;
             transition: opacity 0.2s;
             -webkit-tap-highlight-color: transparent;
+            min-height: 36px;
         }
         .meal-detail-btn:active {
             opacity: 0.6;
@@ -314,7 +311,7 @@
             border: 1px solid rgba(255, 255, 255, 0.03);
         }
         .meal-detail-panel.open {
-            max-height: 500px;
+            max-height: 600px;
         }
         .meal-detail-content {
             padding: 12px 14px;
@@ -431,7 +428,6 @@
             border-bottom: 1px solid var(--ton-border);
             color: var(--ton-text-secondary);
         }
-
         .note-banner {
             background: rgba(0, 152, 234, 0.05);
             border: 1px solid rgba(0, 152, 234, 0.15);
@@ -806,12 +802,8 @@
                         ]}
                     ]}
                 ],
-                notes: {
-                    1: 'Пейте воду с лимоном по утрам. Кофе — без сахара, через полчаса после завтрака.',
-                    2: 'Пейте воду с лимоном по утрам. Кофе — без сахара, через полчаса после завтрака.',
-                    3: 'Пейте воду с лимоном по утрам. Кофе — без сахара, через полчаса после завтрака.',
-                    4: 'Пейте воду с лимоном по утрам. Кофе — без сахара, через полчаса после завтрака.'
-                }
+                notes: { 1: 'Вода с лимоном утром. Кофе без сахара через 30 мин после завтрака.', 2: 'Вода с лимоном утром. Кофе без сахара через 30 мин после завтрака.',
+                    3: 'Вода с лимоном утром. Кофе без сахара через 30 мин после завтрака.', 4: 'Вода с лимоном утром. Кофе без сахара через 30 мин после завтрака.' }
             };
 
             let currentWeek = 1;
@@ -826,93 +818,88 @@
             const shoppingContent = document.getElementById('shoppingContent');
 
             function updateScrollIndicator() {
-                const dots = scrollIndicator.querySelectorAll('.scroll-dot');
-                dots.forEach((dot, i) => dot.classList.toggle('active', i + 1 === currentWeek));
+                scrollIndicator.querySelectorAll('.scroll-dot').forEach((dot, i) => dot.classList.toggle('active', i + 1 ===
+                    currentWeek));
             }
 
             function renderWeekSelector() {
                 weekSelector.innerHTML = programData.weeks.map(w =>
-                    `<button class="week-btn ${w.id === currentWeek ? 'active' : ''}" data-week="${w.id}">${w.title}: ${w.subtitle}</button>`
+                    `<button class="week-btn ${w.id===currentWeek?'active':''}" data-week="${w.id}">${w.title}: ${w.subtitle}</button>`
                 ).join('');
                 scrollIndicator.innerHTML = programData.weeks.map(() => '<span class="scroll-dot"></span>').join('');
                 updateScrollIndicator();
-                weekSelector.querySelectorAll('.week-btn').forEach(btn => {
-                    btn.addEventListener('click', () => {
-                        if (isTransitioning) return;
-                        const weekId = parseInt(btn.dataset.week);
-                        if (weekId !== currentWeek) switchWeek(weekId, weekId > currentWeek ? 1 : -1);
-                    });
-                });
-                const activeBtn = weekSelector.querySelector('.week-btn.active');
-                if (activeBtn && window.innerWidth < 600) {
-                    activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-                }
+                weekSelector.querySelectorAll('.week-btn').forEach(b => b.addEventListener('click', () => {
+                    if (isTransitioning) return;
+                    const wid = parseInt(b.dataset.week);
+                    if (wid !== currentWeek) switchWeek(wid, wid > currentWeek ? 1 : -1);
+                }));
+                const ab = weekSelector.querySelector('.week-btn.active');
+                if (ab && innerWidth < 600) ab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
             }
 
-            function buildMealHTML(meal) {
-                const info = mealExplanations[meal.title];
-                let html = `<div class="meal">
-                    <div class="meal-type">${meal.type}</div>
-                    <div class="meal-title">${meal.title}</div>
-                    <div class="meal-ingredients">${meal.ingr}</div>`;
-                if (meal.tags && meal.tags.length) {
-                    html +=
-                        `<div class="meal-tags-row">${meal.tags.map(t => `<span class="meal-tag">${t}</span>`).join('')}</div>`;
-                }
+            function buildMealHTML(m) {
+                const info = mealExplanations[m.title];
+                let h = `<div class="meal"><div class="meal-type">${m.type}</div><div class="meal-title">${m.title}</div><div class="meal-ingredients">${m.ingr}</div>`;
+                if (m.tags && m.tags.length) h +=
+                    `<div class="meal-tags-row">${m.tags.map(t=>`<span class="meal-tag">${t}</span>`).join('')}</div>`;
                 if (info) {
-                    html += `<div class="meal-why">${info.simple}</div>`;
-                    html += `<button class="meal-detail-btn">Что внутри и зачем <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>
-                    <div class="meal-detail-panel"><div class="meal-detail-content">
-                        <strong>Микроэлементы:</strong>
-                        <div class="micro-list">${info.micro.map(m => `<span class="micro-item">${m}</span>`).join('')}</div>
-                        <strong>Подробнее:</strong> ${info.benefit}
-                    </div></div>`;
+                    h += `<div class="meal-why">${info.simple}</div>`;
+                    h += `<button class="meal-detail-btn">Что внутри и зачем <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>`;
+                    h +=
+                        `<div class="meal-detail-panel"><div class="meal-detail-content"><strong>Микроэлементы:</strong><div class="micro-list">${info.micro.map(x=>`<span class="micro-item">${x}</span>`).join('')}</div><strong>Подробнее:</strong> ${info.benefit}</div></div>`;
                 }
-                html += '</div>';
-                return html;
+                h += '</div>';
+                return h;
             }
 
-            function buildWeekHTML(weekId) {
-                const week = programData.weeks.find(w => w.id === weekId);
-                if (!week) return '';
-                let html = '';
-                week.days.forEach((day, index) => {
-                    html += `<div class="day-card" data-day-index="${index}">
-                        <div class="day-header"><span class="day-name">${day.day}</span><svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
-                        <div class="day-body"><div class="day-body-inner">${day.meals.map(m => buildMealHTML(m)).join('')}</div></div>
-                    </div>`;
-                });
-                if (programData.notes[weekId]) html +=
-                    `<div class="note-banner">${programData.notes[weekId]}</div>`;
-                return html;
+            function buildWeekHTML(wid) {
+                const w = programData.weeks.find(x => x.id === wid);
+                if (!w) return '';
+                let h = w.days.map((d, i) =>
+                    `<div class="day-card" data-day-index="${i}"><div class="day-header"><span class="day-name">${d.day}</span><svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="day-body"><div class="day-body-inner">${d.meals.map(m=>buildMealHTML(m)).join('')}</div></div></div>`
+                ).join('');
+                if (programData.notes[wid]) h += `<div class="note-banner">${programData.notes[wid]}</div>`;
+                return h;
+            }
+
+            function recalcDayBody(card) {
+                const body = card.querySelector('.day-body');
+                if (!body || body.style.maxHeight === '0px') return;
+                body.style.maxHeight = body.scrollHeight + 'px';
             }
 
             function bindEvents(container) {
-                container.querySelectorAll('.day-header').forEach(header => {
-                    header.addEventListener('click', () => {
-                        toggleDay(parseInt(header.closest('.day-card').dataset.dayIndex));
-                    });
-                });
+                container.querySelectorAll('.day-header').forEach(h => h.addEventListener('click', () => toggleDay(parseInt(h
+                    .closest('.day-card').dataset.dayIndex))));
                 container.querySelectorAll('.meal-detail-btn').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
+                    btn.addEventListener('click', function(e) {
                         e.stopPropagation();
-                        const panel = btn.nextElementSibling;
+                        const panel = this.nextElementSibling;
                         const isOpen = panel.classList.contains('open');
                         if (isOpen) {
                             panel.classList.remove('open');
                             panel.style.maxHeight = '0';
-                            btn.classList.remove('expanded');
+                            this.classList.remove('expanded');
                         } else {
                             panel.classList.add('open');
                             panel.style.maxHeight = panel.scrollHeight + 'px';
-                            btn.classList.add('expanded');
+                            this.classList.add('expanded');
                             gsap.fromTo(panel.querySelectorAll('.micro-item'), { opacity: 0, scale: 0.8 }, { opacity: 1,
                                 scale: 1, duration: 0.3, stagger: 0.04, ease: 'back.out(1.5)' });
                         }
-                        // Update day body height
-                        const dayBody = btn.closest('.day-body');
-                        if (dayBody && dayBody.style.maxHeight !== '0px') {
-                            dayBody.style.maxHeight = dayBody.scrollHeight + 'px';
+                        const card = this.closest('.day-card');
+                        if (card) {
+                            requestAnimationFrame(() => {
+                                recalcDayBody(card);
+                                if (panel.classList.contains('open')) {
+                                    setTimeout(() => {
+                                        const rect = panel.getBoundingClientRect();
+                                        if (rect.bottom > window.innerHeight - 120) {
+                                            panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                        }
+                                    }, 400);
+                                }
+                            });
                         }
                     });
                 });
@@ -923,66 +910,64 @@
                 openDayIndex = null;
             }
 
-            function renderWeekDirect(weekId) {
+            function renderWeekDirect(wid) {
                 clearMainContent();
-                const container = document.createElement('div');
-                container.className = 'week-container';
-                container.dataset.weekContainer = weekId;
-                container.innerHTML = buildWeekHTML(weekId);
-                mainContent.appendChild(container);
-                bindEvents(container);
-                currentWeek = weekId;
+                const c = document.createElement('div');
+                c.className = 'week-container';
+                c.dataset.weekContainer = wid;
+                c.innerHTML = buildWeekHTML(wid);
+                mainContent.appendChild(c);
+                bindEvents(c);
+                currentWeek = wid;
                 renderWeekSelector();
             }
 
-            function switchWeek(newWeekId, direction) {
+            function switchWeek(newId, dir) {
                 if (isTransitioning) return;
                 isTransitioning = true;
-                const oldContainer = mainContent.querySelector('.week-container');
-                const newContainer = document.createElement('div');
-                newContainer.className = 'week-container';
-                newContainer.dataset.weekContainer = newWeekId;
-                newContainer.innerHTML = buildWeekHTML(newWeekId);
-                mainContent.appendChild(newContainer);
-                bindEvents(newContainer);
-                const moveX = direction * 80;
-                gsap.set(newContainer, { x: moveX * 2, opacity: 0 });
-                if (oldContainer) gsap.set(oldContainer, { x: 0, opacity: 1 });
+                const old = mainContent.querySelector('.week-container');
+                const nc = document.createElement('div');
+                nc.className = 'week-container';
+                nc.dataset.weekContainer = newId;
+                nc.innerHTML = buildWeekHTML(newId);
+                mainContent.appendChild(nc);
+                bindEvents(nc);
+                const mx = dir * 80;
+                gsap.set(nc, { x: mx * 2, opacity: 0 });
+                if (old) gsap.set(old, { x: 0, opacity: 1 });
                 openDayIndex = null;
-                const tl = gsap.timeline({
+                gsap.timeline({
                     onComplete: () => {
-                        if (oldContainer) oldContainer.remove();
-                        currentWeek = newWeekId;
+                        if (old) old.remove();
+                        currentWeek = newId;
                         renderWeekSelector();
                         isTransitioning = false;
                     }
-                });
-                if (oldContainer) tl.to(oldContainer, { x: -moveX, opacity: 0, duration: 0.35,
-                    ease: 'power2.inOut' }, 0);
-                tl.to(newContainer, { x: 0, opacity: 1, duration: 0.35, ease: 'power2.inOut' }, 0);
+                }).to(old || {}, { x: -mx, opacity: 0, duration: 0.35, ease: 'power2.inOut' }, 0)
+                    .to(nc, { x: 0, opacity: 1, duration: 0.35, ease: 'power2.inOut' }, 0);
             }
 
-            function toggleDay(dayIndex) {
-                const container = mainContent.querySelector('.week-container');
-                if (!container) return;
-                const targetCard = container.querySelector(`[data-day-index="${dayIndex}"]`);
-                if (!targetCard) return;
-                if (openDayIndex === dayIndex) {
+            function toggleDay(di) {
+                const cont = mainContent.querySelector('.week-container');
+                if (!cont) return;
+                const card = cont.querySelector(`[data-day-index="${di}"]`);
+                if (!card) return;
+                if (openDayIndex === di) {
                     openDayIndex = null;
-                    targetCard.classList.remove('open');
-                    targetCard.querySelector('.day-body').style.maxHeight = '0';
+                    card.classList.remove('open');
+                    card.querySelector('.day-body').style.maxHeight = '0';
                 } else {
                     if (openDayIndex !== null) {
-                        const prevCard = container.querySelector(`[data-day-index="${openDayIndex}"]`);
-                        if (prevCard) { prevCard.classList.remove('open');
-                            prevCard.querySelector('.day-body').style.maxHeight = '0'; }
+                        const pc = cont.querySelector(`[data-day-index="${openDayIndex}"]`);
+                        if (pc) { pc.classList.remove('open');
+                            pc.querySelector('.day-body').style.maxHeight = '0'; }
                     }
-                    openDayIndex = dayIndex;
-                    targetCard.classList.add('open');
-                    const body = targetCard.querySelector('.day-body');
+                    openDayIndex = di;
+                    card.classList.add('open');
+                    const body = card.querySelector('.day-body');
                     body.style.maxHeight = body.scrollHeight + 'px';
-                    gsap.fromTo(targetCard.querySelectorAll('.meal'), { opacity: 0, x: -15 }, { opacity: 1, x: 0,
-                        duration: 0.35, stagger: 0.06, ease: 'power2.out' });
+                    gsap.fromTo(card.querySelectorAll('.meal'), { opacity: 0, x: -15 }, { opacity: 1, x: 0, duration: 0.35,
+                        stagger: 0.06, ease: 'power2.out' });
                 }
             }
 
@@ -992,12 +977,12 @@
                     type: 'touch',
                     onRight: () => { if (!isTransitioning && currentWeek > 1) switchWeek(currentWeek - 1, -1); },
                     onLeft: () => { if (!isTransitioning && currentWeek < 4) switchWeek(currentWeek + 1, 1); },
-                    tolerance: 80,
+                    tolerance: 80
                 });
             }
 
             function renderShoppingList() {
-                const categories = {
+                const cats = {
                     'Крупы': ['Гречка', 'Рис белый', 'Рис бурый', 'Киноа', 'Чечевица', 'Овсяные хлопья', 'Макароны',
                         'Перловка', 'Пшено', 'Нут'],
                     'Консервы': ['Тунец', 'Горбуша', 'Печень трески', 'Фасоль', 'Томатная паста'],
@@ -1013,8 +998,8 @@
                         'Шампиньоны', 'Лук', 'Чеснок', 'Зелень', 'Сельдерей', 'Руккола'],
                     'Яйца и хлеб': ['Яйца (3-4 десятка)', 'Хлеб цельнозерновой', 'Хлеб бородинский']
                 };
-                shoppingContent.innerHTML = Object.entries(categories).map(([cat, items]) =>
-                    `<div class="shopping-category"><h4>${cat}</h4><ul>${items.map(i => `<li>${i}</li>`).join('')}</ul></div>`
+                shoppingContent.innerHTML = Object.entries(cats).map(([cat, items]) =>
+                    `<div class="shopping-category"><h4>${cat}</h4><ul>${items.map(i=>`<li>${i}</li>`).join('')}</ul></div>`
                 ).join('');
             }
 
