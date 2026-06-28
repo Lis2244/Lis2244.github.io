@@ -163,12 +163,13 @@
             width: 100%;
             will-change: transform, opacity;
         }
+
+        /* КАРТОЧКА ДНЯ */
         .day-card {
             background: var(--ton-surface);
             border-radius: var(--ton-radius-md);
             margin-bottom: 10px;
             box-shadow: var(--ton-shadow-sm);
-            overflow: hidden;
             border: 1px solid var(--ton-border);
             transition: box-shadow var(--transition), border-color var(--transition);
         }
@@ -185,6 +186,7 @@
             user-select: none;
             min-height: 44px;
             background: var(--ton-surface);
+            border-radius: var(--ton-radius-md);
         }
         .day-name {
             font-weight: 600;
@@ -202,6 +204,8 @@
         .day-card.open .day-chevron {
             transform: rotate(180deg);
         }
+
+        /* ТЕЛО ДНЯ — теперь overflow: visible и max-height не ограничен */
         .day-body {
             max-height: 0;
             overflow: hidden;
@@ -210,6 +214,7 @@
         .day-body-inner {
             padding: 0 16px 16px;
         }
+
         .meal {
             border-left: 3px solid var(--ton-border);
             padding: 12px 14px;
@@ -331,6 +336,7 @@
             color: var(--ton-primary);
             font-weight: 600;
         }
+
         .fab {
             position: fixed;
             bottom: 24px;
@@ -427,6 +433,7 @@
             color: #8ab8d8;
             line-height: 1.5;
         }
+
         @media (min-width: 600px) {
             .main-content {
                 padding: 0 20px 110px;
@@ -473,7 +480,6 @@
 
     <script>
         (function() {
-            // ПОЛНАЯ БАЗА ОПИСАНИЙ — проверены все блюда из всех 4 недель
             const mealExplanations = {
                 'Омлет с укропом': { simple: 'Яйца — чистый белок. Съел утром и до обеда сыт.', micro: ['Витамин A',
                         'Витамин D', 'Холин', 'Селен'
@@ -856,10 +862,16 @@
                 return h;
             }
 
+            // КЛЮЧЕВАЯ ФУНКЦИЯ: пересчёт высоты контейнера дня
             function recalcDayBody(card) {
                 const body = card.querySelector('.day-body');
-                if (!body || body.style.maxHeight === '0px') return;
-                body.style.maxHeight = body.scrollHeight + 'px';
+                if (!body) return;
+                if (card.classList.contains('open')) {
+                    // Принудительно сбрасываем и пересчитываем
+                    body.style.maxHeight = 'none';
+                    const h = body.scrollHeight;
+                    body.style.maxHeight = h + 'px';
+                }
             }
 
             function bindEvents(container) {
@@ -884,17 +896,16 @@
                         }
                         const card = this.closest('.day-card');
                         if (card) {
-                            requestAnimationFrame(() => {
-                                recalcDayBody(card);
-                                if (panel.classList.contains('open')) {
-                                    setTimeout(() => {
-                                        const rect = panel.getBoundingClientRect();
-                                        if (rect.bottom > window.innerHeight - 100 || rect.top < 100) {
-                                            panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                                        }
-                                    }, 400);
-                                }
-                            });
+                            // Небольшая задержка, чтобы панель успела раскрыться
+                            setTimeout(() => recalcDayBody(card), 400);
+                            if (panel.classList.contains('open')) {
+                                setTimeout(() => {
+                                    const rect = panel.getBoundingClientRect();
+                                    if (rect.bottom > window.innerHeight - 100 || rect.top < 100) {
+                                        panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                    }
+                                }, 450);
+                            }
                         }
                     });
                 });
@@ -960,7 +971,14 @@
                     openDayIndex = di;
                     card.classList.add('open');
                     const body = card.querySelector('.day-body');
-                    body.style.maxHeight = body.scrollHeight + 'px';
+                    // Временно убираем ограничение, чтобы узнать реальную высоту
+                    body.style.maxHeight = 'none';
+                    const h = body.scrollHeight;
+                    body.style.maxHeight = '0';
+                    // Запускаем анимацию раскрытия
+                    requestAnimationFrame(() => {
+                        body.style.maxHeight = h + 'px';
+                    });
                     gsap.fromTo(card.querySelectorAll('.meal'), { opacity: 0, x: -15 }, { opacity: 1, x: 0, duration: 0.35,
                         stagger: 0.06, ease: 'power2.out' });
                 }
