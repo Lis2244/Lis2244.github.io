@@ -21,7 +21,6 @@
             --ton-primary: #0098ea;
             --ton-primary-glow: rgba(0, 152, 234, 0.3);
             --ton-accent: #00d4aa;
-            --ton-accent-glow: rgba(0, 212, 170, 0.25);
             --ton-border: #272a3a;
             --ton-tag-bg: #1e2132;
             --ton-info-bg: #1a1d2a;
@@ -36,7 +35,6 @@
             --font-body: 'Inter', system-ui, -apple-system, sans-serif;
             --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         * {
             margin: 0;
             padding: 0;
@@ -51,8 +49,8 @@
             overflow-x: hidden;
             min-height: 100dvh;
             font-size: 16px;
+            -webkit-tap-highlight-color: transparent;
         }
-
         .header {
             position: sticky;
             top: 0;
@@ -116,13 +114,12 @@
             align-items: center;
             scroll-snap-align: start;
             user-select: none;
-            -webkit-tap-highlight-color: transparent;
         }
         .week-btn.active {
             background: var(--ton-primary);
             color: #fff;
             border-color: var(--ton-primary);
-            box-shadow: 0 0 20px var(--ton-primary-glow), 0 2px 8px rgba(0, 152, 234, 0.4);
+            box-shadow: 0 0 20px var(--ton-primary-glow);
             font-weight: 600;
         }
         .week-btn:active {
@@ -166,7 +163,6 @@
             width: 100%;
             will-change: transform, opacity;
         }
-
         .day-card {
             background: var(--ton-surface);
             border-radius: var(--ton-radius-md);
@@ -187,7 +183,6 @@
             padding: 15px 16px;
             cursor: pointer;
             user-select: none;
-            -webkit-tap-highlight-color: transparent;
             min-height: 44px;
             background: var(--ton-surface);
         }
@@ -215,14 +210,12 @@
         .day-body-inner {
             padding: 0 16px 16px;
         }
-
         .meal {
             border-left: 3px solid var(--ton-border);
-            padding: 10px 14px;
+            padding: 12px 14px;
             margin-bottom: 10px;
             border-radius: 0 var(--ton-radius-sm) var(--ton-radius-sm) 0;
             background: var(--ton-surface-light);
-            transition: border-color var(--transition);
             position: relative;
         }
         .meal-type {
@@ -252,13 +245,11 @@
             margin-bottom: 6px;
         }
         .meal-tag {
-            display: inline-block;
             font-size: 0.65rem;
             background: var(--ton-tag-bg);
             padding: 3px 8px;
             border-radius: 6px;
             color: var(--ton-primary);
-            letter-spacing: 0.02em;
             font-weight: 500;
             border: 1px solid rgba(0, 152, 234, 0.12);
         }
@@ -275,22 +266,24 @@
         .meal-detail-btn {
             display: inline-flex;
             align-items: center;
-            gap: 4px;
-            font-size: 0.7rem;
-            font-weight: 500;
+            gap: 6px;
+            font-size: 0.72rem;
+            font-weight: 600;
             color: var(--ton-primary);
-            background: none;
-            border: none;
+            background: rgba(0, 152, 234, 0.08);
+            border: 1px solid rgba(0, 152, 234, 0.2);
             cursor: pointer;
-            padding: 8px 0;
+            padding: 10px 14px;
             letter-spacing: 0.03em;
             text-transform: uppercase;
-            transition: opacity 0.2s;
+            transition: all 0.2s;
+            border-radius: 8px;
+            margin-top: 4px;
+            user-select: none;
             -webkit-tap-highlight-color: transparent;
-            min-height: 36px;
         }
         .meal-detail-btn:active {
-            opacity: 0.6;
+            background: rgba(0, 152, 234, 0.18);
         }
         .meal-detail-btn svg {
             width: 12px;
@@ -300,14 +293,13 @@
         .meal-detail-btn.expanded svg {
             transform: rotate(180deg);
         }
-
         .meal-detail-panel {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             background: var(--ton-info-bg);
             border-radius: var(--ton-radius-sm);
-            margin-top: 4px;
+            margin-top: 6px;
             border: 1px solid rgba(255, 255, 255, 0.03);
         }
         .meal-detail-panel.open {
@@ -328,7 +320,7 @@
         .meal-detail-content .micro-item {
             background: var(--ton-surface);
             border: 1px solid var(--ton-border);
-            padding: 3px 9px;
+            padding: 4px 10px;
             border-radius: 12px;
             font-size: 0.68rem;
             font-weight: 500;
@@ -339,7 +331,6 @@
             color: var(--ton-primary);
             font-weight: 600;
         }
-
         .fab {
             position: fixed;
             bottom: 24px;
@@ -351,8 +342,7 @@
             color: #fff;
             border: none;
             cursor: pointer;
-            font-size: 1.4rem;
-            box-shadow: 0 0 24px var(--ton-primary-glow), 0 4px 12px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 24px var(--ton-primary-glow);
             z-index: 200;
             display: flex;
             align-items: center;
@@ -363,7 +353,6 @@
             transform: scale(0.92);
             background: #007dc7;
         }
-
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -438,7 +427,6 @@
             color: #8ab8d8;
             line-height: 1.5;
         }
-
         @media (min-width: 600px) {
             .main-content {
                 padding: 0 20px 110px;
@@ -485,6 +473,7 @@
 
     <script>
         (function() {
+            // ПОЛНАЯ БАЗА ОПИСАНИЙ — проверены все блюда из всех 4 недель
             const mealExplanations = {
                 'Омлет с укропом': { simple: 'Яйца — чистый белок. Съел утром и до обеда сыт.', micro: ['Витамин A',
                         'Витамин D', 'Холин', 'Селен'
@@ -530,8 +519,9 @@
                         'Углеводы', 'Кальций'], benefit: 'Стабильная энергия без тяжести.' },
                 'Картофель с минтаем': { simple: 'Картошка в мундире полезна. Минтай — родная рыба.', micro: ['Калий', 'Йод',
                         'Витамин B12'], benefit: 'Калий восполняет потери с потом.' },
-                'Творог с зеленью': { simple: 'Творог + укроп = классика. Сытно и дёшево.', micro: ['Казеин', 'Хлорофилл',
-                        'Кальций'], benefit: 'Хлорофилл очищает кровь.' },
+                'Творог с зеленью': { simple: 'Творог + укроп = классика. Сытно, полезно, дёшево.', micro: ['Казеин',
+                        'Хлорофилл', 'Кальций'
+                    ], benefit: 'Хлорофилл зелени очищает кровь. Казеин питает мышцы всю ночь.' },
                 'Бутерброды с горбушей': { simple: 'Горбуша из банки — быстро и полезно.', micro: ['DHA', 'Витамин D',
                         'Астаксантин'], benefit: 'Астаксантин защищает кожу.' },
                 'Чечевичный суп': { simple: 'Чечевица — белок без мяса. Сытно.', micro: ['Магний', 'Фолаты', 'Клетчатка'],
@@ -590,22 +580,23 @@
                     benefit: 'Бутират против воспаления.' },
                 'Говяжий язык с хреном': { simple: 'Язык — деликатес.', micro: ['Коллаген', 'Цинк', 'Изотиоцианаты'],
                     benefit: 'Коллаген для суставов.' },
-                'Ряженка': { simple: 'Ряженка — топлёное молоко.', micro: ['Пробиотики', 'Кальций'],
-                    benefit: 'Пробиотики на всю ночь.' },
+                'Ряженка': { simple: 'Ряженка — топлёное молоко, вкуснее кефира.', micro: ['Пробиотики', 'Кальций'],
+                    benefit: 'Пробиотики работают всю ночь, восстанавливая микрофлору.' },
                 'Овсяная каша с маслом': { simple: 'Овсянка с маслом — сытная.', micro: ['Бета-глюкан', 'Бутират',
                     'Витамин E'], benefit: 'Масло делает кашу полезнее.' },
                 'Стейк с белым рисом': { simple: 'Стейк — праздник.', micro: ['Креатин', 'Лейцин', 'Углеводы'],
                     benefit: 'Анаболический отклик.' },
-                'Салат из говядины': { simple: 'Холодное мясо с зеленью.', micro: ['L-карнитин', 'Креатин', 'Цинк'],
-                    benefit: 'Цинк для тестостерона.' },
+                'Салат из говядины': { simple: 'Холодное мясо с зеленью — лёгкий ужин.', micro: ['L-карнитин', 'Креатин',
+                        'Цинк'
+                    ], benefit: 'Цинк для ночного синтеза тестостерона.' },
                 'Яйца + апельсин': { simple: 'Апельсин — витамин C.', micro: ['Витамин C', 'Биофлавоноиды', 'Холин'],
                     benefit: 'Витамин C улучшает усвоение железа.' },
                 'Баранина с овощами': { simple: 'Баранина — особое мясо.', micro: ['L-карнитин', 'Цинк', 'CLA'],
                     benefit: 'L-карнитин сжигает жир.' },
-                'Творог': { simple: 'Чистый белок.', micro: ['Казеин', 'Кальций', 'Фосфор'],
-                benefit: 'Казеин на 6–7 часов.' },
+                'Творог': { simple: 'Чистый белок без лишнего.', micro: ['Казеин', 'Кальций', 'Фосфор'],
+                    benefit: 'Казеин питает мышцы 6–8 часов. Идеально на ночь.' },
                 'Сырники на пару': { simple: 'Нежные сырники без жарки.', micro: ['Казеин', 'Кальций', 'Лейцин'],
-                    benefit: 'Белок без масла.' },
+                    benefit: 'Белок без лишнего масла.' },
                 'Грибной суп с чечевицей': { simple: 'Грибы — лесное мясо.', micro: ['Эрготионеин', 'Магний',
                     'Бета-глюкан'], benefit: 'Эрготионеин против старения.' },
                 'Винегрет с фасолью': { simple: 'Винегрет — наш салат.', micro: ['Бетаин', 'Клетчатка', 'Нитраты'],
@@ -644,10 +635,12 @@
                     benefit: 'B12 для нервной системы.' },
                 'Глазунья + хлеб с гхи': { simple: 'Яйца на топлёном масле.', micro: ['Бутират', 'Холин', 'Витамин K2'],
                     benefit: 'K2 направляет кальций в кости.' },
-                'Творог + семена льна': { simple: 'Семена льна — омега-3.', micro: ['Омега-3', 'Лигнаны', 'Казеин'],
-                    benefit: 'Лигнаны для гормонального баланса.' },
-                'Кефир + яблоко': { simple: 'Кефир и яблоко — лёгкий ужин.', micro: ['Пектин', 'Пробиотики', 'Калий'],
-                    benefit: 'Пектин выводит токсины.' }
+                'Творог + семена льна': { simple: 'Семена льна — омега-3 для мозга.', micro: ['Омега-3', 'Лигнаны',
+                        'Казеин'
+                    ], benefit: 'Лигнаны поддерживают гормональный баланс.' },
+                'Кефир + яблоко': { simple: 'Кефир и яблоко — лёгкий ужин без тяжести.', micro: ['Пектин', 'Пробиотики',
+                        'Калий'
+                    ], benefit: 'Пектин выводит токсины. Пробиотики заселяют кишечник.' }
             };
 
             const programData = {
@@ -844,7 +837,8 @@
                     `<div class="meal-tags-row">${m.tags.map(t=>`<span class="meal-tag">${t}</span>`).join('')}</div>`;
                 if (info) {
                     h += `<div class="meal-why">${info.simple}</div>`;
-                    h += `<button class="meal-detail-btn">Что внутри и зачем <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>`;
+                    h +=
+                        `<button class="meal-detail-btn"><span>Что внутри и зачем</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button>`;
                     h +=
                         `<div class="meal-detail-panel"><div class="meal-detail-content"><strong>Микроэлементы:</strong><div class="micro-list">${info.micro.map(x=>`<span class="micro-item">${x}</span>`).join('')}</div><strong>Подробнее:</strong> ${info.benefit}</div></div>`;
                 }
@@ -874,6 +868,7 @@
                 container.querySelectorAll('.meal-detail-btn').forEach(btn => {
                     btn.addEventListener('click', function(e) {
                         e.stopPropagation();
+                        e.preventDefault();
                         const panel = this.nextElementSibling;
                         const isOpen = panel.classList.contains('open');
                         if (isOpen) {
@@ -894,7 +889,7 @@
                                 if (panel.classList.contains('open')) {
                                     setTimeout(() => {
                                         const rect = panel.getBoundingClientRect();
-                                        if (rect.bottom > window.innerHeight - 120) {
+                                        if (rect.bottom > window.innerHeight - 100 || rect.top < 100) {
                                             panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
                                         }
                                     }, 400);
