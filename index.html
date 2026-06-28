@@ -2,2076 +2,990 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=1.0">
-    <title>ГАУ «ЦентрМТО» · Презентация для руководства</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>План питания на 4 недели — Просто и полезно</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Observer.min.js">
+    </script>
     <style>
+        :root {
+            --ton-bg: #0f1117;
+            --ton-surface: #161822;
+            --ton-surface-light: #1c1f2e;
+            --ton-text: #f0f1f5;
+            --ton-text-secondary: #9a9db5;
+            --ton-primary: #0098ea;
+            --ton-primary-glow: rgba(0, 152, 234, 0.3);
+            --ton-accent: #00d4aa;
+            --ton-accent-glow: rgba(0, 212, 170, 0.25);
+            --ton-border: #272a3a;
+            --ton-tag-bg: #1e2132;
+            --ton-info-bg: #1a1d2a;
+            --ton-green: #00d4aa;
+            --ton-green-bg: rgba(0, 212, 170, 0.08);
+            --ton-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+            --ton-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+            --ton-radius-sm: 8px;
+            --ton-radius-md: 12px;
+            --ton-radius-lg: 16px;
+            --font-display: 'JetBrains Mono', 'Inter', monospace;
+            --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            font-family: 'Inter', sans-serif;
-            background: #fff;
-            color: #1a1a1a;
+            font-family: var(--font-body);
+            background: var(--ton-bg);
+            color: var(--ton-text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            min-height: 100dvh;
+            font-size: 16px;
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15, 17, 23, 0.92);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--ton-border);
+            padding: 14px 18px 10px;
+        }
+        .header-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.1rem, 3.5vw, 1.35rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--ton-text);
+            margin-bottom: 8px;
+        }
+        .result-badge {
+            display: inline-block;
+            background: var(--ton-green-bg);
+            color: var(--ton-green);
+            font-size: 0.78rem;
+            font-weight: 500;
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            letter-spacing: 0.01em;
+            border: 1px solid rgba(0, 212, 170, 0.15);
+        }
+
+        .week-selector-wrapper {
+            position: relative;
+        }
+        .week-selector {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 6px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
             scroll-behavior: smooth;
+        }
+        .week-selector::-webkit-scrollbar {
+            display: none;
+        }
+        .week-btn {
+            flex-shrink: 0;
+            padding: 10px 18px;
+            border-radius: 24px;
+            border: 1px solid var(--ton-border);
+            background: var(--ton-surface);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--ton-text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+            letter-spacing: 0.01em;
+            min-height: 42px;
+            display: flex;
+            align-items: center;
+            scroll-snap-align: start;
+            user-select: none;
             -webkit-tap-highlight-color: transparent;
         }
-
-        .deck {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            height: 100vh;
-            height: 100dvh;
-            width: 100%;
-            background: white;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .slide {
-            flex: 0 0 100%;
-            scroll-snap-align: start;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 2.5rem 4rem;
-            position: relative;
-            overflow-y: auto;
-            border-right: 1px solid #e8d0d0;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .slide.hero-slide {
-            position: relative;
-        }
-
-        .slide.hero-slide::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 800px;
-            max-width: 90%;
-            height: 100%;
-            background: url('/Логотип без фона.png') no-repeat center;
-            background-size: contain;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.1;
-        }
-
-        .content {
-            position: relative;
-            z-index: 2;
-            max-width: 1400px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .corner-logo {
-            position: absolute;
-            top: 2rem;
-            left: 2.5rem;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            opacity: 0;
-        }
-
-        .logo_litle {
-            width: 100px;
-            height: auto;
-        }
-
-        .corner-logo .logo-text {
-            font-weight: 700;
-            font-size: 1.15rem;
-            color: #b31b2c;
-            line-height: 1.2;
-        }
-
-        h1 {
-            font-size: 4.5rem;
-            font-weight: 800;
-            color: #b31b2c;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.3rem;
-        }
-
-        h1 .accent-line {
-            display: block;
-            width: 120px;
-            height: 7px;
-            background: #b31b2c;
-            margin-top: 0.6rem;
-            border-radius: 4px;
-        }
-
-        .subhead {
-            font-size: 1.55rem;
-            font-weight: 500;
-            color: #5a5a5a;
-            margin-bottom: 1.8rem;
-            border-left: 6px solid #b31b2c;
-            padding-left: 1.2rem;
-        }
-
-        h2 {
-            font-size: 3.2rem;
-            font-weight: 700;
-            color: #b31b2c;
-            margin-bottom: 1rem;
-        }
-
-        h3 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 0.6rem;
-        }
-
-        .org-tree {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0;
-            margin: 1.5rem 0 2rem;
-        }
-
-        .node {
-            background: white;
-            border: 2px solid #b31b2c;
-            border-radius: 1rem;
-            padding: 0.9rem 2.2rem;
-            font-weight: 700;
-            font-size: 1.45rem;
-            text-align: center;
-            box-shadow: 0 6px 18px rgba(183, 32, 46, 0.06);
-            opacity: 0;
-        }
-
-        .node.director {
-            background: #b31b2c;
-            color: white;
-            font-size: 2rem;
-            padding: 1.1rem 3rem;
-            border-radius: 3rem;
-            box-shadow: 0 12px 28px rgba(183, 32, 46, 0.25);
-            border: none;
-        }
-
-        .node.deputy {
-            background: #fff5f5;
-            border-color: #c94050;
-            color: #b31b2c;
-            font-weight: 700;
-        }
-
-        .node.dept {
-            background: #fff;
-            border-color: #d98a93;
-            color: #3a3a3a;
-            font-weight: 600;
-            font-size: 1.2rem;
-            padding: 0.75rem 1.8rem;
-        }
-
-        .node.service {
-            background: #fefefe;
-            border: 2px dashed #b31b2c;
-            color: #b31b2c;
+        .week-btn.active {
+            background: var(--ton-primary);
+            color: #fff;
+            border-color: var(--ton-primary);
+            box-shadow: 0 0 20px var(--ton-primary-glow), 0 2px 8px rgba(0, 152, 234, 0.4);
             font-weight: 600;
         }
+        .week-btn:active {
+            transform: scale(0.96);
+        }
 
-        .tree-branches {
+        .scroll-indicator {
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-            gap: 1.8rem;
-            width: 100%;
-            margin-top: 0.8rem;
-            flex-wrap: wrap;
+            gap: 6px;
+            padding: 6px 0 2px;
         }
-
-        .branch-col {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .vertical-line {
-            width: 3px;
-            height: 34px;
-            background: #b31b2c;
-            border-radius: 4px;
-            opacity: 0;
-        }
-
-        .dept-group {
-            display: flex;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 0.5rem;
-        }
-
-        .grid-3col {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-            margin: 1.5rem 0;
-        }
-
-        .grid-2col {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 1.5rem;
-            margin: 1.5rem 0;
-        }
-
-        .principle-card,
-        .info-card {
-            background: white;
-            border-radius: 1.5rem;
-            padding: 2rem;
-            border: 1px solid #f0d0d0;
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.03);
-            opacity: 0;
-        }
-
-        .info-card.solid-border {
-            border: 2px solid #b31b2c;
-        }
-
-        .info-card.dashed-border {
-            border: 2px dashed #b31b2c;
-        }
-
-        .principle-card .icon {
-            font-size: 3.2rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .principle-card h3,
-        .info-card h4 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #b31b2c;
-            margin-bottom: 0.6rem;
-        }
-
-        .principle-card p,
-        .info-card li {
-            color: #444;
-            line-height: 1.6;
-            font-size: 1.25rem;
-        }
-
-        .info-card ul {
-            list-style: none;
-            margin-top: 0.6rem;
-        }
-
-        .info-card li {
-            margin-bottom: 0.55rem;
-            padding-left: 1.8rem;
-            position: relative;
-        }
-
-        .info-card li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #b31b2c;
-            font-weight: 700;
-            font-size: 1.25rem;
-        }
-
-        .card-subtitle {
-            font-size: 1.15rem;
-            color: #888;
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-
-        .result-line {
-            margin-top: 1.2rem;
-            padding-top: 1rem;
-            border-top: 1px solid #f0d0d0;
-            font-weight: 600;
-            color: #b31b2c;
-            font-size: 1.15rem;
-        }
-
-        .highlight-box {
-            background: #fff5f5;
-            border-radius: 1.2rem;
-            padding: 1.3rem 2rem;
-            border: 1px solid #f0d0d0;
-            text-align: center;
-            margin-top: 1.5rem;
-            font-size: 1.25rem;
-            color: #4a4a4a;
-            line-height: 1.5;
-            opacity: 0;
-        }
-
-        .highlight-box.dashed {
-            border: 1px dashed #b31b2c;
-            background: #fffbfb;
-        }
-
-        .highlight-box.warning {
-            background: #fffbf5;
-            border-color: #e8d08a;
-        }
-
-        .highlight-box strong {
-            color: #b31b2c;
-        }
-
-        .stat-row {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 2rem 0;
-        }
-
-        .stat-card {
-            background: white;
-            border-radius: 1.5rem;
-            padding: 2.2rem;
-            text-align: center;
-            min-width: 220px;
-            border-top: 5px solid #b31b2c;
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.03);
-            opacity: 0;
-        }
-
-        .stat-card .number {
-            font-size: 4.8rem;
-            font-weight: 800;
-            color: #b31b2c;
-        }
-
-        .stat-card .label {
-            color: #555;
-            font-size: 1.25rem;
-            margin-top: 0.3rem;
-        }
-
-        .nav-dots {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            display: flex;
-            gap: 0.7rem;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
-            padding: 0.5rem 1.4rem;
-            border-radius: 4rem;
-            z-index: 20;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            background: #d4a0a0;
+        .scroll-dot {
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            background: #3a3d52;
+            transition: var(--transition);
+        }
+        .scroll-dot.active {
+            background: var(--ton-primary);
+            box-shadow: 0 0 8px var(--ton-primary-glow);
+            width: 18px;
+            border-radius: 3px;
         }
 
-        .dot.active {
-            background: #b31b2c;
-            width: 32px;
-            border-radius: 12px;
+        .swipe-hint {
+            text-align: center;
+            font-size: 0.68rem;
+            color: #4a4d5e;
+            padding: 10px 0 4px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
         }
 
-        button.nav-arrow {
-            background: white;
-            border: 2px solid #b31b2c;
-            color: #b31b2c;
-            font-size: 2.4rem;
-            padding: 0.4rem 1.3rem;
-            border-radius: 3rem;
-            cursor: pointer;
-            position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 20;
-            font-weight: 700;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
-            transition: all 0.2s ease;
+        .main-content {
+            padding: 0 14px 110px;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            min-height: 60vh;
         }
-
-        .left-arrow {
-            left: 1.5rem;
-        }
-
-        .right-arrow {
-            right: 1.5rem;
-        }
-
-        .hero-title,
-        .hero-subtitle,
-        .hero-footer {
-            opacity: 0;
-        }
-
-        /* Таблицы */
-        .comparison-table {
-            overflow-x: auto;
-            margin-bottom: 1rem;
-        }
-
-        .comparison-table table {
+        .week-container {
             width: 100%;
-            border-collapse: collapse;
-            font-size: 1.15rem;
-            line-height: 1.5;
+            will-change: transform, opacity;
         }
 
-        .comparison-table th {
-            background: #b31b2c;
-            color: white;
-            padding: 0.9rem 1.1rem;
-            font-weight: 700;
-            text-align: left;
-        }
-
-        .comparison-table th:first-child {
-            border-radius: 0.8rem 0 0 0;
-        }
-
-        .comparison-table th:last-child {
-            border-radius: 0 0.8rem 0 0;
-        }
-
-        .comparison-table td {
-            padding: 0.8rem 1.1rem;
-            border-bottom: 1px solid #f0d0d0;
-            vertical-align: top;
-        }
-
-        .comparison-table tbody tr:nth-child(even) td {
-            background: #fffbfb;
-        }
-
-        .comparison-table .win {
-            color: #b31b2c;
-            font-weight: 700;
-            text-align: center;
-        }
-
-        /* Диаграммы */
-        .bar-chart {
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-            margin: 1rem 0;
-        }
-
-        .bar-row {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-size: 1.15rem;
-        }
-
-        .bar-label {
-            width: 160px;
-            font-weight: 600;
-            color: #333;
-            text-align: right;
-        }
-
-        .bar-track {
-            flex: 1;
-            height: 32px;
-            background: #f0f0f0;
-            border-radius: 16px;
+        .day-card {
+            background: var(--ton-surface);
+            border-radius: var(--ton-radius-md);
+            margin-bottom: 10px;
+            box-shadow: var(--ton-shadow-sm);
             overflow: hidden;
-            display: flex;
+            border: 1px solid var(--ton-border);
+            transition: box-shadow var(--transition), border-color var(--transition);
         }
-
-        .bar-fill {
-            height: 100%;
-            background: #b31b2c;
-            border-radius: 16px;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding-right: 0.6rem;
-            font-weight: 700;
-            font-size: 1rem;
-            white-space: nowrap;
-            transition: width 0.6s ease;
+        .day-card.open {
+            box-shadow: var(--ton-shadow-md);
+            border-color: #303550;
         }
-
-        .bar-fill.secondary {
-            background: #d98a93;
-        }
-
-        .bar-fill.tertiary {
-            background: #e8c0c0;
-        }
-
-        .bar-fill.quaternary {
-            background: #f0d0d0;
-        }
-
-        /* Регионы */
-        .region-card {
-            flex: 1;
-            min-width: 300px;
-            background: white;
-            border-radius: 1rem;
-            padding: 1.4rem;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
-            opacity: 0;
-        }
-
-        .region-card h4 {
-            font-size: 1.4rem;
-            margin-bottom: 0.4rem;
-        }
-
-        .region-card p {
-            font-size: 1.1rem;
-            color: #555;
-            line-height: 1.5;
-        }
-
-        /* Чипсы */
-        .chip {
-            display: inline-block;
-            border-radius: 0.6rem;
-            padding: 0.5rem 0.9rem;
-            font-size: 1rem;
-            font-weight: 500;
-            margin: 0.25rem;
-        }
-
-        .chip.red {
-            background: #fff5f5;
-            border: 1px solid #f0d0d0;
-        }
-
-        .chip.green {
-            background: #f5fff5;
-            border: 1px solid #c0e0c0;
-        }
-
-        /* Кейс-карточка */
-        .case-card {
-            text-align: center;
-        }
-
-        .case-card .case-number {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #b31b2c;
-            margin-bottom: 0.5rem;
-        }
-
-        .case-stats {
-            display: flex;
-            justify-content: center;
-            gap: 1.2rem;
-            margin: 1.2rem 0;
-        }
-
-        .case-stat {
-            background: #fff5f5;
-            border-radius: 0.8rem;
-            padding: 0.7rem 1.1rem;
-        }
-
-        .case-stat .stat-value {
-            font-weight: 800;
-            font-size: 2rem;
-            color: #b31b2c;
-        }
-
-        .case-stat .stat-label {
-            font-size: 0.95rem;
-            color: #888;
-        }
-
-        .compare-bar {
+        .day-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 0.4rem;
+            padding: 15px 16px;
+            cursor: pointer;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            min-height: 44px;
+        }
+        .day-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.01em;
+            color: var(--ton-text);
+        }
+        .day-chevron {
+            width: 22px;
+            height: 22px;
+            transition: transform var(--transition);
+            color: var(--ton-text-secondary);
+            flex-shrink: 0;
+        }
+        .day-card.open .day-chevron {
+            transform: rotate(180deg);
+        }
+        .day-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .day-body-inner {
+            padding: 0 16px 16px;
         }
 
-        .compare-bar .law-label {
-            font-size: 1.15rem;
+        .meal {
+            border-left: 3px solid var(--ton-border);
+            padding: 10px 14px;
+            margin-bottom: 10px;
+            border-radius: 0 var(--ton-radius-sm) var(--ton-radius-sm) 0;
+            background: var(--ton-surface-light);
+            transition: border-color var(--transition);
+            position: relative;
+        }
+        .meal-type {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--ton-accent);
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        .meal-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+            color: var(--ton-text);
+        }
+        .meal-ingredients {
+            font-size: 0.8rem;
+            color: var(--ton-text-secondary);
+            line-height: 1.5;
+            margin-bottom: 6px;
+        }
+        .meal-tags-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 6px;
+        }
+        .meal-tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            background: var(--ton-tag-bg);
+            padding: 3px 8px;
+            border-radius: 6px;
+            color: var(--ton-primary);
+            letter-spacing: 0.02em;
+            font-weight: 500;
+            border: 1px solid rgba(0, 152, 234, 0.12);
+        }
+        .meal-why {
+            font-size: 0.75rem;
+            color: #8ad4c0;
+            background: rgba(0, 212, 170, 0.06);
+            padding: 8px 10px;
+            border-radius: 8px;
+            margin-bottom: 6px;
+            line-height: 1.5;
+            border-left: 2px solid rgba(0, 212, 170, 0.4);
+        }
+        .meal-detail-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--ton-primary);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px 0;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            transition: opacity 0.2s;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .meal-detail-btn:active {
+            opacity: 0.6;
+        }
+        .meal-detail-btn svg {
+            width: 12px;
+            height: 12px;
+            transition: transform var(--transition);
+        }
+        .meal-detail-btn.expanded svg {
+            transform: rotate(180deg);
+        }
+
+        .meal-detail-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--ton-info-bg);
+            border-radius: var(--ton-radius-sm);
+            margin-top: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        .meal-detail-panel.open {
+            max-height: 400px;
+        }
+        .meal-detail-content {
+            padding: 12px 14px;
+            font-size: 0.8rem;
+            line-height: 1.6;
+            color: #b0b5cc;
+        }
+        .meal-detail-content .micro-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 6px 0;
+        }
+        .meal-detail-content .micro-item {
+            background: var(--ton-surface);
+            border: 1px solid var(--ton-border);
+            padding: 3px 9px;
+            border-radius: 12px;
+            font-size: 0.68rem;
+            font-weight: 500;
+            color: #c0c5da;
+            white-space: nowrap;
+        }
+        .meal-detail-content strong {
+            color: var(--ton-primary);
             font-weight: 600;
         }
 
-        .compare-bar .bar-bg {
-            flex: 1;
-            height: 12px;
-            border-radius: 6px;
-            margin: 0 0.5rem;
-            overflow: hidden;
+        .fab {
+            position: fixed;
+            bottom: 24px;
+            right: 18px;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: var(--ton-primary);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 1.4rem;
+            box-shadow: 0 0 24px var(--ton-primary-glow), 0 4px 12px rgba(0, 0, 0, 0.5);
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        .fab:active {
+            transform: scale(0.92);
+            background: #007dc7;
         }
 
-        .compare-bar .bar-bg.red {
-            background: #f0d0d0;
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 300;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-sheet {
+            background: var(--ton-surface);
+            border-radius: var(--ton-radius-lg) var(--ton-radius-lg) 0 0;
+            border-top: 1px solid var(--ton-border);
+            width: 100%;
+            max-width: 600px;
+            max-height: 75vh;
+            overflow-y: auto;
+            padding: 20px 18px 36px;
+            transform: translateY(100%);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .modal-overlay.open .modal-sheet {
+            transform: translateY(0);
+        }
+        .modal-handle {
+            width: 36px;
+            height: 4px;
+            background: #3a3d50;
+            border-radius: 2px;
+            margin: 0 auto 18px;
+        }
+        .modal-title {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+            color: var(--ton-text);
+        }
+        .shopping-category {
+            margin-bottom: 14px;
+        }
+        .shopping-category h4 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--ton-accent);
+            margin-bottom: 6px;
+        }
+        .shopping-category ul {
+            list-style: none;
+        }
+        .shopping-category li {
+            font-size: 0.85rem;
+            padding: 7px 0;
+            border-bottom: 1px solid var(--ton-border);
+            color: var(--ton-text-secondary);
         }
 
-        .compare-bar .bar-bg.green {
-            background: #d0f0d0;
+        .note-banner {
+            background: rgba(0, 152, 234, 0.05);
+            border: 1px solid rgba(0, 152, 234, 0.15);
+            border-radius: var(--ton-radius-sm);
+            padding: 12px 14px;
+            margin-top: 12px;
+            font-size: 0.75rem;
+            color: #8ab8d8;
+            line-height: 1.5;
         }
 
-        .compare-bar .bar-fill-mini {
-            height: 100%;
-            border-radius: 6px;
-        }
-
-        .compare-bar .bar-fill-mini.red {
-            background: #b31b2c;
-        }
-
-        .compare-bar .bar-fill-mini.green {
-            background: #2a7a2a;
-        }
-
-        .compare-bar .days {
-            font-size: 1.15rem;
-            font-weight: 700;
-        }
-
-        /* ═══════════════ АДАПТИВ ═══════════════ */
-
-        /* Планшеты (горизонтальные) и небольшие ноутбуки: 768px – 1024px */
-        @media (max-width: 1024px) {
-            .slide {
-                padding: 2rem 2.5rem;
+        @media (min-width: 600px) {
+            .main-content {
+                padding: 0 20px 110px;
             }
-            h1 {
-                font-size: 3.2rem;
+            .header {
+                padding: 18px 20px 12px;
             }
-            h1 .accent-line {
-                width: 90px;
-                height: 5px;
+            .day-header {
+                padding: 16px 18px;
             }
-            h2 {
-                font-size: 2.4rem;
+            .day-body-inner {
+                padding: 0 18px 18px;
             }
-            h3 {
-                font-size: 1.5rem;
-            }
-            .subhead {
-                font-size: 1.3rem;
-                margin-bottom: 1.5rem;
-            }
-            .grid-3col {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                gap: 1.2rem;
-            }
-            .grid-2col {
-                grid-template-columns: 1fr;
-                gap: 1.2rem;
-            }
-            .node.director {
-                font-size: 1.6rem;
-                padding: 0.9rem 2.2rem;
-            }
-            .node.dept {
-                font-size: 1.1rem;
-                padding: 0.7rem 1.5rem;
-            }
-            .corner-logo {
-                top: 1.5rem;
-                left: 1.8rem;
-            }
-            .logo_litle {
-                width: 75px;
-            }
-            .corner-logo .logo-text {
-                font-size: 1rem;
-            }
-            .comparison-table table {
-                font-size: 1rem;
-            }
-            .comparison-table th,
-            .comparison-table td {
-                padding: 0.7rem 0.9rem;
-            }
-            .principle-card,
-            .info-card {
-                padding: 1.5rem;
-            }
-            .principle-card h3,
-            .info-card h4 {
-                font-size: 1.4rem;
-            }
-            .principle-card p,
-            .info-card li {
-                font-size: 1.1rem;
-            }
-            .highlight-box {
-                font-size: 1.1rem;
-                padding: 1rem 1.5rem;
-            }
-            .stat-card {
-                min-width: 180px;
-                padding: 1.8rem;
-            }
-            .stat-card .number {
-                font-size: 4rem;
-            }
-            .stat-card .label {
-                font-size: 1.1rem;
-            }
-            .case-stat .stat-value {
-                font-size: 1.7rem;
-            }
-            .case-stat .stat-label {
-                font-size: 0.85rem;
-            }
-            .compare-bar .law-label {
-                font-size: 1rem;
-            }
-            .compare-bar .days {
-                font-size: 1rem;
-            }
-            button.nav-arrow {
-                font-size: 2rem;
-                padding: 0.3rem 1rem;
-            }
-        }
-
-        /* Планшеты (вертикальные) и большие телефоны: 481px – 767px */
-        @media (max-width: 767px) {
-            .slide {
-                padding: 1.2rem 1.2rem;
-                justify-content: flex-start;
-                padding-top: 6rem;
-            }
-            .slide.hero-slide {
-                justify-content: center;
-                padding-top: 2rem;
-            }
-            h1 {
-                font-size: 2.6rem;
-            }
-            h1 .accent-line {
-                width: 70px;
-                height: 4px;
-            }
-            h2 {
-                font-size: 1.9rem;
-            }
-            h3 {
-                font-size: 1.3rem;
-            }
-            .subhead {
-                font-size: 1.1rem;
-                margin-bottom: 1.2rem;
-                border-left-width: 4px;
-                padding-left: 0.8rem;
-            }
-            .grid-3col {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            .grid-2col {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            .corner-logo {
-                top: 1rem;
-                left: 1rem;
-                gap: 0.4rem;
-            }
-            .logo_litle {
-                width: 55px;
-            }
-            .corner-logo .logo-text {
-                font-size: 0.8rem;
-            }
-            .comparison-table {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-            }
-            .comparison-table table {
-                font-size: 0.85rem;
-                min-width: 600px;
-            }
-            .comparison-table th,
-            .comparison-table td {
-                padding: 0.5rem 0.6rem;
-            }
-            .principle-card,
-            .info-card {
-                padding: 1.2rem;
-                border-radius: 1rem;
-            }
-            .principle-card .icon {
-                font-size: 2.2rem;
-            }
-            .principle-card h3,
-            .info-card h4 {
-                font-size: 1.2rem;
-            }
-            .principle-card p,
-            .info-card li {
-                font-size: 1rem;
-            }
-            .info-card li {
-                padding-left: 1.4rem;
-            }
-            .info-card li::before {
-                font-size: 1rem;
-            }
-            .highlight-box {
-                font-size: 0.95rem;
-                padding: 0.8rem 1rem;
-                border-radius: 0.8rem;
-            }
-            .stat-row {
-                gap: 1rem;
-            }
-            .stat-card {
-                min-width: 140px;
-                padding: 1.4rem;
-                border-radius: 1rem;
-            }
-            .stat-card .number {
-                font-size: 3rem;
-            }
-            .stat-card .label {
-                font-size: 0.9rem;
-            }
-            .case-stats {
-                gap: 0.8rem;
-                flex-wrap: wrap;
-            }
-            .case-stat {
-                padding: 0.5rem 0.8rem;
-            }
-            .case-stat .stat-value {
-                font-size: 1.5rem;
-            }
-            .case-stat .stat-label {
-                font-size: 0.8rem;
-            }
-            .compare-bar .law-label {
-                font-size: 0.9rem;
-            }
-            .compare-bar .days {
-                font-size: 0.9rem;
-            }
-            .compare-bar .bar-bg {
-                height: 8px;
-                border-radius: 4px;
-            }
-            .bar-label {
-                width: 80px;
-                font-size: 0.85rem;
-            }
-            .bar-row {
-                font-size: 0.9rem;
-            }
-            .chip {
-                font-size: 0.85rem;
-                padding: 0.4rem 0.7rem;
-            }
-            button.nav-arrow {
+            .scroll-indicator {
                 display: none;
-            }
-            .nav-dots {
-                bottom: 1rem;
-                right: 50%;
-                transform: translateX(50%);
-                padding: 0.4rem 1rem;
-            }
-            .dot {
-                width: 10px;
-                height: 10px;
-            }
-            .dot.active {
-                width: 24px;
-            }
-            /* Титульный слайд на планшетах */
-.slide.hero-slide h1,
-h1.hero-title,
-.slide.hero-slide .hero-title {
-    font-size: 3rem !important;
-}
-.slide.hero-slide .hero-subtitle {
-    font-size: 1.3rem !important;
-    margin-top: 1.5rem !important;
-    max-width: 90% !important;
-}
-.slide.hero-slide .hero-footer {
-    font-size: 1rem !important;
-    margin-top: 2rem !important;
-}
-        }
-
-        /* Маленькие телефоны: 320px – 480px */
-        @media (max-width: 480px) {
-            .slide {
-                padding: 0.8rem 0.8rem;
-                padding-top: 5.5rem;
-            }
-            .slide.hero-slide {
-                padding-top: 1.5rem;
-            }
-            h1 {
-                font-size: 2rem;
-            }
-            h1 .accent-line {
-                width: 50px;
-                height: 3px;
-                margin-top: 0.4rem;
-            }
-            h2 {
-                font-size: 1.5rem;
-            }
-            h3 {
-                font-size: 1.1rem;
-            }
-            .subhead {
-                font-size: 0.95rem;
-                margin-bottom: 1rem;
-            }
-            .corner-logo {
-                top: 0.8rem;
-                left: 0.8rem;
-            }
-            .logo_litle {
-                width: 42px;
-            }
-            .corner-logo .logo-text {
-                font-size: 0.7rem;
-            }
-            .comparison-table table {
-                font-size: 0.75rem;
-            }
-            .principle-card,
-            .info-card {
-                padding: 1rem;
-            }
-            .principle-card h3,
-            .info-card h4 {
-                font-size: 1.1rem;
-            }
-            .principle-card p,
-            .info-card li {
-                font-size: 0.9rem;
-            }
-            .highlight-box {
-                font-size: 0.85rem;
-                padding: 0.7rem 0.8rem;
-            }
-            .stat-card {
-                min-width: 100px;
-                padding: 1rem;
-            }
-            .stat-card .number {
-                font-size: 2.4rem;
-            }
-            .stat-card .label {
-                font-size: 0.8rem;
-            }
-            .case-stat .stat-value {
-                font-size: 1.3rem;
-            }
-            .compare-bar .law-label {
-                font-size: 0.8rem;
-            }
-            .compare-bar .days {
-                font-size: 0.8rem;
-            }
-            .bar-label {
-                width: 60px;
-                font-size: 0.75rem;
-            }
-            .bar-row {
-                font-size: 0.8rem;
-            }
-            .chip {
-                font-size: 0.75rem;
-                padding: 0.3rem 0.5rem;
-            }
-            /* Титульный слайд на телефонах */
-.slide.hero-slide h1,
-h1.hero-title,
-.slide.hero-slide .hero-title {
-    font-size: 2.2rem !important;
-}
-.slide.hero-slide .hero-subtitle {
-    font-size: 1rem !important;
-    margin-top: 1.2rem !important;
-    max-width: 95% !important;
-}
-.slide.hero-slide .hero-footer {
-    font-size: 0.85rem !important;
-    margin-top: 1.5rem !important;
-}
-.slide.hero-slide::before {
-    opacity: 0.05 !important;
-    max-width: 70% !important;
-}
-        }
-
-        /* Печать */
-        @media print {
-            .deck {
-                display: block;
-                overflow: visible;
-                height: auto;
-            }
-            
-            .slide {
-                flex: none;
-                display: block;
-                scroll-snap-align: none;
-                page-break-after: always;
-                page-break-inside: avoid;
-                height: 100vh;
-                overflow: hidden;
-                padding: 2rem 3rem;
-                border-right: none;
-            }
-            
-            .slide:last-child {
-                page-break-after: avoid;
-            }
-            
-            button.nav-arrow,
-            .nav-dots {
-                display: none !important;
-            }
-            
-            .corner-logo {
-                opacity: 1 !important;
-            }
-            
-            .hero-title,
-            .hero-subtitle,
-            .hero-footer,
-            .animate-card,
-            .animate-title,
-            .animate-subhead,
-            .animate-node,
-            .animate-line,
-            .animate-highlight,
-            .animate-stat {
-                opacity: 1 !important;
-            }
-            
-            body {
-                background: white;
-            }
-            
-            @page {
-                size: A4 landscape;
-                margin: 0;
             }
         }
     </style>
 </head>
 <body>
-<div class="deck" id="slideDeck">
 
-    <!-- ═══════════════ СЛАЙД 1 · ТИТУЛ ═══════════════ -->
-    <div class="slide hero-slide" data-slide="0">
-        <div class="corner-logo">
-            <img class="logo_litle" src="/Логотип без фона (Правильный красный).png" alt="Логотип">
-            <span class="logo-text">ЦЕНТР МАТЕРИАЛЬНО-<br>ТЕХНИЧЕСКОГО<br>ОБЕСПЕЧЕНИЯ</span>
+    <header class="header">
+        <h1 class="header-title">План питания на 4 недели</h1>
+        <div class="result-badge">Ожидаемый результат: минус 3–5 кг, больше энергии, меньше тяги к сладкому</div>
+        <div class="week-selector-wrapper">
+            <div class="week-selector" id="weekSelector"></div>
+            <div class="scroll-indicator" id="scrollIndicator"></div>
         </div>
-        <div class="content" style="text-align: center;">
-            <h1 class="hero-title" style="font-size: 5.5rem;">ГАУ «ЦентрМТО»<span class="accent-line" style="margin: 0.6rem auto 0;"></span></h1>
-            <div class="hero-subtitle" style="font-size: 2rem; color: #5a5a5a; margin-top: 2.5rem; max-width: 850px; margin-left: auto; margin-right: auto; line-height: 1.5;">
-                Государственное автономное учреждение города Москвы<br>«Центр материально-технического обеспечения»
-            </div>
-            <div class="hero-footer" style="margin-top: 4rem; font-size: 1.5rem; color: #999;">
-                Эффективность закупок по 223-ФЗ: структура, преимущества, результаты
-            </div>
-        </div>
-    </div>
+    </header>
 
-    <!-- ═══════════════ СЛАЙД 3 · ОРГСТРУКТУРА ═══════════════ -->
-    <div class="slide" data-slide="2">
-        <div class="corner-logo">
-            <img class="logo_litle" src="/Логотип без фона (Правильный красный).png" alt="Логотип">
-            <span class="logo-text">ЦЕНТР МАТЕРИАЛЬНО-<br>ТЕХНИЧЕСКОГО<br>ОБЕСПЕЧЕНИЯ</span>
-        </div>
-        <div class="content">
-            <h1 class="animate-title">Структура управления<span class="accent-line"></span></h1>
-            <div class="subhead animate-subhead">В основе системы структура ГАУ ИНПЦ «Гормедтехника» с учетом специфики деятельности</div>
-            <div class="org-tree">
-                <img class="structura" src="/2026-06-15_12-05-27.png" alt="Структура" style="max-width: 100%; height: auto;">
-            </div>
+    <main class="main-content" id="mainContent">
+        <div class="swipe-hint">← листайте недели →</div>
+    </main>
+
+    <button class="fab" id="fabBtn" aria-label="Список покупок">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="12" y2="17"/></svg>
+    </button>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-sheet" id="modalSheet">
+            <div class="modal-handle"></div>
+            <div class="modal-title">Список покупок на месяц</div>
+            <div id="shoppingContent"></div>
         </div>
     </div>
 
-    <!-- ═══════════════ СЛАЙД 4 · РАСПРЕДЕЛЕНИЕ ОБЯЗАННОСТЕЙ ═══════════════ -->
-<div class="slide" data-slide="3">
-    <div class="corner-logo">
-        <img class="logo_litle" src="/Логотип без фона (Правильный красный).png" alt="Логотип">
-        <span class="logo-text">ЦЕНТР МАТЕРИАЛЬНО-<br>ТЕХНИЧЕСКОГО<br>ОБЕСПЕЧЕНИЯ</span>
-    </div>
-    <div class="content" style="max-width: 1100px;">
-        <h2 class="animate-title">Функционал и обязанности</h2>
-        
-        <div class="info-card solid-border animate-card" style="padding: 2rem 2.5rem;">
-            <!-- Заголовок с фамилией -->
-            <div style="display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
-                <h4 style="margin-bottom: 0; font-size: 1.8rem;">Заместитель директора</h4>
-            </div>
-            <div class="card-subtitle" style="font-size: 1.2rem; margin-bottom: 1.5rem;">Направление: ТСР</div>
-            
-            <p style="font-weight: 600; color: #b31b2c; margin-bottom: 0.8rem; font-size: 1.3rem;">В подчинении:</p>
-            
-            <!-- Отдел ПиОС -->
-            <div style="margin-bottom: 1.5rem;">
-                <p style="font-weight: 600; margin-bottom: 0.6rem; font-size: 1.25rem;">Отдел планирования и организации снабжения (ПиОС):</p>
-                <ul style="list-style: none; margin-top: 0.5rem;">
-                    <li style="font-size: 1.25rem; margin-bottom: 0.5rem; padding-left: 1.8rem; position: relative; line-height: 1.5;">
-                        <span style="position: absolute; left: 0; color: #b31b2c; font-weight: 700;">✓</span>
-                        Ведение и актуализация справочников КТРУ, КПГЗ и СПГЗ
-                    </li>
-                    <li style="font-size: 1.25rem; margin-bottom: 0.5rem; padding-left: 1.8rem; position: relative; line-height: 1.5;">
-                        <span style="position: absolute; left: 0; color: #b31b2c; font-weight: 700;">✓</span>
-                        Поиск новых производителей/поставщиков, ведение переговоров
-                    </li>
-                    <li style="font-size: 1.25rem; margin-bottom: 0.5rem; padding-left: 1.8rem; position: relative; line-height: 1.5;">
-                        <span style="position: absolute; left: 0; color: #b31b2c; font-weight: 700;">✓</span>
-                        Прохождение проверки достоверности НМЦД при закупках
-                    </li>
-                    <li style="font-size: 1.25rem; margin-bottom: 0.5rem; padding-left: 1.8rem; position: relative; line-height: 1.5;">
-                        <span style="position: absolute; left: 0; color: #b31b2c; font-weight: 700;">✓</span>
-                        Подарочные наборы для новорождённых
-                    </li>
-                </ul>
-            </div>
-            
-            <!-- Отдел ТСР -->
-            <div>
-                <p style="font-weight: 600; margin-bottom: 0.6rem; font-size: 1.25rem;">Отдел закупок технических средств реабилитации (ТСР):</p>
-                <ul style="list-style: none; margin-top: 0.5rem;">
-                    <li style="font-size: 1.25rem; margin-bottom: 0.5rem; padding-left: 1.8rem; position: relative; line-height: 1.5;">
-                        <span style="position: absolute; left: 0; color: #b31b2c; font-weight: 700;">✓</span>
-                        Осуществление закупок технических средств реабилитации
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+    <script>
+        (function() {
+            const mealSimpleExplanations = {
+                'Омлет с укропом': 'Яйца — это чистый белок. Съел утром — и до обеда не вспоминаешь про еду. Нет скачков сахара, нет тумана в голове.',
+                'Квашеная капуста + хлеб с гхи': 'Квашеная капуста — наши родные пробиотики для здорового живота. Гхи — топлёное масло, от него не поправляются, оно помогает кишечнику.',
+                'Куриное бедро с гречкой': 'Гречка — медленные углеводы, энергия на 4 часа. Куриное бедро — сытно и не жирно. Специи разгоняют обменку.',
+                'Творог с льняным маслом': 'Творог на ночь — чтобы мышцы восстанавливались, пока спишь. Льняное масло — для мужского здоровья и нормального гормонального фона.',
+                'Глазунья с помидором': 'Помидоры после жарки полезнее сырых. Ликопин защищает сердце и сосуды. Яйца дают силу и сытость.',
+                'Суп с фрикадельками': 'Лёгкий суп без картошки — не развозит в сон после обеда. Фрикадельки из курицы — белок без лишнего жира.',
+                'Куриная грудка + цветная капуста': 'На ужин — лёгкое. Цветная капуста помогает печени чиститься. Куриная грудка — постный белок, не откладывается в бока.',
+                'Яйца + куриный паштет': 'Печень — кладезь железа. Если чувствуешь усталость к вечеру — тебе сюда. Яйца — всегда хорошо.',
+                'Запеканка с брокколи': 'Брокколи — один из самых полезных овощей. Сыр и яйцо делают блюдо вкусным, а не пресным.',
+                'Кефир + орехи': 'Кефир на ночь — спится лучше. Орехи — горсть, не больше. Это полезный жир для мозга.',
+                'Тунец с макаронами': 'Макароны можно! Только из твёрдых сортов. Тунец — готовая рыба, не надо готовить. Быстрый обед.',
+                'Куриное филе с паприкой': 'Паприка ускоряет метаболизм. Курица — просто и сытно. Огурец — вода и свежесть.',
+                'Овсянка с бананом': 'Овсянка — заряд на полдня. Банан — калий для сердца. Съел и пошёл горы сворачивать.',
+                'Белый рис + грудка': 'После тренировки — самое то. Белый рис быстро восстанавливает силы, грудка даёт мышцам строительный материал.',
+                'Картофель с минтаем': 'Картошка не враг! В мундире она полезная. Минтай — наша родная рыба, дешёвая и полезная.',
+                'Творог с зеленью': 'Творог + укроп = классика. Сытно, полезно, дёшево. На ночь — лучше не придумаешь.',
+                'Скумбрия + свёкла': 'Скумбрия — рыба для мужиков. Свёкла чистит кровь. Вместе — мощная штука для здоровья.',
+                'Яичница с говяжьим фаршем': 'Мясо с утра — мужская еда. Цинк и креатин — для силы и выносливости.',
+                'Печень с киноа': 'Печень — лучший продукт при усталости. Киноа — модная крупа, но реально полезная.',
+                'Говяжий язык с хреном': 'Язык — деликатес, но доступный. Хрен — жжёт и разгоняет кровь.',
+                'Баранина с овощами': 'Баранина — особое мясо. Помогает сжигать жир. С овощами — сбалансированно.',
+                'Грибной суп с чечевицей': 'Грибы — лесное мясо. Чечевица — белок. Суп без мяса, но сытный.',
+                'Винегрет с фасолью': 'Винегрет — наш салат. Фасоль вместо картошки — больше белка, меньше крахмала.',
+                'Фаршированные грибы': 'Шампиньоны с начинкой из творога. Вкусно, как в ресторане, но дёшево.',
+                'Фасоль в томате': 'Фасоль в томатном соусе — почти как chili. Белок и клетчатка.'
+            };
 
-    <!-- ═══════════════ СЛАЙД 5 · ВОЗМОЖНОСТИ 223-ФЗ (ТАБЛИЦА) ═══════════════ -->
-    <div class="slide" data-slide="4">
-        <div class="corner-logo">
-            <img class="logo_litle" src="/Логотип без фона (Правильный красный).png" alt="Логотип">
-            <span class="logo-text">ЦЕНТР МАТЕРИАЛЬНО-<br>ТЕХНИЧЕСКОГО<br>ОБЕСПЕЧЕНИЯ</span>
-        </div>
-        <div class="content">
-            <h2 class="animate-title">Возможности, которые даёт 223-ФЗ</h2>
-            <div class="subhead animate-subhead">Сравнительный анализ ключевых этапов закупочной деятельности</div>
-            <div class="comparison-table animate-card">
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="width:25%;">Раздел</th>
-                            <th style="width:37%;">223-ФЗ</th>
-                            <th style="width:38%;">44-ФЗ</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="font-weight:700;">Точное описание объекта закупки</td>
-                            <td style="color:#2a7a2a;">Используются только характеристики, необходимые Заказчику. Без привязки к Минфину.</td>
-                            <td style="color:#b31b2c;">Обязательные характеристики Минфина (ПП РФ № 145).</td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight:700;">Скорость формирования закупки (ЕАИСТ)</td>
-                            <td style="color:#2a7a2a;">
-                                • Без КТРУ<br>
-                                • Без обоснования доп. характеристик<br>
-                                • Копирование (3–5 мин)<br>
-                                • Без декларации в Реестре пром. продукции
-                            </td>
-                            <td style="color:#b31b2c;">
-                                • Обязательный КТРУ (добавление — до 6 мес.)<br>
-                                • Обоснование доп. характеристик (~10 мин/спец.)<br>
-                                • Ручной ввод (~25 мин/спец.)<br>
-                                • Декларация (макс. 5 спец./день)
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight:700;">Скорость процедуры (до 50 млн)</td>
-                            <td style="color:#2a7a2a;">
-                                • Без согласования РГ/МРГ<br>
-                                • Без проверки НМЦК<br>
-                                • Срок подачи заявок — 7 дней
-                            </td>
-                            <td style="color:#b31b2c;">
-                                • Согласование РГ/МРГ (свыше 3 млн) — 14 дн.<br>
-                                • Проверка НМЦК (свыше 30 млн) — 14 дн.<br>
-                                • Срок подачи заявок — 14 дней
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight:700;">Изменение / расторжение договора</td>
-                            <td style="color:#2a7a2a;">
-                                • Изменение объёмов, сроков, цены — допускается<br>
-                                • Расторжение — по Положению Заказчика
-                            </td>
-                            <td style="color:#b31b2c;">
-                                • Изменение существенных условий — запрещено<br>
-                                • Расторжение: одностороннее, по соглашению или суд
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+            const mealDetailsDB = {
+                'Омлет с укропом': { micro: ['Витамин A', 'Витамин D', 'Холин', 'Селен'],
+                    benefit: 'Холин нужен для памяти и ясной головы. Витамин D и селен — для иммунитета. Высокий белок даёт долгую сытость.' },
+                'Куриное бедро с гречкой': { micro: ['Цинк', 'Железо', 'Магний', 'Рутин'],
+                    benefit: 'Цинк — главный минерал для мужского здоровья. Гречка укрепляет сосуды.' },
+                'Творог с льняным маслом': { micro: ['Казеин', 'Омега-3 (ALA)', 'Лигнаны', 'Кальций'],
+                    benefit: 'Казеин — медленный белок, питает мышцы 6–7 часов, пока спите.' },
+                'Скумбрия + свёкла': { micro: ['EPA', 'Бетаин', 'Нитраты'],
+                    benefit: 'Свёкла расширяет сосуды и улучшает кровоток. EPA из скумбрии — мощное природное противовоспалительное.' },
+                'Яичница с говяжьим фаршем': { micro: ['Креатин', 'Цинк', 'L-карнитин'],
+                    benefit: 'Креатин из мяса улучшает и физическую силу, и работу мозга. Цинк — для мужского гормона.' },
+                'Печень с киноа': { micro: ['Железо', 'Кверцетин', 'Все 9 незаменимых аминокислот'],
+                    benefit: 'Печень — лучший источник железа при усталости. Киноа — растительный белок полного профиля.' },
+                'Говяжий язык с хреном': { micro: ['Коллаген', 'Цинк', 'Изотиоцианаты'],
+                    benefit: 'Язык — нежнейшее мясо с коллагеном для суставов и кожи.' },
+                'Баранина с овощами': { micro: ['L-карнитин', 'Цинк', 'Конъюгированная линолевая кислота'],
+                    benefit: 'L-карнитин помогает организму использовать жир как топливо.' },
+                'Грибной суп с чечевицей': { micro: ['Эрготионеин', 'Магний', 'Бета-глюкан'],
+                    benefit: 'Грибы содержат редкий антиоксидант, который защищает клетки от старения.' },
+                'Винегрет с фасолью': { micro: ['Бетаин', 'Клетчатка', 'Нитраты'],
+                    benefit: 'Свёкла улучшает кровоток и выносливость. Фасоль — сытный растительный белок.' }
+            };
 
-    <!-- ═══════════════ СЛАЙД 6 · АНАЛИЗ: ПОДГОТОВКА ═══════════════ -->
-    <div class="slide" data-slide="5">
-        <div class="corner-logo">
-            <img class="logo_litle" src="/Логотип без фона (Правильный красный).png" alt="Логотип">
-            <span class="logo-text">ЦЕНТР МАТЕРИАЛЬНО-<br>ТЕХНИЧЕСКОГО<br>ОБЕСПЕЧЕНИЯ</span>
-        </div>
-        <div class="content">
-            <h2 class="animate-title" style="font-size:2.6rem;">Анализ эффективности: подготовка документации</h2>
-            <div class="subhead animate-subhead" style="font-size:1.4rem; margin-bottom:1rem;">Сравнение трудозатрат при формировании закупки</div>
-            <div class="comparison-table animate-card">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Процесс</th>
-                            <th>223-ФЗ</th>
-                            <th>44-ФЗ</th>
-                            <th style="text-align:center;">Сокращение сроков (дни)</th>
-                            <th>НПА</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="font-weight:600;">Описание объекта закупки</td>
-                            <td style="color:#2a7a2a;">Только нужные характеристики. Без КТРУ.</td>
-                            <td style="color:#b31b2c;">КТРУ обязателен. Добавление позиции — 3–6 мес.</td>
-                            <td class="win">до 3 дн.</td>
-                            <td style="font-size:1rem;">ПП № 145</td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight:600;">Обоснование доп. характеристик</td>
-                            <td style="color:#2a7a2a;">Не требуется</td>
-                            <td style="color:#b31b2c;">~10 мин/спецификация</td>
-                            <td class="win">до 1 дн.</td>
-                            <td style="font-size:1rem;">ПП № 145</td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight:600;">Заполнение извещения (ЕАИСТ)</td>
-                            <td style="color:#2a7a2a;">Копирование (~3–5 мин). Минимум ошибок.</td>
-                            <td style="color:#b31b2c;">Ручной ввод (~25 мин). Высокий риск ошибок.</td>
-                            <td class="win">до 2 дн.</td>
-                            <td style="font-size:1rem;">Функционал ЕИС</td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight:600;">Декларирование в Реестре пром. продукции</td>
-                            <td style="color:#2a7a2a;">Отсутствует</td>
-                            <td style="color:#b31b2c;">Обязательно. Лимит: 5 спецификаций в день.</td>
-                            <td class="win">до 3 дн.</td>
-                            <td style="font-size:1rem;">ПП № 719, 878, 616</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="highlight-box animate-highlight" style="margin-top:0.5rem;">
-                <strong>Промежуточный итог:</strong> экономия до <strong>9 рабочих дней</strong> только на подготовке. Полностью исключён риск задержки до 6 месяцев на добавление позиции в КТРУ.
-            </div>
-        </div>
-    </div>
-
-    <!-- ═══════════════ СЛАЙД 7 · АНАЛИЗ: ПРОЦЕДУРА + ИТОГ ═══════════════ -->
-    <div class="slide" data-slide="6">
-        <div class="corner-logo">
-            <img class="logo_litle" src="/Логотип без фона (Правильный красный).png" alt="Логотип">
-            <span class="logo-text">ЦЕНТР МАТЕРИАЛЬНО-<br>ТЕХНИЧЕСКОГО<br>ОБЕСПЕЧЕНИЯ</span>
-        </div>
-        <div class="content">
-            <h2 class="animate-title" style="font-size:2.6rem;">Анализ эффективности: проведение процедуры до 50 млн</h2>
-            <div class="subhead animate-subhead" style="font-size:1.4rem; margin-bottom:1rem;">Сравнение сроков на этапах согласования и заключения договора</div>
-            <div class="comparison-table animate-card">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Процесс</th>
-                            <th>223-ФЗ</th>
-                            <th>44-ФЗ</th>
-                            <th style="text-align:center;">Сокращение сроков (дни)</th>
-                            <th>Основание</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="font-weight:600;">Согласование (РГ/МРГ)</td>
-                            <td style="color:#2a7a2a; text-align:center;">Не требуется</td>
-                            <td style="color:#b31b2c; text-align:center;">Обязательно (свыше 3 млн)</td>
-                            <td class="win">14 дн.</td>
-                            <td style="font-size:1rem;">Распоряжения о РГ/МРГ</td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight:600;">Проверка НМЦК (АЦ)</td>
-                            <td style="color:#2a7a2a; text-align:center;">Не требуется</td>
-                            <td style="color:#b31b2c; text-align:center;">Обязательно (свыше 30 млн)</td>
-                            <td class="win">14 дн.</td>
-                            <td style="font-size:1rem;">Расп. ПМ № 242</td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight:600;">Срок подачи заявок</td>
-                            <td style="color:#2a7a2a; text-align:center;">7 календарных дней</td>
-                            <td style="color:#b31b2c; text-align:center;">14 календарных дней</td>
-                            <td class="win">7 дн.</td>
-                            <td style="font-size:1rem;">Ст. 3.2 223-ФЗ / 54.4 44-ФЗ</td>
-                        </tr>
-                        <tr>
-                            <td style="font-weight:600;">Изменение / расторжение</td>
-                            <td style="color:#2a7a2a; text-align:center;">Гибкость (по Положению)</td>
-                            <td style="color:#b31b2c; text-align:center;">Запрет / только суд</td>
-                            <td class="win">Управляемость</td>
-                            <td style="font-size:1rem;">Ст. 95, 34 44-ФЗ</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="grid-2col" style="margin-top:1rem;">
-                <div class="info-card animate-card" style="border-top:5px solid #b31b2c;">
-                    <h4>Совокупное сокращение сроков: до 41 дня</h4>
-                    <p style="font-size:1.2rem;">Внешние согласования: <strong>28 дней</strong><br>Подготовка документации: <strong>~9 дней</strong><br>Срок подачи заявок: <strong>7 дней</strong></p>
-                </div>
-                <div class="info-card animate-card" style="background:#fff5f5; border-color:#d98a93;">
-                    <h4 style="color:#b31b2c;">Ключевые выводы</h4>
-                    <ul>
-                        <li>Исключены все внешние согласования</li>
-                        <li>Время формирования процедуры снижено в 5–6 раз</li>
-                        <li>Риск задержки КТРУ исключён</li>
-                        <li>Цикл сокращается в 1,5–2 раза</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="highlight-box dashed animate-highlight" style="margin-top:0.5rem;">
-                <strong>Сокращаются сроки по формированию лотов · Сокращаются сроки проведения процедур</strong>
-            </div>
-        </div>
-    </div>
-
-    <!-- ═══════════════ СЛАЙД 8 · ПРОИЗВОДИТЕЛИ / ПОСТАВЩИКИ ═══════════════ -->
-    <div class="slide" data-slide="7">
-        <div class="corner-logo">
-            <img class="logo_litle" src="/Логотип без фона (Правильный красный).png" alt="Логотип">
-            <span class="logo-text">ЦЕНТР МАТЕРИАЛЬНО-<br>ТЕХНИЧЕСКОГО<br>ОБЕСПЕЧЕНИЯ</span>
-        </div>
-        <div class="content">
-            <h2 class="animate-title">Производители / поставщики</h2>
-            <div class="subhead animate-subhead" style="margin-bottom:1.2rem; font-size:1.4rem;">По каждой категории ТСР проведён анализ рынка. Указано количество производителей, с которыми работаем, и общее число найденных.</div>
-
-            <div class="grid-2col" style="margin:0; gap:1rem;">
-
-                <!-- Строка 1: Трости, костыли, опоры, поручни -->
-                <div class="info-card solid-border animate-card" style="padding:1.2rem 1.4rem;">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
-                        <div style="flex:1;">
-                            <h4 style="font-size:1.2rem; margin-bottom:0.3rem;">Трости опорные и тактильные, костыли, опоры, поручни</h4>
-                        </div>
-                        <div style="display:flex; gap:1rem; flex-shrink:0;">
-                            <div style="text-align:center;">
-                                <div style="font-size:0.95rem; color:#888;">работаем</div>
-                                <div style="font-weight:800; font-size:1.8rem; color:#b31b2c;">1</div>
-                            </div>
-                            <div style="text-align:center;">
-                                <div style="font-size:0.95rem; color:#888;">найдено</div>
-                                <div style="font-weight:800; font-size:1.8rem; color:#2a7a2a;">27</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="margin-top:0.5rem; font-size:1.05rem; color:#555; line-height:1.4;">
-                        Россия – 13, Китай – 4, Тайвань – 4, США – 1, Европа – 5
-                    </div>
-                </div>
-
-                <!-- Строка 2: Ходунки -->
-                <div class="info-card solid-border animate-card" style="padding:1.2rem 1.4rem;">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
-                        <div style="flex:1;">
-                            <h4 style="font-size:1.2rem; margin-bottom:0.3rem;">Ходунки</h4>
-                        </div>
-                        <div style="display:flex; gap:1rem; flex-shrink:0;">
-                            <div style="text-align:center;">
-                                <div style="font-size:0.95rem; color:#888;">работаем</div>
-                                <div style="font-weight:800; font-size:1.8rem; color:#b31b2c;">4</div>
-                            </div>
-                            <div style="text-align:center;">
-                                <div style="font-size:0.95rem; color:#888;">найдено</div>
-                                <div style="font-weight:800; font-size:1.8rem; color:#2a7a2a;">36</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="margin-top:0.5rem; font-size:1.05rem; color:#555; line-height:1.4;">
-                        Россия – 16, Китай – 8, Тайвань – 2, США – 1, Европа – 9
-                    </div>
-                </div>
-
-                <!-- Строка 3: Кресла-коляски -->
-                <div class="info-card solid-border animate-card" style="padding:1.2rem 1.4rem;">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
-                        <div style="flex:1;">
-                            <h4 style="font-size:1.2rem; margin-bottom:0.3rem;">Кресла-коляски с ручным приводом, с электроприводом, малогабаритные</h4>
-                        </div>
-                        <div style="display:flex; gap:1rem; flex-shrink:0;">
-                            <div style="text-align:center;">
-                                <div style="font-size:0.95rem; color:#888;">работаем</div>
-                                <div style="font-weight:800; font-size:1.8rem; color:#b31b2c;">10</div>
-                            </div>
-                            <div style="text-align:center;">
-                                <div style="font-size:0.95rem; color:#888;">найдено</div>
-                                <div style="font-weight:800; font-size:1.8rem; color:#2a7a2a;">57</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="margin-top:0.5rem; font-size:1.05rem; color:#555; line-height:1.4;">
-                        Россия – 21, Беларусь – 1, Китай – 9, Тайвань – 2, США – 2, Европа – 22
-                    </div>
-                </div>
-
-                <!-- Строка 4: Противопролежневые матрасы -->
-                <div class="info-card solid-border animate-card" style="padding:1.2rem 1.4rem;">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
-                        <div style="flex:1;">
-                            <h4 style="font-size:1.2rem; margin-bottom:0.3rem;">Противопролежневые матрасы и подушки</h4>
-                        </div>
-                        <div style="display:flex; gap:1rem; flex-shrink:0;">
-                            <div style="text-align:center;">
-                                <div style="font-size:0.95rem; color:#888;">работаем</div>
-                                <div style="font-weight:800; font-size:1.8rem; color:#b31b2c;">4</div>
-                            </div>
-                            <div style="text-align:center;">
-                                <div style="font-size:0.95rem; color:#888;">найдено</div>
-                                <div style="font-weight:800; font-size:1.8rem; color:#2a7a2a;">20</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="margin-top:0.5rem; font-size:1.05rem; color:#555; line-height:1.4;">
-                        Россия – 9, Китай – 4, Тайвань – 1, США – 1, Европа – 5
-                    </div>
-                </div>
-
-                <!-- Строка 5: Устройства для чтения -->
-                <div class="info-card solid-border animate-card" style="padding:1.2rem 1.4rem;">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
-                        <div style="flex:1;">
-                            <h4 style="font-size:1.2rem; margin-bottom:0.3rem;">Устройства для чтения «говорящих книг», оптической коррекции</h4>
-                        </div>
-                        <div style="display:flex; gap:1rem; flex-shrink:0;">
-                            <div style="text-align:center;">
-                                <div style="font-size:0.95rem; color:#888;">работаем</div>
-                                <div style="font-weight:800; font-size:1.8rem; color:#b31b2c;">2</div>
-                            </div>
-                            <div style="text-align:center;">
-                                <div style="font-size:0.95rem; color:#888;">найдено</div>
-                                <div style="font-weight:800; font-size:1.8rem; color:#2a7a2a;">1</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="margin-top:0.5rem; font-size:1.05rem; color:#555; line-height:1.4;">
-                        Россия – 1
-                    </div>
-                </div>
-
-                <!-- Строка 6: Телевизоры -->
-                <div class="info-card solid-border animate-card" style="padding:1.2rem 1.4rem;">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
-                        <div style="flex:1;">
-                            <h4 style="font-size:1.2rem; margin-bottom:0.3rem;">Телевизоры с телетекстом для приема программ со скрытыми субтитрами</h4>
-                        </div>
-                        <div style="display:flex; gap:1rem; flex-shrink:0;">
-                            <div style="text-align:center;">
-                                <div style="font-size:0.95rem; color:#888;">работаем</div>
-                                <div style="font-weight:800; font-size:1.8rem; color:#b31b2c;">1</div>
-                            </div>
-                            <div style="text-align:center;">
-                                <div style="font-size:0.95rem; color:#888;">найдено</div>
-                                <div style="font-weight:800; font-size:1.8rem; color:#2a7a2a;">4</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="margin-top:0.5rem; font-size:1.05rem; color:#555; line-height:1.4;">
-                        Россия – 2, Беларусь – 1, Китай – 1
-                    </div>
-                </div>
-
-                <!-- Строка 9: Абсорбирующее бельё -->
-                <div class="info-card solid-border animate-card" style="padding:1.2rem 1.4rem;">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
-                        <div style="flex:1;">
-                            <h4 style="font-size:1.2rem; margin-bottom:0.3rem;">Абсорбирующее бельё, подгузники</h4>
-                        </div>
-                        <div style="display:flex; gap:1rem; flex-shrink:0;">
-                            <div style="text-align:center;">
-                                <div style="font-size:0.95rem; color:#888;">работаем</div>
-                                <div style="font-weight:800; font-size:1.8rem; color:#b31b2c;">2</div>
-                            </div>
-                            <div style="text-align:center;">
-                                <div style="font-size:0.95rem; color:#888;">найдено</div>
-                                <div style="font-weight:800; font-size:1.8rem; color:#2a7a2a;">42</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="margin-top:0.5rem; font-size:1.05rem; color:#555; line-height:1.4;">
-                        Россия – 12, Беларусь – 2, Китай – 8, Индия – 1, Европа – 11, Турция – 7, Япония – 1
-                    </div>
-                </div>
-
-                <!-- Строка 10: Брайлевский дисплей -->
-                <div class="info-card solid-border animate-card" style="padding:1.2rem 1.4rem;">
-                    <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem;">
-                        <div style="flex:1;">
-                            <h4 style="font-size:1.2rem; margin-bottom:0.3rem;">Брайлевский дисплей, программное обеспечение экранного доступа</h4>
-                        </div>
-                        <div style="display:flex; gap:1rem; flex-shrink:0;">
-                            <div style="text-align:center;">
-                                <div style="font-size:0.95rem; color:#888;">работаем</div>
-                                <div style="font-weight:800; font-size:1.8rem; color:#b31b2c;">2</div>
-                            </div>
-                            <div style="text-align:center;">
-                                <div style="font-size:0.95rem; color:#888;">найдено</div>
-                                <div style="font-weight:800; font-size:1.8rem; color:#2a7a2a;">2</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="margin-top:0.5rem; font-size:1.05rem; color:#555; line-height:1.4;">
-                        Европа – 2
-                    </div>
-                </div>
-
-            </div>
-
-            
-        </div>
-    </div>
-
-    <!-- ═══════════════ СЛАЙД 10 · ИНДИВИДУАЛЬНЫЕ ТСР ═══════════════ -->
-    <div class="slide" data-slide="9">
-        <div class="corner-logo">
-            <img class="logo_litle" src="/Логотип без фона (Правильный красный).png" alt="Логотип">
-            <span class="logo-text">ЦЕНТР МАТЕРИАЛЬНО-<br>ТЕХНИЧЕСКОГО<br>ОБЕСПЕЧЕНИЯ</span>
-        </div>
-        <div class="content">
-            <h2 class="animate-title">Индивидуальные ТСР</h2>
-            <div class="subhead animate-subhead" style="margin-bottom:1.2rem; font-size:1.4rem;">Индивидуальные закупки кресел-колясок с электроприводом и аккумуляторных батарей</div>
-
-            <div class="grid-3col" style="margin:0 0 1rem 0;">
-                <div class="info-card solid-border animate-card case-card">
-                    <h4 style="margin-bottom:0.3rem; font-size:1.4rem;">ООО «ТД «ОРТОНИКА»</h4>
-                    <div class="case-stats">
-                        <div class="case-stat"><div class="stat-value">8</div><div class="stat-label">Позиций</div></div>
-                        <div class="case-stat"><div class="stat-value">29,9 млн</div><div class="stat-label">Сумма</div></div>
-                    </div>
-                    <div style="margin-top:1rem;">
-                        <div class="compare-bar">
-                            <span class="law-label">44-ФЗ</span>
-                            <div class="bar-bg red"><div class="bar-fill-mini red" style="width:15%;"></div></div>
-                            <span class="days" style="color:#b31b2c;">2 дня</span>
-                        </div>
-                        <div class="compare-bar">
-                            <span class="law-label">223-ФЗ</span>
-                            <div class="bar-bg green"><div class="bar-fill-mini green" style="width:8%;"></div></div>
-                            <span class="days" style="color:#2a7a2a;">1 день</span>
-                        </div>
-                    </div>
-                    <div class="result-line" style="font-size:1.15rem;">Экономия: <strong>в 2 раза</strong> быстрее</div>
-                </div>
-                <div class="info-card solid-border animate-card case-card">
-                    <h4 style="margin-bottom:0.3rem; font-size:1.4rem;">ООО «ОТТО БОКК»</h4>
-                    <div class="case-stats">
-                        <div class="case-stat"><div class="stat-value">378</div><div class="stat-label">Позиций</div></div>
-                        <div class="case-stat"><div class="stat-value">30,0 млн</div><div class="stat-label">Сумма</div></div>
-                    </div>
-                    <div style="margin-top:1rem;">
-                        <div class="compare-bar">
-                            <span class="law-label">44-ФЗ</span>
-                            <div class="bar-bg red"><div class="bar-fill-mini red" style="width:90%;"></div></div>
-                            <span class="days" style="color:#b31b2c;">40 дней</span>
-                        </div>
-                        <div class="compare-bar">
-                            <span class="law-label">223-ФЗ</span>
-                            <div class="bar-bg green"><div class="bar-fill-mini green" style="width:12%;"></div></div>
-                            <span class="days" style="color:#2a7a2a;">5 дней</span>
-                        </div>
-                    </div>
-                    <div class="result-line" style="font-size:1.15rem;">Экономия: <strong>в 8 раз</strong> быстрее</div>
-                </div>
-                <div class="info-card solid-border animate-card case-card">
-                    <h4 style="margin-bottom:0.3rem; font-size:1.4rem;">ООО «ПРОТЕХМЕД»</h4>
-                    <div class="case-stats">
-                        <div class="case-stat"><div class="stat-value">510</div><div class="stat-label">Позиций</div></div>
-                        <div class="case-stat"><div class="stat-value">44,7 млн</div><div class="stat-label">Сумма</div></div>
-                    </div>
-                    <div style="margin-top:1rem;">
-                        <div class="compare-bar">
-                            <span class="law-label">44-ФЗ</span>
-                            <div class="bar-bg red"><div class="bar-fill-mini red" style="width:100%;"></div></div>
-                            <span class="days" style="color:#b31b2c;">60 дней</span>
-                        </div>
-                        <div class="compare-bar">
-                            <span class="law-label">223-ФЗ</span>
-                            <div class="bar-bg green"><div class="bar-fill-mini green" style="width:23%;"></div></div>
-                            <span class="days" style="color:#2a7a2a;">14 дней</span>
-                        </div>
-                    </div>
-                    <div class="result-line" style="font-size:1.15rem;">Экономия: <strong>в 4,3 раза</strong> быстрее</div>
-                </div>
-            </div>
-
-            <div class="highlight-box animate-highlight" style="margin-top:0; padding:1.2rem 1.5rem;">
-                <div style="font-size:2.6rem; font-weight:800; color:#b31b2c; margin-bottom:0.2rem;">от 2 до 8 раз</div>
-                <div style="font-size:1.3rem;">Реальная скорость формирования закупок по 223-ФЗ на примере сложных индивидуальных ТСР</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ═══════════════ СЛАЙД 11 · ПЕРЕЧЕНЬ ЗАКУПАЕМЫХ ТРУ ═══════════════ -->
-    <div class="slide" data-slide="10">
-        <div class="corner-logo">
-            <img class="logo_litle" src="/Логотип без фона (Правильный красный).png" alt="Логотип">
-            <span class="logo-text">ЦЕНТР МАТЕРИАЛЬНО-<br>ТЕХНИЧЕСКОГО<br>ОБЕСПЕЧЕНИЯ</span>
-        </div>
-        <div class="content">
-            <h2 class="animate-title">Перечень закупаемых товаров, работ, услуг</h2>
-            <div class="subhead animate-subhead" style="margin-bottom:1.2rem; font-size:1.4rem;">Чёткое разделение ответственности между ГКУ «Дирекция» и ГАУ «ЦентрМТО»</div>
-            <div class="grid-2col" style="margin:0;">
-                <div class="info-card solid-border animate-card" style="padding:1.5rem;">
-                    <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:1rem;">
-                        <div style="width:50px; height:50px; background:#b31b2c; border-radius:0.6rem; display:flex; align-items:center; justify-content:center; font-size:1.5rem;">🏛️</div>
-                        <div>
-                            <h4 style="margin-bottom:0; font-size:1.4rem;">ГКУ «Дирекция»</h4>
-                            <div class="card-subtitle" style="margin-bottom:0; font-size:1.1rem;">Медицинские изделия и протезирование</div>
-                        </div>
-                    </div>
-                    <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
-                        <span class="chip red">Медицинские изделия (ТПГГ)</span>
-                        <span class="chip red">Протезы и ортезы</span>
-                        <span class="chip red">Высокофункциональные протезы</span>
-                        <span class="chip red">Ортопедическая обувь</span>
-                        <span class="chip red">Специальная одежда</span>
-                        <span class="chip red">Абсорбирующее бельё (кроме 22-01-14–18)</span>
-                        <span class="chip red">Ремонт ТСР и ПОИ</span>
-                    </div>
-                </div>
-                <div class="info-card dashed-border animate-card" style="padding:1.5rem;">
-                    <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:1rem;">
-                        <div style="width:50px; height:50px; background:#fff5f5; border:2px dashed #b31b2c; border-radius:0.6rem; display:flex; align-items:center; justify-content:center; font-size:1.5rem;">📦</div>
-                        <div>
-                            <h4 style="margin-bottom:0; font-size:1.4rem;">ГАУ «ЦентрМТО»</h4>
-                            <div class="card-subtitle" style="margin-bottom:0; font-size:1.1rem;">Технические средства реабилитации</div>
-                        </div>
-                    </div>
-                    <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
-                        <span class="chip green">Трости, костыли, опоры, поручни</span>
-                        <span class="chip green">Кресла-коляски всех типов</span>
-                        <span class="chip green">Противопролежневые матрасы и подушки</span>
-                        <span class="chip green">Приспособления для одевания, захвата</span>
-                        <span class="chip green">Устройства для чтения «говорящих книг»</span>
-                        <span class="chip green">Термометры и тонометры с речевым выходом</span>
-                        <span class="chip green">Сигнализаторы звука</span>
-                        <span class="chip green">Телевизоры с телетекстом</span>
-                        <span class="chip green">Телефонные устройства с видеосвязью</span>
-                        <span class="chip green">Абсорбирующее бельё (22-01-14–18)</span>
-                        <span class="chip green">Кресла-стулья с санитарным оснащением</span>
-                        <span class="chip green">Брайлевский дисплей, ПО экранного доступа</span>
-                        <span class="chip green">Электронные средства ориентации</span>
-                    </div>
-                </div>
-            </div>
-            <div class="highlight-box animate-highlight" style="margin-top:1rem; padding:0.8rem 1.5rem; font-size:1.15rem;">
-                <strong>Принцип разделения:</strong> ГКУ «Дирекция» — медицинские изделия и протезирование. ГАУ «ЦентрМТО» — технические средства реабилитации и бытовая адаптация.
-            </div>
-        </div>
-    </div>
-
-    <!-- ═══════════════ СЛАЙД 12 · ЗАКУПКИ 2026: ПОИ ═══════════════ -->
-    <div class="slide" data-slide="11">
-        <div class="corner-logo">
-            <img class="logo_litle" src="/Логотип без фона (Правильный красный).png" alt="Логотип">
-            <span class="logo-text">ЦЕНТР МАТЕРИАЛЬНО-<br>ТЕХНИЧЕСКОГО<br>ОБЕСПЕЧЕНИЯ</span>
-        </div>
-        <div class="content">
-            <h2 class="animate-title">Закупки на 2026 год</h2>
-            <div class="subhead animate-subhead" style="margin-bottom:0.5rem; font-size:1.4rem;">Предоставление инвалидам протезно-ортопедических изделий</div>
-            <p style="font-size:1.15rem; color:#5a5a5a; margin-bottom:0.3rem;">Потребность поступила: 04.09.2025, 18.09.2025, 27.10.2025, 09.02.2026</p>
-            <p style="font-size:1.25rem; font-weight:700; color:#b31b2c; margin-bottom:0.8rem;">Доведённый лимит: 1 738,48 млн ₽</p>
-            
-            <div class="animate-card" style="position: relative; height: 380px; max-width: 950px; margin: 0 auto;">
-                <canvas id="chartPOI"></canvas>
-            </div>
-
-            <p style="font-size:1.1rem; color:#888; margin-top:0.5rem; text-align:center;">Массовые закупки ПОИ проведены. В настоящее время осуществляются закупки индивидуальных ТСР и ПОИ.</p>
-        </div>
-    </div>
-
-    <!-- ═══════════════ СЛАЙД 13 · ЗАКУПКИ 2026: Реабилитация детей ═══════════════ -->
-    <div class="slide" data-slide="12">
-        <div class="corner-logo">
-            <img class="logo_litle" src="/Логотип без фона (Правильный красный).png" alt="Логотип">
-            <span class="logo-text">ЦЕНТР МАТЕРИАЛЬНО-<br>ТЕХНИЧЕСКОГО<br>ОБЕСПЕЧЕНИЯ</span>
-        </div>
-        <div class="content">
-            <h2 class="animate-title">Закупки на 2026 год</h2>
-            <div class="subhead animate-subhead" style="margin-bottom:0.5rem; font-size:1.4rem;">Оказание услуг по комплексной реабилитации детей-инвалидов</div>
-            <p style="font-size:1.15rem; color:#5a5a5a; margin-bottom:0.3rem;">Потребность поступила: 01.12.2025, 15.12.2025, 30.01.2026</p>
-            <p style="font-size:1.25rem; font-weight:700; color:#b31b2c; margin-bottom:0.8rem;">Доведённый лимит: 325,33 млн ₽ (1 424 путёвки)</p>
-            
-            <div class="animate-card" style="position: relative; height: 380px; max-width: 950px; margin: 0 auto;">
-                <canvas id="chartRehab"></canvas>
-            </div>
-
-            <div class="highlight-box animate-highlight" style="margin-top:0.5rem;">
-                <strong>Статус:</strong> все контракты заключены. Программа реализована в полном объёме.
-            </div>
-        </div>
-    </div>
-
-    <!-- ═══════════════ СЛАЙД 14 · ЗАКУПКИ 2026: ТСР ═══════════════ -->
-    <div class="slide" data-slide="13">
-        <div class="corner-logo">
-            <img class="logo_litle" src="/Логотип без фона (Правильный красный).png" alt="Логотип">
-            <span class="logo-text">ЦЕНТР МАТЕРИАЛЬНО-<br>ТЕХНИЧЕСКОГО<br>ОБЕСПЕЧЕНИЯ</span>
-        </div>
-        <div class="content">
-            <h2 class="animate-title" style="font-size:2.6rem;">Закупки на 2026 год: ТСР и ГАУ «ЦентрМТО»</h2>
-            
-            <div class="grid-2col" style="margin:0.5rem 0; gap:2rem;">
-                <div>
-                    <p style="font-weight:700; color:#b31b2c; margin-bottom:0.3rem; font-size:1.25rem;">Предоставление инвалидам ТСР (Дирекция)</p>
-                    <p style="font-size:1.05rem; color:#5a5a5a; margin-bottom:0.3rem;">Лимит: 1 640,4 млн ₽ (2026) / 582,7 млн ₽ (2027)</p>
-                    <div class="animate-card" style="position: relative; height: 300px;">
-                        <canvas id="chartTSR"></canvas>
-                    </div>
-                </div>
-                
-                <div>
-                    <p style="font-weight:700; color:#b31b2c; margin-bottom:0.3rem; font-size:1.25rem;">ГАУ «ЦентрМТО»</p>
-                    <p style="font-size:1.05rem; color:#5a5a5a; margin-bottom:0.3rem;">Лимит: 250,0 млн ₽ (2026) / 200,0 млн ₽ (2027)</p>
-                    <div class="animate-card" style="position: relative; height: 300px;">
-                        <canvas id="chartMTO"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <p style="font-size:1.05rem; color:#5a5a5a; margin-top:0.3rem; text-align:center;">
-                <strong>ГАУ «ЦентрМТО» (2027):</strong> в работе — 199,9 млн ₽ · <strong>Итого остаток (2026):</strong> 76,0 млн ₽
-            </p>
-        </div>
-    </div>
-
-
-</div>
-<!--
-<button class="nav-arrow left-arrow" id="prevBtn" aria-label="Предыдущий слайд">←</button>
-<button class="nav-arrow right-arrow" id="nextBtn" aria-label="Следующий слайд">→</button>
--->
-<div class="nav-dots" id="dotsContainer" aria-label="Навигация по слайдам"></div>
-
-<script>
-    (function() {
-        const deck = document.getElementById('slideDeck');
-        const slides = Array.from(document.querySelectorAll('.slide'));
-        let current = 0;
-        const dots = document.getElementById('dotsContainer');
-        const animatedSlides = new Set();
-
-        function createDots() {
-            dots.innerHTML = '';
-            slides.forEach((_, i) => {
-                const d = document.createElement('div');
-                d.className = 'dot' + (i === current ? ' active' : '');
-                d.setAttribute('role', 'button');
-                d.setAttribute('aria-label', 'Слайд ' + (i + 1));
-                d.onclick = () => goTo(i);
-                dots.appendChild(d);
-            });
-        }
-
-        function updateDots() {
-            [...dots.children].forEach((d, i) => d.classList.toggle('active', i === current));
-        }
-
-        function goTo(i) {
-            current = Math.min(slides.length - 1, Math.max(0, i));
-            slides[current].scrollIntoView({ behavior: 'smooth', inline: 'start' });
-            updateDots();
-            animateSlide(current);
-        }
-
-        function animateSlide(index) {
-            if (animatedSlides.has(index)) return;
-            animatedSlides.add(index);
-
-            const slide = slides[index];
-            const isHero = slide.classList.contains('hero-slide');
-
-            const tl = gsap.timeline({ defaults: { duration: 0.6, ease: 'power2.out' } });
-
-            tl.fromTo(slide.querySelector('.corner-logo'), { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.5 });
-
-            if (isHero) {
-                tl.fromTo(slide.querySelector('.hero-title'), { opacity: 0, y: 30 }, { opacity: 1, y: 0 }, '-=0.3');
-                tl.fromTo(slide.querySelector('.hero-subtitle'), { opacity: 0, y: 20 }, { opacity: 1, y: 0 }, '-=0.4');
-                if (slide.querySelector('.hero-footer')) {
-                    tl.fromTo(slide.querySelector('.hero-footer'), { opacity: 0, y: 15 }, { opacity: 1, y: 0 }, '-=0.3');
+            const programData = {
+                weeks: [{
+                    id: 1,
+                    title: 'Неделя 1',
+                    subtitle: 'Птица и яйца',
+                    days: [
+                        { day: 'Понедельник', meals: [
+                            { type: 'Завтрак', title: 'Омлет с укропом', ingredients: '3 яйца, свежий укроп, сливочное масло', tags: ['Сытость надолго'] },
+                            { type: 'Гарнир', title: 'Квашеная капуста + хлеб с гхи', ingredients: '150 г квашеной капусты, 1 ломтик хлеба, 5 г топлёного масла', tags: ['Для живота'] },
+                            { type: 'Обед', title: 'Куриное бедро с гречкой', ingredients: '1 куриное бедро, 150 г гречки, тёртая морковь, тыквенное масло, чеснок', tags: ['Энергия на весь день'] },
+                            { type: 'Ужин', title: 'Творог с льняным маслом', ingredients: '200 г творога 5%, 1 ст.л. льняного масла, 1 огурец', tags: ['Восстановление ночью'] }
+                        ]},
+                        { day: 'Вторник', meals: [
+                            { type: 'Завтрак', title: 'Глазунья с помидором', ingredients: '3 яйца, 1 помидор, сливочное масло', tags: ['Для сердца'] },
+                            { type: 'Обед', title: 'Суп с фрикадельками', ingredients: 'Куриный фарш, стручковая фасоль, морковь, лук', tags: ['Лёгкий обед'] },
+                            { type: 'Ужин', title: 'Куриная грудка + цветная капуста', ingredients: '150 г куриной грудки, 200 г тушёной цветной капусты, паприка', tags: ['Без тяжести'] }
+                        ]},
+                        { day: 'Среда', meals: [
+                            { type: 'Завтрак', title: 'Яйца + куриный паштет', ingredients: '3 варёных яйца, 50 г паштета из куриной печени', tags: ['Против усталости'] },
+                            { type: 'Обед', title: 'Запеканка с брокколи', ingredients: 'Куриное филе, брокколи, яйцо, 30 г твёрдого сыра', tags: ['Полезный обед'] },
+                            { type: 'Ужин', title: 'Кефир + орехи', ingredients: '250 мл кефира, 30 г грецких орехов', tags: ['Для сна'] }
+                        ]},
+                        { day: 'Четверг', meals: [
+                            { type: 'Завтрак', title: 'Омлет с помидорами', ingredients: '3 яйца, 1 помидор, хлеб с маслом', tags: ['Классика'] },
+                            { type: 'Обед', title: 'Курица в томате с рисом', ingredients: '150 г куриного бедра, томатная паста, 150 г бурого риса', tags: ['Сочный обед'] },
+                            { type: 'Ужин', title: 'Творог с яблоком', ingredients: '200 г творога, 1 яблоко, корица', tags: ['Сладко без сахара'] }
+                        ]},
+                        { day: 'Пятница', meals: [
+                            { type: 'Завтрак', title: 'Яйца пашот + руккола', ingredients: '3 яйца, горсть рукколы, лимонный сок', tags: ['Быстрый завтрак'] },
+                            { type: 'Обед', title: 'Тунец с макаронами', ingredients: '1 банка тунца, 150 г макарон, оливковое масло', tags: ['Для мозгов'] },
+                            { type: 'Ужин', title: 'Куриное филе с паприкой', ingredients: '150 г куриного филе, паприка, огурец', tags: ['Лёгкий ужин'] }
+                        ]},
+                        { day: 'Суббота', meals: [
+                            { type: 'Завтрак', title: 'Овсянка с бананом', ingredients: '50 г овсяных хлопьев, 1 банан', tags: ['Заряд на полдня'] },
+                            { type: 'Обед', title: 'Белый рис + грудка', ingredients: '200 г белого риса, 150 г куриной грудки, 20 г тыквенных семечек', tags: ['Восстановление'] },
+                            { type: 'Ужин', title: 'Салат с курицей и яблоком', ingredients: 'Курица, сельдерей, яблоко, йогурт', tags: ['Лёгкий'] }
+                        ]},
+                        { day: 'Воскресенье', meals: [
+                            { type: 'Завтрак', title: 'Овсяноблин с сыром', ingredients: '1 яйцо, 2 ст.л. овсяных хлопьев, 30 г сыра', tags: ['Вкусный завтрак'] },
+                            { type: 'Обед', title: 'Картофель с минтаем', ingredients: '250 г картофеля, 150 г минтая, укроп', tags: ['Сытный обед'] },
+                            { type: 'Ужин', title: 'Творог с зеленью', ingredients: '200 г творога, укроп, петрушка', tags: ['Просто и полезно'] }
+                        ]}
+                    ]
+                }, {
+                    id: 2,
+                    title: 'Неделя 2',
+                    subtitle: 'Рыба и морепродукты',
+                    days: [
+                        { day: 'Понедельник', meals: [
+                            { type: 'Завтрак', title: 'Бутерброды с горбушей', ingredients: '2 ломтика хлеба, 100 г горбуши, 1 яйцо', tags: ['Быстрый завтрак'] },
+                            { type: 'Обед', title: 'Чечевичный суп', ingredients: 'Красная чечевица, морковь, лук, тыквенные семечки', tags: ['Сытно без мяса'] },
+                            { type: 'Ужин', title: 'Скумбрия + свёкла', ingredients: '150 г скумбрии, тёртая свёкла с оливковым маслом', tags: ['Для крови'] }
+                        ]},
+                        { day: 'Вторник', meals: [
+                            { type: 'Завтрак', title: 'Омлет с креветками', ingredients: '3 яйца, 100 г креветок', tags: ['Для щитовидки'] },
+                            { type: 'Обед', title: 'Хек с гречкой', ingredients: '150 г филе хека, лук, морковь, 150 г гречки', tags: ['Дёшево и полезно'] },
+                            { type: 'Ужин', title: 'Творог + семена льна', ingredients: '200 г творога, 1 ст.л. семян льна', tags: ['Омега-3'] }
+                        ]},
+                        { day: 'Среда', meals: [
+                            { type: 'Завтрак', title: 'Яйца + печень трески', ingredients: '2 яйца, 1 ст.л. печени трески', tags: ['Витамин D'] },
+                            { type: 'Обед', title: 'Котлеты из минтая', ingredients: '200 г фарша минтая, 1 яйцо, 150 г бурого риса', tags: ['Рыбные котлеты'] },
+                            { type: 'Ужин', title: 'Салат с фасолью', ingredients: 'Консервированная фасоль, яйцо, красный лук', tags: ['Белок без мяса'] }
+                        ]},
+                        { day: 'Четверг', meals: [
+                            { type: 'Завтрак', title: 'Глазунья + хлеб с гхи', ingredients: '3 яйца, 1 ломтик хлеба, 5 г гхи', tags: ['Полезный жир'] },
+                            { type: 'Обед', title: 'Скумбрия с картофелем', ingredients: '100 г скумбрии, 200 г картофеля, квашеная капуста', tags: ['Русский обед'] },
+                            { type: 'Ужин', title: 'Кефир + яблоко', ingredients: '250 мл кефира, 1 яблоко', tags: ['Лёгкий'] }
+                        ]},
+                        { day: 'Пятница', meals: [
+                            { type: 'Завтрак', title: 'Паровой омлет', ingredients: '3 яйца, помидор', tags: ['Самый полезный'] },
+                            { type: 'Обед', title: 'Уха с пшеном', ingredients: '1 банка горбуши, 30 г пшена, морковь', tags: ['Согревает'] },
+                            { type: 'Ужин', title: 'Творог с чесноком', ingredients: '200 г творога, зубчик чеснока, огурец', tags: ['Иммунитет'] }
+                        ]},
+                        { day: 'Суббота', meals: [
+                            { type: 'Завтрак', title: 'Сырники без муки', ingredients: '200 г творога, 1 яйцо', tags: ['Белковый завтрак'] },
+                            { type: 'Обед', title: 'Перловка с хеком', ingredients: '150 г перловки, 150 г хека, морковь', tags: ['Сытно'] },
+                            { type: 'Ужин', title: 'Запечённая форель', ingredients: '150 г форели, лимон', tags: ['Праздничный ужин'] }
+                        ]},
+                        { day: 'Воскресенье', meals: [
+                            { type: 'Завтрак', title: 'Яйца + банан', ingredients: '2 яйца, 1 банан', tags: ['Быстро'] },
+                            { type: 'Обед', title: 'Паста с тунцом', ingredients: '150 г макарон, 1 банка тунца, томаты', tags: ['Быстрый обед'] },
+                            { type: 'Ужин', title: 'Творог с зеленью', ingredients: '200 г творога, зелень', tags: ['Классика'] }
+                        ]}
+                    ]
+                }, {
+                    id: 3,
+                    title: 'Неделя 3',
+                    subtitle: 'Говядина и субпродукты',
+                    days: [
+                        { day: 'Понедельник', meals: [
+                            { type: 'Завтрак', title: 'Яичница с говяжьим фаршем', ingredients: '3 яйца, 80 г говяжьего фарша', tags: ['Мужской завтрак'] },
+                            { type: 'Обед', title: 'Тефтели с гречкой', ingredients: '120 г тефтелей, 150 г гречки, салат из капусты', tags: ['Как у бабушки'] },
+                            { type: 'Ужин', title: 'Творог + зелень', ingredients: '200 г творога, кинза, укроп', tags: ['Стандарт'] }
+                        ]},
+                        { day: 'Вторник', meals: [
+                            { type: 'Завтрак', title: 'Паштет из печени', ingredients: '50 г паштета, 1 ломтик хлеба', tags: ['Железо'] },
+                            { type: 'Обед', title: 'Борщ без картофеля', ingredients: 'Говядина, свёкла, капуста, сметана', tags: ['Наваристый'] },
+                            { type: 'Ужин', title: 'Запечённое яблоко с творогом', ingredients: '1 яблоко, 100 г творога, корица', tags: ['Десерт'] }
+                        ]},
+                        { day: 'Среда', meals: [
+                            { type: 'Завтрак', title: 'Омлет + сало', ingredients: '3 яйца, 10 г сала', tags: ['Витамин D'] },
+                            { type: 'Обед', title: 'Печень с киноа', ingredients: '150 г печени, лук, 150 г киноа', tags: ['Против усталости'] },
+                            { type: 'Ужин', title: 'Кефир с отрубями', ingredients: '250 мл кефира, 1 ст.л. отрубей', tags: ['Разгрузка'] }
+                        ]},
+                        { day: 'Четверг', meals: [
+                            { type: 'Завтрак', title: 'Яйца всмятку + помидор', ingredients: '3 яйца, помидор', tags: ['Лёгкий'] },
+                            { type: 'Обед', title: 'Гуляш с перловкой', ingredients: '120 г гуляша, 150 г перловки, огурец', tags: ['Мужицкая еда'] },
+                            { type: 'Ужин', title: 'Творог + орехи', ingredients: '200 г творога, 20 г грецких орехов', tags: ['Для сна'] }
+                        ]},
+                        { day: 'Пятница', meals: [
+                            { type: 'Завтрак', title: 'Глазунья на гхи', ingredients: '3 яйца, 7 г гхи', tags: ['Вкусный жир'] },
+                            { type: 'Обед', title: 'Говяжий язык с хреном', ingredients: '150 г языка, хрен, 200 г картофеля', tags: ['Деликатес'] },
+                            { type: 'Ужин', title: 'Ряженка', ingredients: '250 мл ряженки', tags: ['Вкуснее кефира'] }
+                        ]},
+                        { day: 'Суббота', meals: [
+                            { type: 'Завтрак', title: 'Овсяная каша с маслом', ingredients: '50 г овсянки, 5 г масла', tags: ['Сытная'] },
+                            { type: 'Обед', title: 'Стейк с белым рисом', ingredients: '150 г стейка, 200 г белого риса', tags: ['Праздник'] },
+                            { type: 'Ужин', title: 'Салат из говядины', ingredients: 'Холодная говядина, руккола, масло', tags: ['Лёгкий'] }
+                        ]},
+                        { day: 'Воскресенье', meals: [
+                            { type: 'Завтрак', title: 'Яйца + апельсин', ingredients: '2 яйца, 1 апельсин', tags: ['Витамин C'] },
+                            { type: 'Обед', title: 'Баранина с овощами', ingredients: '150 г бараньей лопатки, кабачки', tags: ['Особое мясо'] },
+                            { type: 'Ужин', title: 'Творог', ingredients: '200 г творога', tags: ['Чистый белок'] }
+                        ]}
+                    ]
+                }, {
+                    id: 4,
+                    title: 'Неделя 4',
+                    subtitle: 'Овощи и бобовые',
+                    days: [
+                        { day: 'Понедельник', meals: [
+                            { type: 'Завтрак', title: 'Сырники на пару', ingredients: '200 г творога, 1 яйцо, сметана', tags: ['Нежные'] },
+                            { type: 'Обед', title: 'Грибной суп с чечевицей', ingredients: '200 г шампиньонов, 80 г чечевицы', tags: ['Лесное мясо'] },
+                            { type: 'Ужин', title: 'Винегрет с фасолью', ingredients: 'Свёкла, морковь, фасоль, масло', tags: ['Наш салат'] }
+                        ]},
+                        { day: 'Вторник', meals: [
+                            { type: 'Завтрак', title: 'Омлет + хлеб', ingredients: '3 яйца, 1 ломтик хлеба, масло', tags: ['Быстро'] },
+                            { type: 'Обед', title: 'Ленивые голубцы', ingredients: '300 г капусты, 100 г куриного фарша', tags: ['В одной сковородке'] },
+                            { type: 'Ужин', title: 'Мацони + орехи', ingredients: '200 г мацони, 20 г орехов', tags: ['Кавказский кефир'] }
+                        ]},
+                        { day: 'Среда', meals: [
+                            { type: 'Завтрак', title: 'Яйца пашот + авокадо', ingredients: '2 яйца, 1/2 авокадо', tags: ['Модно'] },
+                            { type: 'Обед', title: 'Фалафель с рисом', ingredients: '150 г нута, 150 г бурого риса', tags: ['Растительный белок'] },
+                            { type: 'Ужин', title: 'Творог + семена', ingredients: '200 г творога, семена чиа', tags: ['Клетчатка'] }
+                        ]},
+                        { day: 'Четверг', meals: [
+                            { type: 'Завтрак', title: 'Яичница + помидор', ingredients: '3 яйца, помидор', tags: ['Просто'] },
+                            { type: 'Обед', title: 'Фаршированные грибы', ingredients: '4 шампиньона, творог, сыр', tags: ['Как в ресторане'] },
+                            { type: 'Ужин', title: 'Кефир + яблоко', ingredients: '250 мл кефира, 1 яблоко', tags: ['Лёгкий'] }
+                        ]},
+                        { day: 'Пятница', meals: [
+                            { type: 'Завтрак', title: 'Яйца + печень трески', ingredients: '2 яйца, 1 ст.л. печени трески', tags: ['Витамин D'] },
+                            { type: 'Обед', title: 'Картофельная запеканка', ingredients: '200 г картофеля, 100 г грибов, яйцо', tags: ['Сытная'] },
+                            { type: 'Ужин', title: 'Творог + зелень', ingredients: '200 г творога, кинза', tags: ['Стандарт'] }
+                        ]},
+                        { day: 'Суббота', meals: [
+                            { type: 'Завтрак', title: 'Каша из киноа', ingredients: '50 г киноа, 5 г масла', tags: ['Вместо гречки'] },
+                            { type: 'Обед', title: 'Паста с сыром и яйцом', ingredients: '150 г макарон, 1 яйцо, 30 г пармезана', tags: ['Карбонара по-простому'] },
+                            { type: 'Ужин', title: 'Фасоль в томате', ingredients: '200 г фасоли, томаты, паприка', tags: ['Сытный'] }
+                        ]},
+                        { day: 'Воскресенье', meals: [
+                            { type: 'Завтрак', title: 'Банан + творог', ingredients: '1 банан, 100 г творога', tags: ['Быстрый'] },
+                            { type: 'Обед', title: 'Рис с овощами и омлетом', ingredients: '150 г риса, омлет из 2 яиц, овощи', tags: ['Всё в одном'] },
+                            { type: 'Ужин', title: 'Ряженка', ingredients: '250 мл ряженки', tags: ['На ночь'] }
+                        ]}
+                    ]
+                }],
+                notes: {
+                    1: 'Пейте воду с лимоном по утрам. Кофе — без сахара, через полчаса после завтрака.',
+                    2: 'Пейте воду с лимоном по утрам. Кофе — без сахара, через полчаса после завтрака.',
+                    3: 'Пейте воду с лимоном по утрам. Кофе — без сахара, через полчаса после завтрака.',
+                    4: 'Пейте воду с лимоном по утрам. Кофе — без сахара, через полчаса после завтрака.'
                 }
-                const statCards = slide.querySelectorAll('.animate-stat');
-                if (statCards.length) {
-                    tl.fromTo(statCards, { opacity: 0, y: 25, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, stagger: 0.15, duration: 0.5 }, '-=0.2');
-                }
-                const highlight = slide.querySelector('.animate-highlight');
-                if (highlight) {
-                    tl.fromTo(highlight, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, '-=0.1');
-                }
-            } else {
-                tl.fromTo(slide.querySelector('.animate-title'), { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5 }, '-=0.2');
-                const subhead = slide.querySelector('.animate-subhead');
-                if (subhead) {
-                    tl.fromTo(subhead, { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5 }, '-=0.3');
-                }
-                const cards = slide.querySelectorAll('.animate-card');
-                if (cards.length) {
-                    tl.fromTo(cards, { opacity: 0, y: 30 }, { opacity: 1, y: 0, stagger: 0.12, duration: 0.55 }, '-=0.2');
-                }
-                const nodes = slide.querySelectorAll('.animate-node');
-                if (nodes.length) {
-                    tl.fromTo(nodes, { opacity: 0, y: 20, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, stagger: 0.08, duration: 0.5 }, '-=0.3');
-                }
-                const lines = slide.querySelectorAll('.animate-line');
-                if (lines.length) {
-                    tl.fromTo(lines, { opacity: 0, scaleY: 0 }, { opacity: 1, scaleY: 1, stagger: 0.05, duration: 0.4 }, '-=0.4');
-                }
-                const highlight = slide.querySelector('.animate-highlight');
-                if (highlight) {
-                    tl.fromTo(highlight, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, '-=0.1');
-                }
+            };
+
+            let currentWeek = 1;
+            let openDayIndex = null;
+            const weekSelector = document.getElementById('weekSelector');
+            const scrollIndicator = document.getElementById('scrollIndicator');
+            const mainContent = document.getElementById('mainContent');
+            const fabBtn = document.getElementById('fabBtn');
+            const modalOverlay = document.getElementById('modalOverlay');
+            const modalSheet = document.getElementById('modalSheet');
+            const shoppingContent = document.getElementById('shoppingContent');
+
+            function updateScrollIndicator() {
+                const dots = scrollIndicator.querySelectorAll('.scroll-dot');
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i + 1 === currentWeek);
+                });
             }
-        }
 
-        deck.addEventListener('scroll', () => {
-            const idx = Math.round(deck.scrollLeft / (slides[0]?.clientWidth || 1));
-            if (idx !== current && idx >= 0 && idx < slides.length) {
-                current = idx;
-                updateDots();
-                animateSlide(current);
-            }
-        });
+            function renderWeekSelector() {
+                weekSelector.innerHTML = programData.weeks.map(w => `
+                    <button class="week-btn ${w.id === currentWeek ? 'active' : ''}" data-week="${w.id}">
+                        ${w.title}: ${w.subtitle}
+                    </button>
+                `).join('');
+                scrollIndicator.innerHTML = programData.weeks.map(() => '<span class="scroll-dot"></span>').join('');
+                updateScrollIndicator();
 
-        // Безопасное подключение кнопок (если они есть в DOM)
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        if (prevBtn) prevBtn.onclick = () => goTo(current - 1);
-        if (nextBtn) nextBtn.onclick = () => goTo(current + 1);
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') goTo(current - 1);
-            if (e.key === 'ArrowRight') goTo(current + 1);
-        });
-
-        createDots();
-        animateSlide(0);
-
-        // Горячая клавиша: Ctrl + . скрывает/показывает скроллбар
-        document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey && e.key === '.') {
-                e.preventDefault();
-                const deckEl = document.getElementById('slideDeck');
-                if (deckEl.style.overflowX === 'hidden') {
-                    deckEl.style.overflowX = 'auto';
-                } else {
-                    deckEl.style.overflowX = 'hidden';
-                }
-            }
-        });
-    })();
-</script>
-<script>
-(function() {
-    // Общие настройки для всех графиков
-    const create3DBarChart = (canvasId, labels, datasets, yMax) => {
-        const ctx = document.getElementById(canvasId);
-        if (!ctx) return;
-        
-        // Создаём градиенты для 3D-эффекта
-        const createGradient = (color1, color2) => {
-            const gradient = ctx.getContext('2d').createLinearGradient(0, 0, 0, 400);
-            gradient.addColorStop(0, color1);
-            gradient.addColorStop(0.6, color2);
-            gradient.addColorStop(1, shadeColor(color2, -20));
-            return gradient;
-        };
-
-        const shadeColor = (color, percent) => {
-            const num = parseInt(color.replace('#',''), 16);
-            const amt = Math.round(2.55 * percent);
-            const R = (num >> 16) + amt;
-            const G = (num >> 8 & 0x00FF) + amt;
-            const B = (num & 0x0000FF) + amt;
-            return '#' + (0x1000000 + (R<255?R<1?0:R:255)*0x10000 + (G<255?G<1?0:G:255)*0x100 + (B<255?B<1?0:B:255)).toString(16).slice(1);
-        };
-
-        return new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: datasets.map((ds, i) => ({
-                    ...ds,
-                    backgroundColor: ds.data.map(() => createGradient(
-                        i === 0 ? '#5A9FE8' : '#E8954A',
-                        i === 0 ? '#3B7DD8' : '#D4783B'
-                    )),
-                    borderColor: ds.data.map(() => i === 0 ? '#2E6BC0' : '#B5652E'),
-                    borderWidth: 2,
-                    borderSkipped: false,
-                    borderRadius: 6,
-                    maxBarThickness: 70,
-                }))
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                interaction: { mode: 'index', intersect: false },
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: {
-                            usePointStyle: true,
-                            pointStyleWidth: 12,
-                            padding: 20,
-                            font: { size: 15, family: 'Inter', weight: '600' },
-                            generateLabels: (chart) => {
-                                const ds = chart.data.datasets;
-                                return ds.map((d, i) => ({
-                                    text: d.label,
-                                    fillStyle: i === 0 ? '#4A90E2' : '#E8954A',
-                                    strokeStyle: i === 0 ? '#2E6BC0' : '#B5652E',
-                                    lineWidth: 2,
-                                    hidden: false,
-                                    index: i,
-                                    pointStyle: 'rectRounded',
-                                    pointStyleWidth: 16,
-                                }));
-                            }
+                weekSelector.querySelectorAll('.week-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const weekId = parseInt(btn.dataset.week);
+                        if (weekId !== currentWeek) {
+                            const direction = weekId > currentWeek ? 1 : -1;
+                            animateWeekTransition(weekId, direction);
                         }
-                    },
-                    tooltip: {
-                        backgroundColor: 'rgba(30,30,30,0.9)',
-                        titleFont: { size: 15, family: 'Inter', weight: '700' },
-                        bodyFont: { size: 14, family: 'Inter' },
-                        callbacks: {
-                            label: (ctx) => ` ${ctx.dataset.label}: ${ctx.raw.toFixed(2)} млн ₽`
-                        }
-                    }
-                },
-                scales: {
-                    x: {
-                        grid: { display: false },
-                        ticks: { font: { size: 14, family: 'Inter', weight: '600' }, color: '#555' },
-                        offset: true,
-                    },
-                    y: {
-                        beginAtZero: true,
-                        max: yMax,
-                        grid: { color: '#e8e8e8', drawBorder: false },
-                        ticks: {
-                            font: { size: 13, family: 'Inter' },
-                            color: '#888',
-                            callback: (v) => v + '',
-                            stepSize: Math.ceil(yMax / 5),
-                        },
-                        title: {
-                            display: true,
-                            text: 'млн ₽',
-                            font: { size: 14, family: 'Inter', weight: '600' },
-                            color: '#888',
-                        }
-                    }
-                }
-            },
-            plugins: [{
-                id: 'customLabels',
-                afterDatasetsDraw(chart) {
-                    const { ctx } = chart;
-                    chart.data.datasets.forEach((dataset, dsIdx) => {
-                        const meta = chart.getDatasetMeta(dsIdx);
-                        meta.data.forEach((bar, idx) => {
-                            const value = dataset.data[idx];
-                            if (value === 0) return;
-                            ctx.fillStyle = '#333';
-                            ctx.font = 'bold 14px Inter';
-                            ctx.textAlign = 'center';
-                            ctx.fillText(value.toFixed(2), bar.x, bar.y - 8);
-                        });
                     });
+                });
+
+                const activeBtn = weekSelector.querySelector('.week-btn.active');
+                if (activeBtn && window.innerWidth < 600) {
+                    activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
                 }
-            }]
-        });
-    };
+            }
 
-    // ─── График 1: ПОИ (только 2026) ───
-    create3DBarChart('chartPOI',
-        ['Заключено', 'На стадии\nзаключения', 'Торги', 'В работе', 'Остаток'],
-        [{ label: '2026', data: [1676.58, 12.79, 34.93, 48.18, 95.9] }],
-        1800
-    );
+            function getMealDetailHTML(title) {
+                const detail = mealDetailsDB[title];
+                const simple = mealSimpleExplanations[title] || '';
+                let html = '';
+                if (simple) html += `<div class="meal-why">${simple}</div>`;
+                if (detail) html += `
+                    <button class="meal-detail-btn" data-meal-title="${title}">
+                        Что внутри и зачем
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="meal-detail-panel">
+                        <div class="meal-detail-content">
+                            <strong>Микроэлементы:</strong>
+                            <div class="micro-list">${detail.micro.map(m => `<span class="micro-item">${m}</span>`).join('')}</div>
+                            <strong>Подробнее:</strong> ${detail.benefit}
+                        </div>
+                    </div>
+                `;
+                return html;
+            }
 
-    // ─── График 2: Реабилитация детей (только 2026) ───
-    create3DBarChart('chartRehab',
-        ['Заключено', 'На стадии\nзаключения', 'Торги', 'В работе', 'Остаток'],
-        [{ label: '2026', data: [325.33, 0, 0, 0, 0] }],
-        350
-    );
+            function bindMealEvents(container) {
+                container.querySelectorAll('.day-header').forEach(header => {
+                    header.addEventListener('click', () => {
+                        const card = header.closest('.day-card');
+                        const dayIndex = parseInt(card.dataset.dayIndex);
+                        toggleDay(dayIndex);
+                    });
+                });
+                container.querySelectorAll('.meal-detail-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const panel = btn.nextElementSibling;
+                        const isOpen = panel.classList.contains('open');
+                        if (isOpen) {
+                            panel.classList.remove('open');
+                            panel.style.maxHeight = '0';
+                            btn.classList.remove('expanded');
+                        } else {
+                            panel.classList.add('open');
+                            panel.style.maxHeight = panel.scrollHeight + 'px';
+                            btn.classList.add('expanded');
+                            const items = panel.querySelectorAll('.micro-item');
+                            gsap.fromTo(items, { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.3,
+                                stagger: 0.04, ease: 'back.out(1.5)' });
+                        }
+                    });
+                });
+            }
 
-    // ─── График 3: ТСР Дирекция (2026 + 2027) ───
-    create3DBarChart('chartTSR',
-        ['Заключено', 'На стадии\nзаключения', 'Торги', 'В работе', 'Остаток'],
-        [
-            { label: '2026', data: [1346.5, 0, 0, 0, 293.9] },
-            { label: '2027', data: [44.2, 0, 0, 0, 538.5] }
-        ],
-        1400
-    );
+            function renderWeek(weekId) {
+                const week = programData.weeks.find(w => w.id === weekId);
+                if (!week) return;
+                mainContent.innerHTML = '';
+                const container = document.createElement('div');
+                container.className = 'week-container';
+                container.dataset.weekContainer = weekId;
+                let html = '';
+                week.days.forEach((day, index) => {
+                    const isOpen = index === openDayIndex;
+                    html += `
+                        <div class="day-card ${isOpen ? 'open' : ''}" data-day-index="${index}">
+                            <div class="day-header">
+                                <span class="day-name">${day.day}</span>
+                                <svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            </div>
+                            <div class="day-body"><div class="day-body-inner">
+                                ${day.meals.map(meal => `
+                                    <div class="meal">
+                                        <div class="meal-type">${meal.type}</div>
+                                        <div class="meal-title">${meal.title}</div>
+                                        <div class="meal-ingredients">${meal.ingredients}</div>
+                                        ${meal.tags ? `<div class="meal-tags-row">${meal.tags.map(t => `<span class="meal-tag">${t}</span>`).join('')}</div>` : ''}
+                                        ${getMealDetailHTML(meal.title)}
+                                    </div>
+                                `).join('')}
+                            </div></div>
+                        </div>
+                    `;
+                });
+                if (programData.notes[weekId]) html +=
+                    `<div class="note-banner">${programData.notes[weekId]}</div>`;
+                container.innerHTML = html;
+                mainContent.appendChild(container);
+                bindMealEvents(container);
+                if (openDayIndex !== null) {
+                    const targetCard = container.querySelector(`[data-day-index="${openDayIndex}"]`);
+                    if (targetCard) targetCard.querySelector('.day-body').style.maxHeight = targetCard.querySelector(
+                        '.day-body').scrollHeight + 'px';
+                }
+                return container;
+            }
 
-    // ─── График 4: ГАУ ЦентрМТО (2026 + 2027) ───
-    create3DBarChart('chartMTO',
-        ['Заключено', 'На стадии\nзаключения', 'Торги', 'В работе', 'Остаток'],
-        [
-            { label: '2026', data: [0, 16.1, 74.7, 74.4, 84.8] },
-            { label: '2027', data: [0, 0, 0, 199.9, 0] }
-        ],
-        220
-    );
+            function toggleDay(dayIndex) {
+                const container = document.querySelector('[data-week-container]');
+                if (!container) return;
+                const targetCard = container.querySelector(`[data-day-index="${dayIndex}"]`);
+                if (!targetCard) return;
+                if (openDayIndex === dayIndex) {
+                    openDayIndex = null;
+                    targetCard.classList.remove('open');
+                    targetCard.querySelector('.day-body').style.maxHeight = '0';
+                } else {
+                    if (openDayIndex !== null) {
+                        const prevCard = container.querySelector(`[data-day-index="${openDayIndex}"]`);
+                        if (prevCard) { prevCard.classList.remove('open');
+                            prevCard.querySelector('.day-body').style.maxHeight = '0'; }
+                    }
+                    openDayIndex = dayIndex;
+                    targetCard.classList.add('open');
+                    const body = targetCard.querySelector('.day-body');
+                    body.style.maxHeight = body.scrollHeight + 'px';
+                    const meals = targetCard.querySelectorAll('.meal');
+                    gsap.fromTo(meals, { opacity: 0, x: -15 }, { opacity: 1, x: 0, duration: 0.35, stagger: 0.06,
+                        ease: 'power2.out' });
+                }
+            }
 
-})();
-</script>
+            function animateWeekTransition(newWeekId, direction) {
+                const oldContainer = document.querySelector('[data-week-container]');
+                const newContainer = document.createElement('div');
+                newContainer.className = 'week-container';
+                newContainer.dataset.weekContainer = newWeekId;
+                const week = programData.weeks.find(w => w.id === newWeekId);
+                let html = '';
+                week.days.forEach((day, index) => {
+                    html += `
+                        <div class="day-card" data-day-index="${index}">
+                            <div class="day-header"><span class="day-name">${day.day}</span><svg class="day-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+                            <div class="day-body"><div class="day-body-inner">
+                                ${day.meals.map(meal => `
+                                    <div class="meal">
+                                        <div class="meal-type">${meal.type}</div><div class="meal-title">${meal.title}</div>
+                                        <div class="meal-ingredients">${meal.ingredients}</div>
+                                        ${meal.tags ? `<div class="meal-tags-row">${meal.tags.map(t => `<span class="meal-tag">${t}</span>`).join('')}</div>` : ''}
+                                        ${getMealDetailHTML(meal.title)}
+                                    </div>
+                                `).join('')}
+                            </div></div>
+                        </div>
+                    `;
+                });
+                if (programData.notes[newWeekId]) html +=
+                    `<div class="note-banner">${programData.notes[newWeekId]}</div>`;
+                newContainer.innerHTML = html;
+                mainContent.appendChild(newContainer);
+                bindMealEvents(newContainer);
+                const moveX = direction * 80;
+                gsap.set(newContainer, { x: moveX * 2, opacity: 0 });
+                if (oldContainer) gsap.set(oldContainer, { position: 'relative' });
+                openDayIndex = null;
+                const tl = gsap.timeline({
+                    onComplete: () => {
+                        if (oldContainer) oldContainer.remove();
+                        currentWeek = newWeekId;
+                        renderWeekSelector();
+                    }
+                });
+                if (oldContainer) tl.to(oldContainer, { x: -moveX, opacity: 0, duration: 0.35,
+                    ease: 'power2.inOut' }, 0);
+                tl.to(newContainer, { x: 0, opacity: 1, duration: 0.35, ease: 'power2.inOut' }, 0);
+            }
+
+            function initSwipe() {
+                Observer.create({
+                    target: mainContent,
+                    type: 'touch',
+                    onRight: () => { if (currentWeek > 1) animateWeekTransition(currentWeek - 1, -1); },
+                    onLeft: () => { if (currentWeek < 4) animateWeekTransition(currentWeek + 1, 1); },
+                    tolerance: 70,
+                });
+            }
+
+            function renderShoppingList() {
+                const categories = {
+                    'Крупы': ['Гречка', 'Рис белый', 'Рис бурый', 'Киноа', 'Чечевица', 'Овсяные хлопья', 'Макароны',
+                        'Перловка', 'Пшено', 'Нут'
+                    ],
+                    'Консервы': ['Тунец', 'Горбуша', 'Печень трески', 'Фасоль', 'Томатная паста'],
+                    'Масла': ['Сливочное', 'Топлёное (гхи)', 'Подсолнечное', 'Оливковое', 'Тыквенное', 'Льняное'],
+                    'Орехи и семена': ['Семена льна', 'Тыквенные семечки', 'Грецкий орех', 'Чиа'],
+                    'Специи': ['Куркума', 'Чёрный перец', 'Корица', 'Паприка', 'Соль'],
+                    'Молочка': ['Творог 5%', 'Кефир', 'Ряженка', 'Мацони', 'Сметана', 'Сыр'],
+                    'Мясо и птица': ['Куриные бёдра', 'Куриное филе', 'Фарш куриный', 'Говяжий фарш', 'Говядина',
+                        'Печень говяжья', 'Язык', 'Баранина'],
+                    'Рыба': ['Минтай', 'Хек', 'Скумбрия', 'Форель', 'Креветки'],
+                    'Овощи и фрукты': ['Яблоки', 'Бананы', 'Апельсины', 'Авокадо', 'Помидоры', 'Огурцы', 'Морковь',
+                        'Свёкла', 'Капуста', 'Квашеная капуста', 'Цветная капуста', 'Брокколи', 'Фасоль стручковая',
+                        'Шампиньоны', 'Лук', 'Чеснок', 'Зелень', 'Сельдерей', 'Руккола'],
+                    'Яйца и хлеб': ['Яйца (3-4 десятка)', 'Хлеб цельнозерновой', 'Хлеб бородинский']
+                };
+                let html = '';
+                for (const [cat, items] of Object.entries(categories)) html +=
+                    `<div class="shopping-category"><h4>${cat}</h4><ul>${items.map(i => `<li>${i}</li>`).join('')}</ul></div>`;
+                shoppingContent.innerHTML = html;
+            }
+
+            function openModal() { modalOverlay.classList.add('open');
+                document.body.style.overflow = 'hidden'; }
+
+            function closeModal() { modalOverlay.classList.remove('open');
+                document.body.style.overflow = ''; }
+            fabBtn.addEventListener('click', openModal);
+            modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
+            let touchStartY = 0;
+            modalSheet.addEventListener('touchstart', (e) => { touchStartY = e.touches[0].clientY; }, { passive: true });
+            modalSheet.addEventListener('touchmove', (e) => { if (e.touches[0].clientY - touchStartY > 60 && modalSheet
+                    .scrollTop <= 0) closeModal(); }, { passive: true });
+
+            function init() {
+                renderWeekSelector();
+                renderWeek(currentWeek);
+                renderShoppingList();
+                initSwipe();
+                gsap.fromTo('.header', { y: -20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out',
+                    delay: 0.1 });
+                gsap.fromTo('.week-btn', { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, stagger: 0.05,
+                    ease: 'power2.out', delay: 0.2 });
+                gsap.fromTo('.day-card', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, stagger: 0.06,
+                    ease: 'power2.out', delay: 0.4 });
+                gsap.fromTo('.fab', { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'back.out(1.7)',
+                    delay: 0.8 });
+            }
+            document.addEventListener('DOMContentLoaded', init);
+        })();
+    </script>
 </body>
 </html>
