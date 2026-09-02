@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>АЗИМУТ — учебные макеты и комплектация военных классов</title>
+  <meta name="description" content="Поставка учебных макетов, стендов и тренажёров для кабинетов ОБЖ, НВП, кадетских корпусов и военных кафедр. Комплектация класса под ключ, монтаж, документы для закупки." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a class="logo" href="#top">
+        <span class="logo__mark">А</span>
+        <span class="logo__text">АЗИМУТ<span>учебные системы</span></span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#catalog">Каталог</a>
+        <a href="#kits">Кабинеты</a>
+        <a href="#process">Поставка</a>
+        <a href="#plant">Производство</a>
+        <a href="#faq">Вопросы</a>
+      </nav>
+      <div class="header__actions">
+        <a class="phone" href="tel:+78001000701">8 800 100-07-01</a>
+        <a class="btn btn--brass" href="#request">Спецификация</a>
+        <button class="burger" id="burger" aria-label="Меню"><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow">Поставщик для школ · корпусов · кафедр</p>
+          <h1>Учебный класс,<br />в котором устройство<br /><em>видно</em></h1>
+          <p class="lead">Макеты, стенды и тренажёры для военных классов и кабинетов ОБЖ. Собираем кабинет под программу, привозим, монтируем и оставляем комплект документов для закупки.</p>
+          <div class="hero__cta">
+            <a class="btn btn--brass btn--lg" href="#request">Получить спецификацию</a>
+            <a class="btn btn--ghost btn--lg" href="#catalog">Смотреть каталог</a>
+          </div>
+          <ul class="hero__facts">
+            <li><strong>120+</strong> позиций в серии</li>
+            <li><strong>14 дней</strong> типовой кабинет</li>
+            <li><strong>44-ФЗ</strong> пакет документов</li>
+          </ul>
+        </div>
+
+        <aside class="passport" aria-label="Паспорт типового кабинета">
+          <div class="passport__head">
+            <span>Изд. УК-01</span>
+            <span>лист 1 / 1</span>
+          </div>
+          <div class="passport__title">Кабинет НВП / ОБЖ</div>
+          <div class="passport__visual">
+            <div class="sight">
+              <i></i><i></i><i></i><i></i>
+              <div class="sight__core"></div>
+            </div>
+            <p>Схема расстановки · 54–72 м²</p>
+          </div>
+          <dl class="passport__meta">
+            <div><dt>Состав</dt><dd>стенды, макеты, тренажёр</dd></div>
+            <div><dt>Монтаж</dt><dd>1–2 смены</dd></div>
+            <div><dt>Гарантия</dt><dd>24 месяца</dd></div>
+            <div><dt>Статус</dt><dd>серия, на складе</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <section class="strip">
+      <div class="container strip__row">
+        <p>Кадетские корпуса</p>
+        <p>Школы и лицеи</p>
+        <p>Военные кафедры</p>
+        <p>Центры «Авангард»</p>
+        <p>ДОСААФ / Юнармия</p>
+      </div>
+    </section>
+
+    <section class="section" id="categories">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow">Ассортимент</p>
+          <h2>Шесть линий, из которых собирается класс</h2>
+        </div>
+        <div class="cats">
+          <button class="cat" data-filter="weapon">
+            <span class="cat__num">01</span>
+            <h3>Учебное оружие</h3>
+            <p>Массо-габаритные и разрезанные макеты для изучения устройства. Без боевого функционала.</p>
+          </button>
+          <button class="cat" data-filter="tech">
+            <span class="cat__num">02</span>
+            <h3>Масштабная техника</h3>
+            <p>Бронетехника и автомобили в масштабе для кабинета и музейной витрины класса.</p>
+          </button>
+          <button class="cat" data-filter="gear">
+            <span class="cat__num">03</span>
+            <h3>Снаряжение и СИЗ</h3>
+            <p>Макеты средств защиты, экипировки и полевого имущества для разбора на занятии.</p>
+          </button>
+          <button class="cat" data-filter="med">
+            <span class="cat__num">04</span>
+            <h3>Полевая медицина</h3>
+            <p>Тренажёры первой помощи, стенды аптечки и алгоритмы действий.</p>
+          </button>
+          <button class="cat" data-filter="stand">
+            <span class="cat__num">05</span>
+            <h3>Стенды и плакаты</h3>
+            <p>Уставы, строевая, топография, символика — единым графическим языком.</p>
+          </button>
+          <button class="cat" data-filter="kit">
+            <span class="cat__num">06</span>
+            <h3>Кабинет под ключ</h3>
+            <p>Расстановка, поставка, монтаж, паспорт класса и обучение преподавателя.</p>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper" id="catalog">
+      <div class="container">
+        <div class="section__head section__head--row">
+          <div>
+            <p class="eyebrow">Каталог</p>
+            <h2>Серия, которую можно поставить в этом квартале</h2>
+          </div>
+          <div class="filters" id="filters">
+            <button class="chip is-on" data-filter="all">Все</button>
+            <button class="chip" data-filter="weapon">Оружие</button>
+            <button class="chip" data-filter="tech">Техника</button>
+            <button class="chip" data-filter="gear">СИЗ</button>
+            <button class="chip" data-filter="med">Медицина</button>
+            <button class="chip" data-filter="stand">Стенды</button>
+          </div>
+        </div>
+        <div class="grid" id="grid"></div>
+        <p class="hint">Цены — ориентир для сметы. Итоговая спецификация зависит от комплектации кабинета и региона поставки.</p>
+      </div>
+    </section>
+
+    <section class="section" id="kits">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow">Готовые решения</p>
+          <h2>Три кабинета, которые заказывают чаще всего</h2>
+        </div>
+        <div class="kits">
+          <article class="kit">
+            <header>
+              <span>Пакет S</span>
+              <h3>Школьный ОБЖ</h3>
+            </header>
+            <p class="kit__price">от 286 000 ₽</p>
+            <ul>
+              <li>8 стендов программы ОБЖ</li>
+              <li>тренажёр первой помощи</li>
+              <li>линейка учебных макетов СИЗ</li>
+              <li>паспорт кабинета и таблички</li>
+            </ul>
+            <a class="btn btn--ghost" href="#request" data-kit="Школьный ОБЖ">Запросить смету</a>
+          </article>
+          <article class="kit kit--featured">
+            <header>
+              <span>Пакет M · бестселлер</span>
+              <h3>Кадетский класс</h3>
+            </header>
+            <p class="kit__price">от 640 000 ₽</p>
+            <ul>
+              <li>полный контур НВП</li>
+              <li>разрезы и ММГ учебного оружия</li>
+              <li>масштабная техника 1:35 / 1:16</li>
+              <li>монтаж и единый визуальный стиль</li>
+            </ul>
+            <a class="btn btn--brass" href="#request" data-kit="Кадетский класс">Запросить смету</a>
+          </article>
+          <article class="kit">
+            <header>
+              <span>Пакет L</span>
+              <h3>Военная кафедра</h3>
+            </header>
+            <p class="kit__price">от 1,15 млн ₽</p>
+            <ul>
+              <li>узлы и разрезы техники</li>
+              <li>лабораторные столы-витрины</li>
+              <li>интерактивная панель + серия стендов</li>
+              <li>шеф-монтаж и ввод в эксплуатацию</li>
+            </ul>
+            <a class="btn btn--ghost" href="#request" data-kit="Военная кафедра">Запросить смету</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--split" id="process">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">Поставка</p>
+          <h2>От планировки кабинета до акта за 2–4 недели</h2>
+          <p class="lead">Не продаём «коробку с макетом». Снимаем размеры, собираем спецификацию под программу и привозим так, чтобы преподаватель открыл занятие на следующей неделе.</p>
+        </div>
+        <ol class="steps">
+          <li><strong>Заявка и план кабинета.</strong> Фото, метраж, параллель или программа.</li>
+          <li><strong>Спецификация и смета.</strong> Позиции, аналоги, срок, условия 44-ФЗ.</li>
+          <li><strong>Согласование расстановки.</strong> Чертёж стендов по стенам и витринам.</li>
+          <li><strong>Производство / склад.</strong> Серийные позиции едут сразу, заказные — в графике.</li>
+          <li><strong>Доставка и монтаж.</strong> Крепление, уровень, подписи, инструктаж.</li>
+          <li><strong>Акт и сопровождение.</strong> Гарантия 24 месяца, замена расходников.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section--paper" id="plant">
+      <div class="container plant">
+        <div>
+          <p class="eyebrow">Производство</p>
+          <h2>Сделано так, чтобы пережило учебный год</h2>
+          <p>Корпуса — пластик машинной формовки, металл и дерево витрин. Подписи — гравировка и защитный лак. Учебные образцы не копируют боевой функционал: это наглядность для класса.</p>
+          <ul class="checks">
+            <li>Паспорт изделия на каждую позицию</li>
+            <li>Сертификаты соответствия на материалы</li>
+            <li>Инструкция преподавателя простым языком</li>
+            <li>Зип-пакет крепежа и запасные таблички</li>
+          </ul>
+        </div>
+        <div class="plant__panel">
+          <div class="stat"><b>12</b><span>лет серии</span></div>
+          <div class="stat"><b>430</b><span>классов поставлено</span></div>
+          <div class="stat"><b>24</b><span>месяца гарантии</span></div>
+          <div class="stat"><b>36</b><span>регионов доставки</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cases">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow">Поставки</p>
+          <h2>Как это выглядит в классе, а не на складе</h2>
+        </div>
+        <div class="cases">
+          <article>
+            <span>Калуга · лицей</span>
+            <h3>Кабинет ОБЖ за каникулы</h3>
+            <p>8 стендов, тренажёр, витрина СИЗ. Монтаж в субботу, первое занятие в понедельник.</p>
+          </article>
+          <article>
+            <span>Новосибирск · корпус</span>
+            <h3>Единый стиль на 2 этажа</h3>
+            <p>Два кадетских класса и рекреация: одна графическая система, разные темы стендов.</p>
+          </article>
+          <article>
+            <span>Казань · вуз</span>
+            <h3>Кафедра, не музей</h3>
+            <p>Разрезы узлов и витрины с подсветкой. Студенты разбирают устройство, а не фотографируют макет.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--paper" id="faq">
+      <div class="container faq-wrap">
+        <div>
+          <p class="eyebrow">Вопросы закупщика</p>
+          <h2>То, что всё равно спросят в письме</h2>
+        </div>
+        <div class="faq" id="faqList"></div>
+      </div>
+    </section>
+
+    <section class="section" id="request">
+      <div class="container request">
+        <div>
+          <p class="eyebrow">Заявка</p>
+          <h2>Соберём спецификацию за один рабочий день</h2>
+          <p class="lead">Напишите город, тип класса и что уже есть на стенах. Пришлём смету, расстановку и срок. Без корзины и без «оставьте 12 полей».</p>
+          <ul class="checks">
+            <li>Отвечает менеджер, не бот</li>
+            <li>Можно приложить фото кабинета</li>
+            <li>Готовим пакет для закупки</li>
+          </ul>
+        </div>
+        <form class="form" id="form">
+          <label>Кто вы
+            <select name="role" required>
+              <option value="">Выберите</option>
+              <option>Директор / завуч</option>
+              <option>Преподаватель</option>
+              <option>Снабжение / закупки</option>
+              <option>Подрядчик комплектации</option>
+            </select>
+          </label>
+          <label>Что нужно
+            <input name="need" id="need" required placeholder="Кадетский класс, 56 м², Новосибирск" />
+          </label>
+          <label>Город
+            <input name="city" required placeholder="Город поставки" />
+          </label>
+          <label>Телефон или почта
+            <input name="contact" required placeholder="+7 или name@school.ru" />
+          </label>
+          <button class="btn btn--brass btn--lg" type="submit">Отправить заявку</button>
+          <p class="form__note">Нажимая кнопку, вы соглашаетесь на обработку контактных данных для ответа на заявку.</p>
+          <p class="form__ok" id="formOk" hidden>Заявка собрана. В этой демонстрации она остаётся в браузере — живой адрес подключите на проде.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <div class="logo"><span class="logo__mark">А</span><span class="logo__text">АЗИМУТ<span>учебные системы</span></span></div>
+        <p>Учебные макеты, стенды и комплектация классов. Демонстрационный сайт концепции.</p>
+      </div>
+      <div>
+        <p>Москва, производственная площадка</p>
+        <p>8 800 100-07-01</p>
+        <p>hello@azimut-class.ru</p>
+      </div>
+      <div>
+        <a href="#catalog">Каталог</a>
+        <a href="#kits">Кабинеты</a>
+        <a href="#request">Спецификация</a>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <span>© 2026 АЗИМУТ. Учебная продукция.</span>
+      <span>Не является предложением боевых изделий.</span>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal__card" role="dialog" aria-modal="true">
+      <button class="modal__x" id="modalClose" aria-label="Закрыть">×</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
